@@ -1,0 +1,27 @@
+body {
+    color: #333334;
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #562a64;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3 {
+    font-size: 2.25em;
+}
+
+h4 {
+    font-size: 1.75em;
+}
+
+h5 {
+    font-size: 1.25em;
+}
+
+h6 {
+    font-size: 1em;
+}

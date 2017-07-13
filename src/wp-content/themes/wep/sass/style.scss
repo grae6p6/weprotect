@@ -1,0 +1,283 @@
+/*
+Theme name: WePROTECT
+Description: Lorem ipsum dolor sit amet.
+Version: 1.0
+Author: Panlogic Ltd
+Text Domain: wep
+*/
+
+/*5c9ee0*/
+
+$primary-color: #562a64;
+$primary-dark-color: #2a0637;
+$primary-light-color: #8e699b;
+
+/* Modified copy of the Bootstrap 4 variables */
+@import "variables";
+
+/* Bootstrap 4 */
+@import "./node_modules/bootstrap/scss/bootstrap.scss";
+
+/* Mixins */
+@mixin border-radius($px) {
+  -webkit-border-radius: $px;
+  -moz-border-radius: $px;
+  border-radius: $px;
+}
+
+@mixin blur($px) {
+  -webkit-filter: blur($px);
+  -moz-filter: blur($px);
+  -o-filter: blur($px);
+  -ms-filter: blur($px);
+  filter: blur($px);
+}
+
+/* Elements */
+body {
+  color: #333334;
+  font-size: 14px;
+  @include media-breakpoint-up(md) {
+    font-size: 18px;
+  }
+  @include media-breakpoint-up(lg) {
+    font-size: 20px;
+  }
+}
+
+h1, h2, h3, h3, h4, h5, h6 {
+  color: $primary-color;
+  font-weight: 700;
+  font-family: $font-family-sans-serif-heading;
+}
+
+p {
+  margin: 0 0 1.5em 0;
+}
+
+/*.excerpt {
+  font-size: 0.8em;
+}*/
+
+
+
+/* Structure - Headers */
+header.body {
+  font-size: 0.8em;
+  .primary {
+    padding: 1em 0;
+    .edit-link {
+      top: 1em;
+      right: 2em;
+    }
+    .custom-logo-link {
+      display: block;
+      padding-bottom: 0.5em;
+    }
+    #menu-primary > li > a {
+      color: $primary-color;
+    }
+    #menu-primary > li.show > a {
+      color: $white;
+    }
+  }
+  @include media-breakpoint-up(lg) {
+    .primary {
+      height: 8.75em;
+      padding: 0;
+      .custom-logo-link {
+        padding-bottom: 0;
+      }
+      .row {
+        height: 8.75em;
+      }
+    }
+  }
+}
+
+header.body .top, footer.body .primary, header.article {
+  background-color: $primary-color;
+  color: $white;
+  a, h1, h2, h3, h3, h4, h5, h6 {
+    color: $white;
+  }
+}
+
+/* Structure - Main */
+main.body {
+  a {
+    color: $primary-color;
+    text-decoration: underline;
+  }
+
+  /* Content block styling */
+  .block {
+    position: relative;
+    padding: 2em 0;
+    box-sizing: border-box;
+    h2, h3 {
+      margin: 0 0 .5em 0;
+    }
+    header.article {
+      display: inline-block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 1.5em 2em;
+      width: 100%;
+      @include media-breakpoint-only(md) {
+        width: 72%;
+      }
+      @include media-breakpoint-up(lg) {
+        width: 64%;
+      }
+    }
+    .block {
+      @include border-radius(1em);
+      -webkit-border-top-left-radius: 0;
+      border-top-left-radius: 0;
+      min-height: 5em;
+      padding: 1em;
+      margin: 0 0 1.5em 0;
+    }
+    .block.light {
+      background-color: $primary-light-color;
+      color: $white;
+      h4, h5, h6 {
+        color: $white;
+        margin: 0 0 0.25em 0;
+      }
+      p {
+        margin-bottom: 0;
+      }
+    }
+    .block.grey {
+      background-color: #eaeaea;
+      p, .entry-date {
+        font-size: 0.8em;
+      }
+    }
+  }
+
+  .block > .container, footer.body .container {
+    padding: 0 2em;
+  }
+
+  /* Content block - CTA with image right */
+  .block.block-cta1 {
+    /*@include media-breakpoint-up(xl) {
+      padding: 0;
+    }*/
+    color: #fff;
+    background-color: $primary-color;
+    h1, h2, h3, h4, h5, h6 {
+      color: #fff;
+    }
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  /* Content block - CTA with 3 custom content boxes */
+  .block.block-cta3 {
+
+  }
+
+  /* Content block - image with title */
+  .block.block-image {
+    padding: 0;
+    background-color: #eaeaea;
+    background-position: center center;
+    background-size: cover;
+    /*@include blur(4px);*/
+    .container {
+      height: 25em;
+    }
+    header.article > * {
+      margin: 0;
+    }
+    header.article * + button {
+      margin: 1em 0 0 0;
+    }
+  }
+
+  .block.block-related {
+    .wp-post-image {
+      margin: 0 0 1em 0;
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+/* Structure - Footers */
+footer.body {
+  .top {
+    background-color: $primary-light-color;
+    a {
+      display: block;
+      width: 100px;
+      height: 50px;
+      line-height: 50px;
+      background-color: $primary-dark-color;
+      color: #fff;
+      text-align: center;
+      font-size: 0.8em;
+    }
+  }
+
+  .primary {
+    padding: 2em 0;
+    nav.support-navigation {
+      a {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .copyright {
+    height: 3em;
+    line-height: 3em;
+    font-size: 0.8em;
+  }
+}
+
+.container.error404 {
+  padding: 4em 0;
+}
+
+/* Form elements */
+button, .edit-link {
+  background-color: #1ba39c;
+  color: $white;
+  font-weight: 500;
+  padding: .4em 1em;
+  border: none;
+  letter-spacing: 1px;
+  font-size: 0.9em;
+  cursor: pointer;
+  @include border-radius(.2em);
+}
+
+/*button:hover {
+  background-color: #1b89a3;
+}*/
+
+.edit-link {
+  background-color: #a31b1b;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 1em;
+  padding: .2em 1em;
+  z-index: 999;
+  a {
+    color: $white !important;
+  }
+}
+
+/* Development styling */
+body.debug .block {
+  border: 1px solid red;
+}
