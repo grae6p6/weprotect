@@ -4,7 +4,7 @@
  * Content block template - Image banner or colour with title
  */
 
-global $heading;
+global $heading, $button;
 
 // Block image
 $css = $style = null;

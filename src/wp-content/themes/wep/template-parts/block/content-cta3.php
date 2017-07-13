@@ -4,7 +4,7 @@
  * Content block template - Three sections of text
  */
 
-global $heading;
+global $heading, $button;
 
 // Block image
 $css = $style = null;

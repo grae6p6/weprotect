@@ -4,7 +4,7 @@
  * Content block template - CTA with optional right side image
  */
 
-global $heading;
+global $heading, $button;
 
 // Block image
 $css = $style = null;

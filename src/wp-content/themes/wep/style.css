@@ -6055,6 +6055,7 @@ main.body {
   /* Content block styling */
   /* Content block - CTA with image right */
   /* Content block - CTA with 3 custom content boxes */
+  /* Content block - CTA with 3 points */
   /* Content block - image with title */ }
   main.body a {
     color: #562a64;
@@ -6088,6 +6089,8 @@ main.body {
       min-height: 5em;
       padding: 1em;
       margin: 0 0 1.5em 0; }
+      main.body .block .block *:last-child {
+        margin-bottom: 0; }
     main.body .block .block.light {
       background-color: #8e699b;
       color: #fff; }
@@ -6113,6 +6116,14 @@ main.body {
     main.body .block.block-cta1 img {
       width: 100%;
       height: auto; }
+  main.body .block.block-point .point {
+    font-size: 5em;
+    font-weight: 700; }
+  @media (min-width: 992px) {
+    main.body .block.block-point .row:nth-of-type(2) .col-12 {
+      border-right: 1px solid #ccc; }
+    main.body .block.block-point .row:nth-of-type(2) .col-12:nth-child(3n+3) {
+      border-right: 0; } }
   main.body .block.block-image {
     padding: 0;
     background-color: #eaeaea;

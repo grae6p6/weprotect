@@ -6,7 +6,7 @@
  * Displays all blocks assigned to the current post/page.
  */
 
-global $heading;
+global $heading, $button;
 
 if( function_exists( 'get_field' ) ) :
 	$blocks = get_field( 'assigned_blocks' );
@@ -22,9 +22,8 @@ if( function_exists( 'get_field' ) ) :
 			$button = null;
 			if( $linked ) {
 				$linked = array_pop( $linked );
-				setup_postdata( $linked );
-				$button = '<button data-url="' . esc_url( get_the_permalink() ) . '">' . ( get_field( 'button_label' ) ?: get_the_title() ) . '</button>';
-				setup_postdata( $post );
+				$button = '<button data-url="' . esc_url( get_the_permalink( $linked->ID ) ) . '">' .
+                          ( get_field( 'button_label' ) ?: get_the_title( $linked->ID ) ) . '</button>';
 			}
 
 			// Content block template

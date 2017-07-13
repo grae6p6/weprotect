@@ -139,6 +139,9 @@ main.body {
       min-height: 5em;
       padding: 1em;
       margin: 0 0 1.5em 0;
+      *:last-child {
+        margin-bottom: 0;
+      }
     }
     .block.light {
       background-color: $primary-light-color;
@@ -182,6 +185,24 @@ main.body {
   /* Content block - CTA with 3 custom content boxes */
   .block.block-cta3 {
 
+  }
+
+  /* Content block - CTA with 3 points */
+  .block.block-point {
+    .point {
+      font-size: 5em;
+      font-weight: 700;
+    }
+    .row:nth-of-type(2) {
+      @include media-breakpoint-up(lg) {
+        .col-12 {
+          border-right: 1px solid #ccc;
+        }
+        .col-12:nth-child(3n+3) {
+          border-right: 0;
+        }
+      }
+    }
   }
 
   /* Content block - image with title */

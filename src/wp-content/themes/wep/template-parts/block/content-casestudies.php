@@ -4,7 +4,7 @@
  * Content block template - With related case study posts
  */
 
-global $heading;
+global $heading, $button;
 
 // Block image
 $css = $style = null;

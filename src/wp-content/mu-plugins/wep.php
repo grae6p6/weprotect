@@ -88,6 +88,11 @@ class Wep_Plugin {
 			'post_title' => 'Worldwide cooperation to end child sexual exploitation online',
 			'post_content' => ''
 		),
+		'join-us' => array(
+			'post_type' => 'page',
+			'post_title' => 'Join us',
+			'post_content' => ''
+		),
 		'useful-contacts' => array(
 			'post_type' => 'page',
 			'post_title' => 'Useful contacts',
