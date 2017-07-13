@@ -3,7 +3,6 @@
 class Wep_Theme {
 	public function after_switch_theme() {
 
-
     }
 
     public static function after_theme_setup() {
