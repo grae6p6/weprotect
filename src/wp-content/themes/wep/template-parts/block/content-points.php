@@ -37,19 +37,19 @@ if( $css ) {
 	<div class="row">
 		<div class="col-12 col-lg-4">
 			<div class="block">
-				<span class="point">1</span>
+				<div class="point text-center text-lg-left">1</div>
 				<?php the_field('section_1' ) ?>
 			</div>
 		</div>
 		<div class="col-12 col-lg-4">
 			<div class="block">
-				<span class="point">2</span>
+				<div class="point text-center text-lg-left">2</div>
 				<?php the_field('section_2' ) ?>
 			</div>
 		</div>
 		<div class="col-12 col-lg-4">
 			<div class="block">
-				<span class="point">3</span>
+				<div class="point text-center text-lg-left">3</div>
 				<?php the_field('section_3' ) ?>
 			</div>
 		</div>

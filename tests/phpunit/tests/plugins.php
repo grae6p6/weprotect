@@ -21,6 +21,10 @@ class Tests_Wep_Plugin extends WP_UnitTestCase {
 		$this->assertNull(activate_plugin('contact-form-7/wp-contact-form-7.php'));
 		$this->assertTrue(is_plugin_active('contact-form-7/wp-contact-form-7.php'));
 
+		// Bootstrap support for forms
+		$this->assertNull(activate_plugin('bootstrap-for-contact-form-7/bootstrap-for-contact-form-7.php'));
+		$this->assertTrue(is_plugin_active('bootstrap-for-contact-form-7/bootstrap-for-contact-form-7.php'));
+
 		// Storage for forms
 		$this->assertNull(activate_plugin('flamingo/flamingo.php'));
 		$this->assertTrue(is_plugin_active('flamingo/flamingo.php'));
@@ -28,6 +32,10 @@ class Tests_Wep_Plugin extends WP_UnitTestCase {
 		// Multilingual support
 		$this->assertNull(activate_plugin('polylang/polylang.php'));
 		$this->assertTrue(is_plugin_active('polylang/polylang.php'));
+
+		// Form extension for Polylang
+		//$this->assertNull(activate_plugin('cf7-polylang/cf7-polylang.php'));
+		//$this->assertTrue(is_plugin_active('cf7-polylang/cf7-polylang.php'));
 
 		// SEO
 		$this->assertNull(activate_plugin('wordpress-seo/wp-seo.php'));

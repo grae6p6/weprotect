@@ -8,13 +8,14 @@ Author: Panlogic Ltd
 */
 
 class Wep_Plugin {
-	public $time = 0;
-
 	public static $categories = [
 		'Case studies' => 0,
 		'Events' => 0,
 		'News' => 0
 	];
+	public static $forms = [
+        'Apply for membership' => 'apply-for-membership'
+    ];
 	public static $menus = [
 
 		// Top menu
@@ -346,14 +347,9 @@ class Wep_Plugin {
 			'menu_order' => 703
 		)
 	];
-
 	public static $blocks = [
 		''
 	];
-
-	function __construct() {
-		$this->time = time();
-	}
 
 	public static function _create_menu( $items = [], $menu_id = 0, $parent_id = 0 ) {
 		foreach( $items as $key => $val ) {
@@ -390,6 +386,63 @@ class Wep_Plugin {
 			}
 		}
 	}
+
+	public static function create_forms() {
+        //$path_forms = realpath( ABSPATH . '../data/forms' ) . '/';
+
+		// Create forms
+		if( count( self::$forms ) ) {
+		    $i = 1;
+			foreach( self::$forms as $title => $name ) {
+				$path = realpath( ABSPATH . '../data/forms' ) . '/' . $name . '.php';
+			    if( file_exists( $path ) ) {
+				    include $path;
+				    if( isset( $array ) ) {
+
+					    // Post
+					    if( $i == 1 ) {
+						    $post = get_posts([
+							    'name'        => 'contact-form-1',
+							    'post_type'   => 'wpcf7_contact_form',
+							    'post_status' => 'publish',
+							    'numberposts' => 1
+						    ]);
+						    if( $post ) {
+							    $id = wp_update_post([
+								    'ID' => $post[0]->ID,
+								    'post_title' => $title,
+								    'post_content' => '',//$contents
+							    ]);
+						    }
+					    } else {
+						    $id = wp_insert_post([
+							    'post_name' => 'contact-form-' . $i,
+							    'post_type' => 'wpcf7_contact_form',
+							    'post_title' => $title,
+							    'post_status' => 'publish',
+							    'post_content' => '',//$contents
+						    ]);
+					    }
+
+					    if( !$id ) {
+						    return false;
+					    }
+
+					    // Meta
+					    else {
+						    var_dump( "POST: " . $id );
+						    foreach( $array as $key => $value ) {
+							    update_post_meta( $id, $key, $value );
+						    }
+                        }
+				    }
+                }
+				$i++;
+			}
+		}
+
+		return true;
+    }
 
 	public static function create_categories() {
 
@@ -444,13 +497,30 @@ class Wep_Plugin {
 		return true;
 	}
 
-	public static function create_content() {
-		self::create_categories();
+	public static function setup() {
+
+		// Plugins!
+		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		activate_plugin( 'advanced-custom-fields/acf.php' );
+		activate_plugin( 'contact-form-7/wp-contact-form-7.php' );
+		activate_plugin( 'bootstrap-for-contact-form-7/bootstrap-for-contact-form-7.php' );
+		activate_plugin( 'wordpress-seo/wp-seo.php' );
+
+		// Clear default content
+		wp_delete_comment( 1 );
+		wp_delete_post( 1, TRUE );
+		wp_delete_post( 2, TRUE );
+
+		// Add core content
+		include_once( ABSPATH . 'wp-admin/includes/taxonomy.php' );
+	    self::create_categories();
+		self::create_forms();
 		self::create_pages();
 		self::create_menus();
 
-		// Labels
+		// Site labels
 		update_option( 'blogname', 'WePROTECT Global Alliance' );
+        update_option( 'blogdescription', '' );
 
 		// Set homepage as index
 		$post = get_posts([
@@ -466,6 +536,10 @@ class Wep_Plugin {
 		// Permalinks
 		update_option('permalink_structure', '/%category%/%postname%/' );
 	}
+
+	public static function create_environment() {
+
+    }
 }
 
 /**
@@ -534,7 +608,7 @@ class MySettingsPage
 	public function page_init()
 	{
 		if( $_POST['install-core'] ) {
-			Wep_Plugin::create_content();
+			Wep_Plugin::setup();
 		}
 	}
 

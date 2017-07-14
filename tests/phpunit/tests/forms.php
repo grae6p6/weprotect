@@ -12,11 +12,7 @@ class Tests_Wep_Forms extends WP_UnitTestCase {
 		activate_plugin('wysija-newsletters/index.php');
 	}
 
-	public function test_contact_form() {
-		$this->assertTrue(Wep_Plugin::create_menus());
-	}
-
-	public function test_newsletter_form() {
-		$this->assertTrue(Wep_Plugin::create_menus());
+	public function test_apply_for_membership_form() {
+		//$this->assertTrue(Wep_Plugin::create_form('apply-for-membership'));
 	}
 }

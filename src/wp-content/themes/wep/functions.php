@@ -1,8 +1,37 @@
 <?php
 
+
+/**
+ * Update classes for bootstrap CF7 plugin
+ */
+function wep_wpcf7_form_elements($res) {
+	return str_replace(
+		[
+            'has-error',
+            'wpcf7-not-valid form-control',
+            'alert alert-warning',
+            'class="wpcf7-response-output wpcf7-validation-errors alert alert-warning"',
+
+            //'wpcf7-validates-as-required form-control'
+        ],
+        [
+	        'has-error has-warning',
+            'wpcf7-not-valid form-control form-control-warning',
+            'form-control-feedback',
+            'class="wpcf7-response-output wpcf7-validation-errors alert alert-warning" role="alert"',
+
+            //'wpcf7-validates-as-required form-control form-control-success'
+        ],
+        $res
+    );
+}
+
+add_filter( 'wpcf7_form_elements', 'wep_wpcf7_form_elements', 10, 2 );
+
+
 class Wep_Theme {
 	public function after_switch_theme() {
-
+	    //Wep_Plugin::setup();
     }
 
     public static function after_theme_setup() {
