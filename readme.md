@@ -9,4 +9,4 @@ Compile vendor JS, and transpile SCSS to theme CSS
 INSTALLATION
 
 1. Run WP setup
-2. Control Panel > Settings > WePROTECT > Install core data
+2. Appearance > Activate "WePROTECT"
