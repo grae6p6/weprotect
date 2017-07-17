@@ -13,6 +13,16 @@ class Tests_Wep_Forms extends WP_UnitTestCase {
 	}
 
 	public function test_apply_for_membership_form() {
-		//$this->assertTrue(Wep_Plugin::create_form('apply-for-membership'));
+		$entry = array_flip( array_slice( Wep_Plugin::$forms, -1, 1 ) );
+		$post = get_posts([
+			'page_title'  => $entry,
+			'post_type'   => 'wpcf7_contact_form',
+			'post_status' => 'publish',
+			'numberposts' => 1
+		]);
+		if( $post ) {
+			$this->assertCount(1, $post);
+		}
+
 	}
 }

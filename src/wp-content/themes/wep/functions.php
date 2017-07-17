@@ -1,8 +1,7 @@
 <?php
 
-
 /**
- * Update classes for bootstrap CF7 plugin
+ * Update classes for bootstrap CF7 plugin HTML output
  */
 function wep_wpcf7_form_elements($res) {
 	return str_replace(
@@ -31,7 +30,7 @@ add_filter( 'wpcf7_form_elements', 'wep_wpcf7_form_elements', 10, 2 );
 
 class Wep_Theme {
 	public function after_switch_theme() {
-	    //Wep_Plugin::setup();
+	    Wep_Plugin::setup();
     }
 
     public static function after_theme_setup() {
@@ -111,9 +110,10 @@ class Wep_Theme {
 				'fields' => array (
 					array (
 						'key' => 'field_595e437018a98',
-						'label' => 'Assigned Blocks',
+						'label' => 'Content Blocks',
 						'name' => 'assigned_blocks',
 						'type' => 'relationship',
+						'instructions' => 'Select the desired content blocks to assign to this page, and drag into the required order.',
 						'return_format' => 'object',
 						'post_type' => array (
 							0 => 'content_block',
@@ -155,6 +155,19 @@ class Wep_Theme {
 				'title' => 'Content Block Type',
 				'fields' => array (
 					array (
+						'key' => 'field_5964ec11ce4cb',
+						'label' => 'Title',
+						'name' => 'title',
+						'type' => 'text',
+						'instructions' => 'Title for the content block (the title will automatically be assigned the correct heading for SEO)',
+						'default_value' => '',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'formatting' => 'html',
+						'maxlength' => '',
+					),
+                    array (
 						'key' => 'field_595e465405629',
 						'label' => 'Type',
 						'name' => 'type',
@@ -185,8 +198,15 @@ class Wep_Theme {
 						'library' => 'all',
 					),
 					array (
+						'key' => 'field_595e57673b050',
+						'label' => 'Background Colour',
+						'name' => 'bg_colour',
+						'type' => 'color_picker',
+						'default_value' => '',
+					),
+					array (
 						'key' => 'field_595e57673b049',
-						'label' => 'Colour',
+						'label' => 'Font Colour',
 						'name' => 'colour',
 						'type' => 'color_picker',
 						'default_value' => '',
@@ -326,7 +346,7 @@ class Wep_Theme {
 						'label' => 'Linked Page',
 						'name' => 'linked_page',
 						'type' => 'relationship',
-						'instructions' => 'If selected, provides a button at the bottom of the block to the page',
+						'instructions' => 'If selected, provides a button at the bottom of the block to the selected page',
 						'return_format' => 'object',
 						'post_type' => array (
 							0 => 'page',
@@ -347,7 +367,7 @@ class Wep_Theme {
 						'label' => 'Button Label',
 						'name' => 'button_label',
 						'type' => 'text',
-						'instructions' => 'Button label for the linked page (defaults to page title if blank)',
+						'instructions' => 'Label for the linked page button (defaults to page title if blank)',
 						'default_value' => '',
 						'placeholder' => '',
 						'prepend' => '',

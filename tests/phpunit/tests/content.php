@@ -17,12 +17,24 @@ class Tests_Wep_Content extends WP_UnitTestCase {
 
 	public function test_pages_created() {
 		$this->assertTrue(Wep_Plugin::create_pages());
+		$entry = array_flip( array_slice( Wep_Plugin::$posts, -1, 1 ) );
 		$posts = get_posts([
-			'name'        => 'home',
+			'name'        => $entry,
 			'post_type'   => 'page',
 			'post_status' => 'publish'
 		]);
-		$this->assertCount(1, $posts);
+		$this->assertEquals(1, count($posts));
+	}
+
+	public function test_blocks_created() {
+		$this->assertTrue(Wep_Plugin::create_blocks());
+		$entry = array_flip( array_slice( Wep_Plugin::$blocks, -1, 1 ) );
+		$posts = get_posts([
+			'name'        => $entry,
+			'post_type'   => 'content_block',
+			'post_status' => 'publish'
+		]);
+		$this->assertEquals(1, count($posts));
 	}
 
 	public function test_post_categories_created() {

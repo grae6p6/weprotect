@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: WePROTECT
-Description: Provides a basic structure of the site navigation and pages.
+Description: Provides core data on activation of WEP theme if no content found
 Version: 1.0.0
 Author: Panlogic Ltd
 */
@@ -14,8 +14,7 @@ class Wep_Plugin {
 		'News' => 0
 	];
 	public static $forms = [
-		'Apply for membership' => 'apply-for-membership',
-		'Testing' => 'testing'
+		'Apply for membership' => 'apply-for-membership'
     ];
 	public static $menus = [
 
@@ -84,24 +83,109 @@ class Wep_Plugin {
 		]
 	];
 	public static $slugs = [];
-	/*public static $blocks = [
-		'why-we-must-act',
-		'model-national-response',
-		'fund-to-end-violence-against-children',
-		'latest-news-and-events',
+	public static $fields = [
+        'title' => '5964ec11ce4cb',
+        'type' => '595e465405629',
+        'bg_colour' => '595e57673b050',
+        'colour' => '595e57673b049',
+        'linked_page' => '5964b1b8127f0',
+        'button_label' => '5964ec11ee4db',
+        'section_1' => '5964e987a10bb',
+        'section_2' => '5964e9a8a10bc',
+        'section_3' => '5964e9b2a10bd'
+    ];
+	public static $blocks = [
+		'landing-banner' => [
+			'post_title' => 'Landing banner',
+			'post_content' => '',
+			'title' => 'Worldwide cooperation to end child sexual exploitation online',
+			'type' => 'image',
+			'bg_colour' => '#eaeaea',
+			'linked_page' => 'our-mission'
+		],
+		'why-we-must-act' => [
+			'post_title' => 'Why we must act',
+			'post_content' => '<p>Leo suspendisse imperdiet augue etiam ac in a ullamcorper tortor suspendisse ad ullamcorper maecenas class at a.</p>',
+			'title' => 'Why we must act',
+			'type' => 'cta3',
+			'linked_page' => 'who-we-work-with',
+			'section_1' => '<p>Lorem ipsu dolor sit amet</p>',
+			'section_2' => '<p>Lorem ipsu dolor sit amet</p>',
+			'section_3' => '<p>Lorem ipsu dolor sit amet</p>'
+		],
+		'model-national-response' => [
+			'post_title' => 'Model National Response',
+			'post_content' => '<p>Leo suspendisse imperdiet augue etiam ac in a ullamcorper tortor suspendisse ad ullamcorper maecenas class at a.</p>',
+			'title' => 'Model National Response',
+			'type' => 'cta1',
+			'linked_page' => 'model-national-response',
+			'button_label' => 'View full guidance'
+		],
+		'fund-to-end-violence-against-children' => [
+			'post_title' => 'Fund to end violence against children',
+			'post_content' => '<p>Leo suspendisse imperdiet augue etiam ac in a ullamcorper tortor suspendisse ad ullamcorper maecenas class at a.</p><h4>Case studies</h4>',
+			'title' => 'Fund to end violence against children',
+			'type' => '',
+			'bg_colour' => '#eaeaea',
+			'linked_page' => 'funding',
+			'button_label' => 'Find out about funding'
+		],
+		'latest-news-and-events' => [
+			'post_title' => 'Latest news and events',
+			'post_content' => '[widget]',
+			'title' => 'Latest news and events',
+		],
 
-		'membership',
-		'why-join',
-		'how-to-join',
-		'our-members'
-	];*/
+		'membership' => [
+			'post_title' => 'Membership',
+			'post_content' => '<p>The WePROTECT Global Alliance is a movement of unprecedented reach, with 70 countries already members of WePROTECT or the Global Alliance, along with major international organisations, 20 of the biggest names in the global technology industry, and 17 leading civil society organisations.</p>',
+			'title' => 'Membership',
+			'type' => 'cta1'
+		],
+        'membership-form' => [
+	        'post_title' => 'Membership form',
+	        'title' => 'Apply for membership',
+	        'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="4" title="Apply for membership"]</p>'
+		],
+		'why-join' => [
+			'post_title' => 'Membership - Why join',
+			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>',
+			'title' => 'Why join?',
+			'type' => 'cta3',
+			'linked_page' => 'who-we-are',
+			'section_1' => '<p>Reason one</p>',
+			'section_2' => '<p>Reason two</p>',
+			'section_3' => '<p>Reason three</p>'
+		],
+		'how-to-join' => [
+			'post_title' => 'How to join',
+			'post_content' => '<p>Leo suspendisse imperdiet augue etiam ac in a ullamcorper tortor suspendisse ad ullamcorper maecenas class at a.</p>',
+			'title' => 'How to join',
+			'type' => 'points',
+			'bg_colour' => '#eaeaea',
+			'linked_page' => 'join-us',
+			'button_label' => 'Apply for membership',
+			'section_1' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
+			'section_2' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
+			'section_3' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>'
+		],
+		'our-members' => [
+			'post_title' => 'Our members',
+			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>',
+			'title' => 'Our members',
+			'type' => '',
+			'linked_page' => 'funding',
+			'button_label' => 'Who\'s a member?'
+		]
+	];
 	public static $posts = [
 		'home' => array(
 			'post_type' => 'page',
 			'post_title' => 'Worldwide cooperation to end child sexual exploitation online',
 			'post_content' => '',
 			'blocks' => [
-				'why-we-must-act',
+				'landing-banner',
+                'why-we-must-act',
 				'model-national-response',
 				'fund-to-end-violence-against-children',
 				'latest-news-and-events'
@@ -110,7 +194,10 @@ class Wep_Plugin {
 		'join-us' => array(
 			'post_type' => 'page',
 			'post_title' => 'Join us',
-			'post_content' => ''
+			'post_content' => '',
+            'blocks' => [
+                'membership-form'
+            ]
 		),
 		'useful-contacts' => array(
 			'post_type' => 'page',
@@ -166,7 +253,7 @@ class Wep_Plugin {
 		),
 		'our-members' => array(
 			'post_type' => 'page',
-			'post_title' => 'Out members',
+			'post_title' => 'Our members',
 			'post_content' => '',
 			'menu_order' => 204
 		),
@@ -284,10 +371,10 @@ class Wep_Plugin {
 			'post_content' => '',
 			'menu_order' => 501,
 			'blocks' => [
-                'membership',
-                'why-join',
-                'how-to-join',
-                'our-members'
+				'membership',
+				'why-join',
+				'how-to-join',
+				'our-members'
 			]
 		),
 		'donating' => array(
@@ -408,6 +495,11 @@ class Wep_Plugin {
 		}
 	}
 
+	/**
+	 * Create all CF7 forms
+	 *
+	 * @return bool
+	 */
 	public static function create_forms() {
 
 	    // Create forms
@@ -464,12 +556,20 @@ class Wep_Plugin {
 		return true;
     }
 
+	/**
+	 * Create all categories
+	 *
+	 * @return bool
+	 */
 	public static function create_categories() {
 
 		// Create categories
 		if( count( self::$categories ) ) {
 			foreach( self::$categories as $name => $id ) {
 				$category_id = wp_create_category( $name );
+				if( !$category_id ) {
+				    return false;
+                }
 				self::$categories[ $name ] = $category_id;
 			}
 		}
@@ -477,6 +577,11 @@ class Wep_Plugin {
 		return true;
 	}
 
+	/**
+	 * Create all menus and assign items
+	 *
+	 * @return bool
+	 */
 	public static function create_menus() {
 
 		// Create menus
@@ -485,6 +590,9 @@ class Wep_Plugin {
 			foreach( self::$menus as $name => $items ) {
 				//wp_delete_nav_menu($name);
 				$menu_id = wp_create_nav_menu( $name );
+				if( !$menu_id ) {
+				    return false;
+                }
 				self::_create_menu( $items, $menu_id );
 
 				$term = get_term_by('name', $name, 'nav_menu');
@@ -496,6 +604,11 @@ class Wep_Plugin {
 		return true;
 	}
 
+	/**
+     * Create all pages for the site
+     *
+	 * @return bool
+	 */
 	public static function create_pages() {
 
 		// Create pages
@@ -516,31 +629,104 @@ class Wep_Plugin {
 				//var_dump($content);
 				$content['post_status'] = 'publish';
 				$id = wp_insert_post($content);
+				if( !$id ) {
+				    return false;
+                }
 				self::$slugs[$name] = $id;
+			}
+		}
 
-				if( $blocks ) {
-					$meta = [];
-					foreach( $blocks as $block ) {
-					    $posts = get_posts([
-						    'name'        => $block,
-						    'post_type'   => 'content_block',
-						    'post_status' => 'publish',
-						    'numberposts' => 1
-					    ]);
-					    if( $posts ) {
-						    $meta[] = $posts[0]->ID;
+		return true;
+	}
+
+	/**
+	 * Create post block relations
+	 *
+	 * @return bool
+	 */
+	public static function create_page_block_relations() {
+
+        // Create page block relations
+        if( count( self::$posts ) ) {
+            foreach( self::$posts as $name => $content ) {
+                if( $content['blocks'] ) {
+	                $post = get_posts([
+		                'name'        => $name,
+		                'post_type'   => 'page',
+		                'post_status' => 'publish',
+		                'numberposts' => 1
+	                ]);
+	                if( $post ) {
+	                    $id = $post[0]->ID;
+		                $meta = [];
+		                foreach( $content['blocks'] as $block ) {
+			                $post = get_posts([
+				                'name'        => $block,
+				                'post_type'   => 'content_block',
+				                'post_status' => 'publish',
+				                'numberposts' => 1
+			                ]);
+			                if( $post ) {
+				                $meta[] = $post[0]->ID;
+			                }
+		                }
+		                if( $meta ) {
+			                update_post_meta( $id, 'assigned_blocks', $meta );
+			                update_post_meta( $id, '_assigned_blocks', 'field_595e437018a98' );
+		                }
+	                }
+                }
+            }
+        }
+
+		return true;
+	}
+
+	/**
+	 * Create post block relations
+	 *
+	 * @return bool
+	 */
+	public static function create_blocks() {
+
+	    // Create blocks
+		if( count( self::$blocks ) ) {
+			foreach( self::$blocks as $name => $data ) {
+				$content = [];
+				$content['post_name'] = $name;
+				$content['post_type'] = 'content_block';
+				$content['post_title'] = $data['post_title'];
+				$content['post_content'] = $data['post_content'];
+				$content['post_status'] = 'publish';
+				$id = wp_insert_post($content);
+				if( !$id ) {
+					return false;
+				}
+
+				//var_dump($id, $content);
+
+				foreach( $data as $key => $val ) {
+				    if( array_key_exists( $key, self::$fields ) ) {
+					    if( $key == 'linked_page' ) {
+						    $post = get_posts([
+							    'name'        => $val,
+							    'post_type'   => 'page',
+							    'post_status' => 'publish',
+							    'numberposts' => 1
+						    ]);
+						    if( $post ) {
+							    $val = array( $post[0]->ID );
+						    }
 					    }
-                    }
-                    if( $meta ) {
-	                    update_post_meta( $id, 'assigned_blocks', $meta );
-	                    update_post_meta( $id, '_assigned_blocks', 'field_595e437018a98' );
+					    update_post_meta( $id, $key, $val );
+					    update_post_meta( $id, '_' . $key, 'field_' . self::$fields[ $key ] );
                     }
                 }
 			}
 		}
 
 		return true;
-	}
+    }
 
 	public static function setup() {
 
@@ -562,6 +748,8 @@ class Wep_Plugin {
 		self::create_forms();
 		self::create_pages();
 		self::create_menus();
+		self::create_blocks();
+		self::create_page_block_relations();
 
 		// Site labels
 		update_option( 'blogname', 'WePROTECT Global Alliance' );
@@ -575,16 +763,13 @@ class Wep_Plugin {
 			'numberposts' => 1
 		]);
 		if( $post ) {
-			update_option( 'show_on_front', $post[0]->ID );
+			update_option( 'page_on_front', $post[0]->ID );
+			update_option( 'show_on_front', 'page' );
 		}
 
 		// Permalinks
 		update_option('permalink_structure', '/%category%/%postname%/' );
 	}
-
-	public static function create_environment() {
-
-    }
 }
 
 /**
@@ -653,7 +838,7 @@ class MySettingsPage
 	public function page_init()
 	{
 		if( $_POST['install-core'] ) {
-			Wep_Plugin::setup();
+			//Wep_Plugin::setup();
 		}
 	}
 
