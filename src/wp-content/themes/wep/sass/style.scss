@@ -192,6 +192,7 @@ main.body {
     .point {
       font-size: 5em;
       font-weight: 700;
+      color: $primary-color;
     }
     .row:nth-of-type(2) {
       @include media-breakpoint-up(lg) {
@@ -282,6 +283,9 @@ button, .edit-link {
 }
 
 /* WCF7 */
+.wpcf7 {
+  margin-top: 2em;
+}
 .wpcf7-form.sent {
   .form-group {
     display: none;
@@ -289,7 +293,7 @@ button, .edit-link {
 }
 
 .wpcf7-response-output {
-  margin-bottom: 2em;
+  margin-bottom: 4em;
 }
 
 /*button:hover {

@@ -6118,7 +6118,8 @@ main.body {
       height: auto; }
   main.body .block.block-point .point {
     font-size: 5em;
-    font-weight: 700; }
+    font-weight: 700;
+    color: #562a64; }
   @media (min-width: 992px) {
     main.body .block.block-point .row:nth-of-type(2) .col-12 {
       border-right: 1px solid #ccc; }
@@ -6182,11 +6183,14 @@ button, .edit-link {
   border-radius: 0.2em; }
 
 /* WCF7 */
+.wpcf7 {
+  margin-top: 2em; }
+
 .wpcf7-form.sent .form-group {
   display: none; }
 
 .wpcf7-response-output {
-  margin-bottom: 2em; }
+  margin-bottom: 4em; }
 
 /*button:hover {
   background-color: #1b89a3;

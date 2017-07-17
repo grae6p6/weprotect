@@ -14,7 +14,8 @@ class Wep_Plugin {
 		'News' => 0
 	];
 	public static $forms = [
-        'Apply for membership' => 'apply-for-membership'
+		'Apply for membership' => 'apply-for-membership',
+		'Testing' => 'testing'
     ];
 	public static $menus = [
 
@@ -83,11 +84,28 @@ class Wep_Plugin {
 		]
 	];
 	public static $slugs = [];
+	/*public static $blocks = [
+		'why-we-must-act',
+		'model-national-response',
+		'fund-to-end-violence-against-children',
+		'latest-news-and-events',
+
+		'membership',
+		'why-join',
+		'how-to-join',
+		'our-members'
+	];*/
 	public static $posts = [
 		'home' => array(
 			'post_type' => 'page',
 			'post_title' => 'Worldwide cooperation to end child sexual exploitation online',
-			'post_content' => ''
+			'post_content' => '',
+			'blocks' => [
+				'why-we-must-act',
+				'model-national-response',
+				'fund-to-end-violence-against-children',
+				'latest-news-and-events'
+			]
 		),
 		'join-us' => array(
 			'post_type' => 'page',
@@ -264,7 +282,13 @@ class Wep_Plugin {
 			'post_type' => 'page',
 			'post_title' => 'Membership',
 			'post_content' => '',
-			'menu_order' => 501
+			'menu_order' => 501,
+			'blocks' => [
+                'membership',
+                'why-join',
+                'how-to-join',
+                'our-members'
+			]
 		),
 		'donating' => array(
 			'post_type' => 'page',
@@ -347,9 +371,6 @@ class Wep_Plugin {
 			'menu_order' => 703
 		)
 	];
-	public static $blocks = [
-		''
-	];
 
 	public static function _create_menu( $items = [], $menu_id = 0, $parent_id = 0 ) {
 		foreach( $items as $key => $val ) {
@@ -388,9 +409,8 @@ class Wep_Plugin {
 	}
 
 	public static function create_forms() {
-        //$path_forms = realpath( ABSPATH . '../data/forms' ) . '/';
 
-		// Create forms
+	    // Create forms
 		if( count( self::$forms ) ) {
 		    $i = 1;
 			foreach( self::$forms as $title => $name ) {
@@ -430,7 +450,7 @@ class Wep_Plugin {
 
 					    // Meta
 					    else {
-						    var_dump( "POST: " . $id );
+						    //var_dump( "POST: " . $id );
 						    foreach( $array as $key => $value ) {
 							    update_post_meta( $id, $key, $value );
 						    }
@@ -481,6 +501,12 @@ class Wep_Plugin {
 		// Create pages
 		if( count( self::$posts ) ) {
 			foreach( self::$posts as $name => $content ) {
+				$blocks = null;
+				if( $content['blocks'] ) {
+					$blocks = $content['blocks'];
+					unset( $content['blocks'] );
+				}
+
 				$content['post_name'] = $name;
 				if (array_key_exists('post_parent', $content)) {
 					if(array_key_exists($content['post_parent'], self::$slugs)) {
@@ -491,6 +517,25 @@ class Wep_Plugin {
 				$content['post_status'] = 'publish';
 				$id = wp_insert_post($content);
 				self::$slugs[$name] = $id;
+
+				if( $blocks ) {
+					$meta = [];
+					foreach( $blocks as $block ) {
+					    $posts = get_posts([
+						    'name'        => $block,
+						    'post_type'   => 'content_block',
+						    'post_status' => 'publish',
+						    'numberposts' => 1
+					    ]);
+					    if( $posts ) {
+						    $meta[] = $posts[0]->ID;
+					    }
+                    }
+                    if( $meta ) {
+	                    update_post_meta( $id, 'assigned_blocks', $meta );
+	                    update_post_meta( $id, '_assigned_blocks', 'field_595e437018a98' );
+                    }
+                }
 			}
 		}
 
