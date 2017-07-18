@@ -137,6 +137,14 @@ class Wep_Plugin {
 			'shortcode' => '[wep-latest max="3" categories="news,events"]',
 		],
 
+		// Our mission
+		'our-mission' => [
+			'post_title' => 'Our mission',
+			'post_content' => '<p>We have assembled, for the first time, the influence, resources and expertise to transform how this crime is dealt with worldwide, to deliver our vision of more victims safeguarded, more perpetrators apprehended and an end to online child sexual exploitation.</p>',
+			'title' => 'Our mission',
+			'type' => 'cta1'
+		],
+
 		'membership' => [
 			'post_title' => 'Membership',
 			'post_content' => '<p>The WePROTECT Global Alliance is a movement of unprecedented reach, with 70 countries already members of WePROTECT or the Global Alliance, along with major international organisations, 20 of the biggest names in the global technology industry, and 17 leading civil society organisations.</p>',
@@ -245,8 +253,13 @@ class Wep_Plugin {
 		'our-mission' => array(
 			'post_type' => 'page',
 			'post_title' => 'Our mission',
-			'post_content' => '',
-			'menu_order' => 201
+			'post_content' => '<p>We have assembled, for the first time, the influence, resources and expertise to transform how this crime is dealt with worldwide, to deliver our vision of more victims safeguarded, more perpetrators apprehended and an end to online child sexual exploitation.</p>',
+			'menu_order' => 201,
+            'blocks' => [
+                'our-mission',
+                'achieving-our-goals',
+                'un-stable-development-goals'
+            ]
 		),
 		'our-commitments' => array(
 			'post_type' => 'page',
