@@ -6183,8 +6183,8 @@ button, .edit-link {
   -moz-border-radius: 0.2em;
   border-radius: 0.2em; }
 
-button + button {
-  margin: 0 1.5em; }
+button {
+  margin: 0 1.5em 0 0; }
 
 /* WCF7 */
 .wpcf7 {

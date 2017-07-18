@@ -117,7 +117,7 @@ class Wep_Widget_Members_List extends WP_Widget {
             </div>
             <div class="row members">
                 <?php foreach( $countries as $key => $val ) : ?>
-                    <div class="col-4 col-md-3 text-center entry">
+                    <div class="col-6 col-sm-4 col-md-3 text-center entry">
                         <img src="<?php echo get_template_directory_uri() . '/flags/' . strtolower( $key ) . '.svg' ?>" alt="<?php echo $val ?>">
                         <strong><?php echo $val ?></strong>
                     </div>
