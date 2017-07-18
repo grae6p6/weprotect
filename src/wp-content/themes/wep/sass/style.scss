@@ -272,6 +272,7 @@ footer.body {
 button, .edit-link {
   background-color: #1ba39c;
   color: $white;
+  font-family: $font-family-sans-serif-heading;
   font-weight: 500;
   padding: .4em 1em;
   border: none;
@@ -279,6 +280,10 @@ button, .edit-link {
   font-size: 0.9em;
   cursor: pointer;
   @include border-radius(.2em);
+}
+
+button + button {
+  margin: 0 1.5em;
 }
 
 /* WCF7 */
@@ -318,7 +323,7 @@ button, .edit-link {
     img {
       width: 80%;
       border-radius: 0.25em;
-      margin-bottom: .5em;
+      margin: 2em 0 .5em;
     }
     strong {
       color: $primary-color;

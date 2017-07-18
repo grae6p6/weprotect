@@ -103,26 +103,22 @@ class Wep_Widget_Members_List extends WP_Widget {
 
 		$type = $instance['default'];
 
-		$results = [
-			'gb' => 'United Kingdom',
-			'us' => 'United States',
-			'ca' => 'Canada',
-			'de' => 'Germany'
-		];
+		// TODO: Content to be based on member records in the database
+		require 'countries.php';
 
 		?>
-        <div class="container members">
+        <div class="container">
             <div class="row">
                 <div class="col">
-                    <button>Countries</button>
-                    <button>Organisations</button>
-                    <button>Industries</button>
+                    <button><?php _e( 'Countries', 'wep' ) ?></button>
+                    <button><?php _e( 'Organisations', 'wep' ) ?></button>
+                    <button><?php _e( 'Industries', 'wep' ) ?></button>
                 </div>
             </div>
-            <div class="row">
-                <?php foreach( $results as $key => $val ) : ?>
+            <div class="row members">
+                <?php foreach( $countries as $key => $val ) : ?>
                     <div class="col-4 col-md-3 text-center entry">
-                        <img src="<?php echo get_template_directory_uri() . '/flags/' . $key . '.svg' ?>" alt="<?php echo $val ?>">
+                        <img src="<?php echo get_template_directory_uri() . '/flags/' . strtolower( $key ) . '.svg' ?>" alt="<?php echo $val ?>">
                         <strong><?php echo $val ?></strong>
                     </div>
                 <?php endforeach; ?>

@@ -6172,6 +6172,7 @@ footer.body .copyright {
 button, .edit-link {
   background-color: #1ba39c;
   color: #fff;
+  font-family: "Lato", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 500;
   padding: .4em 1em;
   border: none;
@@ -6181,6 +6182,9 @@ button, .edit-link {
   -webkit-border-radius: 0.2em;
   -moz-border-radius: 0.2em;
   border-radius: 0.2em; }
+
+button + button {
+  margin: 0 1.5em; }
 
 /* WCF7 */
 .wpcf7 {
@@ -6212,7 +6216,7 @@ button, .edit-link {
   .members .entry img {
     width: 80%;
     border-radius: 0.25em;
-    margin-bottom: .5em; }
+    margin: 2em 0 .5em; }
   .members .entry strong {
     color: #562a64;
     font-size: .8em;
