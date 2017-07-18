@@ -133,9 +133,10 @@ class Wep_Plugin {
 		],
 		'latest-news-and-events' => [
 			'post_title' => 'Latest news and events',
-			'type' => '',
+			'post_content' => '',
 			'title' => 'Latest news and events',
-			'shortcode' => '[wep-latest max="3" categories="news,events"]',
+			'type' => '',
+			'shortcode' => '[wep-latest max="3" categories="news,events"]'
 		],
 
 		// Our mission
@@ -156,18 +157,33 @@ class Wep_Plugin {
 			'section_3' => '<p>Galvanising global action by catalysing and driving critical interventions needed to end online child sexual exploitation</p>'
 		],
 		'un-sustainable-development-goals' => [
-			'post_title' => 'UN sustainable development goals',
-			'post_content' => '<h4>WePROTECT Global Alliance will support the landmark commitment by world leaders to end abuse, exploitation, trafficking and all forms of violence and abuse of children by 2030 as part of the UN Sustainable Development Goals.</h4>',
-			'title' => '',
-			'type' => 'cta1'
-		],
-
-		'we-protect-strategy' => [
-			'post_title' => 'WePROTECT Global Alliance Statergy',
+			'post_title' => 'U.N. Sustainable development goals',
 			'post_content' => '<p>Read more about our vision and objectives in the WePROTECT Global Alliance Strategy.</p>',
 			'title' => 'WePROTECT Global Alliance Statergy',
+			'type' => 'cta1'
+		],
+		'our-members' => [
+			'post_title' => 'Our members',
+			'post_content' => '<p>WePROTECT Global Alliance to End Child Sexual Exploitation Online combines two major initiatives: the Global Alliance, led by the U.S. Department of Justice and the EU Commission and WePROTECT, which was convened by the UK.</p><p>This new, merged initiative has unprecedented reach, with 70 countries already members of WePROTECT or the Global Alliance, along with major international organisations, 20 of the biggest names in the global technology industry, and 17 leading civil society organisations.</p>',
 			'type' => '',
-			'bg_colour' => '#eaeaea'
+			'linked_page' => 'our-members'
+		],
+		'global-alliance-strategy' => [
+			'post_title' => 'WePROTECT Global Alliance Strategy',
+			'post_content' => '<p>WePROTECT Global Alliance will support the landmark commitment by world leaders to end abuse, exploitation, trafficking and all forms of violence and abuse of children by 2030 as part of the UN Sustainable Development Goals.</p>',
+			'title' => 'WePROTECT Global Alliance Strategy',
+			'type' => '',
+			'bg_colour' => '#eaeaea',
+			'linked_page' => 'home',
+			'button_label' => 'Download our strategy'
+		],
+		'join-us' => [
+			'post_title' => 'Join us',
+			'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us to learn more.</p>',
+			'title' => 'Join us',
+			'type' => '',
+			'linked_page' => 'membership',
+			'button_label' => 'Why join WePROTECT?'
 		],
 
 		'membership' => [
@@ -191,14 +207,6 @@ class Wep_Plugin {
 			'section_2' => '<p>Reason two</p>',
 			'section_3' => '<p>Reason three</p>'
 		],
-		'join-us' => [
-			'post_title' => 'Join us',
-			'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us to learn more.</p>',
-			'title' => 'Join us',
-			'type' => 'cta1',
-			'linked_page' => 'membership',
-            'button_label' => 'Why join WePROTECT?'
-		],
 		'how-to-join' => [
 			'post_title' => 'How to join',
 			'post_content' => '<p>Leo suspendisse imperdiet augue etiam ac in a ullamcorper tortor suspendisse ad ullamcorper maecenas class at a.</p>',
@@ -211,9 +219,9 @@ class Wep_Plugin {
 			'section_2' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
 			'section_3' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>'
 		],
-		'our-members' => [
-			'post_title' => 'Our members',
-			'post_content' => '<p>WePROTECT Global Alliance to End Child Sexual Exploitation Online combines two major initiatives: the Global Alliance, led by the U.S. Department of Justice and the EU Commission and WePROTECT, which was convened by the UK.</p><p>This new, merged initiative has unprecedented reach, with 70 countries already members of WePROTECT or the Global Alliance, along with major international organisations, 20 of the biggest names in the global technology industry, and 17 leading civil society organisations.</p>',
+		'who-is-a-member' => [
+			'post_title' => 'Who\'s a member?',
+			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>',
 			'title' => 'Our members',
 			'type' => '',
 			'linked_page' => 'our-members',
@@ -288,14 +296,14 @@ class Wep_Plugin {
 			'post_title' => 'Our mission',
 			'post_content' => '',
 			'menu_order' => 201,
-			'blocks' => [
-				'our-mission',
-				'achieving-our-goals',
-				'un-sustainable-development-goals',
-				'our-members',/*,
-                'we-protect-strategy',
-                'join-us'*/
-			]
+            'blocks' => [
+                'our-mission',
+	            'achieving-our-goals',
+	            'un-sustainable-development-goals',
+                'who-is-a-member',
+                'global-alliance-strategy',
+                'join-us'
+            ]
 		),
 		'our-commitments' => array(
 			'post_type' => 'page',
@@ -436,7 +444,7 @@ class Wep_Plugin {
 				'membership',
 				'why-join',
 				'how-to-join',
-				'our-members'
+				'who-is-a-member'
 			]
 		),
 		'donating' => array(
@@ -722,16 +730,17 @@ class Wep_Plugin {
 	                    $id = $post[0]->ID;
 		                $meta = [];
 		                foreach( $content['blocks'] as $block ) {
-			                $post = get_posts([
+			                $data = [
 				                'name'        => $block,
 				                'post_type'   => 'content_block',
 				                'post_status' => 'publish',
 				                'numberposts' => 1
-			                ]);
+			                ];
+			                $post = get_posts($data);
 			                if( $post ) {
 				                $meta[] = $post[0]->ID;
 			                } else {
-				                var_dump('BLOCK ASSIGN FAILED:',$name,$content);
+			                    var_dump( 'BLOCK NOT FOUND:', $block );
                             }
 		                }
 		                if( $meta ) {
@@ -764,7 +773,7 @@ class Wep_Plugin {
 				$content['post_status'] = 'publish';
 				$id = wp_insert_post($content);
 				if( !$id ) {
-				    var_dump('BLOCK FAILED:',$name,$content);
+				    var_dump('BLOCK NOT CREATED', $data);
 					return false;
 				}
 
