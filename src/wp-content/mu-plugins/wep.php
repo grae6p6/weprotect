@@ -133,6 +133,7 @@ class Wep_Plugin {
 		],
 		'latest-news-and-events' => [
 			'post_title' => 'Latest news and events',
+			'type' => '',
 			'title' => 'Latest news and events',
 			'shortcode' => '[wep-latest max="3" categories="news,events"]',
 		],
@@ -143,6 +144,30 @@ class Wep_Plugin {
 			'post_content' => '<p>We have assembled, for the first time, the influence, resources and expertise to transform how this crime is dealt with worldwide, to deliver our vision of more victims safeguarded, more perpetrators apprehended and an end to online child sexual exploitation.</p>',
 			'title' => 'Our mission',
 			'type' => 'cta1'
+		],
+		'achieving-our-goals' => [
+			'post_title' => 'Achieving our goals',
+			'post_content' => '<p>The WePROTECT Global Alliance Board are focused on four key areas to help deliver our mission</p>',
+			'title' => 'Achieving our goals',
+			'type' => 'cta3',
+			'linked_page' => 'what-we-do',
+			'section_1' => '<p>Securing high-level commitment by governments, the technology industry and international and civil society organisations to tackling this crime</p>',
+			'section_2' => '<p>Support comprehensive national action, through the WePROTECT Model National Response and the Fund to End Violence Against Children</p>',
+			'section_3' => '<p>Galvanising global action by catalysing and driving critical interventions needed to end online child sexual exploitation</p>'
+		],
+		'un-sustainable-development-goals' => [
+			'post_title' => 'UN sustainable development goals',
+			'post_content' => '<h4>WePROTECT Global Alliance will support the landmark commitment by world leaders to end abuse, exploitation, trafficking and all forms of violence and abuse of children by 2030 as part of the UN Sustainable Development Goals.</h4>',
+			'title' => '',
+			'type' => 'cta1'
+		],
+
+		'we-protect-strategy' => [
+			'post_title' => 'WePROTECT Global Alliance Statergy',
+			'post_content' => '<p>Read more about our vision and objectives in the WePROTECT Global Alliance Strategy.</p>',
+			'title' => 'WePROTECT Global Alliance Statergy',
+			'type' => '',
+			'bg_colour' => '#eaeaea'
 		],
 
 		'membership' => [
@@ -166,6 +191,14 @@ class Wep_Plugin {
 			'section_2' => '<p>Reason two</p>',
 			'section_3' => '<p>Reason three</p>'
 		],
+		'join-us' => [
+			'post_title' => 'Join us',
+			'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us to learn more.</p>',
+			'title' => 'Join us',
+			'type' => 'cta1',
+			'linked_page' => 'membership',
+            'button_label' => 'Why join WePROTECT?'
+		],
 		'how-to-join' => [
 			'post_title' => 'How to join',
 			'post_content' => '<p>Leo suspendisse imperdiet augue etiam ac in a ullamcorper tortor suspendisse ad ullamcorper maecenas class at a.</p>',
@@ -180,7 +213,7 @@ class Wep_Plugin {
 		],
 		'our-members' => [
 			'post_title' => 'Our members',
-			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>',
+			'post_content' => '<p>WePROTECT Global Alliance to End Child Sexual Exploitation Online combines two major initiatives: the Global Alliance, led by the U.S. Department of Justice and the EU Commission and WePROTECT, which was convened by the UK.</p><p>This new, merged initiative has unprecedented reach, with 70 countries already members of WePROTECT or the Global Alliance, along with major international organisations, 20 of the biggest names in the global technology industry, and 17 leading civil society organisations.</p>',
 			'title' => 'Our members',
 			'type' => '',
 			'linked_page' => 'our-members',
@@ -253,13 +286,16 @@ class Wep_Plugin {
 		'our-mission' => array(
 			'post_type' => 'page',
 			'post_title' => 'Our mission',
-			'post_content' => '<p>We have assembled, for the first time, the influence, resources and expertise to transform how this crime is dealt with worldwide, to deliver our vision of more victims safeguarded, more perpetrators apprehended and an end to online child sexual exploitation.</p>',
+			'post_content' => '',
 			'menu_order' => 201,
-            'blocks' => [
-                'our-mission',
-                'achieving-our-goals',
-                'un-stable-development-goals'
-            ]
+			'blocks' => [
+				'our-mission',
+				'achieving-our-goals',
+				'un-sustainable-development-goals',
+				'our-members',/*,
+                'we-protect-strategy',
+                'join-us'*/
+			]
 		),
 		'our-commitments' => array(
 			'post_type' => 'page',
@@ -694,7 +730,9 @@ class Wep_Plugin {
 			                ]);
 			                if( $post ) {
 				                $meta[] = $post[0]->ID;
-			                }
+			                } else {
+				                var_dump('BLOCK ASSIGN FAILED:',$name,$content);
+                            }
 		                }
 		                if( $meta ) {
 			                update_post_meta( $id, 'assigned_blocks', $meta );
@@ -726,6 +764,7 @@ class Wep_Plugin {
 				$content['post_status'] = 'publish';
 				$id = wp_insert_post($content);
 				if( !$id ) {
+				    var_dump('BLOCK FAILED:',$name,$content);
 					return false;
 				}
 

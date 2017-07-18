@@ -437,7 +437,7 @@ h1, h2, h3, h4, h5, h6,
   margin-bottom: 1em;
   font-family: inherit;
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1.4;
   color: inherit; }
 
 h1, .h1 {
@@ -465,22 +465,22 @@ h6, .h6 {
 .display-1 {
   font-size: 6em;
   font-weight: 300;
-  line-height: 1.1; }
+  line-height: 1.4; }
 
 .display-2 {
   font-size: 5.5em;
   font-weight: 300;
-  line-height: 1.1; }
+  line-height: 1.4; }
 
 .display-3 {
   font-size: 4.5em;
   font-weight: 300;
-  line-height: 1.1; }
+  line-height: 1.4; }
 
 .display-4 {
   font-size: 3.5em;
   font-weight: 300;
-  line-height: 1.1; }
+  line-height: 1.4; }
 
 hr {
   margin-top: 1em;
@@ -6064,7 +6064,7 @@ main.body {
     position: relative;
     padding: 2em 0;
     box-sizing: border-box; }
-    main.body .block h2, main.body .block h3 {
+    main.body .block h1, main.body .block h2, main.body .block h3 {
       margin: 0 0 .5em 0; }
     main.body .block header.article {
       display: inline-block;
