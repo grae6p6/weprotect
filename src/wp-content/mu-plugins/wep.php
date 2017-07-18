@@ -92,7 +92,8 @@ class Wep_Plugin {
         'button_label' => '5964ec11ee4db',
         'section_1' => '5964e987a10bb',
         'section_2' => '5964e9a8a10bc',
-        'section_3' => '5964e9b2a10bd'
+        'section_3' => '5964e9b2a10bd',
+        'shortcode' => '5964ec11ed4db'
     ];
 	public static $blocks = [
 		'landing-banner' => [
@@ -132,8 +133,8 @@ class Wep_Plugin {
 		],
 		'latest-news-and-events' => [
 			'post_title' => 'Latest news and events',
-			'post_content' => '[widget]',
 			'title' => 'Latest news and events',
+			'shortcode' => '[wep-latest max="3" categories="news,events"]',
 		],
 
 		'membership' => [
@@ -174,8 +175,15 @@ class Wep_Plugin {
 			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>',
 			'title' => 'Our members',
 			'type' => '',
-			'linked_page' => 'funding',
+			'linked_page' => 'our-members',
 			'button_label' => 'Who\'s a member?'
+		],
+		'our-members-list' => [
+			'post_title' => 'Our members list',
+			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>',
+			'title' => 'Our members',
+			'type' => '',
+            'shortcode' => '[wep-members-list default="country"]'
 		]
 	];
 	public static $posts = [
@@ -196,7 +204,8 @@ class Wep_Plugin {
 			'post_title' => 'Join us',
 			'post_content' => '',
             'blocks' => [
-                'membership-form'
+	            'membership',
+	            'membership-form'
             ]
 		),
 		'useful-contacts' => array(
@@ -255,7 +264,11 @@ class Wep_Plugin {
 			'post_type' => 'page',
 			'post_title' => 'Our members',
 			'post_content' => '',
-			'menu_order' => 204
+			'menu_order' => 204,
+			'blocks' => [
+				'membership',
+                'our-members-list'
+			]
 		),
 		'who-we-work-with' => array(
 			'post_type' => 'page',
@@ -818,12 +831,13 @@ class MySettingsPage
 		?>
 		<div class="wrap">
 			<h1>Options</h1>
+            <p>No options available at this time.</p>
 			<form method="post">
 				<?php
 				// This prints out all hidden setting fields
 				settings_fields( 'my_option_group' );
 				do_settings_sections( 'my-setting-admin' );
-				submit_button('Install core data', $type = 'primary', 'install-core');
+				//submit_button('Install core data', $type = 'primary', 'install-core');
 				?>
 			</form>
 		</div>

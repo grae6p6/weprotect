@@ -37,14 +37,14 @@ class Wep_Theme {
 		add_theme_support( 'html5' );
 		add_theme_support( 'post-thumbnails' );
 
-		$defaults = array(
+		/*$defaults = array(
 			'height'      => 60,
 			'width'       => 233,
 			//'flex-height' => true,
 			//'flex-width'  => true,
 			'header-text' => array( 'site-title' ),
 		);
-		add_theme_support( 'custom-logo', $defaults );
+		add_theme_support( 'custom-logo', $defaults );*/
 
 		load_theme_textdomain('wep');
 
@@ -102,384 +102,65 @@ class Wep_Theme {
             return true;
         }
 
-		if(function_exists("register_field_group"))
-		{
-			register_field_group(array (
-				'id' => 'acf_assigned-content-blocks',
-				'title' => 'Assigned Content Blocks',
-				'fields' => array (
-					array (
-						'key' => 'field_595e437018a98',
-						'label' => 'Content Blocks',
-						'name' => 'assigned_blocks',
-						'type' => 'relationship',
-						'instructions' => 'Select the desired content blocks to assign to this page, and drag into the required order.',
-						'return_format' => 'object',
-						'post_type' => array (
-							0 => 'content_block',
-						),
-						'taxonomy' => array (
-							0 => 'all',
-						),
-						'filters' => array (
-							0 => 'search',
-						),
-						'result_elements' => array (
-							0 => 'post_type',
-							1 => 'post_title',
-						),
-						'max' => '',
-					),
-				),
-				'location' => array (
-					array (
-						array (
-							'param' => 'post_type',
-							'operator' => '==',
-							'value' => 'page',
-							'order_no' => 0,
-							'group_no' => 0,
-						),
-					),
-				),
-				'options' => array (
-					'position' => 'normal',
-					'layout' => 'no_box',
-					'hide_on_screen' => array (
-					),
-				),
-				'menu_order' => 0,
-			));
-			register_field_group(array (
-				'id' => 'acf_content-block-type',
-				'title' => 'Content Block Type',
-				'fields' => array (
-					array (
-						'key' => 'field_5964ec11ce4cb',
-						'label' => 'Title',
-						'name' => 'title',
-						'type' => 'text',
-						'instructions' => 'Title for the content block (the title will automatically be assigned the correct heading for SEO)',
-						'default_value' => '',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'formatting' => 'html',
-						'maxlength' => '',
-					),
-                    array (
-						'key' => 'field_595e465405629',
-						'label' => 'Type',
-						'name' => 'type',
-						'type' => 'select',
-						'instructions' => 'Content block layout format',
-						'choices' => array (
-							'' => 'Standard',
-							'image' => 'Banner with title (optional image)',
-							'cta1' => 'Call-to-action (right-side image)',
-							'cta3' => 'Call-to-action (three paragraphs)',
-							'points' => 'Call-to-action (three points)',
-							'casestudies' => 'Text block with related case studies',
-							'events' => 'Text block with related events',
-							'news' => 'Text block with related news',
-							'any' => 'Text block with any related post',
-						),
-						'default_value' => '',
-						'allow_null' => 0,
-						'multiple' => 0,
-					),
-					array (
-						'key' => 'field_595e56cb3b048',
-						'label' => 'Image',
-						'name' => 'image',
-						'type' => 'image',
-						'save_format' => 'object',
-						'preview_size' => 'thumbnail',
-						'library' => 'all',
-					),
-					array (
-						'key' => 'field_595e57673b050',
-						'label' => 'Background Colour',
-						'name' => 'bg_colour',
-						'type' => 'color_picker',
-						'default_value' => '',
-					),
-					array (
-						'key' => 'field_595e57673b049',
-						'label' => 'Font Colour',
-						'name' => 'colour',
-						'type' => 'color_picker',
-						'default_value' => '',
-					),
-					array (
-						'key' => 'field_59648b7bc3baf',
-						'label' => 'Related Case Studies',
-						'name' => 'related_casestudies',
-						'type' => 'relationship',
-						'required' => 1,
-						'conditional_logic' => array (
-							'status' => 1,
-							'rules' => array (
-								array (
-									'field' => 'field_595e465405629',
-									'operator' => '==',
-									'value' => 'casestudies',
-								),
-							),
-							'allorany' => 'all',
-						),
-						'return_format' => 'object',
-						'post_type' => array (
-							0 => 'post',
-						),
-						'taxonomy' => array (
-							0 => 'category:' . $case_studies->term_id,
-						),
-						'filters' => array (
-							0 => 'search',
-						),
-						'result_elements' => array (
-							0 => 'post_title',
-						),
-						'max' => '',
-					),
-					array (
-						'key' => 'field_59662c755e113',
-						'label' => 'Related Events',
-						'name' => 'related_events',
-						'type' => 'relationship',
-						'required' => 1,
-						'conditional_logic' => array (
-							'status' => 1,
-							'rules' => array (
-								array (
-									'field' => 'field_595e465405629',
-									'operator' => '==',
-									'value' => 'events',
-								),
-							),
-							'allorany' => 'all',
-						),
-						'return_format' => 'object',
-						'post_type' => array (
-							0 => 'post',
-						),
-						'taxonomy' => array (
-							0 => 'category:' . $events->term_id,
-						),
-						'filters' => array (
-							0 => 'search',
-						),
-						'result_elements' => array (
-							0 => 'post_title',
-						),
-						'max' => '',
-					),
-					array (
-						'key' => 'field_59662c8a5e114',
-						'label' => 'Related News',
-						'name' => 'related_news',
-						'type' => 'relationship',
-						'required' => 1,
-						'conditional_logic' => array (
-							'status' => 1,
-							'rules' => array (
-								array (
-									'field' => 'field_595e465405629',
-									'operator' => '==',
-									'value' => 'news',
-								),
-							),
-							'allorany' => 'all',
-						),
-						'return_format' => 'object',
-						'post_type' => array (
-							0 => 'post',
-						),
-						'taxonomy' => array (
-							0 => 'category:' . $news->term_id,
-						),
-						'filters' => array (
-							0 => 'search',
-						),
-						'result_elements' => array (
-							0 => 'post_title',
-						),
-						'max' => '',
-					),
-					array (
-						'key' => 'field_59664a2a5161b',
-						'label' => 'Related Posts',
-						'name' => 'related_any',
-						'type' => 'relationship',
-						'required' => 1,
-						'conditional_logic' => array (
-							'status' => 1,
-							'rules' => array (
-								array (
-									'field' => 'field_595e465405629',
-									'operator' => '==',
-									'value' => 'any',
-								),
-							),
-							'allorany' => 'all',
-						),
-						'return_format' => 'object',
-						'post_type' => array (
-							0 => 'post',
-						),
-						'taxonomy' => array (
-							0 => 'category:' . $case_studies->term_id,
-							1 => 'category:' . $events->term_id,
-							2 => 'category:' . $news->term_id,
-						),
-						'filters' => array (
-							0 => 'search',
-						),
-						'result_elements' => array (
-							0 => 'post_title',
-						),
-						'max' => '',
-					),
-					array (
-						'key' => 'field_5964b1b8127f0',
-						'label' => 'Linked Page',
-						'name' => 'linked_page',
-						'type' => 'relationship',
-						'instructions' => 'If selected, provides a button at the bottom of the block to the selected page',
-						'return_format' => 'object',
-						'post_type' => array (
-							0 => 'page',
-						),
-						'taxonomy' => array (
-							0 => 'all',
-						),
-						'filters' => array (
-							0 => 'search',
-						),
-						'result_elements' => array (
-							0 => 'post_title',
-						),
-						'max' => 1,
-					),
-					array (
-						'key' => 'field_5964ec11ee4db',
-						'label' => 'Button Label',
-						'name' => 'button_label',
-						'type' => 'text',
-						'instructions' => 'Label for the linked page button (defaults to page title if blank)',
-						'default_value' => '',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'formatting' => 'html',
-						'maxlength' => '',
-					),
-					array (
-						'key' => 'field_5964e987a10bb',
-						'label' => 'Section One',
-						'name' => 'section_1',
-						'type' => 'wysiwyg',
-						'conditional_logic' => array (
-							'status' => 1,
-							'rules' => array (
-								array (
-									'field' => 'field_595e465405629',
-									'operator' => '==',
-									'value' => 'cta3',
-								),
-								array (
-									'field' => 'field_595e465405629',
-									'operator' => '==',
-									'value' => 'points',
-								),
-							),
-							'allorany' => 'any',
-						),
-						'default_value' => '',
-						'toolbar' => 'full',
-						'media_upload' => 'yes',
-					),
-					array (
-						'key' => 'field_5964e9a8a10bc',
-						'label' => 'Section Two',
-						'name' => 'section_2',
-						'type' => 'wysiwyg',
-						'conditional_logic' => array (
-							'status' => 1,
-							'rules' => array (
-								array (
-									'field' => 'field_595e465405629',
-									'operator' => '==',
-									'value' => 'cta3',
-								),
-								array (
-									'field' => 'field_595e465405629',
-									'operator' => '==',
-									'value' => 'points',
-								),
-							),
-							'allorany' => 'any',
-						),
-						'default_value' => '',
-						'toolbar' => 'full',
-						'media_upload' => 'yes',
-					),
-					array (
-						'key' => 'field_5964e9b2a10bd',
-						'label' => 'Section Three',
-						'name' => 'section_3',
-						'type' => 'wysiwyg',
-						'conditional_logic' => array (
-							'status' => 1,
-							'rules' => array (
-								array (
-									'field' => 'field_595e465405629',
-									'operator' => '==',
-									'value' => 'cta3',
-								),
-								array (
-									'field' => 'field_595e465405629',
-									'operator' => '==',
-									'value' => 'points',
-								),
-							),
-							'allorany' => 'any',
-						),
-						'default_value' => '',
-						'toolbar' => 'full',
-						'media_upload' => 'yes',
-					),
-				),
-				'location' => array (
-					array (
-						array (
-							'param' => 'post_type',
-							'operator' => '==',
-							'value' => 'content_block',
-							'order_no' => 0,
-							'group_no' => 0,
-						),
-					),
-				),
-				'options' => array (
-					'position' => 'normal',
-					'layout' => 'no_box',
-					'hide_on_screen' => array (
-					),
-				),
-				'menu_order' => 0,
-			));
-		}
+		require get_parent_theme_file_path( 'inc/custom-fields.php' );
 
 		return true;
 	}
 
 	public static function widgets_init() {
-		register_widget( 'Wep_Latest' );
+		register_widget( 'Wep_Widget_Latest' );
+		register_widget( 'Wep_Widget_Members_List' );
+	}
+
+	public static function widget_latest( $atts ) {
+		extract( shortcode_atts(
+			array(
+				'max'   => 3,
+				'categories'  => ''
+			),
+			$atts
+		));
+
+		/*$args = array(
+			'before_widget' => '<div class="box widget scheme-' . $scheme . ' ">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<div class="widget-title">',
+			'after_title'   => '</div>',
+		);*/
+
+		ob_start();
+		the_widget( 'Wep_Widget_Latest', $atts/*, $args*/ );
+		$output = ob_get_clean();
+
+		return $output;
+	}
+
+	public static function widget_members_list( $atts ) {
+		extract( shortcode_atts(
+			array(
+				'default'   => 'country'
+			),
+			$atts
+		));
+
+		/*$args = array(
+			'before_widget' => '<div class="box widget scheme-' . $scheme . ' ">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<div class="widget-title">',
+			'after_title'   => '</div>',
+		);*/
+
+		ob_start();
+		the_widget( 'Wep_Widget_Members_List', $atts/*, $args*/ );
+		$output = ob_get_clean();
+
+		return $output;
 	}
 }
 
+/**
+ * Actions
+ */
 add_action( 'after_switch_theme', ['Wep_Theme', 'after_switch_theme'] );
 add_action( 'widgets_init', ['Wep_Theme', 'widgets_init'] );
 add_action( 'init', ['Wep_Theme', 'create_post_type'] );
@@ -488,130 +169,22 @@ add_action( 'wp_enqueue_scripts', ['Wep_Theme', 'enqueue_scripts'] );
 add_action( 'after_setup_theme', ['Wep_Theme', 'after_theme_setup'] );
 
 /**
+ * Shortcodes
+ */
+add_shortcode( 'wep-latest', [ 'Wep_Theme', 'widget_latest' ] );
+add_shortcode( 'wep-members-list', [ 'Wep_Theme', 'widget_members_list' ] );
+
+/**
  * Theme template functions
  */
 require get_parent_theme_file_path( 'inc/template-functions.php' );
 
 /**
- * Walker for the primary menu
+ * Widgets
  */
-class Boostrap_Nav_Menu extends Walker_Nav_Menu {
-	public function start_lvl( &$output, $depth = 0, $args = array() ){ // ul
-		$indent = str_repeat("\t",$depth); // indents the outputted HTML
-		$submenu = ($depth > 0) ? ' sub-menu' : '';
-		$output .= "\n$indent<ul class=\"dropdown-menu$submenu depth_$depth\">\n";
-	}
+require get_parent_theme_file_path( 'inc/widgets.php' );
 
-	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ){ // li a span
-
-		$indent = ( $depth ) ? str_repeat("\t",$depth) : '';
-
-		$li_attributes = '';
-		$class_names = $value = '';
-
-		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
-
-		$classes[] = ($args->walker->has_children) ? 'dropdown' : '';
-		$classes[] = ($item->current || $item->current_item_anchestor) ? 'active' : '';
-		$classes[] = 'nav-item';
-		$classes[] = 'nav-item-' . $item->ID;
-		if( $depth && $args->walker->has_children ){
-			$classes[] = 'dropdown-menu';
-		}
-
-		$class_names =  join(' ', apply_filters('nav_menu_css_class', array_filter( $classes ), $item, $args ) );
-		$class_names = ' class="' . esc_attr($class_names) . '"';
-
-		$id = apply_filters('nav_menu_item_id', 'menu-item-'.$item->ID, $item, $args);
-		$id = strlen( $id ) ? ' id="' . esc_attr( $id ) . '"' : '';
-
-		$output .= $indent . '<li ' . $id . $value . $class_names . $li_attributes . '>';
-
-		$attributes = ! empty( $item->attr_title ) ? ' title="' . esc_attr($item->attr_title) . '"' : '';
-		$attributes .= ! empty( $item->target ) ? ' target="' . esc_attr($item->target) . '"' : '';
-		$attributes .= ! empty( $item->xfn ) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
-		$attributes .= ! empty( $item->url ) ? ' href="' . esc_attr($item->url) . '"' : '';
-
-		$attributes .= ( $args->walker->has_children ) ? ' class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"' : ' class="nav-link"';
-
-		$item_output = $args->before;
-		$item_output .= ( $depth > 0 ) ? '<a class="dropdown-item"' . $attributes . '>' : '<a' . $attributes . '>';
-		$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-		$item_output .= '</a>';
-		$item_output .= $args->after;
-
-		$output .= apply_filters ( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-	}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Creating the widget
-class Wep_Latest extends WP_Widget {
-
-	function __construct() {
-		parent::__construct(
-			'Wep_Latest',
-			__('WEP Latest', 'wep'),
-			array(
-				'description' => __( 'Latest news & events content box', 'wep' ),
-			)
-		);
-	}
-
-// Creating widget front-end
-
-	public function widget( $args, $instance ) {
-		$title = apply_filters( 'widget_title', $instance['title'] );
-
-// before and after widget arguments are defined by themes
-		echo $args['before_widget'];
-		if ( ! empty( $title ) )
-			echo $args['before_title'] . $title . $args['after_title'];
-
-// This is where you run the code and display the output
-		echo __( 'Hello, World!', 'wep' );
-		echo $args['after_widget'];
-	}
-
-// Widget Backend
-	public function form( $instance ) {
-		if ( isset( $instance[ 'title' ] ) ) {
-			$title = $instance[ 'title' ];
-		} else {
-			$title = __( 'New title', 'wep' );
-		}
-// Widget admin form
-		?>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
-		</p>
-		<?php
-	}
-
-// Updating widget replacing old instances with new
-	public function update( $new_instance, $old_instance ) {
-		$instance = array();
-		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-		return $instance;
-	}
-}
+/**
+ * Walkers
+ */
+require get_parent_theme_file_path( 'inc/walkers.php' );

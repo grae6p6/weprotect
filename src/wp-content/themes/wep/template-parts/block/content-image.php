@@ -4,7 +4,7 @@
  * Content block template - Image banner or colour with title
  */
 
-global $heading, $button;
+global $heading, $button, $title, $shortcode;
 
 // Block image
 $css = [];
@@ -31,13 +31,18 @@ if( count( $css ) ) {
 
 ?>
 <div class="block block-image"<?php echo $style ?>>
+	<?php wep_edit_link( get_the_ID() ); ?>
+	<?php if( $title || $button || ( get_the_content() != '' ) ) : ?>
     <div class="container">
-	    <?php wep_edit_link( get_the_ID() ); ?>
 		<header class="article">
-			<?php if( get_field( 'title' ) ) :
-				printf( '<%s>%s</%s>', $heading, get_field( 'title' ), $heading );
+			<?php if( $title ) :
+				printf( '<%s>%s</%s>', $heading, $title, $heading );
 			endif; ?>
 			<?php echo $button ?>
 		</header>
 	</div>
+	<?php endif;
+	if( $shortcode ) :
+		echo do_shortcode( $shortcode );
+	endif; ?>
 </div>

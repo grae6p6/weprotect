@@ -93,7 +93,8 @@ class Tests_Wep_Theme extends WP_UnitTestCase {
 
 	public function test_theme_widgets_registered() {
 		//Wep_Theme::widgets_init();
-		$this->assertTrue(( class_exists('Wep_Latest') ));
+		$this->assertTrue( class_exists('Wep_Widget_Latest') );
+		$this->assertTrue( class_exists('Wep_Widget_Members_list') );
 		//is_active_widget();
 	}
 }

@@ -4,7 +4,7 @@
  * Content block template - CTA with optional right side image
  */
 
-global $heading, $button;
+global $heading, $button, $title, $shortcode;
 
 // Block image
 $css = [];
@@ -28,12 +28,13 @@ if( count( $css ) ) {
 
 ?>
 <div class="block block-cta1"<?php echo $style ?>>
+	<?php wep_edit_link( get_the_ID() ); ?>
+	<?php if( $title || $button || ( get_the_content() != '' ) ) : ?>
 	<div class="container">
-		<?php wep_edit_link( get_the_ID() ); ?>
 		<div class="row align-items-center">
 			<div class="col">
-				<?php if( get_field( 'title' ) ) :
-					printf( '<%s>%s</%s>', $heading, get_field( 'title' ), $heading );
+				<?php if( $title ) :
+					printf( '<%s>%s</%s>', $heading, $title, $heading );
 				endif; ?>
 				<?php the_content() ?>
 			    <?php echo $button ?>
@@ -45,4 +46,8 @@ if( count( $css ) ) {
             <?php endif; ?>
 		</div>
 	</div>
+	<?php endif;
+	if( $shortcode ) :
+		echo do_shortcode( $shortcode );
+	endif; ?>
 </div>

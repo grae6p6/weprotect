@@ -1,6 +1,6 @@
 /*
 Theme name: WePROTECT
-Description: Lorem ipsum dolor sit amet.
+Description: The theme will install all core data from initial wire-frames upon activation (if content does not exist). Core data includes pages, menus, forms, and content blocks.
 Version: 1.0
 Author: Panlogic Ltd
 Text Domain: wep
@@ -6199,15 +6199,26 @@ button, .edit-link {
   background-color: #a31b1b;
   display: inline-block;
   position: absolute;
-  top: 0;
+  top: 1em;
   right: 1em;
   padding: .2em 1em;
   z-index: 999; }
   .edit-link a {
     color: #fff !important; }
 
-/* Development styling */
-body.debug .block {
-  border: 1px solid red; }
+/* Members list */
+.members {
+  /* Development styling */ }
+  .members .entry img {
+    width: 80%;
+    border-radius: 0.25em;
+    margin-bottom: .5em; }
+  .members .entry strong {
+    color: #562a64;
+    font-size: .8em;
+    text-transform: uppercase;
+    letter-spacing: 1px; }
+  .members body.debug .block {
+    border: 1px solid red; }
 
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9zdHlsZS5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/

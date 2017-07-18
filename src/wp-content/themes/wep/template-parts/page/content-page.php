@@ -1,8 +1,10 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <?php if( get_the_content() != '' ) : ?>
     <div class="container">
-        <div class="col">
-            <?php the_content() ?>
+        <div class="row">
+            <div class="col">
+		        <?php the_content() ?>
+            </div>
         </div>
     </div>
     <?php endif; ?>

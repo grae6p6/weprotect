@@ -4,7 +4,7 @@
  * Content block template - Three points
  */
 
-global $heading, $button;
+global $heading, $button, $title, $shortcode;
 
 // Block image
 $css = [];
@@ -31,12 +31,13 @@ if( count( $css ) ) {
 
 ?>
 <div class="block block-point"<?php echo $style ?>>
+	<?php wep_edit_link( get_the_ID() ); ?>
+	<?php if( $title || $button || ( get_the_content() != '' ) ) : ?>
 	<div class="container">
-		<?php wep_edit_link( get_the_ID() ); ?>
 		<div class="row align-items-center">
 			<div class="col-12">
 				<?php if( get_field( 'title' ) ) :
-					printf( '<%s>%s</%s>', $heading, get_field( 'title' ), $heading );
+					printf( '<%s>%s</%s>', $heading, $title, $heading );
 				endif; ?>
 			    <?php the_content() ?>
 		    </div>
@@ -69,4 +70,8 @@ if( count( $css ) ) {
             </div>
         <?php endif; ?>
     </div>
+	<?php endif;
+	if( $shortcode ) :
+		echo do_shortcode( $shortcode );
+	endif; ?>
 </div>
