@@ -284,6 +284,10 @@ button, .edit-link {
 
 button {
   margin: 0 1.5em 0 0;
+  transition: background-color .2s ease;
+  /*&:first-child {
+    margin-left: 1em;
+  }*/
 }
 
 /* WCF7 */
@@ -300,9 +304,9 @@ button {
   margin-bottom: 4em;
 }
 
-/*button:hover {
-  background-color: #1b89a3;
-}*/
+button:hover, button.active {
+  background-color: #2a6462;
+}
 
 .edit-link {
   background-color: #a31b1b;
@@ -320,10 +324,12 @@ button {
 /* Members list */
 .members {
   .entry {
+    text-align: center;
     img {
-      width: 80%;
+      width: 100%;
       border-radius: 0.25em;
       margin: 2em 0 .5em;
+      border: .5em solid #f8f0fb;
     }
     strong {
       color: $primary-color;

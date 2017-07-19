@@ -48,17 +48,17 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 0,
 	));
-	register_field_group(array (
+	register_field_group(array(
 		'id' => 'acf_content-block-type',
 		'title' => 'Content Block Type',
-		'fields' => array (
-			array (
+		'fields' => array(
+			array(
 				'key' => 'field_595e465405629',
 				'label' => 'Type',
 				'name' => 'type',
 				'type' => 'select',
 				'instructions' => 'Content block layout format',
-				'choices' => array (
+				'choices' => array(
 					'' => 'Standard',
 					'image' => 'Banner with title (optional image)',
 					'cta1' => 'Call-to-action (right-side image)',

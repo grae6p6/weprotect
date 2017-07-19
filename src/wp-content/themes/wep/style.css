@@ -6184,7 +6184,11 @@ button, .edit-link {
   border-radius: 0.2em; }
 
 button {
-  margin: 0 1.5em 0 0; }
+  margin: 0 1.5em 0 0;
+  transition: background-color .2s ease;
+  /*&:first-child {
+    margin-left: 1em;
+  }*/ }
 
 /* WCF7 */
 .wpcf7 {
@@ -6196,9 +6200,9 @@ button {
 .wpcf7-response-output {
   margin-bottom: 4em; }
 
-/*button:hover {
-  background-color: #1b89a3;
-}*/
+button:hover, button.active {
+  background-color: #2a6462; }
+
 .edit-link {
   background-color: #a31b1b;
   display: inline-block;
@@ -6213,15 +6217,18 @@ button {
 /* Members list */
 .members {
   /* Development styling */ }
-  .members .entry img {
-    width: 80%;
-    border-radius: 0.25em;
-    margin: 2em 0 .5em; }
-  .members .entry strong {
-    color: #562a64;
-    font-size: .8em;
-    text-transform: uppercase;
-    letter-spacing: 1px; }
+  .members .entry {
+    text-align: center; }
+    .members .entry img {
+      width: 100%;
+      border-radius: 0.25em;
+      margin: 2em 0 .5em;
+      border: .5em solid #f8f0fb; }
+    .members .entry strong {
+      color: #562a64;
+      font-size: .8em;
+      text-transform: uppercase;
+      letter-spacing: 1px; }
   .members body.debug .block {
     border: 1px solid red; }
 

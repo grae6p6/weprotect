@@ -107,19 +107,22 @@ class Wep_Widget_Members_List extends WP_Widget {
 		require 'countries.php';
 
 		?>
-        <div class="container">
+        <div class="flex-container">
             <div class="row">
                 <div class="col">
-                    <button><?php _e( 'Countries', 'wep' ) ?></button>
-                    <button><?php _e( 'Organisations', 'wep' ) ?></button>
-                    <button><?php _e( 'Industries', 'wep' ) ?></button>
+                    <button data-group="country" aria-describedby=""><?php _e( 'Countries', 'wep' ) ?></button>
+                    <button data-group="organisation"><?php _e( 'Organisations', 'wep' ) ?></button>
+                    <button data-group="industry"><?php _e( 'Industries', 'wep' ) ?></button>
+                    <div class="sr-only"></div>
                 </div>
             </div>
             <div class="row members">
                 <?php foreach( $countries as $key => $val ) : ?>
-                    <div class="col-6 col-sm-4 col-md-3 text-center entry">
-                        <img src="<?php echo get_template_directory_uri() . '/flags/' . strtolower( $key ) . '.svg' ?>" alt="<?php echo $val ?>">
-                        <strong><?php echo $val ?></strong>
+                    <div class="col-6 col-sm-4 col-md-3 entry country">
+                        <div>
+                            <img src="<?php echo get_template_directory_uri() . '/flags/' . strtolower( $key ) . '.svg' ?>" alt="<?php echo $val ?>">
+                            <strong><?php echo $val ?></strong>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </div>

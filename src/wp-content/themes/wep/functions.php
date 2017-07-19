@@ -37,16 +37,16 @@ class Wep_Theme {
 		add_theme_support( 'html5' );
 		add_theme_support( 'post-thumbnails' );
 
-		/*$defaults = array(
-			'height'      => 60,
-			'width'       => 233,
-			//'flex-height' => true,
-			//'flex-width'  => true,
-			'header-text' => array( 'site-title' ),
-		);
-		add_theme_support( 'custom-logo', $defaults );*/
-
 		load_theme_textdomain('wep');
+
+	    $defaults = array(
+		    'height'      => 60,
+		    'width'       => 233,
+		    //'flex-height' => true,
+		    //'flex-width'  => true,
+		    'header-text' => array( 'site-title' ),
+	    );
+	    add_theme_support( 'custom-logo', $defaults );
 
 		register_nav_menus( array(
 			'top' => __( 'Top Menu', 'wep' ),

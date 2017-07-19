@@ -16,6 +16,13 @@ class Wep_Plugin {
 	public static $forms = [
 		'Apply for membership' => 'apply-for-membership'
     ];
+	public static $media_path = '2017/07';
+	public static $media = [
+		'stock-1.jpg' => 0,
+		'stock-2.jpg' => 0,
+		'stock-3.jpg' => 0,
+		'wep-logo.gif' => 0
+    ];
 	public static $menus = [
 
 		// Top menu
@@ -88,6 +95,7 @@ class Wep_Plugin {
         'type' => '595e465405629',
         'bg_colour' => '595e57673b050',
         'colour' => '595e57673b049',
+        'image' => '595e56cb3b048',
         'linked_page' => '5964b1b8127f0',
         'button_label' => '5964ec11ee4db',
         'section_1' => '5964e987a10bb',
@@ -102,17 +110,19 @@ class Wep_Plugin {
 			'title' => 'Worldwide cooperation to end child sexual exploitation online',
 			'type' => 'image',
 			'bg_colour' => '#eaeaea',
-			'linked_page' => 'our-mission'
+			'linked_page' => 'our-mission',
+            'image' => 'stock-1.jpg'
 		],
 		'why-we-must-act' => [
 			'post_title' => 'Why we must act',
-			'post_content' => '<p>Leo suspendisse imperdiet augue etiam ac in a ullamcorper tortor suspendisse ad ullamcorper maecenas class at a.</p>',
+			'post_content' => '<p>The Internet is an extraordinary catalyst of innovation, education, and expanding global economic growth. Technology offers endless benefits and possibilities to our children that we never experienced as they have unlimited access to information with the ability to communicate and connect with people they have never met from all over the planet. But with this comes a range of ever more sophisticated threats.</p><p>Included in that range of threats is online child sexual exploitation—a heinous crime that, through the reach of the internet, has become a major international crime of our age. Never before has it been easier for perpetrators to make contact with children, share images of abuse and inspire each other to commit further crimes.</p><p>It is a huge problem, with children being exploited on an industrial scale:</p>',
 			'title' => 'Why we must act',
 			'type' => 'cta3',
 			'linked_page' => 'who-we-work-with',
-			'section_1' => '<p>Lorem ipsu dolor sit amet</p>',
-			'section_2' => '<p>Lorem ipsu dolor sit amet</p>',
-			'section_3' => '<p>Lorem ipsu dolor sit amet</p>'
+			'section_1' => '<p>The National Centre for Missing and Exploited Children, which handles reports of child sexual exploitation from major tech companies in the US, has received more than 7.5 million reports since 1998.  4.4 million of these were received in 2015 alone.</p>',
+			'section_2' => '<p>In 2014, INHOPE, the association of INTERNET hotlines, assessed 83,644 URLS as containing child sexual abuse material worldwide – a 64% increase from 2013.</p>',
+			'section_3' => '<p>The exact extent of sexual exploitation on peer-to-peer networks, cloud services and the encrypted or dark web is less certain, but it is likely to be significant. For instance, the NGO Thorn assesses that some 30% of searches on the eDonkey P2P platform are for child sexual abuse material.</p>'//,
+			//'section_4' => '<p>A recent study concluded that only 2% of hidden web services on TOR host child abuse material, yet these sites accounted for 80% of traffic.</p>'
 		],
 		'model-national-response' => [
 			'post_title' => 'Model National Response',
@@ -120,7 +130,8 @@ class Wep_Plugin {
 			'title' => 'Model National Response',
 			'type' => 'cta1',
 			'linked_page' => 'model-national-response',
-			'button_label' => 'View full guidance'
+			'button_label' => 'View full guidance',
+			'image' => 'stock-2.jpg'
 		],
 		'fund-to-end-violence-against-children' => [
 			'post_title' => 'Fund to end violence against children',
@@ -133,10 +144,10 @@ class Wep_Plugin {
 		],
 		'latest-news-and-events' => [
 			'post_title' => 'Latest news and events',
-			'post_content' => '',
+			'post_content' => '[wep-latest max="3" categories="news,events"]',
 			'title' => 'Latest news and events',
-			'type' => '',
-			'shortcode' => '[wep-latest max="3" categories="news,events"]'
+			'type' => ''//,
+			//'shortcode' => '[wep-latest max="3" categories="news,events"]'
 		],
 
 		// Our mission
@@ -158,8 +169,7 @@ class Wep_Plugin {
 		],
 		'un-sustainable-development-goals' => [
 			'post_title' => 'U.N. Sustainable development goals',
-			'post_content' => '<p>Read more about our vision and objectives in the WePROTECT Global Alliance Strategy.</p>',
-			'title' => 'WePROTECT Global Alliance Statergy',
+			'post_content' => '<h4>WePROTECT Global Alliance will support the landmark commitment by world leaders to end abuse, exploitation, trafficking and all forms of violence and abuse of children by 2030 as part of the UN Sustainable Development Goals.</h4>',
 			'type' => 'cta1'
 		],
 		'our-members' => [
@@ -170,7 +180,7 @@ class Wep_Plugin {
 		],
 		'global-alliance-strategy' => [
 			'post_title' => 'WePROTECT Global Alliance Strategy',
-			'post_content' => '<p>WePROTECT Global Alliance will support the landmark commitment by world leaders to end abuse, exploitation, trafficking and all forms of violence and abuse of children by 2030 as part of the UN Sustainable Development Goals.</p>',
+			'post_content' => '<p>Read more about our vision and objectives in the <u>WePROTECT Global Alliance Strategy.</u></p>',
 			'title' => 'WePROTECT Global Alliance Strategy',
 			'type' => '',
 			'bg_colour' => '#eaeaea',
@@ -229,10 +239,10 @@ class Wep_Plugin {
 		],
 		'our-members-list' => [
 			'post_title' => 'Our members list',
-			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>',
+			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>[wep-members-list default="country"]',
 			'title' => 'Our members',
-			'type' => '',
-            'shortcode' => '[wep-members-list default="country"]'
+			'type' => ''//,
+            //'shortcode' => '[wep-members-list default="country"]'
 		]
 	];
 	public static $posts = [
@@ -675,6 +685,56 @@ class Wep_Plugin {
 	}
 
 	/**
+	 * Create all media for the site
+	 *
+	 * @return bool
+	 */
+	public static function create_media() {
+
+		// Create pages
+		if( count( self::$media ) ) {
+			$wp_upload_dir = wp_upload_dir();
+
+			// Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
+			require_once( ABSPATH . 'wp-admin/includes/image.php' );
+
+			foreach( self::$media as $filename => $id ) {
+				$filename = $wp_upload_dir['baseurl'] . '/' . self::$media_path . '/' . $filename;
+				$filetype = wp_check_filetype( basename( $filename ), null );
+
+                // Prepare an array of post data for the attachment.
+				$attachment = array(
+					'guid'           => $wp_upload_dir['url'] . '/' . basename( $filename ),
+					'post_mime_type' => $filetype['type'],
+					'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
+					'post_content'   => '',
+					'post_status'    => 'inherit'
+				);
+
+                // Insert the attachment.
+				$id = wp_insert_attachment( $attachment, $filename );
+				if( !$id ) {
+				    var_dump( 'MEDIA FAIL:', $attachment );
+				    return false;
+                } else {
+					self::$media[ $filename ] = $id;
+                }
+
+                // Generate the metadata for the attachment, and update the database record.
+				$attach_data = wp_generate_attachment_metadata( $id, $filename );
+				wp_update_attachment_metadata( $id, $attach_data );
+
+				// Set logo
+				if( pathinfo( $filename, PATHINFO_FILENAME ) == 'wep-logo' ) {
+					set_theme_mod( 'custom_logo', $id );
+                }
+			}
+		}
+
+		return true;
+	}
+
+	/**
      * Create all pages for the site
      *
 	 * @return bool
@@ -685,14 +745,14 @@ class Wep_Plugin {
 		if( count( self::$posts ) ) {
 			foreach( self::$posts as $name => $content ) {
 				$blocks = null;
-				if( $content['blocks'] ) {
+				if( array_key_exists( 'blocks', $content ) ) {
 					$blocks = $content['blocks'];
 					unset( $content['blocks'] );
 				}
 
 				$content['post_name'] = $name;
-				if (array_key_exists('post_parent', $content)) {
-					if(array_key_exists($content['post_parent'], self::$slugs)) {
+				if( array_key_exists('post_parent', $content ) ) {
+					if( array_key_exists($content['post_parent'], self::$slugs) ) {
 						$content['post_parent'] = self::$slugs[$content['post_parent']];
 					}
 				}
@@ -782,14 +842,32 @@ class Wep_Plugin {
 				foreach( $data as $key => $val ) {
 				    if( array_key_exists( $key, self::$fields ) ) {
 					    if( $key == 'linked_page' ) {
-						    $post = get_posts([
+						    $data = [
 							    'name'        => $val,
 							    'post_type'   => 'page',
 							    'post_status' => 'publish',
 							    'numberposts' => 1
-						    ]);
+						    ];
+					        $post = get_posts($data);
 						    if( $post ) {
 							    $val = array( $post[0]->ID );
+						    } else {
+						        var_dump( 'PAGE LINK FAIL: ', $data );
+						        return false;
+                            }
+					    } elseif( $key == 'image' ) {
+						    $data = [
+							    'name'        => pathinfo( $val, PATHINFO_FILENAME ),
+							    'post_type'   => 'attachment',
+							    'post_status' => 'inherit',
+							    'numberposts' => 1
+						    ];
+					        $post = get_posts($data);
+						    if( $post ) {
+							    $val = (int)$post[0]->ID;
+						    } else {
+							    var_dump( 'IMAGE LINK FAIL: ', $data );
+							    return false;
 						    }
 					    }
 					    update_post_meta( $id, $key, $val );
@@ -820,6 +898,7 @@ class Wep_Plugin {
 		include_once( ABSPATH . 'wp-admin/includes/taxonomy.php' );
 	    self::create_categories();
 		self::create_forms();
+		self::create_media();
 		self::create_pages();
 		self::create_menus();
 		self::create_blocks();
