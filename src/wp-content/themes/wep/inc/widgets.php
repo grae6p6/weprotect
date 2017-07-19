@@ -29,8 +29,8 @@ class Wep_Widget_Latest extends WP_Widget {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
 
-		echo __( 'Widget functionality to be implemented.', 'wep' );
-		var_dump($instance);
+		//echo __( 'Widget functionality to be implemented.', 'wep' );
+		//var_dump($instance);
 
 		echo $args['after_widget'];
 	}
