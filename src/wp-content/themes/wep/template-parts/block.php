@@ -44,8 +44,8 @@ if( function_exists( 'get_field' ) ) :
         <?php if( get_the_content() == '' ) : ?>
     <div class="container">
         <div class="col text-center">
-            <h2><?php _e( 'No content available' , 'wep' ) ?></h2>
-            <p><?php _e( 'There is currently no content on this page.', 'wep' ) ?></p>
+            <h2><?php _e( 'Curently no content available for this page' , 'wep' ) ?></h2>
+            <p><?php _e( 'Content for this area has not yet been added. To be completed soon.', 'wep' ) ?></p>
         </div>
     </div>
 	    <?php endif; ?>

@@ -6052,6 +6052,7 @@ header.body .top, footer.body .primary, header.article {
 
 /* Structure - Main */
 main.body {
+  /* TO BE REFINED */
   /* Content block styling */
   /* Content block - CTA with image right */
   /* Content block - CTA with 3 custom content boxes */
@@ -6060,12 +6061,16 @@ main.body {
   main.body a {
     color: #562a64;
     text-decoration: underline; }
+  main.body article > .container p {
+    margin: 1.5em 0; }
   main.body .block {
     position: relative;
     padding: 2em 0;
     box-sizing: border-box; }
     main.body .block h1, main.body .block h2, main.body .block h3 {
       margin: 0 0 .5em 0; }
+    main.body .block .row:last-child .col > *:last-child {
+      margin-bottom: 0; }
     main.body .block header.article {
       display: inline-block;
       position: absolute;
@@ -6184,7 +6189,7 @@ button, .edit-link {
   border-radius: 0.2em; }
 
 button {
-  margin: 0 1.5em 0 0;
+  /*margin: 0 1.5em 0 0;*/
   transition: background-color .2s ease;
   /*&:first-child {
     margin-left: 1em;
@@ -6219,6 +6224,8 @@ button:hover, button.active {
   /* Development styling */ }
   .members .entry {
     text-align: center; }
+    .members .entry a {
+      text-decoration: none; }
     .members .entry img {
       width: 100%;
       border-radius: 0.25em;
@@ -6229,6 +6236,8 @@ button:hover, button.active {
       font-size: .8em;
       text-transform: uppercase;
       letter-spacing: 1px; }
+  .members .buttons button {
+    margin: 0 1.5em 0 0; }
   .members body.debug .block {
     border: 1px solid red; }
 

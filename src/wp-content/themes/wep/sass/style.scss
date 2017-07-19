@@ -109,6 +109,11 @@ main.body {
     text-decoration: underline;
   }
 
+  /* TO BE REFINED */
+  article > .container p {
+    margin: 1.5em 0;
+  }
+
   /* Content block styling */
   .block {
     position: relative;
@@ -116,6 +121,11 @@ main.body {
     box-sizing: border-box;
     h1, h2, h3 {
       margin: 0 0 .5em 0;
+    }
+    .row:last-child {
+      .col > *:last-child {
+        margin-bottom: 0;
+      }
     }
     header.article {
       display: inline-block;
@@ -283,7 +293,7 @@ button, .edit-link {
 }
 
 button {
-  margin: 0 1.5em 0 0;
+  /*margin: 0 1.5em 0 0;*/
   transition: background-color .2s ease;
   /*&:first-child {
     margin-left: 1em;
@@ -325,6 +335,9 @@ button:hover, button.active {
 .members {
   .entry {
     text-align: center;
+    a {
+      text-decoration: none;
+    }
     img {
       width: 100%;
       border-radius: 0.25em;
@@ -337,6 +350,9 @@ button:hover, button.active {
       text-transform: uppercase;
       letter-spacing: 1px;
     }
+  }
+  .buttons button {
+    margin: 0 1.5em 0 0;
   }
 
   /* Development styling */

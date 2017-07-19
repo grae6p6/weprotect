@@ -33,6 +33,7 @@ class Wep_Plugin {
 		// Main menu
 		'Main' => [
 			'who-we-are' => [
+				'who-we-are' => '',
 				'our-mission' => '',
 				'our-commitments' => '',
 				'our-leadership' => '',
@@ -42,6 +43,7 @@ class Wep_Plugin {
 				'contact-us' => ''
 			],
 			'what-we-do' => [
+				'what-we-do' => '',
 				'why-we-must-act' => '',
 				'funded-projects' => '',
 				'faqs' => '',
@@ -49,6 +51,7 @@ class Wep_Plugin {
 				'how-to-report-cseo' => ''
 			],
 			'funding' => [
+				'funding' => '',
 				'about-the-fund' => '',
 				'how-the-fund-is-spent' => '',
 				'apply-for-funding' => '',
@@ -56,10 +59,12 @@ class Wep_Plugin {
 				'other-funding-methods' => ''
 			],
 			'get-involved' => [
+				'get-involved' => '',
 				'membership' => '',
 				'donating' => ''
 			],
 			'resources' => [
+				'resources' => '',
 				'model-national-response' => '',
 				'policy-legislation' => '',
 				'case-studies' => '',
@@ -68,6 +73,7 @@ class Wep_Plugin {
 				'submit-resources' => ''
 			],
 			'news-and-events' => [
+				'news-and-events' => '',
 				'news' => '',
 				'newsletter' => '',
 				'events' => ''
@@ -113,6 +119,12 @@ class Wep_Plugin {
 			'linked_page' => 'our-mission',
             'image' => 'stock-1.jpg'
 		],
+		'why-we-must-act-header' => [
+			'post_title' => 'Header - Why we must act',
+			'post_content' => '<p>It is an uncomfortable reality that while technology offers incredible possibilities to our societies, never before has it been easier for those who want to sexually exploit children to make contact with potential victims around the world, share images of their abuse and encourage each other to commit further crimes.</p>',
+			'title' => 'Why we must act',
+			'type' => 'cta1'
+        ],
 		'why-we-must-act' => [
 			'post_title' => 'Why we must act',
 			'post_content' => '<p>The Internet is an extraordinary catalyst of innovation, education, and expanding global economic growth. Technology offers endless benefits and possibilities to our children that we never experienced as they have unlimited access to information with the ability to communicate and connect with people they have never met from all over the planet. But with this comes a range of ever more sophisticated threats.</p><p>Included in that range of threats is online child sexual exploitation—a heinous crime that, through the reach of the internet, has become a major international crime of our age. Never before has it been easier for perpetrators to make contact with children, share images of abuse and inspire each other to commit further crimes.</p><p>It is a huge problem, with children being exploited on an industrial scale:</p>',
@@ -135,7 +147,7 @@ class Wep_Plugin {
 		],
 		'fund-to-end-violence-against-children' => [
 			'post_title' => 'Fund to end violence against children',
-			'post_content' => '<p>Leo suspendisse imperdiet augue etiam ac in a ullamcorper tortor suspendisse ad ullamcorper maecenas class at a.</p><h4>Case studies</h4>',
+			'post_content' => '<p>Leo suspendisse imperdiet augue etiam ac in a ullamcorper tortor suspendisse ad ullamcorper maecenas class at a.</p><h4>Case studies</h4>[wep-latest max="3" categories="projects"]',
 			'title' => 'Fund to end violence against children',
 			'type' => '',
 			'bg_colour' => '#eaeaea',
@@ -155,7 +167,9 @@ class Wep_Plugin {
 			'post_title' => 'Our mission',
 			'post_content' => '<p>We have assembled, for the first time, the influence, resources and expertise to transform how this crime is dealt with worldwide, to deliver our vision of more victims safeguarded, more perpetrators apprehended and an end to online child sexual exploitation.</p>',
 			'title' => 'Our mission',
-			'type' => 'cta1'
+			'type' => 'cta1',
+			'linked_page' => 'our-mission',
+			'button_label' => 'Our mission and strategy'
 		],
 		'achieving-our-goals' => [
 			'post_title' => 'Achieving our goals',
@@ -170,12 +184,15 @@ class Wep_Plugin {
 		'un-sustainable-development-goals' => [
 			'post_title' => 'U.N. Sustainable development goals',
 			'post_content' => '<h4>WePROTECT Global Alliance will support the landmark commitment by world leaders to end abuse, exploitation, trafficking and all forms of violence and abuse of children by 2030 as part of the UN Sustainable Development Goals.</h4>',
-			'type' => 'cta1'
+			'type' => 'cta1',
+			'linked_page' => 'donating',
+			'button_label' => 'Donate to the Fund'
 		],
 		'our-members' => [
 			'post_title' => 'Our members',
 			'post_content' => '<p>WePROTECT Global Alliance to End Child Sexual Exploitation Online combines two major initiatives: the Global Alliance, led by the U.S. Department of Justice and the EU Commission and WePROTECT, which was convened by the UK.</p><p>This new, merged initiative has unprecedented reach, with 70 countries already members of WePROTECT or the Global Alliance, along with major international organisations, 20 of the biggest names in the global technology industry, and 17 leading civil society organisations.</p>',
-			'type' => '',
+			'title' => 'Our members',
+            'type' => '',
 			'linked_page' => 'our-members'
 		],
 		'global-alliance-strategy' => [
@@ -242,8 +259,164 @@ class Wep_Plugin {
 			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>[wep-members-list default="country"]',
 			'title' => 'Our members',
 			'type' => ''//,
-            //'shortcode' => '[wep-members-list default="country"]'
-		]
+			//'shortcode' => '[wep-members-list default="country"]'
+		],
+		'who-we-are' => [
+			'post_title' => 'Who we are',
+			'post_content' => '<p>The WePROTECT Global Alliance to End Child Sexual Exploitation Online is an international movement dedicated to national and global action to end the sexual exploitation of children online.</p>',
+			'title' => 'Who we are',
+			'type' => 'cta1'
+		],
+		'our-commitments' => [
+			'post_title' => 'Our commitments',
+			'post_content' => '',
+			'title' => 'Our commitments and statements',
+			'type' => 'cta3',
+			'section_1' => '<p>Identify victims, and ensure they receive necessary support</p>',
+			'section_2' => '<p>Investigate cases of exploitation and prosecute offenders</p>',
+			'section_3' => '<p>Increase public awareness of the risks posed by children’s activities online</p>',
+			//'section_4' => '<p>Reduce the availability of child sexual abuse material online</p>',
+			'linked_page' => 'our-commitments',
+			'button_label' => 'Our commitments and statements'
+		],
+		'our-leadership' => [
+			'post_title' => 'Our leadership',
+			'post_content' => '<p>The WePROTECT Global Alliance is led by a multi-stakeholder Board, comprised of representatives from key countries, international and civil society organisations, and the technology industry.</p>',
+			'title' => 'Our leadership',
+			'type' => 'cta1',
+			'linked_page' => 'home',
+			'button_label' => 'WePROTECT Board'
+		],
+		'our-history' => [
+			'post_title' => 'Our history',
+			'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us to learn more.</p>',
+			'title' => 'Our history',
+			'type' => '',
+			'bg_colour' => '#eaeaea',
+			'linked_page' => 'home',
+			'button_label' => 'Why join WePROTECT?'
+		],
+
+
+		'what-we-do' => [
+			'post_title' => 'What we do',
+			'post_content' => '<p>WePROTECT Global Alliance will support the landmark commitment by world leaders to end abuse, exploitation, trafficking and all forms of violence and abuse of children by 2030 as part of the UN Sustainable Development Goals.</p>',
+			'title' => 'What we do',
+			'type' => 'cta1'
+		],
+
+		'what-is-cso' => [
+			'post_title' => 'What is CSO?',
+			'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>',
+			'title' => 'What is CSO?',
+			'type' => 'cta1',
+			'image' => 'stock-3',
+			'linked_page' => 'home',
+			'button_label' => 'Find out more about CSEO'
+		],
+
+
+		'funded-projects' => [
+			'post_title' => 'Funded projects',
+			'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>[wep-latest max="3" categories="projects"]',
+			'title' => 'Funded projects',
+			'type' => '',
+			'bg_colour' => '#eaeaea',
+			'linked_page' => 'funded-projects'
+		],
+
+
+		'header-funding' => [
+			'post_title' => 'Header - funding',
+			'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
+			'title' => 'Fund to end violence against children',
+			'type' => 'cta1',
+			'linked_page' => 'about-the-fund'
+		],
+
+		'how-the-fund-is-spent' => [
+			'post_title' => 'How the fund is spent',
+			'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
+			'title' => 'How the fund is spent',
+			'linked_page' => 'how-the-fund-is-spent',
+            'button_label' => 'How the money is spent',
+			'type' => 'cta3',
+			'section_1' => '<p>Supporting statement copy to go here</p>',
+			'section_2' => '<p>Supporting statement copy to go here</p>',
+			'section_3' => '<p>Supporting statement copy to go here</p>'
+		],
+
+
+		'applying-for-funding' => [
+			'post_title' => 'Header - funding',
+			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>',
+			'title' => 'Apply for funding',
+			'type' => '',
+			'bg_colour' => '#eaeaea',
+			'linked_page' => 'apply-for-funding'
+		],
+
+		'other-funding-methods' => [
+			'post_title' => 'Other funding methods',
+			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>',
+			'title' => 'Other funding methods',
+			'type' => '',
+			'linked_page' => 'other-funding-methods',
+			'button_label' => 'Alternative funding'
+		],
+
+
+
+		'get-involved' => [
+			'post_title' => 'Get involved',
+			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>',
+			'title' => 'Get involved',
+			'type' => 'cta1'
+		],
+
+		'resources' => [
+			'post_title' => 'Resources',
+			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>',
+			'title' => 'Resources',
+			'type' => 'cta1'
+		],
+
+		'policy-and-legislation' => [
+			'post_title' => 'Policy and legislation',
+			'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>',
+			'title' => 'Policy and legislation',
+			'type' => '',
+			'bg_colour' => '#eaeaea',
+			'linked_page' => 'policy-and-legislation'
+		],
+
+		'case-studies' => [
+			'post_title' => 'Case studies',
+			'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>',
+			'title' => 'Case studies',
+			'type' => '',
+			'linked_page' => 'home',
+			'button_label' => 'Case studies'
+		],
+
+		'educators-and-parents' => [
+			'post_title' => 'Educators and parents',
+			'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>',
+			'title' => 'Educators and parents',
+			'type' => 'cta1',
+			'linked_page' => 'home',
+			'button_label' => 'Keeping children safe online',
+			'image' => 'stock-1'
+		],
+
+		'do-you-have-resources-to-share' => [
+			'post_title' => 'Do you have resources to share?',
+			'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>',
+			'title' => 'Do you have resources to share?',
+			'type' => '',
+			'bg_colour' => '#eaeaea',
+			'linked_page' => 'submit-resources'
+		],
 	];
 	public static $posts = [
 		'home' => array(
@@ -299,7 +472,15 @@ class Wep_Plugin {
 			'post_type' => 'page',
 			'post_title' => 'Who we are',
 			'post_content' => '',
-			'menu_order' => 200
+			'menu_order' => 200,
+            'blocks' => [
+                'who-we-are',
+	            'our-mission',
+	            'our-commitments',
+	            'our-leadership',
+	            'our-members',
+	            'our-history'
+            ]
 		),
 		'our-mission' => array(
 			'post_type' => 'page',
@@ -318,7 +499,7 @@ class Wep_Plugin {
 		'our-commitments' => array(
 			'post_type' => 'page',
 			'post_title' => 'Our commitments',
-			'post_content' => '',
+			'post_content' => '<p>Since the beginning of 2016, the Board has established a clear and ambitious strategy for this initiative.  It seeks to create a global movement that will transform how the crime of online child sexual exploitation is dealt with, resulting in more victims identified and safeguarded, more perpetrators apprehended and an end to online child sexual exploitation.</p><p>Supporting comprehensive national action to tackle online child sexual exploitation is key to our mission.  Our geographical reach is unprecedented: some 70 countries are members of WePROTECT or the Global Alliance, and all have been asked to join the new initiative.  They are joined by 20 global technology companies and 17 leading NGOs.</p>',
 			'menu_order' => 202
 		),
 		'our-leadership' => array(
@@ -363,13 +544,23 @@ class Wep_Plugin {
 			'post_type' => 'page',
 			'post_title' => 'What we do',
 			'post_content' => '',
-			'menu_order' => 300
+			'menu_order' => 300,
+			'blocks' => [
+				'what-we-do',
+				'what-is-cso',
+				'why-we-must-act',
+				'funded-projects'//,
+				//'other'
+			]
 		),
 		'why-we-must-act' => array(
 			'post_type' => 'page',
 			'post_title' => 'Why we must act',
 			'post_content' => '',
-			'menu_order' => 301
+			'menu_order' => 301,
+            'blocks' => [
+	            'why-we-must-act-header'
+            ]
 		),
 		'funded-projects' => array(
 			'post_type' => 'page',
@@ -403,7 +594,14 @@ class Wep_Plugin {
 			'post_type' => 'page',
 			'post_title' => 'Funding',
 			'post_content' => '',
-			'menu_order' => 400
+			'menu_order' => 400,
+			'blocks' => [
+				'header-funding',
+				'how-the-fund-is-spent',
+				'applying-for-funding',
+				'un-sustainable-development-goals',
+                'other-funding-methods'
+			]
 		),
 		'about-the-fund' => array(
 			'post_type' => 'page',
@@ -443,7 +641,12 @@ class Wep_Plugin {
 			'post_type' => 'page',
 			'post_title' => 'Get involved',
 			'post_content' => '',
-			'menu_order' => 500
+			'menu_order' => 500,
+			'blocks' => [
+				'get-involved',
+				'membership',
+				'un-sustainable-development-goals'
+			]
 		),
 		'membership' => array(
 			'post_type' => 'page',
@@ -471,7 +674,15 @@ class Wep_Plugin {
 			'post_type' => 'page',
 			'post_title' => 'Resources',
 			'post_content' => '',
-			'menu_order' => 600
+			'menu_order' => 600,
+            'blocks' => [
+	            'resources',
+	            'policy-and-legislation',
+	            'model-national-response',
+	            'case-studies',
+	            'educators-and-parents',
+	            'do-you-have-resources-to-share'
+            ]
 		),
 		'model-national-response' => array(
 			'post_type' => 'page',

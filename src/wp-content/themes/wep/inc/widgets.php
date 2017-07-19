@@ -29,8 +29,17 @@ class Wep_Widget_Latest extends WP_Widget {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
 
-		//echo __( 'Widget functionality to be implemented.', 'wep' );
 		//var_dump($instance);
+
+        ?>
+        <div class="flex-container">
+            <div class="row">
+                <div class="col">
+                    <?php _e( 'Widget functionality to be implemented.', 'wep' ); ?>
+                </div>
+            </div>
+        </div>
+        <?php
 
 		echo $args['after_widget'];
 	}
@@ -109,8 +118,8 @@ class Wep_Widget_Members_List extends WP_Widget {
 		?>
         <div class="flex-container">
             <div class="row">
-                <div class="col">
-                    <button data-group="country" aria-describedby=""><?php _e( 'Countries', 'wep' ) ?></button>
+                <div class="col buttons">
+                    <button data-group="country"><?php _e( 'Countries', 'wep' ) ?></button>
                     <button data-group="organisation"><?php _e( 'Organisations', 'wep' ) ?></button>
                     <button data-group="industry"><?php _e( 'Industries', 'wep' ) ?></button>
                     <div class="sr-only"></div>
@@ -120,12 +129,32 @@ class Wep_Widget_Members_List extends WP_Widget {
                 <?php foreach( $countries as $key => $val ) : ?>
                     <div class="col-6 col-sm-4 col-md-3 entry country">
                         <div>
-                            <img src="<?php echo get_template_directory_uri() . '/flags/' . strtolower( $key ) . '.svg' ?>" alt="<?php echo $val ?>">
-                            <strong><?php echo $val ?></strong>
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#memberModal" data-name="<?php echo $val ?>">
+                                <img src="<?php echo get_template_directory_uri() . '/flags/' . strtolower( $key ) . '.svg' ?>" alt="<?php echo $val ?>">
+                                <strong><?php echo $val ?></strong>
+                            </a>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
+        </div>
+        <div class="modal fade" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="memberModalLabel"><?php _e( 'Member details' , 'wep' ) ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="<?php _e( 'Close' , 'wep' ) ?>">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span data-name>&nbsp;</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php _e( 'Close' , 'wep' ) ?></button>
+                </div>
+            </div>
+        </div>
         </div>
         <?php
 
