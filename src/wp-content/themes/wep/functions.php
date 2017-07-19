@@ -37,7 +37,7 @@ function wep_member_post_link( $post_link, $id = 0 ){
 	}
 	return $post_link;
 }
-add_filter( 'post_type_link', 'wep_member_post_link', 1, 3 );
+//add_filter( 'post_type_link', 'wep_member_post_link', 1, 3 );
 
 
 class Wep_Theme {
