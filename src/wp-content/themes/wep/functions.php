@@ -104,7 +104,7 @@ class Wep_Theme {
 			)
 		);
 
-		register_post_type( 'member',
+		/*register_post_type( 'member',
 			array(
 				'labels' => array(
 					'name' => __( 'Members' ),
@@ -115,7 +115,7 @@ class Wep_Theme {
 				'rewrite' => array( 'slug' => 'our-members/%member%' ),
 				'has_archive' => false,
 			)
-		);
+		);*/
 	}
 
 	public static function register_field_groups() {
