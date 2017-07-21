@@ -113,50 +113,113 @@ class Wep_Widget_Members_List extends WP_Widget {
 		$type = $instance['default'];
 
 		// TODO: Content to be based on member records in the database
-		require 'countries.php';
+		//require_once 'countries.php';
 
-		?>
+        $members = get_posts([
+            'post_type' => 'member',
+            'post_status' => 'publish',
+            'order' => 'ASC',
+            'orderby' => 'title',
+            'numberposts' => -1
+        ]);
+        if( $members ) : ?>
         <div class="flex-container">
             <div class="row">
-                <div class="col buttons">
-                    <button data-group="country"><?php _e( 'Countries', 'wep' ) ?></button>
+                <div class="col-12 col-md-8 text-center text-md-left buttons">
+                    <button data-group="country" class="active"><?php _e( 'Countries', 'wep' ) ?></button>
                     <button data-group="organisation"><?php _e( 'Organisations', 'wep' ) ?></button>
                     <button data-group="industry"><?php _e( 'Industries', 'wep' ) ?></button>
-                    <div class="sr-only"></div>
+                </div>
+                <div class="col-12 col-md-4 text-center text-md-right buttons">
+                    <button data-display="map" class="active"><?php _e( 'Map', 'wep' ) ?></button>
+                    <button data-display="list"><?php _e( 'List', 'wep' ) ?></button>
                 </div>
             </div>
-            <div class="row members">
-                <?php foreach( $countries as $key => $val ) : ?>
-                    <div class="col-6 col-sm-4 col-md-3 entry country">
+            <div class="row members list hide">
+	            <?php foreach( $members as $member ) :
+		            $criticality = get_field( 'criticality', $member->ID );
+		            switch( $criticality ) {
+			            case 2:
+				            $criticality = __( 'High', 'wep' );
+				            break;
+			            case 1:
+				            $criticality = __( 'Medium', 'wep' );
+				            break;
+			            default:
+				            $criticality = __( 'Low', 'wep' );
+				            break;
+		            }
+		            /*<div class="sr-only" data-type="engagement"><?php echo get_field( 'engagement', $member->ID ) ?></div>
+					<div class="sr-only" data-type="action"><?php echo get_field( 'action', $member->ID ) ?></div>*/
+		            ?>
+                    <div class="col-6 col-sm-4 col-md-3 entry <?php echo get_field( 'group', $member->ID ) ?>">
                         <div>
-                            <a href="javascript:void(0)" data-toggle="modal" data-target="#memberModal" data-name="<?php echo $val ?>">
-                                <img src="<?php echo get_template_directory_uri() . '/flags/' . strtolower( $key ) . '.svg' ?>" alt="<?php echo $val ?>">
-                                <strong><?php echo $val ?></strong>
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#memberModal">
+					            <?php if( get_field( 'group', $member->ID ) == 'country' ) : ?>
+                                    <img src="<?php echo get_template_directory_uri() . '/flags/' . strtolower( get_field( 'country', $member->ID ) ) . '.svg' ?>" alt="<?php echo get_the_title( $member->ID ) ?>">
+					            <?php endif; ?>
+                                <strong data-type="name"><?php echo get_the_title( $member->ID ) ?></strong>
+                                <div class="sr-only" data-type="sign-up"><?php echo get_field( 'sign_up', $member->ID ) ?></div>
+                                <div class="sr-only" data-type="criticality"><?php echo $criticality ?></div>
+                                <div class="sr-only" data-type="minister"><?php echo get_field( 'minister', $member->ID ) ?></div>
                             </a>
                         </div>
                     </div>
-                <?php endforeach; ?>
+	            <?php endforeach; ?>
+            </div>
+            <div class="row members map">
+                <div class="col">
+                    <div id="jqvmap"></div>
+                </div>
             </div>
         </div>
         <div class="modal fade" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="memberModalLabel"><?php _e( 'Member details' , 'wep' ) ?></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="<?php _e( 'Close' , 'wep' ) ?>">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <span data-name>&nbsp;</span>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php _e( 'Close' , 'wep' ) ?></button>
+            <div class="modal-dialog vertical-align-center" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="memberModalLabel"><?php _e( 'Member information', 'wep' ) ?></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div data-name>
+                            <h6>Name</h6>
+                            <p>&nbsp;</p>
+                        </div>
+                        <div data-minister>
+                            <hr>
+                            <h6>Minister</h6>
+                            <p>&nbsp;</p>
+                        </div>
+                        <div data-criticality>
+                            <hr>
+                            <h6>Criticality</h6>
+                            <p>&nbsp;</p>
+                        </div>
+                        <div data-sign-up>
+                            <hr>
+                            <h6>Sign-up</h6>
+                            <p>&nbsp;</p>
+                        </div>
+                        <!--<div data-engagement>
+                            <hr>
+                            <h6>Engagement</h6>
+                            <p>&nbsp;</p>
+                        </div>
+                        <div data-action>
+                            <hr>
+                            <h6>Action</h6>
+                            <p>&nbsp;</p>
+                        </div>-->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"><?php _e( 'Close' , 'wep' ) ?></button>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
-        <?php
+        <?php endif;
 
 		echo $args['after_widget'];
 	}

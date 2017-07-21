@@ -27,17 +27,18 @@ function wep_wpcf7_form_elements($res) {
 
 add_filter( 'wpcf7_form_elements', 'wep_wpcf7_form_elements', 10, 2 );
 
-function wep_member_post_link( $post_link, $id = 0 ){
+function wep_member_group_post_link( $post_link, $id = 0 ){
 	$post = get_post($id);
-	if ( is_object( $post ) ){
+	if ( is_object( $post ) && $post->post_type == 'member' ){
 		$terms = wp_get_object_terms( $post->ID, 'member_group' );
-		if( $terms ){
-			return str_replace( '%member_group%' , $terms[0]->slug , $post_link );
+		var_dump($terms);
+		if( $terms && !( $terms instanceof WP_Error ) ) {
+			return str_replace( '%member_group%', $terms[0]->slug, $post_link );
 		}
 	}
 	return $post_link;
 }
-//add_filter( 'post_type_link', 'wep_member_post_link', 1, 3 );
+//add_filter( 'post_type_link', 'wep_member_group_post_link', 1, 3 );
 
 
 class Wep_Theme {
@@ -70,8 +71,11 @@ class Wep_Theme {
 
 	public static function enqueue_scripts() {
 
-		wp_deregister_script( 'jquery' );
-		wp_deregister_script( 'jquery-migrate' );
+		// jQuery is vendor compiled using webpack
+		//wp_deregister_script( 'jquery' );
+		//wp_deregister_script( 'jquery-migrate' );
+
+		//wp_enqueue_script( 'jquery', 'http://code.jquery.com/jquery-1.11.3.min.js' );
 
 		// Theme stylesheet.
 		wp_enqueue_style( 'wep-style', get_stylesheet_uri() );
@@ -83,7 +87,17 @@ class Wep_Theme {
 		wp_script_add_data( 'html5', 'conditional', 'lt IE 9' );
 
 		// Theme script.
-		wp_enqueue_script( 'wep-scripts', get_theme_file_uri( '/js/scripts.min.js' ), array(), '1.0', true );
+		wp_enqueue_script( 'wep-scripts', get_theme_file_uri( '/js/scripts.min.js' ), array(), '1.0' );
+
+		if( is_page( 'our-members' ) ) {//if ( is_active_widget( 'Wep_Widget_Members_List' ) ) {
+			//wp_enqueue_style( 'jqvmap', get_theme_file_uri( '/js/jqvmap.min.css' ) );
+			wp_enqueue_script( 'jqvmap', get_theme_file_uri( '/js/jquery.vmap.js' ), array( 'jquery' ), '1.5.1' );
+			wp_enqueue_script( 'jqvmap-world', get_theme_file_uri( '/js/maps/jquery.vmap.world.js' ), array() );
+		}
+
+		/*if( is_page( 'our-members' ) ) {
+
+		}*/
 	}
 
 	public static function create_post_type() {
@@ -104,7 +118,7 @@ class Wep_Theme {
 			)
 		);
 
-		/*register_post_type( 'member',
+		register_post_type( 'member',
 			array(
 				'labels' => array(
 					'name' => __( 'Members' ),
@@ -115,7 +129,7 @@ class Wep_Theme {
 				'rewrite' => array( 'slug' => 'our-members/%member%' ),
 				'has_archive' => false,
 			)
-		);*/
+		);
 	}
 
 	public static function register_field_groups() {

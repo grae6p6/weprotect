@@ -787,6 +787,27 @@ class Wep_Plugin {
 	}
 
 	/**
+	 * Create country taxonomies
+	 */
+	/*public static function create_countries() {
+		require_once '../themes/wep/inc/countries.php';
+
+		if( $countries ) {
+		    foreach( $countires as $iso => $name ) {
+		        $id = wp_insert_term( sanitize_title( $name ), $name );
+		        if( !$id ) {
+		            var_dump( 'FAILED COUNTRY TAX:', $name );
+		            return false;
+                }
+            }
+
+            return true;
+        }
+
+        return false;
+    }*/
+
+	/**
 	 * Create all CF7 forms
 	 *
 	 * @return bool
@@ -894,6 +915,125 @@ class Wep_Plugin {
 
 		return true;
 	}
+
+	/**
+	 * Create memebers
+     *
+     * @return bool
+	 */
+	public static function create_members() {
+		require ABSPATH . '../vendor/phpoffice/phpexcel/Classes/PHPExcel.php';
+		require ABSPATH . 'wp-content/themes/wep/inc/countries.php';
+
+		$objReader = PHPExcel_IOFactory::createReader('Excel5');
+		$objReader->setReadDataOnly(true);
+
+		$objPHPExcel = $objReader->load(ABSPATH . "../data/WPGAmembership.xls");
+		//var_dump($objPHPExcel);
+
+
+		/**
+		 * Pull country entries from XLS
+		 */
+		$objWorksheet = $objPHPExcel->getSheet(0);
+
+		$highestRow = $objWorksheet->getHighestRow();
+		$highestColumn = $objWorksheet->getHighestColumn();
+		$highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
+
+		$columns = $results = [];
+		for ($row = 1; $row <= $highestRow; ++$row) {
+			for ($col = 0; $col <= $highestColumnIndex; ++$col) {
+				if( $row == 1 ) {
+					$columns[$col] = trim( $objWorksheet->getCellByColumnAndRow($col, $row)->getValue() );
+				} else {
+					$results[$row][$columns[$col]] = trim( $objWorksheet->getCellByColumnAndRow($col, $row)->getValue() );
+				}
+			}
+		}
+
+		$fields = [
+			'Country' => [
+				'country',
+				'597069491a1af'
+			],
+			'Sign up' => [
+				'sign_up',
+				'59706f6101217'
+			],
+			'Engagement update' => [
+				'engagement',
+				'597070b8f57f1'
+			],
+			'Actions' => [
+				'actions',
+				'597070cd13e15'
+			],
+			'Criticality' => [
+				'criticality',
+				'597070892d24e'
+			],
+			'Official contact' => [
+				'official_contact',
+				'5970700ba285d'
+			],
+			'Email' => [
+				'official_contact_email',
+				'597070273ed0c'
+			],
+			'Minister' => [
+				'minister',
+				'59706fb813519'
+			],
+			'Minister Email' => [
+				'minister_email',
+				'59706ffc5d1c4'
+			]
+        ];
+
+		$criticality_fields = [
+			'Low' => 0,
+			'Medium' => 1,
+			'High' => 2
+        ];
+
+		$signup_fields = [
+			'Global Alliance' => 'ga',
+			'WePROTECT' => 'wp',
+			'None' => 'none',
+			'WPGA' => 'wpga'
+        ];
+
+		foreach( $results as $row ) {
+		    if( empty( $row['Country'] ) )
+		        continue;
+			$content = [];
+			$content['post_name'] = sanitize_title( $row['Country'] );
+			$content['post_title'] = $row['Country'];
+			$content['post_content'] = '';
+			$content['post_type'] = 'member';
+			$content['post_status'] = 'publish';
+			$id = wp_insert_post($content);
+			if( !$id ) {
+				return false;
+			} else {
+				$row['Criticality'] = $criticality_fields[ $row['Criticality'] ];
+				$row['Sign up'] = $signup_fields[ $row['Sign up'] ];
+				$row['Country'] = array_search( $row['Country'], $countries );
+				//var_dump($content,$row);
+
+				update_post_meta( $id, 'group', 'country' );
+				update_post_meta( $id, '_group', 'field_597068f8afb36' );
+
+				foreach( $fields as $key => $values ) {
+					update_post_meta( $id, $values[0], $row[ $key ] );
+					update_post_meta( $id, '_' . $values[0], 'field_' . $values[1] );
+                }
+            }
+        }
+
+        return true;
+    }
 
 	/**
 	 * Create all media for the site
@@ -1107,7 +1247,8 @@ class Wep_Plugin {
 
 		// Add core content
 		include_once( ABSPATH . 'wp-admin/includes/taxonomy.php' );
-	    self::create_categories();
+		self::create_categories();
+		self::create_members();
 		self::create_forms();
 		self::create_media();
 		self::create_pages();

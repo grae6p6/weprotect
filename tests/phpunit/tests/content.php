@@ -15,6 +15,10 @@ class Tests_Wep_Content extends WP_UnitTestCase {
 		$this->assertTrue(Wep_Plugin::create_menus());
 	}
 
+	public function test_members_created() {
+		$this->assertTrue(Wep_Plugin::create_members());
+	}
+
 	public function test_medias_created() {
 		$this->assertTrue(Wep_Plugin::create_media());
 	}

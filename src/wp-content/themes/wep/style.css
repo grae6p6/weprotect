@@ -6206,7 +6206,7 @@ button {
   margin-bottom: 4em; }
 
 button:hover, button.active {
-  background-color: #2a6462; }
+  background-color: #2278ad; }
 
 .edit-link {
   background-color: #a31b1b;
@@ -6220,25 +6220,68 @@ button:hover, button.active {
     color: #fff !important; }
 
 /* Members list */
+.jqvmap-label {
+  position: absolute;
+  background-color: #2a0637;
+  border-radius: .25em;
+  padding: 0 .5em;
+  color: #fff;
+  font-size: .8em; }
+
+.widget_wep_widget_members_list .buttons button {
+  margin: 0 1em 2em 0; }
+  .widget_wep_widget_members_list .buttons button:last-child {
+    margin-right: 0; }
+
 .members {
-  /* Development styling */ }
-  .members .entry {
-    text-align: center; }
-    .members .entry a {
-      text-decoration: none; }
-    .members .entry img {
-      width: 100%;
-      border-radius: 0.25em;
-      margin: 2em 0 .5em;
-      border: .5em solid #f8f0fb; }
-    .members .entry strong {
-      color: #562a64;
-      font-size: .8em;
-      text-transform: uppercase;
-      letter-spacing: 1px; }
-  .members .buttons button {
-    margin: 0 1.5em 0 0; }
-  .members body.debug .block {
-    border: 1px solid red; }
+  /* Members list */
+  /* Members map */ }
+  .members.hide {
+    display: none; }
+  .members.list {
+    /* Development styling */ }
+    .members.list .entry {
+      text-align: center; }
+      .members.list .entry a {
+        text-decoration: none; }
+      .members.list .entry img {
+        width: 100%;
+        border-radius: 0.5em;
+        margin: 0 0 .5em; }
+      .members.list .entry strong {
+        display: block;
+        color: #562a64;
+        font-size: .9em;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 2em; }
+    .members.list body.debug .block {
+      border: 1px solid red; }
+  .members #jqvmap {
+    width: 100%;
+    height: 300px;
+    background-color: #e8dcec;
+    border-radius: 0.25em; }
+    .members #jqvmap .jqvmap-zoomin {
+      top: 1em; }
+    .members #jqvmap .jqvmap-zoomout {
+      top: 2.5em; }
+    .members #jqvmap .jqvmap-zoomin, .members #jqvmap .jqvmap-zoomout {
+      box-sizing: content-box;
+      padding: .25em;
+      left: 1em; }
+    @media (min-width: 768px) {
+      .members #jqvmap {
+        height: 400px; } }
+    @media (min-width: 992px) {
+      .members #jqvmap {
+        height: 650px; } }
+
+.modal h6, .modal p {
+  margin-bottom: .2em; }
+
+/* Hide caret */
+.dropdown-toggle::after {
+  display: none; }
 
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9zdHlsZS5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/
