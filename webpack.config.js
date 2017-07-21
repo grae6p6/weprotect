@@ -38,7 +38,7 @@ module.exports = {
             Tether: 'tether'
         }),
 
-        new webpack.optimize.UglifyJsPlugin(),
+        //new webpack.optimize.UglifyJsPlugin(),
 
         // Update the required style.css in WEP theme root
         new ExtractTextPlugin('../style.css')

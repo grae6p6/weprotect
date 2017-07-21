@@ -6138,6 +6138,8 @@ main.body {
     /*@include blur(4px);*/ }
     main.body .block.block-image .container {
       height: 25em; }
+    main.body .block.block-image header p {
+      font-size: 1.2em; }
     main.body .block.block-image header.article > * {
       margin: 0; }
     main.body .block.block-image header.article * + button {
@@ -6195,6 +6197,44 @@ button {
     margin-left: 1em;
   }*/ }
 
+/* Structure - MNR */
+@media (min-width: 576px) {
+  .mnr {
+    background: #eaeaea;
+    /* Old browsers */
+    background: -moz-linear-gradient(left, #eaeaea 0%, #eaeaea 50%, #ffffff 51%, #ffffff 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #eaeaea 0%, #eaeaea 50%, #ffffff 51%, #ffffff 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #eaeaea 0%, #eaeaea 50%, #ffffff 51%, #ffffff 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eaeaea', endColorstr='#ffffff',GradientType=1 );
+    /* IE6-9 */ } }
+
+.mnr .menu {
+  background-color: #eaeaea;
+  color: #562a64;
+  padding: 0; }
+  .mnr .menu .entry {
+    padding: 1em 2em;
+    border-bottom: 2px solid #d0bcd6; }
+    .mnr .menu .entry:last-of-type {
+      border: none; }
+    .mnr .menu .entry.exp {
+      background-color: #562a64;
+      color: #fff; }
+    .mnr .menu .entry.open {
+      background-color: #1ba39c; }
+
+.mnr .content {
+  background-color: #ffffff;
+  padding: 1em 1em 1em 2em; }
+  .mnr .content h2 {
+    margin-bottom: .25em; }
+  .mnr .content h3 {
+    font-weight: 400;
+    font-size: 1.4em; }
+
 /* WCF7 */
 .wpcf7 {
   margin-top: 2em; }
@@ -6246,7 +6286,7 @@ button:hover, button.active {
         text-decoration: none; }
       .members.list .entry img {
         width: 100%;
-        border-radius: 0.5em;
+        border-radius: 0.25em;
         margin: 0 0 .5em; }
       .members.list .entry strong {
         display: block;

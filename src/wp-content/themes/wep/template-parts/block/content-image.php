@@ -38,6 +38,7 @@ if( count( $css ) ) {
 			<?php if( $title ) :
 				printf( '<%s>%s</%s>', $heading, $title, $heading );
 			endif; ?>
+            <?php the_content() ?>
 			<?php echo $button ?>
 		</header>
 	</div>

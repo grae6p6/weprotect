@@ -107,10 +107,8 @@ class Wep_Widget_Members_List extends WP_Widget {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
 
-		//echo __( 'Widget functionality to be implemented.', 'wep' );
-		//var_dump($instance);
-
-		$type = $instance['default'];
+		// Default group
+		$group = $instance['group'];
 
 		// TODO: Content to be based on member records in the database
 		//require_once 'countries.php';
@@ -126,13 +124,23 @@ class Wep_Widget_Members_List extends WP_Widget {
         <div class="flex-container">
             <div class="row">
                 <div class="col-12 col-md-8 text-center text-md-left buttons">
-                    <button data-group="country" class="active"><?php _e( 'Countries', 'wep' ) ?></button>
-                    <button data-group="organisation"><?php _e( 'Organisations', 'wep' ) ?></button>
-                    <button data-group="industry"><?php _e( 'Industries', 'wep' ) ?></button>
+                    <button data-group="country"<?php echo ( $group == 'country' ? ' class="active"' : '' ) ?>>
+                        <?php _e( 'Countries', 'wep' ) ?>
+                    </button>
+                    <button data-group="organisation"<?php echo ( $group == 'organisation' ? ' class="active"' : '' ) ?>>
+                        <?php _e( 'Organisations', 'wep' ) ?>
+                    </button>
+                    <button data-group="industry"<?php echo ( $group == 'industry' ? ' class="active"' : '' ) ?>>
+                        <?php _e( 'Industries', 'wep' ) ?>
+                    </button>
                 </div>
                 <div class="col-12 col-md-4 text-center text-md-right buttons">
-                    <button data-display="map" class="active"><?php _e( 'Map', 'wep' ) ?></button>
-                    <button data-display="list"><?php _e( 'List', 'wep' ) ?></button>
+                    <button data-display="map" class="active">
+                        <?php _e( 'Map', 'wep' ) ?>
+                    </button>
+                    <button data-display="list">
+                        <?php _e( 'List', 'wep' ) ?>
+                    </button>
                 </div>
             </div>
             <div class="row members list hide">
@@ -159,9 +167,15 @@ class Wep_Widget_Members_List extends WP_Widget {
                                     <img src="<?php echo get_template_directory_uri() . '/flags/' . strtolower( get_field( 'country', $member->ID ) ) . '.svg' ?>" alt="<?php echo get_the_title( $member->ID ) ?>">
 					            <?php endif; ?>
                                 <strong data-type="name"><?php echo get_the_title( $member->ID ) ?></strong>
-                                <div class="sr-only" data-type="sign-up"><?php echo get_field( 'sign_up', $member->ID ) ?></div>
-                                <div class="sr-only" data-type="criticality"><?php echo $criticality ?></div>
-                                <div class="sr-only" data-type="minister"><?php echo get_field( 'minister', $member->ID ) ?></div>
+                                <div class="sr-only" data-type="sign-up">
+                                    <?php echo get_field( 'sign_up', $member->ID ) ?>
+                                </div>
+                                <div class="sr-only" data-type="criticality">
+                                    <?php echo $criticality ?>
+                                </div>
+                                <div class="sr-only" data-type="minister">
+                                    <?php echo get_field( 'minister', $member->ID ) ?>
+                                </div>
                             </a>
                         </div>
                     </div>
@@ -214,7 +228,9 @@ class Wep_Widget_Members_List extends WP_Widget {
                         </div>-->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal"><?php _e( 'Close' , 'wep' ) ?></button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">
+                            <?php _e( 'Close' , 'wep' ) ?>
+                        </button>
                     </div>
                 </div>
             </div>

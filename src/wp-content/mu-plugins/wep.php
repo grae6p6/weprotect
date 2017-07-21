@@ -33,7 +33,7 @@ class Wep_Plugin {
 		// Main menu
 		'Main' => [
 			'who-we-are' => [
-				'who-we-are' => '',
+				//'who-we-are' => '',
 				'our-mission' => '',
 				'our-commitments' => '',
 				'our-leadership' => '',
@@ -43,7 +43,7 @@ class Wep_Plugin {
 				'contact-us' => ''
 			],
 			'what-we-do' => [
-				'what-we-do' => '',
+				//'what-we-do' => '',
 				'why-we-must-act' => '',
 				'funded-projects' => '',
 				'faqs' => '',
@@ -51,7 +51,7 @@ class Wep_Plugin {
 				'how-to-report-cseo' => ''
 			],
 			'funding' => [
-				'funding' => '',
+				//'funding' => '',
 				'about-the-fund' => '',
 				'how-the-fund-is-spent' => '',
 				'apply-for-funding' => '',
@@ -59,12 +59,12 @@ class Wep_Plugin {
 				'other-funding-methods' => ''
 			],
 			'get-involved' => [
-				'get-involved' => '',
+				//'get-involved' => '',
 				'membership' => '',
 				'donating' => ''
 			],
 			'resources' => [
-				'resources' => '',
+				//'resources' => '',
 				'model-national-response' => '',
 				'policy-legislation' => '',
 				'case-studies' => '',
@@ -73,7 +73,7 @@ class Wep_Plugin {
 				'submit-resources' => ''
 			],
 			'news-and-events' => [
-				'news-and-events' => '',
+				//'news-and-events' => '',
 				'news' => '',
 				'newsletter' => '',
 				'events' => ''
@@ -256,10 +256,10 @@ class Wep_Plugin {
 		],
 		'our-members-list' => [
 			'post_title' => 'Our members list',
-			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>[wep-members-list default="country"]',
+			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>[wep-members-list group="country"]',
 			'title' => 'Our members',
 			'type' => ''//,
-			//'shortcode' => '[wep-members-list default="country"]'
+			//'shortcode' => ''
 		],
 		'who-we-are' => [
 			'post_title' => 'Who we are',
@@ -306,9 +306,9 @@ class Wep_Plugin {
 		],
 
 		'what-is-cso' => [
-			'post_title' => 'What is CSO?',
+			'post_title' => 'What is CSEO?',
 			'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>',
-			'title' => 'What is CSO?',
+			'title' => 'What is CSEO?',
 			'type' => 'cta1',
 			'image' => 'stock-3',
 			'linked_page' => 'home',
@@ -417,6 +417,20 @@ class Wep_Plugin {
 			'bg_colour' => '#eaeaea',
 			'linked_page' => 'submit-resources'
 		],
+
+		'the-model-national-response' => [
+			'post_title' => 'The Model National Response',
+			'post_content' => '<p>Preventing and Tackling Child Sexual Exploitation and Abuse (CESA)</p>',
+			'title' => 'The Model National Response',
+			'type' => 'image',
+			'image' => 'stock-1.jpg',
+			'linked_page' => 'home',
+            'button_label' => 'Download PDF',
+            'page_template' => 'mnr.php'
+		],
+
+
+        //Preventing and Tackling Child Sexual Exploitation and Abuse (CESA)
 	];
 	public static $posts = [
 		'home' => array(
@@ -475,10 +489,10 @@ class Wep_Plugin {
 			'menu_order' => 200,
             'blocks' => [
                 'who-we-are',
-	            'our-mission',
 	            'our-commitments',
-	            'our-leadership',
+	            'our-mission',
 	            'our-members',
+	            'our-leadership',
 	            'our-history'
             ]
 		),
@@ -547,8 +561,8 @@ class Wep_Plugin {
 			'menu_order' => 300,
 			'blocks' => [
 				'what-we-do',
-				'what-is-cso',
 				'why-we-must-act',
+				'what-is-cso',
 				'funded-projects'//,
 				//'other'
 			]
@@ -688,7 +702,10 @@ class Wep_Plugin {
 			'post_type' => 'page',
 			'post_title' => 'Model National Response',
 			'post_content' => '',
-			'menu_order' => 601
+			'menu_order' => 601,
+            'blocks' => [
+                'the-model-national-response'
+            ]
 		),
 		'policy-and-legislation' => array(
 			'post_type' => 'page',
@@ -1017,7 +1034,11 @@ class Wep_Plugin {
 			if( !$id ) {
 				return false;
 			} else {
+			    if( empty( $row['Criticality'] ) ) {
+				    $row['Criticality'] = 'High';
+                }
 				$row['Criticality'] = $criticality_fields[ $row['Criticality'] ];
+
 				$row['Sign up'] = $signup_fields[ $row['Sign up'] ];
 				$row['Country'] = array_search( $row['Country'], $countries );
 				//var_dump($content,$row);
@@ -1107,6 +1128,7 @@ class Wep_Plugin {
 						$content['post_parent'] = self::$slugs[$content['post_parent']];
 					}
 				}
+
 				//var_dump($content);
 				$content['post_status'] = 'publish';
 				$id = wp_insert_post($content);
@@ -1203,8 +1225,8 @@ class Wep_Plugin {
 						    if( $post ) {
 							    $val = array( $post[0]->ID );
 						    } else {
-						        var_dump( 'PAGE LINK FAIL: ', $data );
-						        return false;
+						        var_dump( 'PAGE LINK FAIL (block: ' . $name . '): ', $data );
+						        //return false;
                             }
 					    } elseif( $key == 'image' ) {
 						    $data = [
@@ -1217,10 +1239,11 @@ class Wep_Plugin {
 						    if( $post ) {
 							    $val = (int)$post[0]->ID;
 						    } else {
-							    var_dump( 'IMAGE LINK FAIL: ', $data );
-							    return false;
+							    var_dump( 'IMAGE LINK FAIL (block: ' . $name . '): ', $data );
+							    //return false;
 						    }
 					    }
+
 					    update_post_meta( $id, $key, $val );
 					    update_post_meta( $id, '_' . $key, 'field_' . self::$fields[ $key ] );
                     }

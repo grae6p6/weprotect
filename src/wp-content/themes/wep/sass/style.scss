@@ -225,11 +225,16 @@ main.body {
     .container {
       height: 25em;
     }
-    header.article > * {
-      margin: 0;
-    }
-    header.article * + button {
-      margin: 1em 0 0 0;
+    header {
+      p {
+        font-size: 1.2em;
+      }
+      &.article > * {
+        margin: 0;
+      }
+      &.article * + button {
+        margin: 1em 0 0 0;
+      }
     }
   }
 
@@ -300,6 +305,47 @@ button {
   }*/
 }
 
+/* Structure - MNR */
+.mnr {
+  @include media-breakpoint-up(sm) {
+    background: #eaeaea; /* Old browsers */
+    background: -moz-linear-gradient(left, #eaeaea 0%, #eaeaea 50%, #ffffff 51%, #ffffff 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #eaeaea 0%,#eaeaea 50%,#ffffff 51%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #eaeaea 0%,#eaeaea 50%,#ffffff 51%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eaeaea', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+  }
+  .menu {
+    background-color: #eaeaea;
+    color: $primary-color;
+    padding: 0;
+    .entry {
+      padding: 1em 2em;
+      border-bottom: 2px solid #d0bcd6;
+      &:last-of-type {
+        border: none;
+      }
+      &.exp {
+        background-color: $primary-color;
+        color: $white;
+      }
+      &.open {
+        background-color: #1ba39c;
+      }
+    }
+  }
+  .content {
+    background-color: #ffffff;
+    padding: 1em 1em 1em 2em;
+    h2 {
+      margin-bottom: .25em;
+    }
+    h3 {
+      font-weight: 400;
+      font-size: 1.4em;
+    }
+  }
+}
+
 /* WCF7 */
 .wpcf7 {
   margin-top: 2em;
@@ -362,7 +408,7 @@ button:hover, button.active {
       }
       img {
         width: 100%;
-        border-radius: 0.5em;
+        border-radius: 0.25em;
         margin: 0 0 .5em;
       }
       strong {
