@@ -93,6 +93,7 @@ class Wep_Theme {
 			//wp_enqueue_style( 'jqvmap', get_theme_file_uri( '/js/jqvmap.min.css' ) );
 			wp_enqueue_script( 'jqvmap', get_theme_file_uri( '/js/jquery.vmap.js' ), array( 'jquery' ), '1.5.1' );
 			wp_enqueue_script( 'jqvmap-world', get_theme_file_uri( '/js/maps/jquery.vmap.world.js' ), array() );
+			wp_enqueue_script( 'jqvmap-init', get_theme_file_uri( 'js/widget_wep_members.js' ) );
 		}
 
 		/*if( is_page( 'our-members' ) ) {
