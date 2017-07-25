@@ -81,6 +81,16 @@ class Tests_Wep_Theme extends WP_UnitTestCase {
 		$this->assertTrue(post_type_exists( 'content_block' ));
 	}
 
+	public function test_theme_has_member_post_type() {
+		Wep_Theme::create_post_type();
+		$this->assertTrue(post_type_exists( 'member' ));
+	}
+
+	public function test_theme_has_mnr_post_type() {
+		Wep_Theme::create_post_type();
+		$this->assertTrue(post_type_exists( 'mnr' ));
+	}
+
 	/*public function test_theme_has_registered_field_groups_for_content_blocks() {
 		//$this->assertTrue(Wep_Theme::register_field_groups());
 	}
@@ -94,7 +104,7 @@ class Tests_Wep_Theme extends WP_UnitTestCase {
 	public function test_theme_widgets_registered() {
 		//Wep_Theme::widgets_init();
 		$this->assertTrue( class_exists('Wep_Widget_Latest') );
-		$this->assertTrue( class_exists('Wep_Widget_Members_list') );
+		$this->assertTrue( class_exists('Wep_Widget_Members_List') );
 		//is_active_widget();
 	}
 }

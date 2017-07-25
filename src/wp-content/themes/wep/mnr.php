@@ -4,6 +4,10 @@
 Template name: Model National Response
  */
 
+global $post;
+
+$section_contents = null;
+
 get_header(); ?>
 
 	<main id="main" class="body" role="main">
@@ -13,24 +17,140 @@ get_header(); ?>
 			<div class="mnr">
 				<div class="container">
 					<div class="row">
-						<div class="col-12 col-md-3 menu">
-							<div class="entry">Introduction</div>
+						<div class="col-12 col-md-4 menu">
+                            <?php
+
+                            $page_introduction = get_page_by_path( 'the-model-national-response' );
+
+                            // Get MNR groups
+                            $groups = get_posts([
+                                'post_type' => 'page',
+                                'post_status' => 'publish',
+                                'post_parent' => (int)$page_introduction->ID,
+                                'numberposts' => -1,
+                                'order' => 'ASC',
+                                'orderby' => 'menu_order'
+                            ]);
+
+                            if( $groups ) :
+                                
+                                // Add default MNR as the introduction.
+	                            array_unshift( $groups, $page_introduction );
+                                foreach( $groups as $i => $group ) :
+
+                                    // Get MNR group sections
+		                            $sections = get_posts([
+			                            'post_type' => 'mnr',
+			                            'post_status' => 'publish',
+			                            'numberposts' => -1,
+			                            'order' => 'ASC',
+			                            'orderby' => 'menu_order',
+			                            'meta_key' => 'group',
+			                            'meta_value' => serialize( array( (string)$group->ID ) ) // Thats a bit nuts??
+		                            ]);
+
+                                    // Is group current page
+                                    $is_active = ( ( '/' . get_page_uri( $group->ID ) . '/' === $_SERVER['REQUEST_URI'] ) ? true : false );
+
+                                    ?>
+                                    <div class="entry<?php echo ( count( $sections ) ? ' expandable' : '' ) ?><?php echo ( $is_active ? ' active' : '' ) ?>">
+                                        <div class="container-flex">
+                                            <div class="row align-items-center">
+                                                <div class="col-1 col-lg-3">
+                                                    <img src="/wp-content/themes/wep/screenshot.png">
+                                                </div>
+                                                <div class="col">
+                                                    <a href="<?php echo get_the_permalink( $group->ID ); ?>">
+                                                        <span><?php echo ( !$i ? __( 'Introduction', 'wep' ) : get_the_title( $group->ID ) ); ?></span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <?php
+
+                                            // Group section links
+                                            if( $sections ) :
+	                                            $section_contents = '';
+                                                foreach( $sections as $section ) : ?>
+                                                    <div class="row align-items-center">
+                                                        <div class="col-1 col-lg-3">
+                                                            <?php echo $section->menu_order ?>
+                                                        </div>
+                                                        <div class="col">
+                                                            <a href="<?php echo get_the_permalink( $group->ID ); ?>#<?php echo $section->post_name; ?>">
+                                                                <span><?php echo get_the_title( $section->ID ); ?></span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                <?php endforeach;
+                                            endif;
+                                            ?>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+							<!--<div class="entry">Introduction</div>
 							<div class="entry">Enablers</div>
-							<div class="entry exp open">Policy and Governance</div>
-							<div class="entry exp">Criminal Justice</div>
-							<div class="entry exp">Societal</div>
-							<div class="entry exp">Industry</div>
-							<div class="entry exp">Media and communications</div>
-							<div class="entry">Download full MNR document</div>
+							<div class="entry expandable active">
+                                <div class="container-flex">
+                                    <div class="row align-items-center">
+                                        <div class="col-1 col-lg-3">
+                                            <img src="/wp-content/themes/wep/screenshot.png">
+                                        </div>
+                                        <div class="col">
+                                            <span>Policy and Governance</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+							<div class="entry expandable">Criminal Justice</div>
+							<div class="entry expandable">Societal</div>
+							<div class="entry expandable">Industry</div>
+							<div class="entry expandable">Media and communications</div>
+							<div class="entry">Download full MNR document</div>-->
 						</div>
-						<div class="col-12 col-md-9 content">
-							<h2><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Policy and legislation</h2>
-							<h3>Capability 1 - Leadership</h3>
-                            <p>A faucibus magnis parturient cubilia facilisis urna est cubilia ullamcorper fringilla scelerisque morbi cubilia lacinia nisl convallis consectetur nostra accumsan adipiscing. Euismod ipsum aptent parturient vestibulum per amet gravida molestie dictum adipiscing a placerat adipiscing mi hendrerit mattis a adipiscing parturient vehicula et pretium ipsum id parturient conubia. Lacus quam consectetur tristique a suspendisse elit elementum nulla sem odio parturient malesuada a fermentum a platea praesent nascetur vel parturient class scelerisque ut facilisi primis nec facilisis sem. Nunc convallis metus vestibulum a quisque suspendisse est quisque arcu dis consequat quam tortor est a elit magnis. Fermentum sem sit leo netus scelerisque vulputate sapien condimentum lacinia a justo suspendisse eros eros. Ullamcorper nisl condimentum primis nulla suspendisse pulvinar nunc lacus ipsum felis quis eleifend vitae placerat odio et consectetur in pretium hac.</p><p>Semper est nascetur a a ante scelerisque parturient euismod consequat suspendisse parturient urna nisi dolor a iaculis dis vestibulum scelerisque suspendisse. Commodo felis fringilla venenatis dictumst a nisi sit fringilla phasellus condimentum venenatis facilisis semper viverra a amet erat malesuada nunc a amet a iaculis gravida sociosqu inceptos ad per. Sodales integer nibh a a hac condimentum nec condimentum ullamcorper a etiam ullamcorper facilisis cras scelerisque a montes parturient orci placerat mus dis congue.</p>
-                            <p>Mi quisque semper hendrerit ornare vivamus id parturient condimentum ridiculus dui a a aliquet dapibus. Praesent per eget torquent netus dui cursus odio urna faucibus porttitor ac a velit suspendisse a. Eget vestibulum eleifend placerat lacinia a ac scelerisque cubilia integer vulputate felis condimentum ac nascetur lorem quam mus. A condimentum penatibus nec sed odio nec in cursus consequat consectetur tellus etiam natoque aliquet gravida orci a parturient quis lacus bibendum primis hac lorem ipsum suspendisse. A penatibus condimentum suspendisse libero luctus integer feugiat ipsum a vulputate natoque a ridiculus a sed pretium a consectetur suscipit ac a vestibulum ullamcorper fringilla.</p>
-                            <p>Et risus ullamcorper ridiculus parturient dapibus elit id sociosqu tincidunt dis primis mi lectus et enim posuere adipiscing ullamcorper sem posuere suspendisse. Vestibulum sociis a a venenatis lacinia et adipiscing id a duis scelerisque eleifend egestas sapien scelerisque dui fames parturient mattis laoreet morbi a ullamcorper leo. Vestibulum sagittis pharetra aliquam himenaeos arcu ornare interdum mollis vestibulum volutpat adipiscing ullamcorper nam gravida parturient potenti fames sem scelerisque aptent vestibulum viverra quam potenti nulla ultricies. Vestibulum rhoncus amet suspendisse varius ullamcorper ut vestibulum himenaeos hac aliquet dictumst a rhoncus et a habitasse hac a elit adipiscing sit ultricies risus. Ridiculus vivamus dis orci a placerat donec vehicula suscipit per curabitur a fermentum ut leo adipiscing tristique hendrerit class luctus eros quam nostra id diam vestibulum praesent.</p><p>Consectetur accumsan morbi proin consequat tellus adipiscing a a integer mi pretium bibendum parturient pulvinar augue ridiculus blandit vel nam pulvinar aptent pretium tristique habitasse dignissim a. Porttitor consequat porttitor a nec dui suspendisse adipiscing euismod facilisi vestibulum condimentum tincidunt in facilisis elementum a imperdiet orci eget. Parturient phasellus ultrices sodales etiam mattis phasellus est adipiscing diam odio dui vehicula elit ultricies leo duis adipiscing leo turpis bibendum vestibulum a quam habitasse dictum egestas scelerisque. Ad placerat himenaeos ac himenaeos adipiscing cursus eleifend adipiscing placerat elementum tempor praesent risus eros malesuada potenti hac duis blandit adipiscing nisl neque purus scelerisque in imperdiet in.</p>
-                            <p>Condimentum scelerisque scelerisque dictumst nunc ligula gravida ligula vitae ad facilisis erat interdum vestibulum suscipit felis blandit iaculis eu pulvinar dapibus in nisl. Quis suscipit commodo magna proin dignissim tristique commodo lacus lacinia bibendum tellus nam augue lacus urna. Semper dapibus parturient parturient nec dui nunc tristique ullamcorper posuere diam viverra parturient a id a a lobortis suspendisse netus eu massa justo. Iaculis suscipit volutpat a fringilla himenaeos nisl arcu ullamcorper a leo a gravida lorem condimentum parturient natoque cras. Enim curae ullamcorper aenean scelerisque hac vestibulum phasellus consectetur ad per ad sem conubia vestibulum integer ultrices.</p>
-						</div>
+						<div class="col-12 col-md-8 content">
+                            <?php if( $post->ID === $page_introduction->ID ) : ?>
+                                <h2><?php _e( 'Introduction', 'wep' ) ?></h2>
+                            <?php else: ?>
+                                <?php the_title( '<h2>', '</h2>') ?>
+                            <?php endif;
+
+                            $sections = get_posts([
+	                            'post_type' => 'mnr',
+	                            'post_status' => 'publish',
+	                            'numberposts' => -1,
+	                            'order' => 'ASC',
+	                            'orderby' => 'menu_order',
+	                            'meta_key' => 'group',
+	                            'meta_value' => serialize( array( (string)$post->ID ) ) // Thats a bit nuts??
+                            ]);
+
+                            // Section links
+                            if( $sections ) : ?>
+                            <div class="links">
+                            <?php foreach( $sections as $post ) : setup_postdata( $post ); ?>
+                                <div class="entry">
+                                    <div><?php echo $post->menu_order ?></div>
+                                    <div>
+                                        <h3><a href="#<?php echo $post->post_name ?>"><?php the_title() ?></a></h3>
+                                        <?php the_excerpt() ?>
+                                    </div>
+                                </div>
+                            <?php wp_reset_postdata(); endforeach; ?>
+                            </div>
+                            <?php endif; ?>
+                            <div class="outcome"><h5><?php _e( 'Outcomes', 'wep' ) ?></h5><?php the_content() ?></div>
+							<?php
+
+                            // Section contents
+							if( $sections ) :
+								foreach( $sections as $post ) : setup_postdata( $post ); ?>
+                                    <section id="<?php echo $post->post_name ?>"><?php the_content() ?></section>
+                                <?php wp_reset_postdata(); endforeach;
+							endif;
+
+							?>
+                        </div>
 					</div>
 				</div>
 			</div>

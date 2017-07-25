@@ -163,8 +163,9 @@ class Wep_Widget_Members_List extends WP_Widget {
                     <div class="col-6 col-sm-4 col-md-3 entry <?php echo get_field( 'group', $member->ID ) ?>">
                         <div>
                             <a href="javascript:void(0)" data-toggle="modal" data-target="#memberModal">
-					            <?php if( get_field( 'group', $member->ID ) == 'country' ) : ?>
-                                    <img src="<?php echo get_template_directory_uri() . '/flags/' . strtolower( get_field( 'country', $member->ID ) ) . '.svg' ?>" alt="<?php echo get_the_title( $member->ID ) ?>">
+					            <?php if( get_field( 'group', $member->ID ) == 'country' ) :
+                                    $country = strtolower( get_field( 'country', $member->ID ) ); ?>
+                                    <img data-type="country" data-value="<?php echo $country ?>" src="<?php echo get_template_directory_uri() . '/flags/' . $country . '.svg' ?>" alt="<?php echo get_the_title( $member->ID ) ?>">
 					            <?php endif; ?>
                                 <strong data-type="name"><?php echo get_the_title( $member->ID ) ?></strong>
                                 <div class="sr-only" data-type="sign-up">

@@ -29,16 +29,26 @@ add_filter( 'wpcf7_form_elements', 'wep_wpcf7_form_elements', 10, 2 );
 
 function wep_member_group_post_link( $post_link, $id = 0 ){
 	$post = get_post($id);
-	if ( is_object( $post ) && $post->post_type == 'member' ){
-		$terms = wp_get_object_terms( $post->ID, 'member_group' );
+	if ( is_object( $post ) && $post->post_type == 'mnr' ){
+		$terms = wp_get_object_terms( $post->ID, 'mnr_category' );
 		var_dump($terms);
 		if( $terms && !( $terms instanceof WP_Error ) ) {
-			return str_replace( '%member_group%', $terms[0]->slug, $post_link );
+			return str_replace( '%mnr_category%', $terms[0]->slug, $post_link );
 		}
 	}
 	return $post_link;
 }
 //add_filter( 'post_type_link', 'wep_member_group_post_link', 1, 3 );
+
+
+
+
+function add_taxonomies_to_pages() {
+	register_taxonomy_for_object_type( 'category', 'page' );
+}
+add_action( 'init', 'add_taxonomies_to_pages' );
+
+
 
 
 class Wep_Theme {
@@ -91,7 +101,7 @@ class Wep_Theme {
 
 		if( is_page( 'our-members' ) ) {//if ( is_active_widget( 'Wep_Widget_Members_List' ) ) {
 			//wp_enqueue_style( 'jqvmap', get_theme_file_uri( '/js/jqvmap.min.css' ) );
-			wp_enqueue_script( 'jqvmap', get_theme_file_uri( '/js/jquery.vmap.js' ), array( 'jquery' ), '1.5.1' );
+			wp_enqueue_script( 'jqvmap', get_theme_file_uri( '/js/jquery.vmap.min.js' ), array( 'jquery' ), '1.5.1' );
 			wp_enqueue_script( 'jqvmap-world', get_theme_file_uri( '/js/maps/jquery.vmap.world.js' ), array() );
 			wp_enqueue_script( 'jqvmap-init', get_theme_file_uri( 'js/widget_wep_members.js' ) );
 		}
@@ -127,19 +137,39 @@ class Wep_Theme {
 				),
 				'public' => true,
 				'publicly_queryable' => false,
-				'rewrite' => array( 'slug' => 'our-members/%member%' ),
+				//'rewrite' => array( 'slug' => 'our-members/%member%' ),
 				'has_archive' => false,
 			)
 		);
+
+		register_post_type( 'mnr',
+			array(
+				'labels' => array(
+					'name' => __( 'Model National Response' ),
+					'singular_name' => __( 'Model National Response' )
+				),
+				'public' => true,
+				'publicly_queryable' => false,
+				//'rewrite' => array( 'slug' => 'model-national-response' ),
+				'has_archive' => false,
+				'capability_type' => 'page',
+				'supports' => array('title','editor','excerpt','revisions')
+			)
+		);
+
+		/*register_taxonomy( 'mnr_category', 'mnr', [
+			'label' => __( 'MNR Category' )
+		]);*/
 	}
 
 	public static function register_field_groups() {
         $case_studies = get_term_by('name', 'Case studies', 'category');
         $events = get_term_by('name', 'Events', 'category');
-        $news = get_term_by('name', 'News', 'category');
+		$news = get_term_by('name', 'News', 'category');
+		$mnr = get_term_by('name', 'Model National Response', 'category');
 
-        if( !$case_studies && !$events && !$news ) {
-            return true;
+        if( !$case_studies || !$events || !$news || !$mnr ) {
+            return false;
         }
 
 		require get_parent_theme_file_path( 'inc/custom-fields.php' );

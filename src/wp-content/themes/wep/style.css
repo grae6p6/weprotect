@@ -6008,6 +6008,11 @@ body {
   @media (min-width: 992px) {
     body {
       font-size: 20px; } }
+  body.js.page-template-mnr .mnr .section.links h3 {
+    margin: 0;
+    font-size: 1.25em; }
+  body.js.page-template-mnr .mnr .section.data {
+    display: none; }
 
 h1, h2, h3, h3, h4, h5, h6 {
   color: #562a64;
@@ -6220,11 +6225,20 @@ button {
     border-bottom: 2px solid #d0bcd6; }
     .mnr .menu .entry:last-of-type {
       border: none; }
-    .mnr .menu .entry.exp {
+    .mnr .menu .entry img {
+      width: 2.25em;
+      height: 2.25em; }
+    .mnr .menu .entry.expandable {
       background-color: #562a64;
       color: #fff; }
-    .mnr .menu .entry.open {
+      .mnr .menu .entry.expandable a {
+        color: #fff; }
+    .mnr .menu .entry.active {
       background-color: #1ba39c; }
+      .mnr .menu .entry.active a {
+        color: #fff; }
+    .mnr .menu .entry a {
+      text-decoration: none; }
 
 .mnr .content {
   background-color: #ffffff;
@@ -6232,8 +6246,31 @@ button {
   .mnr .content h2 {
     margin-bottom: .25em; }
   .mnr .content h3 {
-    font-weight: 400;
     font-size: 1.4em; }
+    .mnr .content h3 a {
+      text-decoration: none; }
+  .mnr .content .links {
+    margin-bottom: 1em; }
+    .mnr .content .links .entry {
+      margin-bottom: 1em; }
+      .mnr .content .links .entry div {
+        display: inline-block; }
+        .mnr .content .links .entry div * {
+          margin: 0; }
+        .mnr .content .links .entry div:first-child {
+          background-color: #562a64;
+          color: #fff;
+          text-align: center;
+          width: 2.5em; }
+  .mnr .content .outcome {
+    border: 0.125em solid #562a64;
+    border-radius: .25em;
+    margin-bottom: 1em;
+    padding: 1em; }
+    .mnr .content .outcome h4 {
+      font-size: 1em; }
+    .mnr .content .outcome *:last-child {
+      margin: 0; }
 
 /* WCF7 */
 .wpcf7 {
@@ -6245,6 +6282,7 @@ button {
 .wpcf7-response-output {
   margin-bottom: 4em; }
 
+/* Buttons */
 button:hover, button.active {
   background-color: #2278ad; }
 

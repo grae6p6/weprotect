@@ -11,11 +11,14 @@ global $heading, $button, $title, $shortcode;
 if( function_exists( 'get_field' ) ) :
 	$blocks = get_field( 'assigned_blocks' );
 	if( $blocks ) :
+        $is_mnr = false;//is_page( 'model-national-response' );
+
+	    // Loop blocks...
 		foreach( $blocks as $block_count => $post ) :
 			setup_postdata( $post );
 
-			// Assign heading based on block count index
-			$heading = ( !$block_count ? 'h1' : ( $block_count < 3 ? 'h2' : 'h3' ) );
+			// Assign heading based on block count index - Shift if MNR
+			$heading = ( ( !$block_count && !$is_mnr ) ? 'h1' : ( $block_count < 3 ? 'h2' : 'h3' ) );
 
 			// Linked page button
 			$linked = get_field( 'linked_page' );

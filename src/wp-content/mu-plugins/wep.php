@@ -11,7 +11,8 @@ class Wep_Plugin {
 	public static $categories = [
 		'Case studies' => 0,
 		'Events' => 0,
-		'News' => 0
+		'News' => 0,
+		'Model National Response' => 0
 	];
 	public static $forms = [
 		'Apply for membership' => 'apply-for-membership'
@@ -23,7 +24,7 @@ class Wep_Plugin {
 		'stock-3.jpg' => 0,
 		'wep-logo.gif' => 0
     ];
-	public static $menus = [
+	/*public static $menus = [
 
 		// Top menu
 		'Top' => [
@@ -94,6 +95,78 @@ class Wep_Plugin {
 			'link_twitter' => '',
 			'link_email' => ''
 		]
+	];*/
+	public static $menus = [
+
+		// Top menu
+		'Top' => [
+			'contact-us' => ''
+		],
+
+		// Main menu
+		'Main' => [
+			'who-we-are' => [
+				'our-mission' => '',
+				//'our-commitments' => '',
+				'our-board' => '',
+				'our-members' => '',
+				'statements-of-action' => '',
+				'who-we-work-with' => '',
+				'our-history' => '',
+				'contact-us' => ''
+			],
+			'what-we-do' => [
+				'why-we-must-act' => '',
+				//'funded-projects' => '',
+				//'faqs' => '',
+				//'how-you-can-help' => '',
+                'case-studies' => '',
+				'how-to-report-cseo' => ''
+			],
+			/*'get-involved' => [
+				'membership' => '',
+				'donating' => ''
+			],*/
+			'the-model-national-response' => '',/*[
+				'model-national-response' => '',
+				'policy-legislation' => '',
+				'case-studies' => '',
+				'educators-and-parents' => '',
+				'useful-links' => '',
+				'submit-resources' => ''
+			],*/
+			'funding' => [
+				'about-the-fund' => '',
+				'how-the-fund-is-spent' => '',
+				'apply-for-funding' => '',
+				'donors' => '',
+				'other-funding-methods' => ''
+			],
+			'join-us' => [
+				'our-members' => ''
+			],
+			'news-and-events' => [
+				'news-and-events' => '',
+				'news' => '',
+				'newsletter' => '',
+				'events' => ''
+			]
+		],
+
+		// Support menu
+		'Support' => [
+			'contact-us' => '',
+			'useful-contacts' => '',
+			'helplines-in-your-region' => '',
+			'feedback' => ''
+		],
+
+		// Social menu
+		'Connect' => [
+			'link_facebook' => '',
+			'link_twitter' => '',
+			'link_email' => ''
+		]
 	];
 	public static $slugs = [];
 	public static $fields = [
@@ -107,7 +180,8 @@ class Wep_Plugin {
         'section_1' => '5964e987a10bb',
         'section_2' => '5964e9a8a10bc',
         'section_3' => '5964e9b2a10bd',
-        'shortcode' => '5964ec11ed4db'
+        'shortcode' => '5964ec11ed4db',
+        'group' => '5975c5f60af7e'
     ];
 	public static $blocks = [
 		'landing-banner' => [
@@ -141,7 +215,7 @@ class Wep_Plugin {
 			'post_content' => '<p>Leo suspendisse imperdiet augue etiam ac in a ullamcorper tortor suspendisse ad ullamcorper maecenas class at a.</p>',
 			'title' => 'Model National Response',
 			'type' => 'cta1',
-			'linked_page' => 'model-national-response',
+			'linked_page' => 'the-model-national-response',
 			'button_label' => 'View full guidance',
 			'image' => 'stock-2.jpg'
 		],
@@ -267,19 +341,19 @@ class Wep_Plugin {
 			'title' => 'Who we are',
 			'type' => 'cta1'
 		],
-		'our-commitments' => [
-			'post_title' => 'Our commitments',
+		'statements-of-action' => [
+			'post_title' => 'Statement of action',
 			'post_content' => '',
-			'title' => 'Our commitments and statements',
+			'title' => 'Statements of action',
 			'type' => 'cta3',
 			'section_1' => '<p>Identify victims, and ensure they receive necessary support</p>',
 			'section_2' => '<p>Investigate cases of exploitation and prosecute offenders</p>',
 			'section_3' => '<p>Increase public awareness of the risks posed by children’s activities online</p>',
 			//'section_4' => '<p>Reduce the availability of child sexual abuse material online</p>',
-			'linked_page' => 'our-commitments',
-			'button_label' => 'Our commitments and statements'
+			'linked_page' => 'statements-of-action',
+			'button_label' => 'Statements of action'
 		],
-		'our-leadership' => [
+		'our-board' => [
 			'post_title' => 'Our leadership',
 			'post_content' => '<p>The WePROTECT Global Alliance is led by a multi-stakeholder Board, comprised of representatives from key countries, international and civil society organisations, and the technology industry.</p>',
 			'title' => 'Our leadership',
@@ -418,7 +492,7 @@ class Wep_Plugin {
 			'linked_page' => 'submit-resources'
 		],
 
-		'the-model-national-response' => [
+		'model-national-response-header' => [
 			'post_title' => 'The Model National Response',
 			'post_content' => '<p>Preventing and Tackling Child Sexual Exploitation and Abuse (CESA)</p>',
 			'title' => 'The Model National Response',
@@ -489,10 +563,10 @@ class Wep_Plugin {
 			'menu_order' => 200,
             'blocks' => [
                 'who-we-are',
-	            'our-commitments',
+	            'statements-of-action',
 	            'our-mission',
 	            'our-members',
-	            'our-leadership',
+	            'our-board',
 	            'our-history'
             ]
 		),
@@ -510,16 +584,16 @@ class Wep_Plugin {
                 'join-us'
             ]
 		),
-		'our-commitments' => array(
+		'our-board' => array(
 			'post_type' => 'page',
-			'post_title' => 'Our commitments',
-			'post_content' => '<p>Since the beginning of 2016, the Board has established a clear and ambitious strategy for this initiative.  It seeks to create a global movement that will transform how the crime of online child sexual exploitation is dealt with, resulting in more victims identified and safeguarded, more perpetrators apprehended and an end to online child sexual exploitation.</p><p>Supporting comprehensive national action to tackle online child sexual exploitation is key to our mission.  Our geographical reach is unprecedented: some 70 countries are members of WePROTECT or the Global Alliance, and all have been asked to join the new initiative.  They are joined by 20 global technology companies and 17 leading NGOs.</p>',
+			'post_title' => 'Our board',
+			'post_content' => '',
 			'menu_order' => 202
 		),
-		'our-leadership' => array(
+		'statements-of-action' => array(
 			'post_type' => 'page',
-			'post_title' => 'Our leadership',
-			'post_content' => '',
+			'post_title' => 'Statements of action',
+			'post_content' => '<p>Since the beginning of 2016, the Board has established a clear and ambitious strategy for this initiative.  It seeks to create a global movement that will transform how the crime of online child sexual exploitation is dealt with, resulting in more victims identified and safeguarded, more perpetrators apprehended and an end to online child sexual exploitation.</p><p>Supporting comprehensive national action to tackle online child sexual exploitation is key to our mission.  Our geographical reach is unprecedented: some 70 countries are members of WePROTECT or the Global Alliance, and all have been asked to join the new initiative.  They are joined by 20 global technology companies and 17 leading NGOs.</p>',
 			'menu_order' => 203
 		),
 		'our-members' => array(
@@ -698,13 +772,13 @@ class Wep_Plugin {
 	            'do-you-have-resources-to-share'
             ]
 		),
-		'model-national-response' => array(
+		'the-model-national-response' => array(
 			'post_type' => 'page',
 			'post_title' => 'Model National Response',
 			'post_content' => '',
 			'menu_order' => 601,
             'blocks' => [
-                'the-model-national-response'
+                'model-national-response-header'
             ]
 		),
 		'policy-and-legislation' => array(
@@ -764,6 +838,317 @@ class Wep_Plugin {
 			'post_title' => 'Events',
 			'post_content' => '',
 			'menu_order' => 703
+		),
+
+        /**
+         * MNR groups
+         */
+		/*'introduction' => array(
+			'post_type' => 'page',
+			'post_title' => 'Introduction',
+			'post_content' => '<h4>Leadership</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_parent' => 'the-model-national-response',
+			'post_category' => array( 'model-national-response' ),
+			'page_template' => 'mnr.php',
+			'menu_order' => 800,
+			'blocks' => [
+				'model-national-response-header'
+			]
+		),*/
+
+		'enablers' => array(
+			'post_type' => 'page',
+			'post_title' => 'Enablers',
+			'post_content' => '<h4>Leadership</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_parent' => 'the-model-national-response',
+			'post_category' => array( 'model-national-response' ),
+			'page_template' => 'mnr.php',
+			'menu_order' => 801,
+			'blocks' => [
+				'model-national-response-header'
+			]
+		),
+
+		'policy-and-governance' => array(
+			'post_type' => 'page',
+			'post_title' => 'Policy and Governance',
+			'post_content' => '<h4>Highest level national commitment to CSEA prevention and response</h4><p>Comprehensive understanding of CSEA within highest levels of government and law enforcement. WIllingness to work with, and co-ordinate to efforts of, multiple stakeholders to ensure the enhanced protection of victims and an enhanced response to CSEA offending.</p>',
+			'post_parent' => 'the-model-national-response',
+			'post_category' => array( 'model-national-response' ),
+			'page_template' => 'mnr.php',
+			'menu_order' => 802,
+			'blocks' => [
+				'model-national-response-header'
+			]
+		),
+
+		'criminal-justice' => array(
+			'post_type' => 'page',
+			'post_title' => 'Criminal Justice',
+			'post_content' => '<h4>Effective and successful CSEA investigations, convictions and offender management</h4><p>Law Enforcement and judiciary have the knowledge, skills, systems and tools required to enable them to perform victim-focused investigations and secure positive judicial outcomes. CSEA offenders are managed and reoffending prevented.</p>',
+			'post_parent' => 'the-model-national-response',
+			'post_category' => array( 'model-national-response' ),
+			'page_template' => 'mnr.php',
+			'menu_order' => 803,
+			'blocks' => [
+				'model-national-response-header'
+			]
+		),
+
+		'victim' => array(
+			'post_type' => 'page',
+			'post_title' => 'Victim',
+			'post_content' => '<h4>Appropriate suppor ervices for children and young people</h4><p>Children and yound people have access to services that support them thorugh the investigation and prosecution of crimes against them. They have access to shelter; specialised medical and psychological services; and rehabilitation, repatriation and resocialization services.</p>',
+			'post_parent' => 'the-model-national-response',
+			'post_category' => array( 'model-national-response' ),
+			'page_template' => 'mnr.php',
+			'menu_order' => 804,
+			'blocks' => [
+				'model-national-response-header'
+			]
+		),
+
+		'societal' => array(
+			'post_type' => 'page',
+			'post_title' => 'Societal',
+			'post_content' => '<h4>CSEA prevented</h4><p>Children and young people are informed and empwered to protect themselves from CSEA. Parents, carers, teachers, and childcare professionals are better prepared to keep children safe from CSEA, including addressing taboos surrounding sexual violence.</p>',
+			'post_parent' => 'the-model-national-response',
+			'post_category' => array( 'model-national-response' ),
+			'page_template' => 'mnr.php',
+			'menu_order' => 805,
+			'blocks' => [
+				'model-national-response-header'
+			]
+		),
+
+		'industry' => array(
+			'post_type' => 'page',
+			'post_title' => 'Industry',
+			'post_content' => '<h4>Industry engagement in developing solutions to prevent and tackle CSEA</h4><p>Industry has the power and willingness to block and remove online CSEA content and proactively adress local CSEA issues. Industry proactively reports online CSEA.</p>',
+			'post_parent' => 'the-model-national-response',
+			'post_category' => array( 'model-national-response' ),
+			'page_template' => 'mnr.php',
+			'menu_order' => 806,
+			'blocks' => [
+				'model-national-response-header'
+			]
+		),
+
+		'media-and-communications' => array(
+			'post_type' => 'page',
+			'post_title' => 'Media and Communications',
+			'post_content' => '<h4>Awareness raised among the public, professionals and policy makers</h4><p>Potential future offenders are deterred. CSEA offending and reoffending is reduced.</p>',
+			'post_parent' => 'the-model-national-response',
+			'post_category' => array( 'model-national-response' ),
+			'page_template' => 'mnr.php',
+			'menu_order' => 807,
+			'blocks' => [
+				'model-national-response-header'
+			]
+		),
+        
+        /**
+         * MNR sections
+         */
+
+		'leadership' => array(
+			'post_type' => 'mnr',
+			'post_title' => 'Leadership',
+			'post_content' => '<h4>Leadership</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_excerpt' => 'An accountable national governance and Oversight Committee',
+			'group' => 'policy-and-governance',
+			'menu_order' => 1
+		),
+
+		'research-analysis-and-monitoring' => array(
+			'post_type' => 'mnr',
+			'post_title' => 'Research, analysis and monitoring',
+			'post_content' => '<h4>Research, analysis and monitoring</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_excerpt' => 'National situational analysis of CSEA risk and response; measurements/indicators',
+			'group' => 'policy-and-governance',
+			'menu_order' => 2
+		),
+
+		'legislation' => array(
+			'post_type' => 'mnr',
+			'post_title' => 'Legislation',
+			'post_content' => '<h4>Legislation</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_excerpt' => 'Comprehensive and effective legal framework to investigate offenders and ensure protection for victims',
+			'group' => 'policy-and-governance',
+			'menu_order' => 3
+		),
+
+
+        ############
+
+		'dedicated-law-enforcement' => array(
+			'post_type' => 'mnr',
+			'post_title' => 'Dedicated Law Enforcement',
+			'post_content' => '<h4>Legislation</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_excerpt' => 'National remit; trained officers; proactive and reactive investigations; victim-focused; international cooperation',
+			'group' => 'criminal-justice',
+			'menu_order' => 4
+		),
+
+		'judiciary-and-prosecutors' => array(
+			'post_type' => 'mnr',
+			'post_title' => 'Judiciary and Prosecutors',
+			'post_content' => '<h4>Legislation</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_excerpt' => 'Trained; victim-focused',
+			'group' => 'criminal-justice',
+			'menu_order' => 5
+		),
+
+		'offender-management-process' => array(
+			'post_type' => 'mnr',
+			'post_title' => 'Offender Management Process',
+			'post_content' => '<h4>Legislation</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_excerpt' => 'Prevent re-offending of those in the criminal justice system nationally and internationally.',
+			'group' => 'criminal-justice',
+			'menu_order' => 6
+		),
+
+		'access-to-image-databases' => array(
+			'post_type' => 'mnr',
+			'post_title' => 'Access to Image Databases',
+			'post_content' => '<h4>Legislation</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_excerpt' => 'National database; link to Interpol database (ICSE)',
+			'group' => 'criminal-justice',
+			'menu_order' => 7
+		),
+
+		############
+
+		'end-to-end-support' => array(
+			'post_type' => 'mnr',
+			'post_title' => 'End to End Support',
+			'post_content' => '<h4>Legislation</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_excerpt' => 'Integrated services provided during investigation, prosecution and after-care',
+			'group' => 'victim',
+			'menu_order' => 8
+		),
+
+		'child-protection-workforce' => array(
+			'post_type' => 'mnr',
+			'post_title' => 'Child Protection Workforce',
+			'post_content' => '<h4>Legislation</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_excerpt' => 'Trained, coordinated and available to provide victim support',
+			'group' => 'victim',
+			'menu_order' => 9
+		),
+
+		'compensation-remedies-and-complaints-arrangements' => array(
+			'post_type' => 'mnr',
+			'post_title' => 'Compensation, remedies, and complaints arrangments',
+			'post_content' => '<h4>Legislation</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_excerpt' => 'Accessible procedures',
+			'group' => 'victim',
+			'menu_order' => 10
+		),
+
+		'child-helpline' => array(
+			'post_type' => 'mnr',
+			'post_title' => 'Child Helpline',
+			'post_content' => '<h4>Legislation</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_excerpt' => 'Victim reporting and support; referrals to services for ongoing assistance',
+			'group' => 'victim',
+			'menu_order' => 11
+		),
+
+		############
+
+		'csea-hotline' => array(
+			'post_type' => 'mnr',
+			'post_title' => 'CSEA Hotline',
+			'post_content' => '<h4>Legislation</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_excerpt' => 'Mechanism for reporting online CSEA content; link to law enforcement and Internet service providers',
+			'group' => 'societal',
+			'menu_order' => 12
+		),
+
+		'education-programme' => array(
+			'post_type' => 'mnr',
+			'post_title' => 'Education Programme',
+			'post_content' => '<h4>Legislation</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_excerpt' => 'For children/young people; parents/carers; teachers; practitioners; faith representatives',
+			'group' => 'societal',
+			'menu_order' => 13
+		),
+
+		'child-participation' => array(
+			'post_type' => 'mnr',
+			'post_title' => 'Child Participation',
+			'post_content' => '<h4>Legislation</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_excerpt' => 'For children/young people; parents/carers; teachers; practitioners; faith representatives',
+			'group' => 'societal',
+			'menu_order' => 14
+		),
+
+		'offender-support-systems' => array(
+			'post_type' => 'mnr',
+			'post_title' => 'Offender Support Systems',
+			'post_content' => '<h4>Legislation</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_excerpt' => 'Medical, psychological, self-help, awareness',
+			'group' => 'societal',
+			'menu_order' => 15
+		),
+
+		############
+
+		'takedown-proceedures' => array(
+			'post_type' => 'mnr',
+			'post_title' => 'Takedown Proceedures',
+			'post_content' => '<h4>Legislation</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_excerpt' => 'Local removal and blocking of online CSEA content',
+			'group' => 'industry',
+			'menu_order' => 16
+		),
+
+		'csea-reporting' => array(
+			'post_type' => 'mnr',
+			'post_title' => 'CSEA Reporting',
+			'post_content' => '<h4>Legislation</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_excerpt' => 'Statutory protections that would allow industry to fully and effectively report CSEA, including the transmission of content, to law enforcement or another designated agency',
+			'group' => 'industry',
+			'menu_order' => 17
+		),
+
+		'innovative-solution-development' => array(
+			'post_type' => 'mnr',
+			'post_title' => 'Innovative Solution Development',
+			'post_content' => '<h4>Legislation</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_excerpt' => 'Industry engagement to help address local CSEA issues',
+			'group' => 'industry',
+			'menu_order' => 18
+		),
+
+		'corporate-social-responsibility' => array(
+			'post_type' => 'mnr',
+			'post_title' => 'Corporate Social Responsibility',
+			'post_content' => '<h4>Legislation</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_excerpt' => 'Effective child-focused programme',
+			'group' => 'industry',
+			'menu_order' => 19
+		),
+
+		############
+
+		'ethical-and-informed-media-reporting' => array(
+			'post_type' => 'mnr',
+			'post_title' => 'Ethical and Informed Media Reporting',
+			'post_content' => '<h4>Legislation</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_excerpt' => 'Enable awareness and accurate understanding of problem',
+			'group' => 'media-and-communications',
+			'menu_order' => 20
+		),
+
+		'universal-technology' => array(
+			'post_type' => 'mnr',
+			'post_title' => 'Universal Technology',
+			'post_content' => '<h4>Legislation</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_excerpt' => 'Guidelines and application',
+			'group' => 'media-and-communications',
+			'menu_order' => 21
 		)
 	];
 
@@ -1118,7 +1503,7 @@ class Wep_Plugin {
 			foreach( self::$posts as $name => $content ) {
 				$blocks = null;
 				if( array_key_exists( 'blocks', $content ) ) {
-					$blocks = $content['blocks'];
+					//$blocks = $content['blocks'];
 					unset( $content['blocks'] );
 				}
 
@@ -1129,6 +1514,12 @@ class Wep_Plugin {
 					}
 				}
 
+				$group = null;
+				if( array_key_exists( 'group', $content ) ) {
+					$group = $content['group'];
+					unset( $content['group'] );
+				}
+
 				//var_dump($content);
 				$content['post_status'] = 'publish';
 				$id = wp_insert_post($content);
@@ -1136,6 +1527,11 @@ class Wep_Plugin {
 				    return false;
                 }
 				self::$slugs[$name] = $id;
+
+				if( $group ) {
+					update_post_meta( $id, 'group', array( (string)self::$slugs[$group] ) );
+					update_post_meta( $id, '_group', 'field_' . self::$fields['group'] );
+				}
 			}
 		}
 
@@ -1225,8 +1621,9 @@ class Wep_Plugin {
 						    if( $post ) {
 							    $val = array( $post[0]->ID );
 						    } else {
-						        var_dump( 'PAGE LINK FAIL (block: ' . $name . '): ', $data );
-						        //return false;
+							    // TODO: Tests failing only in test env??
+						        //var_dump( 'PAGE LINK FAIL (block: ' . $name . '): ', $data );
+						        return false;
                             }
 					    } elseif( $key == 'image' ) {
 						    $data = [
@@ -1239,8 +1636,9 @@ class Wep_Plugin {
 						    if( $post ) {
 							    $val = (int)$post[0]->ID;
 						    } else {
-							    var_dump( 'IMAGE LINK FAIL (block: ' . $name . '): ', $data );
-							    //return false;
+						        // TODO: Tests failing only in test env??
+							    //var_dump( 'IMAGE LINK FAIL (block: ' . $name . '): ', $data );
+							    return false;
 						    }
 					    }
 

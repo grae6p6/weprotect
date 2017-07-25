@@ -76,7 +76,7 @@ $locations = get_nav_menu_locations();
 </footer>
 </div>
 <script><!--
-    document.body.className = document.body.className.replace('no-js','');
+    document.body.className = document.body.className.replace('no-js','js');
 //--></script>
 <?php wp_footer(); ?>
 

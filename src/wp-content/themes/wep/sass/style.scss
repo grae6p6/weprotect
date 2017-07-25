@@ -42,6 +42,23 @@ body {
   @include media-breakpoint-up(lg) {
     font-size: 20px;
   }
+  &.js {
+    &.page-template-mnr {
+      .mnr {
+        .section {
+          &.links {
+            h3 {
+              margin: 0;
+              font-size: 1.25em;
+            }
+          }
+          &.data {
+            display: none;
+          }
+        }
+      }
+    }
+  }
 }
 
 h1, h2, h3, h3, h4, h5, h6 {
@@ -324,12 +341,25 @@ button {
       &:last-of-type {
         border: none;
       }
-      &.exp {
+      img {
+        width: 2.25em;
+        height: 2.25em;
+      }
+      &.expandable {
         background-color: $primary-color;
         color: $white;
+        a {
+          color: $white;
+        }
       }
-      &.open {
+      &.active {
         background-color: #1ba39c;
+        a {
+          color: $white;
+        }
+      }
+      a {
+        text-decoration: none;
       }
     }
   }
@@ -340,8 +370,40 @@ button {
       margin-bottom: .25em;
     }
     h3 {
-      font-weight: 400;
       font-size: 1.4em;
+      a {
+        text-decoration: none;
+      }
+    }
+    .links {
+      margin-bottom: 1em;
+      .entry {
+        margin-bottom: 1em;
+        div {
+          display: inline-block;
+          * {
+            margin: 0;
+          }
+          &:first-child {
+            background-color: $primary-color;
+            color: $white;
+            text-align: center;
+            width: 2.5em;
+          }
+        }
+      }
+    }
+    .outcome {
+      border: .125em solid $primary-color;
+      border-radius: .25em;
+      margin-bottom: 1em;
+      padding: 1em;
+      h4 {
+        font-size: 1em;
+      }
+      *:last-child {
+        margin: 0;
+      }
     }
   }
 }
@@ -359,6 +421,8 @@ button {
 .wpcf7-response-output {
   margin-bottom: 4em;
 }
+
+/* Buttons */
 
 button:hover, button.active {
   background-color: #2278ad;

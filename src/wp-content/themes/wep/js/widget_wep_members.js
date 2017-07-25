@@ -21,6 +21,13 @@
 
             // Render map
             if( typeof ( map = $('#jqvmap') ) !== 'undefined' ) {
+
+                // Countries list for map highlighting
+                var countries = [];
+                wml.find('[data-type="country"]').each(function(){
+                    countries[ $(this).data('value') ] = 1;
+                });
+
                 //var locale = $('html').attr('lang');
                 map.vectorMap({
                     map: 'world_en',// + locale.split('-')[0],
@@ -32,15 +39,7 @@
                     enableZoom: true,
                     showTooltip: true,
                     scaleColors: ['#8e699b','#ffffff'],
-                    values: {
-                        cn: 1,
-                        ca: 1,
-                        gb: 1,
-                        ch: 1,
-                        br: 1,
-                        fr: 1,
-                        de: 1
-                    },
+                    values: countries,
                     normalizeFunction: 'polynomial'
                 });
             }
