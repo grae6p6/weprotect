@@ -6011,7 +6011,7 @@ body {
   body.js.page-template-mnr .mnr .section.links h3 {
     margin: 0;
     font-size: 1.25em; }
-  body.js.page-template-mnr .mnr .section.data {
+  body.js.page-template-mnr .mnr section {
     display: none; }
 
 h1, h2, h3, h3, h4, h5, h6 {
@@ -6219,12 +6219,15 @@ button {
 .mnr .menu {
   background-color: #eaeaea;
   color: #562a64;
-  padding: 0; }
+  padding: 0;
+  font-size: .8em; }
   .mnr .menu .entry {
     padding: 1em 2em;
     border-bottom: 2px solid #d0bcd6; }
     .mnr .menu .entry:last-of-type {
       border: none; }
+    .mnr .menu .entry .row {
+      padding: .5em 0; }
     .mnr .menu .entry img {
       width: 2.25em;
       height: 2.25em; }
@@ -6244,24 +6247,34 @@ button {
   background-color: #ffffff;
   padding: 1em 1em 1em 2em; }
   .mnr .content h2 {
-    margin-bottom: .25em; }
+    font-weight: 400;
+    margin: 1em 0 .25em 0; }
   .mnr .content h3 {
-    font-size: 1.4em; }
+    font-size: 1.4em;
+    padding-bottom: .125em; }
     .mnr .content h3 a {
       text-decoration: none; }
   .mnr .content .links {
     margin-bottom: 1em; }
     .mnr .content .links .entry {
-      margin-bottom: 1em; }
+      position: relative;
+      margin-bottom: 1em;
+      background-color: #eaeaea; }
       .mnr .content .links .entry div {
-        display: inline-block; }
+        display: inline-block;
+        margin-left: 3em;
+        padding: .5em 0; }
         .mnr .content .links .entry div * {
           margin: 0; }
         .mnr .content .links .entry div:first-child {
+          position: absolute;
           background-color: #562a64;
           color: #fff;
           text-align: center;
-          width: 2.5em; }
+          width: 2.5em;
+          height: 100%;
+          margin: 0;
+          padding-top: .75em; }
   .mnr .content .outcome {
     border: 0.125em solid #562a64;
     border-radius: .25em;
@@ -6271,6 +6284,11 @@ button {
       font-size: 1em; }
     .mnr .content .outcome *:last-child {
       margin: 0; }
+  .mnr .content section h4 {
+    font-size: 1.25em;
+    border-bottom: 0.125em solid #562a64;
+    padding-bottom: .25em;
+    margin-bottom: .5em; }
 
 /* WCF7 */
 .wpcf7 {

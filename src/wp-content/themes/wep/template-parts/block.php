@@ -11,7 +11,7 @@ global $heading, $button, $title, $shortcode;
 if( function_exists( 'get_field' ) ) :
 	$blocks = get_field( 'assigned_blocks' );
 	if( $blocks ) :
-        $is_mnr = false;//is_page( 'model-national-response' );
+        $is_mnr = is_page( 'the-model-national-response' );
 
 	    // Loop blocks...
 		foreach( $blocks as $block_count => $post ) :
@@ -47,7 +47,7 @@ if( function_exists( 'get_field' ) ) :
         <?php if( get_the_content() == '' ) : ?>
     <div class="container">
         <div class="col text-center">
-            <h2><?php _e( 'Curently no content available for this page' , 'wep' ) ?></h2>
+            <h2><?php _e( 'Currently no content available for this page' , 'wep' ) ?></h2>
             <p><?php _e( 'Content for this area has not yet been added. To be completed soon.', 'wep' ) ?></p>
         </div>
     </div>

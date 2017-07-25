@@ -17,7 +17,7 @@ get_header(); ?>
 			<div class="mnr">
 				<div class="container">
 					<div class="row">
-						<div class="col-12 col-md-4 menu">
+						<div class="col-12 col-md-3 menu">
                             <?php
 
                             $page_introduction = get_page_by_path( 'the-model-national-response' );
@@ -108,11 +108,11 @@ get_header(); ?>
 							<div class="entry expandable">Media and communications</div>
 							<div class="entry">Download full MNR document</div>-->
 						</div>
-						<div class="col-12 col-md-8 content">
+						<div class="col-12 col-md-9 content">
                             <?php if( $post->ID === $page_introduction->ID ) : ?>
-                                <h2><?php _e( 'Introduction', 'wep' ) ?></h2>
+                                <h1><?php _e( 'Introduction', 'wep' ) ?></h1>
                             <?php else: ?>
-                                <?php the_title( '<h2>', '</h2>') ?>
+                                <?php the_title( '<h1>', '</h1>') ?>
                             <?php endif;
 
                             $sections = get_posts([

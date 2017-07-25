@@ -106,6 +106,7 @@ class Wep_Plugin {
 		// Main menu
 		'Main' => [
 			'who-we-are' => [
+				'who-we-are' => '',
 				'our-mission' => '',
 				//'our-commitments' => '',
 				'our-board' => '',
@@ -116,7 +117,8 @@ class Wep_Plugin {
 				'contact-us' => ''
 			],
 			'what-we-do' => [
-				'why-we-must-act' => '',
+				'what-we-do' => '',
+                'why-we-must-act' => '',
 				//'funded-projects' => '',
 				//'faqs' => '',
 				//'how-you-can-help' => '',
@@ -127,7 +129,9 @@ class Wep_Plugin {
 				'membership' => '',
 				'donating' => ''
 			],*/
-			'the-model-national-response' => '',/*[
+			'the-model-national-response' => [
+				'the-model-national-response'
+            ],/*[
 				'model-national-response' => '',
 				'policy-legislation' => '',
 				'case-studies' => '',
@@ -136,6 +140,7 @@ class Wep_Plugin {
 				'submit-resources' => ''
 			],*/
 			'funding' => [
+				'funding' => '',
 				'about-the-fund' => '',
 				'how-the-fund-is-spent' => '',
 				'apply-for-funding' => '',
@@ -143,6 +148,8 @@ class Wep_Plugin {
 				'other-funding-methods' => ''
 			],
 			'join-us' => [
+				'join-us' => '',
+				'apply-for-membership' => '',
 				'our-members' => ''
 			],
 			'news-and-events' => [
@@ -204,11 +211,29 @@ class Wep_Plugin {
 			'post_content' => '<p>The Internet is an extraordinary catalyst of innovation, education, and expanding global economic growth. Technology offers endless benefits and possibilities to our children that we never experienced as they have unlimited access to information with the ability to communicate and connect with people they have never met from all over the planet. But with this comes a range of ever more sophisticated threats.</p><p>Included in that range of threats is online child sexual exploitation—a heinous crime that, through the reach of the internet, has become a major international crime of our age. Never before has it been easier for perpetrators to make contact with children, share images of abuse and inspire each other to commit further crimes.</p><p>It is a huge problem, with children being exploited on an industrial scale:</p>',
 			'title' => 'Why we must act',
 			'type' => 'cta3',
+			//'bg_colour' => '#eaeaea',
 			'linked_page' => 'who-we-work-with',
 			'section_1' => '<p>The National Centre for Missing and Exploited Children, which handles reports of child sexual exploitation from major tech companies in the US, has received more than 7.5 million reports since 1998.  4.4 million of these were received in 2015 alone.</p>',
 			'section_2' => '<p>In 2014, INHOPE, the association of INTERNET hotlines, assessed 83,644 URLS as containing child sexual abuse material worldwide – a 64% increase from 2013.</p>',
 			'section_3' => '<p>The exact extent of sexual exploitation on peer-to-peer networks, cloud services and the encrypted or dark web is less certain, but it is likely to be significant. For instance, the NGO Thorn assesses that some 30% of searches on the eDonkey P2P platform are for child sexual abuse material.</p>'//,
 			//'section_4' => '<p>A recent study concluded that only 2% of hidden web services on TOR host child abuse material, yet these sites accounted for 80% of traffic.</p>'
+		],
+		'why-we-must-act-statistics' => [
+			'post_title' => 'Why we must act - statistics',
+			'post_content' => '<p>The images and videos being shared are of the worst kind, with an apparent trend towards younger children and greater violence. Of the 68,000 reports handled by the Internet Watch Foundation in 2015:</p>',
+			'title' => '',
+			'type' => 'cta3',
+			'bg_colour' => '#eaeaea',
+			'section_1' => '<p>69% were of children assessed to be under 10 years of age</p>',
+			'section_2' => '<p>1,788 victims were assessed to be under 2 years of age</p>',
+			'section_3' => '<p>34% of images involved the rape or sexual torture of children</p>'//,
+		],
+		'why-we-must-act-join-us' => [
+			'post_title' => 'Why we must act - join us',
+			'post_content' => '<p>This issue is a global problem and cannot be dealt with by countries working in isolation. It demands a coordinated global response by governments, technology companies and civil society.</p>',
+			'title' => 'Join us',
+			'linked_page' => 'join-us',
+			'type' => '',
 		],
 		'model-national-response' => [
 			'post_title' => 'Model National Response',
@@ -283,7 +308,7 @@ class Wep_Plugin {
 			'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us to learn more.</p>',
 			'title' => 'Join us',
 			'type' => '',
-			'linked_page' => 'membership',
+			'linked_page' => 'join-us',
 			'button_label' => 'Why join WePROTECT?'
 		],
 
@@ -300,13 +325,13 @@ class Wep_Plugin {
 		],
 		'why-join' => [
 			'post_title' => 'Membership - Why join',
-			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>',
+			'post_content' => '<p>By signing up to the Statement of Action, countries will be making a high profile statement of their intent to tackle this heinous crime;</p><p>They will have access to a growing global network of expertise and support to help countries build their capacity and capability against online child sexual exploitation;</p><p>They will benefit from global technology development and awareness raising of this issue, and</p>',
 			'title' => 'Why join?',
 			'type' => 'cta3',
 			'linked_page' => 'who-we-are',
-			'section_1' => '<p>Reason one</p>',
-			'section_2' => '<p>Reason two</p>',
-			'section_3' => '<p>Reason three</p>'
+			'section_1' => '<p>The UNICEF hosted Fund to End Violence Against Children will support projects and programmes of developing countries and organisations from these countries that aim to prevent online CSE.</p>',
+			'section_2' => '<p>Our civil society organisation members gain access to a worldwide network of actors from varying backgrounds, all committed to ending online child sexual exploitation.</p>',
+			'section_3' => '<p>Companies who sign up to the WePROTECT Global Alliance have a unique opportunity to play a part in ending this heinous crime, working together with Government, Law enforcement and civil society to have a real voice in the solutions to this problem.</p>'
 		],
 		'how-to-join' => [
 			'post_title' => 'How to join',
@@ -314,11 +339,11 @@ class Wep_Plugin {
 			'title' => 'How to join',
 			'type' => 'points',
 			'bg_colour' => '#eaeaea',
-			'linked_page' => 'join-us',
+			'linked_page' => 'apply-for-membership',
 			'button_label' => 'Apply for membership',
-			'section_1' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
-			'section_2' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
-			'section_3' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>'
+			'section_1' => '<p>Online child sexual exploitation is a global crime that requires a global response.  This issue cannot be dealt with by countries working in isolation. It demands a coordinated global response by governments, technology companies and civil society.</p>',
+			'section_2' => '<p><strong>Children are being exploited on an industrial scale and we have to act now.</strong> The National Centre for Missing and Exploited Children, which handles reports from major tech companies in the US of images of child sexual abuse being viewed by people all around the world, has received more than 7.5 million reports since 1998.  4.4 million of these were received in 2015 alone.</p>',
+			'section_3' => '<p>&nbsp;</p>'
 		],
 		'who-is-a-member' => [
 			'post_title' => 'Who\'s a member?',
@@ -448,7 +473,7 @@ class Wep_Plugin {
 			'type' => 'cta1'
 		],
 
-		'resources' => [
+		/*'resources' => [
 			'post_title' => 'Resources',
 			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>',
 			'title' => 'Resources',
@@ -462,7 +487,7 @@ class Wep_Plugin {
 			'type' => '',
 			'bg_colour' => '#eaeaea',
 			'linked_page' => 'policy-and-legislation'
-		],
+		],*/
 
 		'case-studies' => [
 			'post_title' => 'Case studies',
@@ -473,7 +498,7 @@ class Wep_Plugin {
 			'button_label' => 'Case studies'
 		],
 
-		'educators-and-parents' => [
+		/*'educators-and-parents' => [
 			'post_title' => 'Educators and parents',
 			'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>',
 			'title' => 'Educators and parents',
@@ -490,7 +515,7 @@ class Wep_Plugin {
 			'type' => '',
 			'bg_colour' => '#eaeaea',
 			'linked_page' => 'submit-resources'
-		],
+		],*/
 
 		'model-national-response-header' => [
 			'post_title' => 'The Model National Response',
@@ -499,8 +524,7 @@ class Wep_Plugin {
 			'type' => 'image',
 			'image' => 'stock-1.jpg',
 			'linked_page' => 'home',
-            'button_label' => 'Download PDF',
-            'page_template' => 'mnr.php'
+            'button_label' => 'Download PDF'
 		],
 
 
@@ -519,9 +543,9 @@ class Wep_Plugin {
 				'latest-news-and-events'
 			]
 		),
-		'join-us' => array(
+		'apply-for-membership' => array(
 			'post_type' => 'page',
-			'post_title' => 'Join us',
+			'post_title' => 'Apply for membership',
 			'post_content' => '',
             'blocks' => [
 	            'membership',
@@ -593,7 +617,33 @@ class Wep_Plugin {
 		'statements-of-action' => array(
 			'post_type' => 'page',
 			'post_title' => 'Statements of action',
-			'post_content' => '<p>Since the beginning of 2016, the Board has established a clear and ambitious strategy for this initiative.  It seeks to create a global movement that will transform how the crime of online child sexual exploitation is dealt with, resulting in more victims identified and safeguarded, more perpetrators apprehended and an end to online child sexual exploitation.</p><p>Supporting comprehensive national action to tackle online child sexual exploitation is key to our mission.  Our geographical reach is unprecedented: some 70 countries are members of WePROTECT or the Global Alliance, and all have been asked to join the new initiative.  They are joined by 20 global technology companies and 17 leading NGOs.</p>',
+			'post_content' => '<strong>STATEMENT OF ACTION BY GOVERNMENTS TO TACKLE ONLINE CSE: ABU DHABI WEPROTECT SUMMIT 16-17 NOVEMBER 2015</strong>
+
+<p>We, the leaders of countries and international organisations gathered in the United Arab Emirates, believe that online child sexual exploitation is a heinous crime that demands a coordinated global response.</p>
+
+<p>We reaffirm and endorse the Statement of Action of the London WePROTECT Summit in December 2014, which sets out our commitment to take action to identify and protect victims, remove child sexual abuse material from the internet and strengthen cooperation to track down the perpetrators of this abuse. But we now want to go further.</p>
+
+<p>To this end, we support the recommendations of the WePROTECT International Advisory Board, and agree to establish and develop, in our own countries, a coordinated national response to online child sexual exploitation, guided by the WePROTECT Model National Response, that will ensure:</p>
+<ul>
+ 	<li>The highest level of national response to online child sexual exploitation, including preventing wider child sexual exploitation and abuse;</li>
+ 	<li>Effective prevention programmes, investigations and prosecutions, safeguarding of victims and offender management;</li>
+ 	<li>Appropriate support services for children and young people;</li>
+ 	<li>Legislation or policies that will support technology companies’ efforts to remove child sexual abuse material from the internet, including through the development of technological solutions;</li>
+ 	<li>Greater awareness and understanding amongst the public and professionals working with children.</li>
+</ul>
+<p>In support of this, we commit to:</p>
+<ul>
+ 	<li>Drive our national responses by establishing multi-stakeholder bodies that bring together all of those with a responsibility to protect children online;</li>
+ 	<li>Publish an analysis of our own national response, including our implementation of the WePROTECT commitments, and use this to develop our capabilities;</li>
+ 	<li>Make use of the shared knowledge and resources of the WePROTECT community to develop our national response, requesting support from the Global Fund to End Violence Against Children and coordinating our support for such capacity building as appropriate.</li>
+</ul>
+<p>We recognise the need to sustain WePROTECT as a major international initiative to improve the global capacity to tackle the sexual exploitation of children online, and have agreed to:</p>
+<ul>
+ 	<li>Support the establishment, by March 2016, of an Advisory Board, supported by a
+secretariat, responsible to all those who have signed up to WePROTECT, and which will support the implementation of commitments made at the London and Abu Dhabi Summits and oversee future development of this initiative;</li>
+ 	<li>Meet biennially at Ministerial level to review our progress and agree action to tackle emerging threats to children from sexual exploitation online;</li>
+ 	<li>Represent the importance of tackling online child sexual exploitation and WePROTECT within all relevant global forums.</li>
+</ul>',
 			'menu_order' => 203
 		),
 		'our-members' => array(
@@ -615,7 +665,11 @@ class Wep_Plugin {
 		'our-history' => array(
 			'post_type' => 'page',
 			'post_title' => 'Our history',
-			'post_content' => '',
+			'post_content' => '<p>In 2012, the then US Attorney General Eric Holder and EU Commissioner Celia Malmstrom launched the Global Alliance Against Child Sexual Abuse Online, which united 54 countries through their high-level ministers’ commitments to pursue shared policy targets in the fight against online child sexual exploitation.</p>
+<p>In 2013, the then Prime Minister of the UK, David Cameron, launched a major push against online child sexual exploitation at the Internet Safety and Security Summit.</p>
+<p>In 2014, he then brought together the WePROTECT Children Online initiative, with a landmark summit of ministers and leaders of technology companies and civil society in London.</p>
+<p>With the second WePROTECT Summit in the UAE in 2015, 63 countries and international organisations, plus some of the biggest technology firms and leading NGOs, have made commitments to comprehensive national and international action against this crime.</p>
+<p>At the 2015 Abu Dhabi Summit, the UK, US and EU Commission also announced their intention to merge WePROTECT and the Global Alliance, to create – for the first time – a single initiative with the influence, resources and expertise to transform how this crime is dealt with worldwide.  It merges the best elements of both of these major initiatives: their dynamism, the scope and ambition of their membership and vision, and the commitment to concrete action and report on progress.  And crucially, at its heart are the commitment to multistakeholder action needed to tackle this crime.</p>',
 			'menu_order' => 206
 		),
 		'contact-us' => array(
@@ -647,7 +701,9 @@ class Wep_Plugin {
 			'post_content' => '',
 			'menu_order' => 301,
             'blocks' => [
-	            'why-we-must-act-header'
+	            'why-we-must-act',
+                'why-we-must-act-statistics',
+                'why-we-must-act-join-us'
             ]
 		),
 		'funded-projects' => array(
@@ -736,9 +792,9 @@ class Wep_Plugin {
 				'un-sustainable-development-goals'
 			]
 		),
-		'membership' => array(
+		'join-us' => array(
 			'post_type' => 'page',
-			'post_title' => 'Membership',
+			'post_title' => 'Join us',
 			'post_content' => '',
 			'menu_order' => 501,
 			'blocks' => [
@@ -758,7 +814,7 @@ class Wep_Plugin {
 		/**
 		 * Resources
 		 */
-		'resources' => array(
+		/*'resources' => array(
 			'post_type' => 'page',
 			'post_title' => 'Resources',
 			'post_content' => '',
@@ -771,29 +827,30 @@ class Wep_Plugin {
 	            'educators-and-parents',
 	            'do-you-have-resources-to-share'
             ]
-		),
+		),*/
 		'the-model-national-response' => array(
 			'post_type' => 'page',
 			'post_title' => 'Model National Response',
 			'post_content' => '',
+			'page_template' => 'mnr.php',
 			'menu_order' => 601,
             'blocks' => [
                 'model-national-response-header'
             ]
 		),
-		'policy-and-legislation' => array(
+		/*'policy-and-legislation' => array(
 			'post_type' => 'page',
 			'post_title' => 'Policy and legislation',
 			'post_content' => '',
 			'menu_order' => 602
-		),
+		),*/
 		'case-studies' => array(
 			'post_type' => 'page',
 			'post_title' => 'Case studies',
 			'post_content' => '',
 			'menu_order' => 603
 		),
-		'educators-and-parents' => array(
+		/*'educators-and-parents' => array(
 			'post_type' => 'page',
 			'post_title' => 'Educators and parents',
 			'post_content' => '',
@@ -810,7 +867,7 @@ class Wep_Plugin {
 			'post_title' => 'Submit resources',
 			'post_content' => '',
 			'menu_order' => 606
-		),
+		),*/
 
 		/**
 		 * News and events
@@ -954,7 +1011,28 @@ class Wep_Plugin {
 		'leadership' => array(
 			'post_type' => 'mnr',
 			'post_title' => 'Leadership',
-			'post_content' => '<h4>Leadership</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_content' => '<h2>Capability 1 – Leadership</h2>
+<h4>Definition</h4>
+<ul>
+ 	<li>Good governance brings together those with a responsibility to protect children from online sexual exploitation and is a multi-stakeholder, cross-sector national body or bodies (herewith referred to as body)</li>
+ 	<li>There is no one model that the multi-stakeholder body should adopt: it might be responsible for the overall governance and oversight of a country’s capability and capacity to prevent and respond to online CSEA, or simply act as a body for coordinating work across government, industry and civil society. Where countries already have an overall child protection group or a body that covers wider digital citizenship, cybersecurity, violence against children or child rights, this function might be assumed within that existing mechanism.</li>
+ 	<li>Ideally this is a government-led body. For an effective response, civil society and industry should be fully involved.</li>
+ 	<li>The national body could comprise senior level representation from: relevant government departments (such as Ministries of Interior, Justice, Social Welfare/Children’s Services, Education, Health, Telecommunications); Law enforcement; Judiciary, Non-governmental organisations; Technology/ICT industry and other relevant industry sectors (such as tourism); Faith-based organisations; and other specialist agencies working on CSEA and violence against children.</li>
+ 	<li>The body could be responsible for mobilising and coordinating the national response to CSEA, and for identifying and promoting action to address gaps identified through the Model National Response.</li>
+ 	<li>The body could also assist with the dissemination of knowledge and expertise on CSEA to national and local service providers and encourage a multi-stakeholder approach to working at both national and local levels.</li>
+ 	<li>The body might identify, secure and coordinate any support required from international organisations and be the national point of contact with international initiatives and networks relating to CSEA. At the domestic level; it will also need to ensure coherence with other national policies, platforms and action plans on violence against children more generally, child rights, cybersecurity and digital citizenship.</li>
+</ul>
+<h4>Why is it needed?</h4>
+<ul>
+ 	<li>To enable a national programme of activity to prevent and tackle CSEA to be collectively agreed and progress to be monitored and reported.</li>
+ 	<li>The greater sharing of expertise and information will inform and enhance each stakeholder’s existing practice, leading to the improvement of services and capability nationally and restricting the ability of offenders to operate internationally.</li>
+ 	<li>A national body will ensure active and coordinated participation in global initiatives to tackle CSEA such as WePROTECT which will enhance international cooperation and enable the sharing of good practice internationally.</li>
+ 	<li>Using the national body to coordinate any support from the international community will ensure that the support is focussed on priority areas for development based on the country’s needs.</li>
+</ul>
+<h4>More guidance and support</h4>
+<ul>
+ 	<li>Guidance for Governments on national strategies to address ICT-related violence, exploitation and abuse in collaboration with partners is being developed by UNICEF and will be made available in 2017.</li>
+</ul>',
 			'post_excerpt' => 'An accountable national governance and Oversight Committee',
 			'group' => 'policy-and-governance',
 			'menu_order' => 1
@@ -963,7 +1041,34 @@ class Wep_Plugin {
 		'research-analysis-and-monitoring' => array(
 			'post_type' => 'mnr',
 			'post_title' => 'Research, analysis and monitoring',
-			'post_content' => '<h4>Research, analysis and monitoring</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_content' => '<h2>Capability 2 – Research, Analysis and Monitoring</h2>
+<h4>Definition</h4>
+<ul>
+ 	<li>The nature and scale of the country’s current CSEA threat, vulnerability, risk and response – and the intelligence and evidence supporting these assessments – is clearly articulated. The assessment is collectively endorsed by members of the national body (see Capability 1 – Leadership) as being credibly and comprehensively informed.</li>
+ 	<li>Action to prevent and tackle CSEA is intelligence and evidence-led. The nationally-agreed assessment is used to inform the development, prioritisation and implementation of the country’s CSEA response and related policy and practice.</li>
+ 	<li>Nationally agreed responses include measurable outcomes and indicators, and progress is regularly monitored and outcomes evaluated. CSEA actions can be included within any existing policies/ plans/strategies on related issues such as child protection, violence against children or child rights.</li>
+ 	<li>Ongoing research into local CSEA-related issues is undertaken to ensure action remains current and relevant, and the quality and nature of research used to support decision making is actively monitored.</li>
+ 	<li>Compliance with international and regional CSEA-related standards is monitored and evaluated.</li>
+</ul>
+<h4>Why it is needed?</h4>
+<ul>
+ 	<li>Nationally coordinated research and analysis can produce an authoritative view of the CSEA threat, vulnerability, risk and response due to the range and number of organisations involved.</li>
+ 	<li>Continuous development and improvement in the quality of the national response to CSEA can be achieved through robust research, regular monitoring and evaluation.</li>
+ 	<li>Research and analysis will identify new or emerging trends and patterns of CSEA which will enable the development of effective policies, intervention opportunities to safeguard children, and disruption opportunities to prevent offending.</li>
+ 	<li>Intelligence and evidence-led policy and practice will ensure that activity is clearly prioritised against areas where the worst harm is being caused to children and the most significant capability gaps have been identified.</li>
+ 	<li>Consistent and regular monitoring and progress-reporting of activities, and rigorous evaluations that measure the achievements of previously agreed indicators, will help a government to report progress against relevant international and regional standards and targets. This includes the UN Convention on the Rights of the Child (UNCRC) and its Optional Protocol on the sale of children, child prostitution and child pornography, and Agenda 2030, particularly Sustainable Development Goal 16.2 – End abuse, exploitation, trafficking and all forms of violence against and torture of children</li>
+</ul>
+<h4>Good practice</h4>
+<ul>
+ 	<li>At a minimum, an analysis should: assess the current CSEA threat, how it is manifested and who is most at risk; assess the country’s vulnerability to this threat; assess the current institutional response; review and evaluate the implementation of applicable legislation and policies to assess compliance with international standards and good practice; review the current ICT ecosystem response – including Hotline reporting mechanisms and industry engagement; and map the activity of other stakeholders engaged in this issue.</li>
+ 	<li>To inform an analysis, access needs to be provided to a wide range of CSEA relevant data and information from organisations represented on the national body and any other relevant stakeholders. In addition, primary data needs to be collected from a variety of sources such as children, parents, educators, law enforcers, service providers.</li>
+</ul>
+<h4>More guidance and support</h4>
+There are a number of intergovernmental and international non-governmental organisations that have undertaken research, analysis and monitoring of efforts in partnership with governments and civil society across the world and have developed best practice to help countries. These include UNICEF and its Office of Research (www.unicef.org/protection and www.unicef-irc.org), ECPAT (www.ecpat.net) and the Family Online Safety Institute’s Global Resource and Information Directory (www.fosigrid.org). More information can be found on their websites.
+
+The Special Representative of the UN Secretary-General on Violence against Children has published a study entitled Releasing Children’s Potential and Minimizing Risks – ICTs, the Internet and Violence against Children – www.srsg.violenceagainstchildren.org
+
+Global Kids Online is an international research project which aims to advance understanding of whether and how the internet amplifies the risks of harm to children. It does this by stimulating and guiding investigations of how children around the globe use new digital, networked and mobile technologies. More information can be found at www.unicef-irc.org/article/1194/',
 			'post_excerpt' => 'National situational analysis of CSEA risk and response; measurements/indicators',
 			'group' => 'policy-and-governance',
 			'menu_order' => 2
@@ -972,7 +1077,34 @@ class Wep_Plugin {
 		'legislation' => array(
 			'post_type' => 'mnr',
 			'post_title' => 'Legislation',
-			'post_content' => '<h4>Legislation</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_content' => '<h2>Capability 3 – Legislation</h2>
+<h4>Definition</h4>
+<ul>
+ 	<li>Comprehensive and effective domestic legislation to protect children from all forms of sexual exploitation and abuse – both online and offline.</li>
+ 	<li>This must extend beyond criminalising the actions of sex offenders; it should ensure that law enforcement bodies can identify the perpetrators of such actions, protect their victims and ensure that victims’ rights are protected, and that online service providers are equiped with a clear safe harbour for reviewing and reporting online content.</li>
+ 	<li>The legislation can draw on or model existing international law, incorporating international standards and good child protection practices, and is based on the protection measures of the UN Convention on the Rights of the Child (UNCRC) and its Optional Protocol on the sale of children, child prostitution and child pornography.</li>
+</ul>
+<h4>Why is it needed?</h4>
+<ul>
+ 	<li>Comprehensive and effective legislation will enable law enforcement to proactively investigate and prosecute child sex offenders and identify and protect more victims. This is particularly important for online offences where there is no evidence that contact sexual abuse has taken place to ensure all sexual offences against children can be prosecuted.</li>
+ 	<li>Crimes involving CSEA can cross geographical borders, with the offender resident in one country and the victim in another. In cases of online child sexual exploitation, the service provider is often resident in another jurisdiction. Legal approaches to preventing and tackling CSEA therefore need to be coordinated and aligned where possible, to prevent child sex offenders from concentrating their efforts in those countries where they know children may be more vulnerable.</li>
+ 	<li>The role of the internet in the viewing or sharing of child sexual abuse material means that sometimes communications data (which is the ‘who’, ‘where’, ‘when’, ‘how’ and ‘with whom’ of a communication but not what was written or said) is the only way to identify online child sexual exploitation offenders. Safeguards are important including independent oversight of communications data powers given to designated authorities. Authorisations will have to set out why accessing the communications data in question is necessary in a specific investigation for a particular statutory purpose, and how it is proportionate to what is sought to be achieved.</li>
+</ul>
+<h4>Good practice</h4>
+<ul>
+ 	<li>For countries that do not currently have comprehensive legislation in place, complying with international legal standards is an initial step in addressing these issues and can then support the development of comprehensive and effective national legislation.</li>
+ 	<li>The Council of Europe’s Convention on Cybercrime (also called the ‘Budapest Convention’) and Convention on the Protection of Children against Sexual Exploitation and Sexual Abuse (also called the ‘Lanzarote Convention’) serve as benchmarks for criminal law reform and wider reform of services for victims. They are effective tools for combating the sexual exploitation and abuse of children, and useful resources for informing the creation of an effective legislative framework because they contain specific definitions of offences as well as provisions requiring punishment for criminalised behaviour, allowing for more effective prosecution of offenders and services for victims. The Lanzarote Convention also provides guidance and preventive measures such as screening, recruitment and training of people working in contact with children, as well as monitoring measures for offenders and potential offenders. Please note that countries outside of the Council of Europe can accede to these Conventions.</li>
+ 	<li>Agreed metrics will enable the effectiveness of the use of legislation to be monitored and reported. Effectiveness measures should include at a minimum: conviction rates and the number of victims identified.</li>
+ 	<li>The Luxembourg Guidelines (see Capability 21) offer practical guidance on navigating the complex lexicon of CSEA terms to be used in legislation.</li>
+</ul>
+<h4>More guidance and support</h4>
+<ul>
+ 	<li>More information on the relevant international treaties can be found at www.ohchr.org/en/ professionalinterest/pages/crc.aspx and www.ohchr.org/en/professionalinterest/pages/oPSCCRC.aspx</li>
+ 	<li>More information about the Council of Europe’s Budapest and Lanzarote Conventions can be found at www.coe.int/en/web/conventions/full-list</li>
+ 	<li>More information about the Luxembourg Guidelines can be found at www.luxembourgguidelines.org</li>
+ 	<li>The International Centre for Missing &amp; Exploited Children (ICMEC) researches and analyses national legislation from around the world to identify good practice and useful models that may benefit other countries. ICMEC’s ‘Child Pornography: Model Legislation &amp; Global Review’ provides a legal framework for countries to consider when implementing/enhancing legislation. Please see ICMEC’s website for further details – www.icmec.org</li>
+ 	<li>Other international organisations such as ECPAT and UNICEF are undertaking research and analysis of legislation and policies for the prevention and response to CSEA and more information can be found at their websites – www.unicef.org/protection and www.ecpat.net</li>
+</ul>',
 			'post_excerpt' => 'Comprehensive and effective legal framework to investigate offenders and ensure protection for victims',
 			'group' => 'policy-and-governance',
 			'menu_order' => 3
@@ -984,7 +1116,35 @@ class Wep_Plugin {
 		'dedicated-law-enforcement' => array(
 			'post_type' => 'mnr',
 			'post_title' => 'Dedicated Law Enforcement',
-			'post_content' => '<h4>Legislation</h4><p>Lorem ipsum dolor sit amet</p>',
+			'post_content' => '<h2>Capability 4 – Dedicated Law Enforcement</h2>
+<h4>Definition</h4>
+<ul>
+ 	<li>Law enforcement capability with an explicit remit to lead, support and coordinate investigations into child sexual exploitation and abuse (CSEA) – both online and offline.</li>
+ 	<li>Its principle aim is to protect the public and it:
+<ul>
+ 	<li><strong>Receives information</strong> – acts as a dedicated place where reports of CSEA can be received from international law enforcement, the public, industry (including via the US National Center for Missing and Exploited Children), and non-governmental organisations (including Hotlines).</li>
+ 	<li><strong>Develops information</strong> – turns the reported information into actionable intelligence to enable an investigation to be undertaken.</li>
+ 	<li><strong>Acts on intelligence</strong> – conducts investigations to safeguard and protect CSEA victims and apprehend offenders.</li>
+</ul>
+</li>
+ 	<li>Law enforcement officers within this capability have the knowledge, skills, systems, tools and resources required to enable them to deliver the functions detailed above, leading to positive judicial outcomes.</li>
+ 	<li>Working through a multi-stakeholder approach, the law enforcement officers understand the role of the child protection workforce and non-governmental organisations in enhancing the support provided to victims during and after CSEA investigations. They involve child protection professionals in investigations to ensure that their work always remains victim-focussed and their investigations are undertaken using leading practice child protection principles</li>
+</ul>
+<h4>Why is it needed?</h4>
+<ul>
+ 	<li>A dedicated capability will ensure that a country’s law enforcement is able to respond effectively to reports of CSEA, securing an increased number of successful prosecutions, an increase in the number of victims protected and greater disruption of offending.</li>
+ 	<li>It will provide the public and third parties with the confidence to report CSEA, knowing that the information they provide will be acted upon effectively and that the victim will be treated appropriately and supported both during and after the investigation.</li>
+ 	<li>With dedicated law enforcement officers who have the required knowledge, skills, systems and tools, a country will be able to lead and coordinate complex CSEA investigations and liaise effectively with international law enforcement to progress investigations that cross borders.</li>
+ 	<li>A single point of contact within a national law enforcement agency will ensure that all reports of CSEA from the public and third parties are recorded, risk assessed and triaged in a consistent, coordinated, efficient and effective manner.</li>
+</ul>
+<h4>Good practice</h4>
+<ul>
+ 	<li>For countries that do not currently have a dedicated CSEA law enforcement capability in place, the national law enforcement agency should identify and commit to building this capability: this includes the identification of dedicated officers who will remain in post for a minimum period (suggested minimum of two years); the allocation of an appropriate venue to accommodate such resources; the acquisition of essential equipment; the provision of specialist CSEA training and techniques; psychological health and wellness support for officers; and the development and delivery of CSEA awareness-raising training for local law enforcement across the country. For countries that already have a dedicated CSEA law enforcement capability but still need to develop a multi-stakeholder approach, the inclusion of dedicated child protection professionals to work alongside investigators is a significant first step. Leading practice child protection principles for law enforcement should be followed at all times when planning and conducting a CSEA investigation; this will ensure the needs and rights of the child are always paramount. The multi-stakeholder approach will provide an enhanced level of protection and support for the victim and help achieve best evidence from the victim – increasing the likelihood of a successful prosecution. Sharing best practice across the region is also desirable.</li>
+</ul>
+<h4>More guidance and support</h4>
+<ul>
+ 	<li>There are a number of national law enforcement agencies around the world that have experience in establishing and delivering a dedicated CSEA capability, using the multi-stakeholder approach detailed above. Requests for advice and support from these agencies can be made through Interpol (www.interpol.int) which will connect a country with a mutually agreeable partner law enforcement agency.</li>
+</ul>',
 			'post_excerpt' => 'National remit; trained officers; proactive and reactive investigations; victim-focused; international cooperation',
 			'group' => 'criminal-justice',
 			'menu_order' => 4

@@ -1,4 +1,5 @@
-//require("bootstrap/dist/js/bootstrap.min");
+// required for modal
+require("bootstrap/dist/js/bootstrap.min");
 
 (function($) {
     $(document).ready(function(){
@@ -25,6 +26,9 @@
                 if( obj.length !== 0 ) {
                     $('.mnr .content section').hide();
                     obj.show();
+                    $('html, body').animate({
+                        scrollTop: obj.offset().top
+                    }, 2000);
                 }
             });
         }

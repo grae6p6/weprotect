@@ -52,9 +52,9 @@ body {
               font-size: 1.25em;
             }
           }
-          &.data {
-            display: none;
-          }
+        }
+        section {
+          display: none;
         }
       }
     }
@@ -335,11 +335,15 @@ button {
     background-color: #eaeaea;
     color: $primary-color;
     padding: 0;
+    font-size: .8em;
     .entry {
       padding: 1em 2em;
       border-bottom: 2px solid #d0bcd6;
       &:last-of-type {
         border: none;
+      }
+      .row {
+        padding: .5em 0;
       }
       img {
         width: 2.25em;
@@ -367,10 +371,12 @@ button {
     background-color: #ffffff;
     padding: 1em 1em 1em 2em;
     h2 {
-      margin-bottom: .25em;
+      font-weight: 400;
+      margin: 1em 0 .25em 0;
     }
     h3 {
       font-size: 1.4em;
+      padding-bottom: .125em;
       a {
         text-decoration: none;
       }
@@ -378,17 +384,25 @@ button {
     .links {
       margin-bottom: 1em;
       .entry {
+        position: relative;
         margin-bottom: 1em;
+        background-color: #eaeaea;
         div {
           display: inline-block;
+          margin-left: 3em;
+          padding: .5em 0;
           * {
             margin: 0;
           }
           &:first-child {
+            position: absolute;
             background-color: $primary-color;
             color: $white;
             text-align: center;
             width: 2.5em;
+            height: 100%;
+            margin: 0;
+            padding-top: .75em;
           }
         }
       }
@@ -403,6 +417,14 @@ button {
       }
       *:last-child {
         margin: 0;
+      }
+    }
+    section {
+      h4 {
+        font-size: 1.25em;
+        border-bottom: .125em solid $primary-color;
+        padding-bottom: .25em;
+        margin-bottom: .5em;
       }
     }
   }
