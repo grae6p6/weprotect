@@ -1,11 +1,13 @@
 .idea
 .vagrant
+.vscode
+data/ignore
 node_modules
 vendor
 composer.lock
 composer.phar
-/puphpet/
-/Vagrantfile
+puphpet
+Vagrantfile
 
 # Created by .ignore support plugin (hsz.mobi)
 ### WordPress template

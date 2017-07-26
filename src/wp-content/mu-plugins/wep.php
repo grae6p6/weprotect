@@ -1974,7 +1974,7 @@ Statutory protections are in place to allow industry to fully and effectively re
 		$objReader = PHPExcel_IOFactory::createReader('Excel5');
 		$objReader->setReadDataOnly(true);
 
-		$objPHPExcel = $objReader->load(ABSPATH . "../data/WPGAmembership.xls");
+		$objPHPExcel = $objReader->load(ABSPATH . "../data/ignore/WPGAmembership.xls");
 		//var_dump($objPHPExcel);
 
 
