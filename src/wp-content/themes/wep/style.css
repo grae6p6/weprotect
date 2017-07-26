@@ -6013,6 +6013,10 @@ body {
     font-size: 1.25em; }
   body.js.page-template-mnr .mnr section {
     display: none; }
+    body.js.page-template-mnr .mnr section ul {
+      margin-bottom: 1em; }
+    body.js.page-template-mnr .mnr section li {
+      margin: .75em 0; }
 
 h1, h2, h3, h3, h4, h5, h6 {
   color: #562a64;

@@ -99,16 +99,12 @@ class Wep_Theme {
 		// Theme script.
 		wp_enqueue_script( 'wep-scripts', get_theme_file_uri( '/js/scripts.min.js' ), array(), '1.0' );
 
+		// TODO: Target widget rather than page?
 		if( is_page( 'our-members' ) ) {//if ( is_active_widget( 'Wep_Widget_Members_List' ) ) {
-			//wp_enqueue_style( 'jqvmap', get_theme_file_uri( '/js/jqvmap.min.css' ) );
 			wp_enqueue_script( 'jqvmap', get_theme_file_uri( '/js/jquery.vmap.min.js' ), array( 'jquery' ), '1.5.1' );
 			wp_enqueue_script( 'jqvmap-world', get_theme_file_uri( '/js/maps/jquery.vmap.world.js' ), array() );
 			wp_enqueue_script( 'jqvmap-init', get_theme_file_uri( 'js/widget_wep_members.js' ) );
 		}
-
-		/*if( is_page( 'our-members' ) ) {
-
-		}*/
 	}
 
 	public static function create_post_type() {
@@ -156,10 +152,6 @@ class Wep_Theme {
 				'supports' => array('title','editor','excerpt','revisions')
 			)
 		);
-
-		/*register_taxonomy( 'mnr_category', 'mnr', [
-			'label' => __( 'MNR Category' )
-		]);*/
 	}
 
 	public static function register_field_groups() {

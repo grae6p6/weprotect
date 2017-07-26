@@ -28,9 +28,9 @@ require("bootstrap/dist/js/bootstrap.min");
                     obj.show();
                     $('html, body').animate({
                         scrollTop: obj.offset().top
-                    }, 2000);
+                    }, 1000);
                 }
-            });
+            }).trigger('hashchange');
         }
     });
 })(jQuery);
