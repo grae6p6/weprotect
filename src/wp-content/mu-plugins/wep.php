@@ -237,7 +237,7 @@ class Wep_Plugin {
 		],
 		'model-national-response' => [
 			'post_title' => 'Model National Response',
-			'post_content' => '<p>Leo suspendisse imperdiet augue etiam ac in a ullamcorper tortor suspendisse ad ullamcorper maecenas class at a.</p>',
+			'post_content' => '<p>The WePROTECT Model National Response sets out what countries need to do to</p>',
 			'title' => 'Model National Response',
 			'type' => 'cta1',
 			'linked_page' => 'the-model-national-response',
@@ -750,7 +750,8 @@ secretariat, responsible to all those who have signed up to WePROTECT, and which
 		'about-the-fund' => array(
 			'post_type' => 'page',
 			'post_title' => 'About the fund',
-			'post_content' => '',
+			'post_content' => '<p>The Fund to End Violence Against Children (EVAC) is in its first year of operation, and the UK has donated 10 million pounds to finance projects that will build national and international capacity to tackle online child sexual exploitation (CSE) between 2016-17. The Fund’s window for applications for the UK’s funding opened between 12 July and 4 September 2016 and we understand there was a healthy number of quality applications received.</p>
+<p>The Fund is now preparing a list of projects recommended to receive funding following advice from an impartial and international panel of experts to inform the final decision of the Fund Steering Committee. In conducting an initial sift of the applications received, the Fund Unit used the WePROTECT Global Alliance’s Model National Response to prioritise the applications received in September 2016, and the WePROTECT Global Alliance will continue to work with the Fund in an advisory capacity to help ensure the disbursement of money from the Fund is targeted to projects offering the most impactful changes on the ground in tackling online CSE. Currently the UK is the only donor to the Fund, pledging 40 million pounds over the course of this parliament in annual 10 million pound instalments, the first of which has already been donated. We are working with other governments who have shown an interest in donating to the Fund to ensure the Fund can deliver to its full potential.</p>',
 			'menu_order' => 401
 		),
 		'how-the-fund-is-spent' => array(
@@ -831,7 +832,26 @@ secretariat, responsible to all those who have signed up to WePROTECT, and which
 		'the-model-national-response' => array(
 			'post_type' => 'page',
 			'post_title' => 'Model National Response',
-			'post_content' => '',
+			'post_content' => '<h2>A Model National Response</h2>
+At the Abu-Dhabi Summit in 2015, governments and organisations agreed to establish and deliver, in their own countries, a coordinated national response to online child sexual exploitation, guided by the WePROTECT Global Alliance Model National response (MNR). This document provides guidance and support on the MNR to countries and organisations to help them deliver on this commitment. Whilst the Model is focused on helping countries to build their response to online child sexual exploitation, it acknowledges that this cannot be addressed in isolation and a wider set of capabilities to prevent and tackle child sexual exploitation and abuse are required to be in place to ensure a complete national response.
+
+This Model will:
+<ul>
+ 	<li>Enable a country to assess its current response and identify gaps</li>
+ 	<li>Prioritise national efforts to fill gaps</li>
+ 	<li>Enhance international understanding and cooperation.</li>
+</ul>
+The Model builds on many years of work by experts and practitioners and it builds on the existing international framework; for action to prevent and tackle CSEA. This includes the United Nations Convention on the Rights of the Child (UNCRC) and its Optional Protocol on the sale of children, child prostitution and child pornography. As well as the Agendas for Action produced as a result of the three World Congresses against the Sexual Exploitation of Children and Adolescents which took place in Sweden in 1996, Japan in 2001 and Brazil in 2008.
+
+The Model does not seek to prescribe activities or set out a single approach. Its purpose is to describe the capabilities needed for effective child protection, highlight good practice from countries that are already delivering these capabilities, and signpost organisations that can provide further guidance and support to countries seeking to develop or enhance their existing capability.
+
+Importantly, the Model will enable a country – regardless of its starting point – to identify any gaps in capabilities and commence planning to fill those gaps. Using the Model can assist countries in identifying actions that contribute to the delivery of the United Nations Sustainable Development Goal targets, primarily 16.2 - End all forms of violence against and torture of children. It could also assist with delivery against targets 8.7 and 5.2.
+
+Whilst countries will develop their own individual approaches, by doing so within the context of a commonly agreed framework and understanding of capabilities, it is hoped that communication and cooperation amongst stakeholders at both national and international levels can be enhanced further.
+
+Implementing the capabilities will lead to significant outcomes for protecting children from online CSE. These are clearly detailed in the Model along with a number of enablers which, if in place and effective, will accelerate and improve the outcomes.
+
+We hope you find this Model a useful tool to aid capacity building in online CSE, leading to the highest level of response to victims and offenders. We look forward to hearing how this Model has contributed towards the development and coordination of national, regional and international responses to CSE at the next WePROTECT Summit. We also welcome feedback which can be sent via the <a href="/feedback/">feedback form</a>.',
 			'page_template' => 'mnr.php',
 			'menu_order' => 601,
             'blocks' => [

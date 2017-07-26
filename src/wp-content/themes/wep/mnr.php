@@ -110,46 +110,45 @@ get_header(); ?>
 						</div>
 						<div class="col-12 col-md-9 content">
                             <?php if( $post->ID === $page_introduction->ID ) : ?>
-                                <h1><?php _e( 'Introduction', 'wep' ) ?></h1>
-                            <?php else: ?>
-                                <?php the_title( '<h1>', '</h1>') ?>
-                            <?php endif;
+                                <h1><?php _e( 'Introduction', 'wep' ); ?></h1>
+                                <?php the_content() ?>
+                            <?php else:
+                                the_title( '<h1>', '</h1>');
 
-                            $sections = get_posts([
-	                            'post_type' => 'mnr',
-	                            'post_status' => 'publish',
-	                            'numberposts' => -1,
-	                            'order' => 'ASC',
-	                            'orderby' => 'menu_order',
-	                            'meta_key' => 'group',
-	                            'meta_value' => serialize( array( (string)$post->ID ) ) // Thats a bit nuts??
-                            ]);
+                                $sections = get_posts([
+                                    'post_type' => 'mnr',
+                                    'post_status' => 'publish',
+                                    'numberposts' => -1,
+                                    'order' => 'ASC',
+                                    'orderby' => 'menu_order',
+                                    'meta_key' => 'group',
+                                    'meta_value' => serialize( array( (string)$post->ID ) ) // Thats a bit nuts??
+                                ]);
 
-                            // Section links
-                            if( $sections ) : ?>
-                            <div class="links">
-                            <?php foreach( $sections as $post ) : setup_postdata( $post ); ?>
-                                <div class="entry">
-                                    <div><?php echo $post->menu_order ?></div>
-                                    <div>
-                                        <h3><a href="#<?php echo $post->post_name ?>"><?php the_title() ?></a></h3>
-                                        <?php the_excerpt() ?>
+                                // Section links
+                                if( $sections ) : ?>
+                                <div class="links">
+                                <?php foreach( $sections as $post ) : setup_postdata( $post ); ?>
+                                    <div class="entry">
+                                        <div><?php echo $post->menu_order ?></div>
+                                        <div>
+                                            <h3><a href="#<?php echo $post->post_name ?>"><?php the_title() ?></a></h3>
+                                            <?php the_excerpt() ?>
+                                        </div>
                                     </div>
+                                <?php wp_reset_postdata(); endforeach; ?>
                                 </div>
-                            <?php wp_reset_postdata(); endforeach; ?>
-                            </div>
-                            <?php endif; ?>
-                            <div class="outcome"><h5><?php _e( 'Outcomes', 'wep' ) ?></h5><?php the_content() ?></div>
-							<?php
+                                <?php endif; ?>
+                                <div class="outcome"><h5><?php _e( 'Outcomes', 'wep' ) ?></h5><?php the_content() ?></div>
+                                <?php
 
-                            // Section contents
-							if( $sections ) :
-								foreach( $sections as $post ) : setup_postdata( $post ); ?>
-                                    <section id="<?php echo $post->post_name ?>"><?php the_content() ?></section>
-                                <?php wp_reset_postdata(); endforeach;
-							endif;
-
-							?>
+                                // Section contents
+                                if( $sections ) :
+                                    foreach( $sections as $post ) : setup_postdata( $post ); ?>
+                                        <section id="<?php echo $post->post_name ?>"><?php the_content() ?></section>
+                                    <?php wp_reset_postdata(); endforeach;
+                                endif;
+                            endif; ?>
                         </div>
 					</div>
 				</div>

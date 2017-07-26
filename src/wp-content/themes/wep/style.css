@@ -6250,9 +6250,13 @@ button {
 .mnr .content {
   background-color: #ffffff;
   padding: 1em 1em 1em 2em; }
+  .mnr .content h1 {
+    margin-bottom: .5em; }
   .mnr .content h2 {
     font-weight: 400;
-    margin: 1em 0 .25em 0; }
+    margin: 1em 0 .5em 0; }
+    .mnr .content h2:first-of-type {
+      margin-top: 0; }
   .mnr .content h3 {
     font-size: 1.4em;
     padding-bottom: .125em; }
