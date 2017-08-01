@@ -16,7 +16,7 @@
             WepModal.sug['none'] = 'None';
 
             // Hide members not in default group.
-            var group = $('button[data-group].active').data('group');
+            var group = $('.btn[data-group].active').data('group');
             wml.find('.members .entry:not(.' + group + ')').hide();
 
             // Render map
@@ -40,17 +40,27 @@
                     showTooltip: true,
                     scaleColors: ['#8e699b','#ffffff'],
                     values: countries,
-                    normalizeFunction: 'polynomial'
+                    normalizeFunction: 'polynomial',
+                    onRegionClick: function(element, code, region) {
+                        var obj = $('.entry.country [data-value="' + code + '"]');
+                        if( obj.length ) {
+                            //$('#memberModal').relatedTarget = $($('.entry.country [data-value="' + code + '"]').parent());
+                            //console.log($('#memberModal').relatedTarget);
+                            //$('#memberModal').modal('show');
+                        }
+
+                        //jqvmap-label
+                    }
                 });
             }
 
             // Member display change
-            wml.find('button[data-display]').on('click',function(){
+            wml.find('.btn[data-display]').on('click',function(){
                 var src = $(this);
                 if( src.hasClass('active') ) {
                     return true;
                 }
-                wml.find('button[data-display]').removeClass('active');
+                wml.find('.btn[data-display]').removeClass('active');
                 src.addClass('active');
 
                 var display = src.data('display');
@@ -64,12 +74,12 @@
             });
 
             // Member group change
-            wml.find('button[data-group]').on('click',function(){
+            wml.find('.btn[data-group]').on('click',function(){
                 var src = $(this);
                 if( src.hasClass('active') ) {
                     return true;
                 }
-                wml.find('button[data-group]').removeClass('active');
+                wml.find('.btn[data-group]').removeClass('active');
                 src.addClass('active');
 
                 var group = src.data('group');

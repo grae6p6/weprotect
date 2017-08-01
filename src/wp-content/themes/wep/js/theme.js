@@ -13,13 +13,17 @@ require("bootstrap/dist/js/bootstrap.min");
         // Dropdown hover show
         body.on('mouseenter mouseleave','.dropdown',function(e){
             var _d=$(e.target).closest('.dropdown');_d.addClass('show');
+            _d.find('> a').attr('aria-expanded', 'true');
             setTimeout(function(){
                 _d[_d.is(':hover')?'addClass':'removeClass']('show');
+                _d.find('> a').attr('aria-expanded', _d.is(':hover')?'true':'false');
             },300);
         });
 
         // Model national Response
         if( body.hasClass( 'page-template-mnr' ) ) {
+
+            // Display/hide and scroll features
             $(window).on('hashchange',function(){
                 var section = window.location.hash.substr(1);
                 var obj = $( window.location.hash );
@@ -31,6 +35,13 @@ require("bootstrap/dist/js/bootstrap.min");
                     }, 1000);
                 }
             }).trigger('hashchange');
+
+            // Toggle side menu sections
+            $('.mnr .toggle').on('click',function(){
+                var entry = $(this).parent().parent().parent().parent();
+                entry.toggleClass( 'expanded' );
+                entry.find( '.fa' ).toggleClass( 'fa-arrow-right fa-arrow-down' );
+            });
         }
     });
 })(jQuery);

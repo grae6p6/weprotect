@@ -31,8 +31,8 @@ define( 'WP_DEBUG', true );
 // These tests will DROP ALL TABLES in the database with the prefix named below.
 // DO NOT use a production database or one that is shared with something else.
 
-define( 'DB_NAME', 'tests_wep' );
-define( 'DB_USER', 'wep' );
+define( 'DB_NAME', 'tests_weprotect' );
+define( 'DB_USER', 'weprotect' );
 define( 'DB_PASSWORD', '123' );
 define( 'DB_HOST', 'localhost' );
 define( 'DB_CHARSET', 'utf8' );

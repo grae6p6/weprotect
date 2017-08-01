@@ -26,8 +26,8 @@ class Tests_Wep_Plugin extends WP_UnitTestCase {
 		$this->assertTrue(is_plugin_active('bootstrap-for-contact-form-7/bootstrap-for-contact-form-7.php'));
 
 		// Storage for forms
-		$this->assertNull(activate_plugin('flamingo/flamingo.php'));
-		$this->assertTrue(is_plugin_active('flamingo/flamingo.php'));
+		//$this->assertNull(activate_plugin('flamingo/flamingo.php'));
+		//$this->assertTrue(is_plugin_active('flamingo/flamingo.php'));
 
 		// Multilingual support
 		$this->assertNull(activate_plugin('polylang/polylang.php'));

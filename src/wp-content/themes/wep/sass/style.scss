@@ -244,9 +244,14 @@ main.body {
     background-color: #eaeaea;
     background-position: center center;
     background-size: cover;
-    /*@include blur(4px);*/
     .container {
-      height: 25em;
+      height: 45em;
+      @include media-breakpoint-only(sm) {
+        height: 35em;
+      }
+      @include media-breakpoint-up(md) {
+        height: 25em;
+      }
     }
     header {
       p {
@@ -307,7 +312,7 @@ footer.body {
 }
 
 /* Form elements */
-button, .edit-link {
+button, .btn, .edit-link {
   background-color: #1ba39c;
   color: $white;
   font-family: $font-family-sans-serif-heading;
@@ -341,25 +346,48 @@ button {
     background-color: #eaeaea;
     color: $primary-color;
     padding: 0;
-    font-size: .8em;
+    @include media-breakpoint-up(md) {
+      font-size: .75em;
+    }
+    ul, li {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
     .entry {
-      padding: 1em 2em;
+      padding: 1em;
       border-bottom: 2px solid #d0bcd6;
       &:last-of-type {
         border: none;
       }
-      .row {
+      .text {
+        font-size: 1.25em;
+        @include media-breakpoint-up(md) {
+          font-size: 1em;
+        }
+        @include media-breakpoint-only(xl) {
+          font-size: 1.2em;
+        }
+      }
+      ul {
+        display: none;
+      }
+      li {
         padding: .5em 0;
       }
-      img {
-        width: 2.25em;
-        height: 2.25em;
+      .fa {
+        font-size: 2em;
       }
       &.expandable {
         background-color: $primary-color;
         color: $white;
         a {
           color: $white;
+        }
+      }
+      &.expanded {
+        ul {
+          display: block;
         }
       }
       &.active {
@@ -374,12 +402,28 @@ button {
     }
   }
   .content {
+    position: relative;
     background-color: #ffffff;
-    padding: 1em 1em 1em 2em;
+    padding: 2em;
+    @include media-breakpoint-up(md) {
+      padding: 1em 1em 1em 2em;
+    }
+    .fa {
+      color: $primary-color;
+      position: absolute;
+      right: 1em;
+      top: 1em;
+      font-size: 2.5em;
+      @include media-breakpoint-up(md) {
+        right: .5em;
+        top: .5em;
+      }
+    }
     h1 {
-      margin-bottom: .5em;
+      margin: 0 1.5em .5em 0;
     }
     h2 {
+      font-size: 1.75em;
       font-weight: 400;
       margin: 1em 0 .5em 0;
       &:first-of-type {
@@ -411,10 +455,11 @@ button {
             background-color: $primary-color;
             color: $white;
             text-align: center;
-            width: 2.5em;
+            font-size: 1.25em;
+            width: 1.75em;
             height: 100%;
             margin: 0;
-            padding-top: .75em;
+            padding-top: .45em;
           }
         }
       }
@@ -458,7 +503,7 @@ button {
 
 /* Buttons */
 
-button:hover, button.active {
+button:hover, button.active, .btn.active, .btn:hover {
   background-color: #2278ad;
 }
 
@@ -485,13 +530,12 @@ button:hover, button.active {
   font-size: .8em;
 }
 .widget_wep_widget_members_list {
-  .buttons button {
-    margin: 0 1em 2em 0;
-    &:last-child {
-      margin-right: 0;
-    }
+  .buttons {
+    margin: 0 0 1em 0;
   }
 }
+
+/* Our members */
 .members {
   &.hide {
     display: none;
@@ -502,7 +546,38 @@ button:hover, button.active {
     .entry {
       text-align: center;
       a {
+        display: block;
+        margin-bottom: 2em;
         text-decoration: none;
+      }
+      div {
+        font-size: 0;
+        position: relative;
+        border-radius: 0.25em;
+        color: $white;
+        &::after {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          content: '';
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 0 0 80px 80px;
+          border-color: transparent transparent $primary-color transparent;
+          text-align: center;
+          font-size: 2rem;
+        }
+      }
+      i {
+        font-size: 2rem;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 46px;
+        height: 40px;
+        color: $white;
+        z-index: 99;
       }
       img {
         width: 100%;
@@ -515,7 +590,7 @@ button:hover, button.active {
         font-size: .9em;
         text-transform: uppercase;
         letter-spacing: 1px;
-        margin-bottom: 2em;
+        margin-top: .75em;
       }
     }
 

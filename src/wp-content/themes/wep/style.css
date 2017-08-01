@@ -6143,10 +6143,16 @@ main.body {
     padding: 0;
     background-color: #eaeaea;
     background-position: center center;
-    background-size: cover;
-    /*@include blur(4px);*/ }
+    background-size: cover; }
     main.body .block.block-image .container {
-      height: 25em; }
+      height: 45em; }
+
+@media (min-width: 576px) and (max-width: 767px) {
+  main.body .block.block-image .container {
+    height: 35em; } }
+      @media (min-width: 768px) {
+        main.body .block.block-image .container {
+          height: 25em; } }
     main.body .block.block-image header p {
       font-size: 1.2em; }
     main.body .block.block-image header.article > * {
@@ -6185,7 +6191,7 @@ footer.body .copyright {
   padding: 4em 0; }
 
 /* Form elements */
-button, .edit-link {
+button, .btn, .edit-link {
   background-color: #1ba39c;
   color: #fff;
   font-family: "Lato", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -6223,23 +6229,40 @@ button {
 .mnr .menu {
   background-color: #eaeaea;
   color: #562a64;
-  padding: 0;
-  font-size: .8em; }
+  padding: 0; }
+  @media (min-width: 768px) {
+    .mnr .menu {
+      font-size: .75em; } }
+  .mnr .menu ul, .mnr .menu li {
+    list-style: none;
+    padding: 0;
+    margin: 0; }
   .mnr .menu .entry {
-    padding: 1em 2em;
+    padding: 1em;
     border-bottom: 2px solid #d0bcd6; }
     .mnr .menu .entry:last-of-type {
       border: none; }
-    .mnr .menu .entry .row {
+    .mnr .menu .entry .text {
+      font-size: 1.25em; }
+      @media (min-width: 768px) {
+        .mnr .menu .entry .text {
+          font-size: 1em; } }
+      @media (min-width: 1200px) {
+        .mnr .menu .entry .text {
+          font-size: 1.2em; } }
+    .mnr .menu .entry ul {
+      display: none; }
+    .mnr .menu .entry li {
       padding: .5em 0; }
-    .mnr .menu .entry img {
-      width: 2.25em;
-      height: 2.25em; }
+    .mnr .menu .entry .fa {
+      font-size: 2em; }
     .mnr .menu .entry.expandable {
       background-color: #562a64;
       color: #fff; }
       .mnr .menu .entry.expandable a {
         color: #fff; }
+    .mnr .menu .entry.expanded ul {
+      display: block; }
     .mnr .menu .entry.active {
       background-color: #1ba39c; }
       .mnr .menu .entry.active a {
@@ -6248,11 +6271,26 @@ button {
       text-decoration: none; }
 
 .mnr .content {
+  position: relative;
   background-color: #ffffff;
-  padding: 1em 1em 1em 2em; }
+  padding: 2em; }
+  @media (min-width: 768px) {
+    .mnr .content {
+      padding: 1em 1em 1em 2em; } }
+  .mnr .content .fa {
+    color: #562a64;
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    font-size: 2.5em; }
+    @media (min-width: 768px) {
+      .mnr .content .fa {
+        right: .5em;
+        top: .5em; } }
   .mnr .content h1 {
-    margin-bottom: .5em; }
+    margin: 0 1.5em .5em 0; }
   .mnr .content h2 {
+    font-size: 1.75em;
     font-weight: 400;
     margin: 1em 0 .5em 0; }
     .mnr .content h2:first-of-type {
@@ -6279,10 +6317,11 @@ button {
           background-color: #562a64;
           color: #fff;
           text-align: center;
-          width: 2.5em;
+          font-size: 1.25em;
+          width: 1.75em;
           height: 100%;
           margin: 0;
-          padding-top: .75em; }
+          padding-top: .45em; }
   .mnr .content .outcome {
     border: 0.125em solid #562a64;
     border-radius: .25em;
@@ -6309,7 +6348,7 @@ button {
   margin-bottom: 4em; }
 
 /* Buttons */
-button:hover, button.active {
+button:hover, button.active, .btn.active, .btn:hover {
   background-color: #2278ad; }
 
 .edit-link {
@@ -6332,11 +6371,10 @@ button:hover, button.active {
   color: #fff;
   font-size: .8em; }
 
-.widget_wep_widget_members_list .buttons button {
-  margin: 0 1em 2em 0; }
-  .widget_wep_widget_members_list .buttons button:last-child {
-    margin-right: 0; }
+.widget_wep_widget_members_list .buttons {
+  margin: 0 0 1em 0; }
 
+/* Our members */
 .members {
   /* Members list */
   /* Members map */ }
@@ -6347,7 +6385,35 @@ button:hover, button.active {
     .members.list .entry {
       text-align: center; }
       .members.list .entry a {
+        display: block;
+        margin-bottom: 2em;
         text-decoration: none; }
+      .members.list .entry div {
+        font-size: 0;
+        position: relative;
+        border-radius: 0.25em;
+        color: #fff; }
+        .members.list .entry div::after {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          content: '';
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 0 0 80px 80px;
+          border-color: transparent transparent #562a64 transparent;
+          text-align: center;
+          font-size: 2rem; }
+      .members.list .entry i {
+        font-size: 2rem;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 46px;
+        height: 40px;
+        color: #fff;
+        z-index: 99; }
       .members.list .entry img {
         width: 100%;
         border-radius: 0.25em;
@@ -6358,7 +6424,7 @@ button:hover, button.active {
         font-size: .9em;
         text-transform: uppercase;
         letter-spacing: 1px;
-        margin-bottom: 2em; }
+        margin-top: .75em; }
     .members.list body.debug .block {
       border: 1px solid red; }
   .members #jqvmap {

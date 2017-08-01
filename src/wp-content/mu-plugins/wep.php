@@ -179,6 +179,7 @@ class Wep_Plugin {
 	public static $fields = [
         'title' => '5964ec11ce4cb',
         'type' => '595e465405629',
+		//'group_colour' => '597f46ce9d522',
         'bg_colour' => '595e57673b050',
         'colour' => '595e57673b049',
         'image' => '595e56cb3b048',
@@ -2064,10 +2065,12 @@ Statutory protections are in place to allow industry to fully and effectively re
         ];
 
 		$signup_fields = [
+			'' => 'ga',
 			'Global Alliance' => 'ga',
 			'WePROTECT' => 'wp',
 			'None' => 'none',
-			'WPGA' => 'wpga'
+			'WPGA' => 'wpga',
+			'Confirmed' => 'wpga' // TODO: Check what 'COnfirmed' should be classed as.
         ];
 
 		foreach( $results as $row ) {
@@ -2081,6 +2084,7 @@ Statutory protections are in place to allow industry to fully and effectively re
 			$content['post_status'] = 'publish';
 			$id = wp_insert_post($content);
 			if( !$id ) {
+				var_dump($content);
 				return false;
 			} else {
 			    if( empty( $row['Criticality'] ) ) {
@@ -2096,11 +2100,121 @@ Statutory protections are in place to allow industry to fully and effectively re
 				update_post_meta( $id, '_group', 'field_597068f8afb36' );
 
 				foreach( $fields as $key => $values ) {
-					update_post_meta( $id, $values[0], $row[ $key ] );
-					update_post_meta( $id, '_' . $values[0], 'field_' . $values[1] );
+					if( array_key_exists( $key, $row ) ) {
+						update_post_meta( $id, $values[0], $row[ $key ] );
+						update_post_meta( $id, '_' . $values[0], 'field_' . $values[1] );
+					}
                 }
             }
         }
+
+		/**
+		 * Organisations
+		 */
+		$objWorksheet = $objPHPExcel->getSheet(1);
+
+		$highestRow = $objWorksheet->getHighestRow();
+		$highestColumn = $objWorksheet->getHighestColumn();
+		$highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
+
+		$columns = $results = [];
+		for ($row = 1; $row <= $highestRow; ++$row) {
+			for ($col = 0; $col <= $highestColumnIndex; ++$col) {
+				if( $row == 1 ) {
+					$columns[$col] = trim( $objWorksheet->getCellByColumnAndRow($col, $row)->getValue() );
+				} else {
+					$results[$row][$columns[$col]] = trim( $objWorksheet->getCellByColumnAndRow($col, $row)->getValue() );
+				}
+			}
+		}
+//var_dump($results);
+		foreach( $results as $row ) {
+			if( empty( $row['Organisation'] ) )
+		        continue;
+		
+			$content = [];
+			$content['post_name'] = sanitize_title( $row['Organisation'] );
+			$content['post_title'] = $row['Organisation'];
+			$content['post_content'] = '';
+			$content['post_type'] = 'member';
+			$content['post_status'] = 'publish';
+			
+			$id = wp_insert_post($content);
+			if( !$id ) {
+				return false;
+			} else {
+			    if( empty( $row['Criticality'] ) ) {
+				    $row['Criticality'] = 'High';
+                }
+				$row['Criticality'] = $criticality_fields[ $row['Criticality'] ];
+				$row['Sign up'] = $signup_fields[ $row['Sign up'] ];
+				$row['Country'] = 'US';
+				//var_dump($row['Organisation']);
+				
+				update_post_meta( $id, 'group', 'organisation' );
+				update_post_meta( $id, '_group', 'field_597068f8afb36' );
+
+				foreach( $fields as $key => $values ) {
+					if( array_key_exists( $key, $row ) ) {
+						update_post_meta( $id, $values[0], $row[ $key ] );
+						update_post_meta( $id, '_' . $values[0], 'field_' . $values[1] );
+					}
+                }
+            }
+		}
+
+		/**
+		 * Industry
+		 */
+		$objWorksheet = $objPHPExcel->getSheet(2);
+
+		$highestRow = $objWorksheet->getHighestRow();
+		$highestColumn = $objWorksheet->getHighestColumn();
+		$highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
+
+		$columns = $results = [];
+		for ($row = 1; $row <= $highestRow; ++$row) {
+			for ($col = 0; $col <= $highestColumnIndex; ++$col) {
+				if( $row == 1 ) {
+					$columns[$col] = trim( $objWorksheet->getCellByColumnAndRow($col, $row)->getValue() );
+				} else {
+					$results[$row][$columns[$col]] = trim( $objWorksheet->getCellByColumnAndRow($col, $row)->getValue() );
+				}
+			}
+		}
+
+		foreach( $results as $row ) {
+			if( empty( $row['Company'] ) )
+		        continue;
+			$content = [];
+			$content['post_name'] = sanitize_title( $row['Company'] );
+			$content['post_title'] = $row['Company'];
+			$content['post_content'] = '';
+			$content['post_type'] = 'member';
+			$content['post_status'] = 'publish';
+			$id = wp_insert_post($content);
+			if( !$id ) {
+				return false;
+			} else {
+			    if( empty( $row['Criticality'] ) ) {
+				    $row['Criticality'] = 'High';
+                }
+				$row['Criticality'] = $criticality_fields[ $row['Criticality'] ];
+
+				$row['Sign up'] = $signup_fields[ $row['Sign up'] ];
+				//var_dump($content,$row);
+
+				update_post_meta( $id, 'group', 'industry' );
+				update_post_meta( $id, '_group', 'field_597068f8afb36' );
+
+				foreach( $fields as $key => $values ) {
+					if( array_key_exists( $key, $row ) ) {
+						update_post_meta( $id, $values[0], $row[ $key ] );
+						update_post_meta( $id, '_' . $values[0], 'field_' . $values[1] );
+					}
+                }
+            }
+		}
 
         return true;
     }

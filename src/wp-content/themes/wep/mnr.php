@@ -17,7 +17,8 @@ get_header(); ?>
 			<div class="mnr">
 				<div class="container">
 					<div class="row">
-						<div class="col-12 col-md-3 menu">
+						<div class="col-12 col-md-4 col-lg-3 menu" role="navigation">
+                            <ul>
                             <?php
 
                             $page_introduction = get_page_by_path( 'the-model-national-response' );
@@ -53,40 +54,64 @@ get_header(); ?>
                                     $is_active = ( ( '/' . get_page_uri( $group->ID ) . '/' === $_SERVER['REQUEST_URI'] ) ? true : false );
 
                                     ?>
-                                    <div class="entry<?php echo ( count( $sections ) ? ' expandable' : '' ) ?><?php echo ( $is_active ? ' active' : '' ) ?>">
+                                    <li class="entry<?php echo ( count( $sections ) ? ' expandable' : '' ) ?><?php echo ( $is_active ? ' expanded active' : '' ) ?>">
                                         <div class="container-flex">
                                             <div class="row align-items-center">
-                                                <div class="col-1 col-lg-3">
-                                                    <img src="/wp-content/themes/wep/screenshot.png">
+                                                <?php if( $i > 1 ) : ?>
+                                                <div class="col-2 col-sm-1 col-md-2 col-lg-2">
+                                                    <i class="fa fa-bank"></i>
                                                 </div>
-                                                <div class="col">
-                                                    <a href="<?php echo get_the_permalink( $group->ID ); ?>">
-                                                        <span><?php echo ( !$i ? __( 'Introduction', 'wep' ) : get_the_title( $group->ID ) ); ?></span>
+                                                <?php endif; ?>
+                                                <div class="col text">
+                                                    <a href="<?php echo get_the_permalink( $group->ID ); ?>" alt="<?php echo get_the_title( $group->ID ); ?>">
+                                                        <?php echo ( !$i ? __( 'Introduction', 'wep' ) : get_the_title( $group->ID ) ); ?>
                                                     </a>
                                                 </div>
+                                                <?php if( $i > 1 ) : ?>
+                                                <div class="col">
+                                                    <a href="javascript:void(0)" class="toggle float-right" aria-label="<?php _e( 'Menu for ' . get_the_title( $group->ID ), 'wep' ); ?>"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                                </div>
+                                                <?php endif; ?>
                                             </div>
-                                            <?php
+                                        </div>
+                                        <?php
 
-                                            // Group section links
-                                            if( $sections ) :
-	                                            $section_contents = '';
-                                                foreach( $sections as $section ) : ?>
-                                                    <div class="row align-items-center">
-                                                        <div class="col-1 col-lg-3">
-                                                            <?php echo $section->menu_order ?>
-                                                        </div>
-                                                        <div class="col">
-                                                            <a href="<?php echo get_the_permalink( $group->ID ); ?>#<?php echo $section->post_name; ?>">
-                                                                <span><?php echo get_the_title( $section->ID ); ?></span>
-                                                            </a>
+                                        // Group section links
+                                        if( $sections ) : ?>
+                                            <ul>
+                                                <?php $section_contents = ''; foreach( $sections as $section ) : ?>
+                                                <li>
+                                                    <div class="container-flex">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-2 col-sm-1 col-md-2 col-lg-2 text">
+                                                                <?php echo $section->menu_order ?>
+                                                            </div>
+                                                            <div class="col text">
+                                                                <a href="<?php echo get_the_permalink( $group->ID ); ?>#<?php echo $section->post_name; ?>">
+                                                                    <span><?php echo get_the_title( $section->ID ); ?></span>
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                <?php endforeach;
-                                            endif;
-                                            ?>
-                                        </div>
-                                    </div>
+                                                </li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        <?php endif; ?>
+                                        </ul>
+                                    </li>
                                 <?php endforeach; ?>
+                                    <li class="entry">
+                                        <div class="container-flex">
+                                            <div class="row align-items-center">
+                                                <div class="col-2 col-sm-1 col-md-2 col-lg-2">
+                                                    <i class="fa fa-file-text"></i>
+                                                </div>
+                                                <div class="col text">
+                                                    <a href="#"><?php _e( 'Download full MNR document', 'wep' ) ?></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
                             <?php endif; ?>
 							<!--<div class="entry">Introduction</div>
 							<div class="entry">Enablers</div>
@@ -106,15 +131,17 @@ get_header(); ?>
 							<div class="entry expandable">Societal</div>
 							<div class="entry expandable">Industry</div>
 							<div class="entry expandable">Media and communications</div>
-							<div class="entry">Download full MNR document</div>-->
+                            <div class="entry">Download full MNR document</div>-->
+                            </ul>
 						</div>
-						<div class="col-12 col-md-9 content">
+						<div class="col-12 col-md-8 col-lg-9 content">
+                            <i class="fa fa-bank" aria-hidden="true"></i>
                             <?php if( $post->ID === $page_introduction->ID ) : ?>
                                 <h1><?php _e( 'Introduction', 'wep' ); ?></h1>
                                 <?php the_content() ?>
-                            <?php else:
-                                the_title( '<h1>', '</h1>');
+                            <?php else: the_title( '<h1>', '</h1>'); ?>
 
+                            <?php
                                 $sections = get_posts([
                                     'post_type' => 'mnr',
                                     'post_status' => 'publish',

@@ -79,6 +79,7 @@ class Wep_Theme {
 		) );
 	}
 
+	// TODO: To be refactored
 	public static function enqueue_scripts() {
 
 		// jQuery is vendor compiled using webpack
@@ -98,6 +99,9 @@ class Wep_Theme {
 
 		// Theme script.
 		wp_enqueue_script( 'wep-scripts', get_theme_file_uri( '/js/scripts.min.js' ), array(), '1.0' );
+
+		// Font awesome
+		wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' );
 
 		// TODO: Target widget rather than page?
 		if( is_page( 'our-members' ) ) {//if ( is_active_widget( 'Wep_Widget_Members_List' ) ) {

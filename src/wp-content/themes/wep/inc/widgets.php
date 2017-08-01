@@ -123,24 +123,31 @@ class Wep_Widget_Members_List extends WP_Widget {
         if( $members ) : ?>
         <div class="flex-container">
             <div class="row">
-                <div class="col-12 col-md-8 text-center text-md-left buttons">
-                    <button data-group="country"<?php echo ( $group == 'country' ? ' class="active"' : '' ) ?>>
-                        <?php _e( 'Countries', 'wep' ) ?>
-                    </button>
-                    <button data-group="organisation"<?php echo ( $group == 'organisation' ? ' class="active"' : '' ) ?>>
-                        <?php _e( 'Organisations', 'wep' ) ?>
-                    </button>
-                    <button data-group="industry"<?php echo ( $group == 'industry' ? ' class="active"' : '' ) ?>>
-                        <?php _e( 'Industries', 'wep' ) ?>
-                    </button>
+                <div class="col-12 col-lg-8 text-center text-lg-left buttons">
+					<div class="btn-group" data-toggle="buttons">
+						<label class="btn btn-primary active" data-group="country">
+							<input type="radio" name="options" autocomplete="off"<?php echo ( $group == 'country' ? ' checked' : '' ) ?>><i class="fa fa-filter" aria-hidden="true"></i> <?php _e( 'Countries', 'wep' ) ?>
+						</label>
+						<label class="btn btn-primary" data-group="organisation">
+							<input type="radio" name="options" autocomplete="off"<?php echo ( $group == 'organisation' ? ' checked' : '' ) ?>><i class="fa fa-filter" aria-hidden="true"></i>  <?php _e( 'Organisations', 'wep' ) ?>
+						</label>
+						<label class="btn btn-primary" data-group="industry">
+							<input type="radio" name="options" autocomplete="off"<?php echo ( $group == 'industry' ? ' checked' : '' ) ?>><i class="fa fa-filter" aria-hidden="true"></i>  <?php _e( 'Industries', 'wep' ) ?>
+						</label>
+						<label class="btn btn-primary" data-group="all">
+							<input type="radio" name="options" autocomplete="off"<?php echo ( $group == 'all' ? ' checked' : '' ) ?>><i class="fa fa-globe" aria-hidden="true"></i>  <?php _e( 'All', 'wep' ) ?>
+						</label>
+					</div>
                 </div>
-                <div class="col-12 col-md-4 text-center text-md-right buttons">
-                    <button data-display="map" class="active">
-                        <?php _e( 'Map', 'wep' ) ?>
-                    </button>
-                    <button data-display="list">
-                        <?php _e( 'List', 'wep' ) ?>
-                    </button>
+                <div class="col-12 col-lg-4 text-center text-lg-right buttons">
+                    <div class="btn-group" data-toggle="buttons">
+						<label class="btn btn-primary active" data-display="map">
+							<input type="radio" name="options" autocomplete="off" checked><i class="fa fa-map" aria-hidden="true"></i> <?php _e( 'Map', 'wep' ) ?>
+						</label>
+						<label class="btn btn-primary" data-display="list">
+							<input type="radio" name="options" autocomplete="off"><i class="fa fa-th" aria-hidden="true"></i> <?php _e( 'List', 'wep' ) ?>
+						</label>
+					</div>
                 </div>
             </div>
             <div class="row members list hide">
@@ -161,24 +168,25 @@ class Wep_Widget_Members_List extends WP_Widget {
 					<div class="sr-only" data-type="action"><?php echo get_field( 'action', $member->ID ) ?></div>*/
 		            ?>
                     <div class="col-6 col-sm-4 col-md-3 entry <?php echo get_field( 'group', $member->ID ) ?>">
-                        <div>
-                            <a href="javascript:void(0)" data-toggle="modal" data-target="#memberModal">
-					            <?php if( get_field( 'group', $member->ID ) == 'country' ) :
-                                    $country = strtolower( get_field( 'country', $member->ID ) ); ?>
-                                    <img data-type="country" data-value="<?php echo $country ?>" src="<?php echo get_template_directory_uri() . '/flags/' . $country . '.svg' ?>" alt="<?php echo get_the_title( $member->ID ) ?>">
-					            <?php endif; ?>
-                                <strong data-type="name"><?php echo get_the_title( $member->ID ) ?></strong>
-                                <div class="sr-only" data-type="sign-up">
-                                    <?php echo get_field( 'sign_up', $member->ID ) ?>
-                                </div>
-                                <div class="sr-only" data-type="criticality">
-                                    <?php echo $criticality ?>
-                                </div>
-                                <div class="sr-only" data-type="minister">
-                                    <?php echo get_field( 'minister', $member->ID ) ?>
-                                </div>
-                            </a>
-                        </div>
+						<a href="javascript:void(0)" data-toggle="modal" data-target="#memberModal">
+							<?php if( get_field( 'group', $member->ID ) == 'country' ) :
+								$country = strtolower( get_field( 'country', $member->ID ) ); ?>
+								<div>
+									<img data-type="country" data-value="<?php echo $country ?>" src="<?php echo get_template_directory_uri() . '/flags/' . $country . '.svg' ?>" alt="<?php echo get_the_title( $member->ID ) ?>">
+									<i class="fa fa-info-circle"></i>
+								</div>
+							<?php endif; ?>
+							<strong data-type="name"><?php echo get_the_title( $member->ID ) ?></strong>
+							<div class="sr-only" data-type="sign-up">
+								<?php echo get_field( 'sign_up', $member->ID ) ?>
+							</div>
+							<div class="sr-only" data-type="criticality">
+								<?php echo $criticality ?>
+							</div>
+							<div class="sr-only" data-type="minister">
+								<?php echo get_field( 'minister', $member->ID ) ?>
+							</div>
+						</a>
                     </div>
 	            <?php endforeach; ?>
             </div>
@@ -188,7 +196,7 @@ class Wep_Widget_Members_List extends WP_Widget {
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
+        <div class="modal" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
             <div class="modal-dialog vertical-align-center" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -207,11 +215,11 @@ class Wep_Widget_Members_List extends WP_Widget {
                             <h6>Minister</h6>
                             <p>&nbsp;</p>
                         </div>
-                        <div data-criticality>
+                        <!--<div data-criticality>
                             <hr>
                             <h6>Criticality</h6>
                             <p>&nbsp;</p>
-                        </div>
+                        </div>-->
                         <div data-sign-up>
                             <hr>
                             <h6>Sign-up</h6>

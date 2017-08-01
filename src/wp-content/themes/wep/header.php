@@ -59,8 +59,9 @@
 				                    'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
                                     'walker'         => new Boostrap_Nav_Menu,
 			                    ) );
-			                    ?>
-                            </nav>
+								?>
+								<a href="#"><i class="fa fa-search"></i></a>
+							</nav>
 	                    <?php endif; ?>
                     </div>
                 </div>
