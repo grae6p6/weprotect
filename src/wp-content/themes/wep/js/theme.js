@@ -20,7 +20,7 @@ require("bootstrap/dist/js/bootstrap.min");
             },300);
         });
 
-        // Model national Response
+        // Model National Response
         if( body.hasClass( 'page-template-mnr' ) ) {
 
             // Display/hide and scroll features

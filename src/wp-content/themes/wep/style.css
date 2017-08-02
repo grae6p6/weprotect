@@ -6033,17 +6033,27 @@ p {
 header.body {
   font-size: 0.8em; }
   header.body .primary {
-    padding: 1em 0; }
-    header.body .primary .edit-link {
+    padding: 1em 0;
+    /*#menu-primary > li > a {
+      color: $primary-color;
+    }
+    #menu-primary > li.show > a {
+      color: $white;
+    }*/ }
+    header.body .primary .post-edit-link {
       top: 1em;
       right: 2em; }
     header.body .primary .custom-logo-link {
       display: block;
       padding-bottom: 0.5em; }
-    header.body .primary #menu-primary > li > a {
-      color: #562a64; }
-    header.body .primary #menu-primary > li.show > a {
-      color: #fff; }
+    header.body .primary nav {
+      position: relative;
+      padding-right: 1em; }
+      header.body .primary nav .search {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 1.5em; }
   @media (min-width: 992px) {
     header.body .primary {
       height: 8.75em;
@@ -6191,11 +6201,12 @@ footer.body .copyright {
   padding: 4em 0; }
 
 /* Form elements */
-button, .btn, .edit-link {
+button, .btn, .post-edit-link {
   background-color: #1ba39c;
-  color: #fff;
+  color: #fff !important;
   font-family: "Lato", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 500;
+  text-decoration: none !important;
   padding: .4em 1em;
   border: none;
   letter-spacing: 1px;
@@ -6351,7 +6362,7 @@ button {
 button:hover, button.active, .btn.active, .btn:hover {
   background-color: #2278ad; }
 
-.edit-link {
+.post-edit-link {
   background-color: #a31b1b;
   display: inline-block;
   position: absolute;
@@ -6359,7 +6370,7 @@ button:hover, button.active, .btn.active, .btn:hover {
   right: 1em;
   padding: .2em 1em;
   z-index: 999; }
-  .edit-link a {
+  .post-edit-link a {
     color: #fff !important; }
 
 /* Members list */

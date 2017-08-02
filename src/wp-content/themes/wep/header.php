@@ -40,8 +40,8 @@
             </div>
         </div>
         <div class="primary">
+			<?php wep_edit_link( get_the_ID() ); ?>
             <div class="container">
-	            <?php wep_edit_link( get_the_ID() ); ?>
                 <div class="row justify-content-end align-items-center">
                     <div class="col-12 col-lg-3 text-center">
                         <?php the_custom_logo() ?>
@@ -60,7 +60,7 @@
                                     'walker'         => new Boostrap_Nav_Menu,
 			                    ) );
 								?>
-								<a href="#"><i class="fa fa-search"></i></a>
+								<a href="#" class="search"><i class="fa fa-search"></i></a>
 							</nav>
 	                    <?php endif; ?>
                     </div>

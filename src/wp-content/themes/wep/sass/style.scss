@@ -88,7 +88,7 @@ header.body {
   font-size: 0.8em;
   .primary {
     padding: 1em 0;
-    .edit-link {
+    .post-edit-link {
       top: 1em;
       right: 2em;
     }
@@ -96,12 +96,22 @@ header.body {
       display: block;
       padding-bottom: 0.5em;
     }
-    #menu-primary > li > a {
+    nav {
+      position: relative;
+      padding-right: 1em;
+      .search {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 1.5em;
+      }
+    }
+    /*#menu-primary > li > a {
       color: $primary-color;
     }
     #menu-primary > li.show > a {
       color: $white;
-    }
+    }*/
   }
   @include media-breakpoint-up(lg) {
     .primary {
@@ -312,11 +322,12 @@ footer.body {
 }
 
 /* Form elements */
-button, .btn, .edit-link {
+button, .btn, .post-edit-link {
   background-color: #1ba39c;
-  color: $white;
+  color: $white !important;
   font-family: $font-family-sans-serif-heading;
   font-weight: 500;
+  text-decoration: none !important;
   padding: .4em 1em;
   border: none;
   letter-spacing: 1px;
@@ -507,7 +518,7 @@ button:hover, button.active, .btn.active, .btn:hover {
   background-color: #2278ad;
 }
 
-.edit-link {
+.post-edit-link {
   background-color: #a31b1b;
   display: inline-block;
   position: absolute;

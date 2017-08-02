@@ -166,13 +166,15 @@ class Wep_Widget_Members_List extends WP_Widget {
 		            }
 		            /*<div class="sr-only" data-type="engagement"><?php echo get_field( 'engagement', $member->ID ) ?></div>
 					<div class="sr-only" data-type="action"><?php echo get_field( 'action', $member->ID ) ?></div>*/
+
+					$country = strtolower( get_field( 'country', $member->ID ) );
+
 		            ?>
-                    <div class="col-6 col-sm-4 col-md-3 entry <?php echo get_field( 'group', $member->ID ) ?>">
+                    <div class="col-6 col-sm-4 col-md-3 entry <?php echo get_field( 'group', $member->ID ) ?>" data-code="<?php echo $country ?>">
 						<a href="javascript:void(0)" data-toggle="modal" data-target="#memberModal">
-							<?php if( get_field( 'group', $member->ID ) == 'country' ) :
-								$country = strtolower( get_field( 'country', $member->ID ) ); ?>
+							<?php if( $country ) : ?>
 								<div>
-									<img data-type="country" data-value="<?php echo $country ?>" src="<?php echo get_template_directory_uri() . '/flags/' . $country . '.svg' ?>" alt="<?php echo get_the_title( $member->ID ) ?>">
+									<img src="<?php echo get_template_directory_uri() . '/flags/' . $country . '.svg' ?>" alt="<?php echo get_the_title( $member->ID ) ?>">
 									<i class="fa fa-info-circle"></i>
 								</div>
 							<?php endif; ?>
@@ -196,7 +198,7 @@ class Wep_Widget_Members_List extends WP_Widget {
                 </div>
             </div>
         </div>
-        <div class="modal" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
+        <div class="modal fade" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
             <div class="modal-dialog vertical-align-center" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -212,7 +214,7 @@ class Wep_Widget_Members_List extends WP_Widget {
                         </div>
                         <div data-minister>
                             <hr>
-                            <h6>Minister</h6>
+                            <h6>Office</h6>
                             <p>&nbsp;</p>
                         </div>
                         <!--<div data-criticality>

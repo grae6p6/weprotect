@@ -102,7 +102,7 @@ if ( ! function_exists( 'wep_edit_link' ) ) :
 	function wep_edit_link() {
 		edit_post_link(
 			sprintf(
-				__( 'Edit<span class="sr-only"> "%s"</span>', 'wep' ),
+				__( '<i class="fa fa-pencil"></i> Edit<span class="sr-only"> "%s"</span>', 'wep' ),
 				get_the_title()
 			),
 			'<span class="edit-link">',

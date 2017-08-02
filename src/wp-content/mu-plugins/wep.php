@@ -677,7 +677,10 @@ secretariat, responsible to all those who have signed up to WePROTECT, and which
 			'post_type' => 'page',
 			'post_title' => 'Contact us',
 			'post_content' => '',
-			'menu_order' => 207
+			'menu_order' => 207,
+			'blocks' => [
+				'join-us'
+			]
 		),
 
 		/**
