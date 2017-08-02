@@ -10,7 +10,7 @@ class Wep_Widget_Latest extends WP_Widget {
 			'Wep_Widget_Latest',
 			__('WEP Latest', 'wep'),
 			array(
-				'description' => __( 'Latest news, events, or case studies list.', 'wep' ),
+				'description' => __( 'Latest posts by categories.', 'wep' ),
 			)
 		);
 	}
@@ -22,6 +22,8 @@ class Wep_Widget_Latest extends WP_Widget {
 	 * @param array $instance
 	 */
 	public function widget( $args, $instance ) {
+		global $post;
+
 		$title = apply_filters( 'widget_title', $instance['title'] );
 
 		echo $args['before_widget'];
@@ -29,17 +31,30 @@ class Wep_Widget_Latest extends WP_Widget {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
 
-		//var_dump($instance);
+		// Get posts within the selected categories
+		$posts = get_posts([
+			'post_type' => 'post',
+			'post_status' => 'publish',
+			'category_name' => $instance['categories'],
+			'order' => 'DESC',
+			'orderby' => 'date',
+            'numberposts' => (int)$instance['max']
+		]);
 
-        ?>
-        <div class="flex-container">
+		if( $posts ) : ?>
+		<div class="flex-container">
             <div class="row">
-                <div class="col">
-                    <?php _e( 'Widget functionality to be implemented.', 'wep' ); ?>
-                </div>
-            </div>
-        </div>
-        <?php
+			<?php foreach( $posts as $post ) :
+				setup_postdata( $post ); ?>
+				<div class="col">
+                    <div class="block light"><a href="<?php the_permalink() ?>"><h5><?php the_title() ?></h5></a><span><?php the_time( get_option( 'date_format' ) ) ?></span></div>
+				</div>
+			<?php endforeach; wp_reset_postdata(); ?>
+			</div>
+		</div>
+		<?php else: ?>
+			<p><?php _e( 'No posts were found, please try later.' , 'wep' ); ?></p>
+		<?php endif;
 
 		echo $args['after_widget'];
 	}

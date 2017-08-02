@@ -11,9 +11,21 @@
 	if( get_the_content() != '' ) : ?>
         <div class="container">
             <div class="col">
-                <header class="entry-header">
+				<?php if( is_single() and has_post_thumbnail() ) : ?>
+				<div style="height:30vh;background-image:url(<?php echo get_the_post_thumbnail_url() ?>);background-size:cover;"></div>
+				<?php endif; ?>
+                <header class="entry-header" style="padding-top:1.5em;">
 		            <?php
-		            if ( 'post' === get_post_type() ) {
+		            
+		            if ( is_single() ) {
+			            the_title( '<h1>', '</h1>' );
+		            } elseif ( is_front_page() && is_home() ) {
+			            the_title( '<h3><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' );
+		            } else {
+			            the_title( '<h2><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+		            }
+
+					if ( 'post' === get_post_type() ) {
 			            echo '<div class="entry-meta">';
 			            if ( is_single() ) {
 				            wep_posted_on();
@@ -23,14 +35,6 @@
 			            };
 			            echo '</div>';
 		            };
-
-		            if ( is_single() ) {
-			            the_title( '<h1>', '</h1>' );
-		            } elseif ( is_front_page() && is_home() ) {
-			            the_title( '<h3><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' );
-		            } else {
-			            the_title( '<h2><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		            }
 		            ?>
                 </header>
 				<?php the_content( sprintf(

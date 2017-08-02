@@ -155,11 +155,11 @@ main.body {
     h1, h2, h3 {
       margin: 0 0 .5em 0;
     }
-    .row:last-child {
+    /*.row:last-child {
       .col > *:last-child {
         margin-bottom: 0;
       }
-    }
+    }*/
     header.article {
       display: inline-block;
       position: absolute;
@@ -184,6 +184,9 @@ main.body {
       *:last-child {
         margin-bottom: 0;
       }
+      span {
+        font-size: .8em;
+      }
     }
     .block.light {
       background-color: $primary-light-color;
@@ -194,6 +197,9 @@ main.body {
       }
       p {
         margin-bottom: 0;
+      }
+      a {
+        color: $white;
       }
     }
     .block.grey {
@@ -526,6 +532,7 @@ button:hover, button.active, .btn.active, .btn:hover {
   right: 1em;
   padding: .2em 1em;
   z-index: 999;
+  font-size: 1rem;
   a {
     color: $white !important;
   }

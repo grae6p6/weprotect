@@ -122,7 +122,7 @@ class Wep_Plugin {
 				//'funded-projects' => '',
 				//'faqs' => '',
 				//'how-you-can-help' => '',
-                'case-studies' => '',
+                'category_case-studies' => '',
 				'how-to-report-cseo' => ''
 			],
 			/*'get-involved' => [
@@ -154,9 +154,9 @@ class Wep_Plugin {
 			],
 			'news-and-events' => [
 				'news-and-events' => '',
-				'news' => '',
+				'category_news' => '',
 				'newsletter' => '',
-				'events' => ''
+				'category_events' => ''
 			]
 		],
 
@@ -247,7 +247,7 @@ class Wep_Plugin {
 		],
 		'fund-to-end-violence-against-children' => [
 			'post_title' => 'Fund to end violence against children',
-			'post_content' => '<p>Leo suspendisse imperdiet augue etiam ac in a ullamcorper tortor suspendisse ad ullamcorper maecenas class at a.</p><h4>Case studies</h4>[wep-latest max="3" categories="projects"]',
+			'post_content' => '<p>Leo suspendisse imperdiet augue etiam ac in a ullamcorper tortor suspendisse ad ullamcorper maecenas class at a.</p><h4>Case studies</h4>[wep-latest max="3" categories="case-studies"]',
 			'title' => 'Fund to end violence against children',
 			'type' => '',
 			'bg_colour' => '#eaeaea',
@@ -258,8 +258,32 @@ class Wep_Plugin {
 			'post_title' => 'Latest news and events',
 			'post_content' => '[wep-latest max="3" categories="news,events"]',
 			'title' => 'Latest news and events',
-			'type' => ''//,
-			//'shortcode' => '[wep-latest max="3" categories="news,events"]'
+			'linked_page' => 'news-and-events',
+			'button_label' => 'More news and events',
+			'type' => ''
+		],
+		'latest-news' => [
+			'post_title' => 'Latest news',
+			'post_content' => '[wep-latest max="4" categories="news"]',
+			'title' => 'Latest news',
+			'linked_page' => 'news-and-events',
+			'button_label' => 'More news',
+			'type' => ''
+		],
+		'latest-events' => [
+			'post_title' => 'Latest events',
+			'post_content' => '[wep-latest max="4" categories="events"]',
+			'title' => 'Latest events',
+			'linked_page' => 'news-and-events',
+			'button_label' => 'More events',
+			'type' => '',
+			'bg_colour' => '#eaeaea'
+		],
+		'weprotect-on-twitter' => [
+			'post_title' => 'WePROTECT on twitter',
+			'post_content' => '[twitter_profile screen_name="WeProtect" height="550"]',
+			'title' => 'WePROTECT on twitter',
+			'type' => ''
 		],
 
 		// Our mission
@@ -868,12 +892,12 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 			'post_content' => '',
 			'menu_order' => 602
 		),*/
-		'case-studies' => array(
+		/*'case-studies' => array(
 			'post_type' => 'page',
 			'post_title' => 'Case studies',
 			'post_content' => '',
 			'menu_order' => 603
-		),
+		),*/
 		/*'educators-and-parents' => array(
 			'post_type' => 'page',
 			'post_title' => 'Educators and parents',
@@ -899,26 +923,58 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 		'news-and-events' => array(
 			'post_type' => 'page',
 			'post_title' => 'News and events',
-			'post_content' => '',
-			'menu_order' => 700
+			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>',
+			'menu_order' => 700,
+			'blocks' => [
+				'latest-news',
+				'latest-events',
+				'weprotect-on-twitter'
+			]
 		),
-		'news' => array(
+		/*'news' => array(
 			'post_type' => 'page',
 			'post_title' => 'News',
 			'post_content' => '',
 			'menu_order' => 701
-		),
+		),*/
 		'newsletter' => array(
 			'post_type' => 'page',
 			'post_title' => 'Newsletter',
 			'post_content' => '',
 			'menu_order' => 702
 		),
-		'events' => array(
+		/*'events' => array(
 			'post_type' => 'page',
 			'post_title' => 'Events',
 			'post_content' => '',
 			'menu_order' => 703
+		),*/
+
+		/**
+		*
+		*/
+		'case-study-test1' => array(
+			'post_type' => 'post',
+			'post_category' => array( 'case-studies' ),
+			'post_title' => 'A study of cases',
+			'post_content' => '<p>Lorem ipsum dolor sit amet.</p>',
+			'menu_order' => 0
+		),
+
+		'case-study-test2' => array(
+			'post_type' => 'post',
+			'post_category' => array( 'case-studies' ),
+			'post_title' => 'Lorem ipsum dolor sit amet, sed amit a dorem.',
+			'post_content' => '<p>Lorem ipsum dolor sit amet.</p>',
+			'menu_order' => 0
+		),
+
+		'news-test1' => array(
+			'post_type' => 'post',
+			'post_category' => array( 'news' ),
+			'post_title' => 'An article with a focus, a follow up to another study carried out.',
+			'post_content' => '<p>Lorem ipsum dolor sit amet.</p>',
+			'menu_order' => 0
 		),
 
         /**
@@ -1822,22 +1878,36 @@ Statutory protections are in place to allow industry to fully and effectively re
 
 	public static function _create_menu( $items = [], $menu_id = 0, $parent_id = 0 ) {
 		foreach( $items as $key => $val ) {
-			$post = get_posts([
-				'name'        => $key,
-				'post_type'   => 'page',
-				'post_status' => 'publish',
-				'numberposts' => 1
-			]);
-			if( count( $post ) ) {
-				if( strpos( $key, 'link_') !== false ) {
+			$array = [];
+			if( strpos( $key, 'category_') !== false ) {
+				$category = get_category_by_slug( substr( $key, 9 ) );
+				if( $category ) {
 					$array = [
-						'menu-item-type' => 'custom',
-						'menu-item-url' => 'http://example.com/',
-						'menu-item-title' => 'http://example.com/',
+						'menu-item-object' => 'category',
+						'menu-item-object-id' => $category->term_id,
+						'menu-item-type' => 'taxonomy',
 						'menu-item-status' => 'publish',
 						'menu-item-parent-id' => $parent_id
 					];
-				} else {
+				}
+			} elseif( strpos( $key, 'link_') !== false ) {
+				$name = substr( $key, 5 );
+				$array = [
+					'menu-item-type' => 'custom',
+					'menu-item-url' => 'http://example.com/',
+					'menu-item-class' => 'fa fa-' . $name . '-offical',
+					'menu-item-title' => ucfirst( $name ),
+					'menu-item-status' => 'publish',
+					'menu-item-parent-id' => $parent_id
+				];
+			} else {
+				$post = get_posts([
+					'name'        => $key,
+					'post_type'   => 'page',
+					'post_status' => 'publish',
+					'numberposts' => 1
+				]);
+				if( count( $post ) ) {
 					$array = [
 						'menu-item-object' => 'page',
 						'menu-item-object-id' => $post[0]->ID,
@@ -1846,7 +1916,9 @@ Statutory protections are in place to allow industry to fully and effectively re
 						'menu-item-parent-id' => $parent_id
 					];
 				}
-
+			}
+			
+			if( count( $array ) ) {
 				$item_id = wp_update_nav_menu_item( $menu_id, 0, $array );
 
 				if( is_array( $val ) ) {
@@ -2130,7 +2202,7 @@ Statutory protections are in place to allow industry to fully and effectively re
 				}
 			}
 		}
-//var_dump($results);
+
 		foreach( $results as $row ) {
 			if( empty( $row['Organisation'] ) )
 		        continue;
@@ -2301,6 +2373,14 @@ Statutory protections are in place to allow industry to fully and effectively re
 					unset( $content['group'] );
 				}
 
+				if( array_key_exists( 'post_category', $content ) ) {
+					foreach( $content['post_category'] as $i => $slug ) {
+						$category = get_category_by_slug( $slug );
+						$content['post_category'][$i] = $category->term_id;
+					}
+					var_dump($content['post_category']);
+				}
+
 				//var_dump($content);
 				$content['post_status'] = 'publish';
 				$id = wp_insert_post($content);
@@ -2441,6 +2521,7 @@ Statutory protections are in place to allow industry to fully and effectively re
 		activate_plugin( 'contact-form-7/wp-contact-form-7.php' );
 		activate_plugin( 'bootstrap-for-contact-form-7/bootstrap-for-contact-form-7.php' );
 		activate_plugin( 'wordpress-seo/wp-seo.php' );
+		activate_plugin( 'twitter/twitter.php' );
 
 		// Clear default content
 		wp_delete_comment( 1 );

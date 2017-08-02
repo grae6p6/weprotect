@@ -12,7 +12,7 @@ $locations = get_nav_menu_locations();
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center text-lg-right">
-                    <a href="#top" class="float-right"><?php esc_attr_e( '▲ Top', 'wep' ) ?></a>
+                    <a href="#top" class="float-right">▲ <?php esc_attr_e( 'Top', 'wep' ) ?></a>
                 </div>
             </div>
         </div>
@@ -40,16 +40,16 @@ $locations = get_nav_menu_locations();
 					<?php endif; ?>
                 </div>
                 <div class="col-12 col-lg-4 text-center text-lg-left">
-					<?php if ( has_nav_menu( 'social' ) ) :
-                        $menu = get_term( $locations['social'], 'nav_menu' ); ?>
-                        <h5><?php echo esc_html( $menu->name ) ?></h5>
-                        <nav class="social-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Social Media', 'wep' ); ?>">
+					<?php if ( has_nav_menu( 'connect' ) ) :
+                        $menu = get_term( $locations['connect'], 'nav_menu' ); ?>
+
+                        <nav class="connect-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Social Media', 'wep' ); ?>">
 							<?php
 							wp_nav_menu( array(
-								'theme_location' => 'social',
+								'theme_location' => 'connect',
 								'depth'          => 1,
 								'container'      => false,
-								'menu_class'     => 'nav',
+								'menu_class'     => 'nav flex-column',
 								'fallback_cb'    => '__return_false',
 								'items_wrap'     => '<h5>' . esc_html( $menu->name ) . '</h5><ul id="%1$s" class="%2$s">%3$s</ul>',
 								'walker'         => new Boostrap_Nav_Menu,

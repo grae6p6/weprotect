@@ -27,8 +27,8 @@ function wep_wpcf7_form_elements($res) {
 
 add_filter( 'wpcf7_form_elements', 'wep_wpcf7_form_elements', 10, 2 );
 
-function wep_member_group_post_link( $post_link, $id = 0 ){
-	$post = get_post($id);
+/*function wep_member_group_post_link( $post_link, $id = 0 ){
+$post = get_post($id);
 	if ( is_object( $post ) && $post->post_type == 'mnr' ){
 		$terms = wp_get_object_terms( $post->ID, 'mnr_category' );
 		var_dump($terms);
@@ -37,7 +37,7 @@ function wep_member_group_post_link( $post_link, $id = 0 ){
 		}
 	}
 	return $post_link;
-}
+}*/
 //add_filter( 'post_type_link', 'wep_member_group_post_link', 1, 3 );
 
 
