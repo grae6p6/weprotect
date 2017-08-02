@@ -111,7 +111,14 @@
 
         // Populate modal
         $('#memberModal').on('show.bs.modal', function (event) {
-            var src = $('.entry.' + WepWidgetMembers.group + '[data-code="' + WepWidgetMembers.code + '"]');
+            var src;
+            if( typeof event.relatedTarget !== 'undefined' ) {
+                src = $($(event.relatedTarget).parent());
+                WepWidgetMembers.code = src.data('code');
+            } else {
+                src = $('.entry.' + WepWidgetMembers.group + '[data-code="' + WepWidgetMembers.code + '"]');
+            }
+            //console.log(WepWidgetMembers.code);
             /*if( typeof src === 'undefined' ) {
                 event.preventDefault();
                 return false;
@@ -132,7 +139,7 @@
                 } else {
                     modal.find('.modal-body [data-minister]').hide();
                 }
-                console.log(src.find('[data-type="sign-up"]').text().trim());
+                //console.log(src.find('[data-type="sign-up"]').text().trim());
                 modal.find('.modal-body [data-sign-up]').find('p').html( WepWidgetMembers.sug[ src.find('[data-type="sign-up"]').text().trim() ] );
             } else {
                 modal.find('.modal-body [data-minister]').hide();
