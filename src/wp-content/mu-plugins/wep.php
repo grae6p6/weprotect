@@ -11,7 +11,7 @@ class Wep_Plugin {
 	public static $categories = [
 		'Case studies' => 0,
 		'Events' => 0,
-		'News' => 0,
+		//'News' => 0,
 		'Model National Response' => 0
 	];
 	public static $forms = [
@@ -154,7 +154,7 @@ class Wep_Plugin {
 			],
 			'news-and-events' => [
 				'news-and-events' => '',
-				'category_news' => '',
+				'news' => '',
 				'newsletter' => '',
 				'category_events' => ''
 			]
@@ -202,6 +202,13 @@ class Wep_Plugin {
 			'linked_page' => 'our-mission',
             'image' => 'stock-1.jpg'
 		],
+		'contact-us-form' => [
+			'post_title' => 'Contact us form',
+			'post_content' => '<p>[form]</p>',
+			'title' => '',
+			'bg_colour' => '#eaeaea',
+			'type' => ''
+		],
 		'why-we-must-act-header' => [
 			'post_title' => 'Header - Why we must act',
 			'post_content' => '<p>It is an uncomfortable reality that while technology offers incredible possibilities to our societies, never before has it been easier for those who want to sexually exploit children to make contact with potential victims around the world, share images of their abuse and encourage each other to commit further crimes.</p>',
@@ -217,8 +224,8 @@ class Wep_Plugin {
 			'linked_page' => 'who-we-work-with',
 			'section_1' => '<p>The National Centre for Missing and Exploited Children, which handles reports of child sexual exploitation from major tech companies in the US, has received more than 7.5 million reports since 1998.  4.4 million of these were received in 2015 alone.</p>',
 			'section_2' => '<p>In 2014, INHOPE, the association of INTERNET hotlines, assessed 83,644 URLS as containing child sexual abuse material worldwide – a 64% increase from 2013.</p>',
-			'section_3' => '<p>The exact extent of sexual exploitation on peer-to-peer networks, cloud services and the encrypted or dark web is less certain, but it is likely to be significant. For instance, the NGO Thorn assesses that some 30% of searches on the eDonkey P2P platform are for child sexual abuse material.</p>'//,
-			//'section_4' => '<p>A recent study concluded that only 2% of hidden web services on TOR host child abuse material, yet these sites accounted for 80% of traffic.</p>'
+			'section_3' => '<p>The exact extent of sexual exploitation on peer-to-peer networks, cloud services and the encrypted or dark web is less certain, but it is likely to be significant. For instance, the NGO Thorn assesses that some 30% of searches on the eDonkey P2P platform are for child sexual abuse material.</p>',
+			'section_4' => '<p>A recent study concluded that only 2% of hidden web services on TOR host child abuse material, yet these sites accounted for 80% of traffic.</p>'
 		],
 		'why-we-must-act-statistics' => [
 			'post_title' => 'Why we must act - statistics',
@@ -228,7 +235,7 @@ class Wep_Plugin {
 			'bg_colour' => '#eaeaea',
 			'section_1' => '<p>69% were of children assessed to be under 10 years of age</p>',
 			'section_2' => '<p>1,788 victims were assessed to be under 2 years of age</p>',
-			'section_3' => '<p>34% of images involved the rape or sexual torture of children</p>'//,
+			'section_3' => '<p>34% of images involved the rape or sexual torture of children</p>'
 		],
 		'why-we-must-act-join-us' => [
 			'post_title' => 'Why we must act - join us',
@@ -284,6 +291,13 @@ class Wep_Plugin {
 			'post_title' => 'Related case studies',
 			'post_content' => '[wep-latest max="3" categories="case-studies"]',
 			'title' => 'Related case studies',
+			'type' => '',
+			'bg_colour' => '#eaeaea'
+		],
+		'news-list' => [
+			'post_title' => 'News list',
+			'post_content' => '[wep-news-links max="12"]',
+			'title' => '',
 			'type' => '',
 			'bg_colour' => '#eaeaea'
 		],
@@ -407,7 +421,7 @@ class Wep_Plugin {
 			'section_1' => '<p>Identify victims, and ensure they receive necessary support</p>',
 			'section_2' => '<p>Investigate cases of exploitation and prosecute offenders</p>',
 			'section_3' => '<p>Increase public awareness of the risks posed by children’s activities online</p>',
-			//'section_4' => '<p>Reduce the availability of child sexual abuse material online</p>',
+			'section_4' => '<p>Reduce the availability of child sexual abuse material online</p>',
 			'linked_page' => 'statements-of-action',
 			'button_label' => 'Statements of action'
 		],
@@ -707,9 +721,10 @@ secretariat, responsible to all those who have signed up to WePROTECT, and which
 		'contact-us' => array(
 			'post_type' => 'page',
 			'post_title' => 'Contact us',
-			'post_content' => '',
+			'post_content' => '<p>Contact WePROTECT Global Alliance using the form below. If you wish to become a member, please follow the \'Join us\' link below.</p>',
 			'menu_order' => 207,
 			'blocks' => [
+				'contact-us-form',
 				'join-us'
 			]
 		),
@@ -938,12 +953,16 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 				'weprotect-on-twitter'
 			]
 		),
-		/*'news' => array(
+		'news' => array(
 			'post_type' => 'page',
 			'post_title' => 'News',
-			'post_content' => '',
-			'menu_order' => 701
-		),*/
+			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>',
+			'menu_order' => 701,
+			'blocks' => [
+				'news-list',
+				'weprotect-on-twitter'
+			]
+		),
 		'newsletter' => array(
 			'post_type' => 'page',
 			'post_title' => 'Newsletter',
@@ -975,14 +994,6 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 			'post_content' => '<p>Lorem ipsum dolor sit amet.</p>',
 			'menu_order' => 0
 		),
-
-		/*'news-test1' => array(
-			'post_type' => 'post',
-			'post_category' => array( 'news' ),
-			'post_title' => 'An article with a focus, a follow up to another study carried out.',
-			'post_content' => '<p>Lorem ipsum dolor sit amet.</p>',
-			'menu_order' => 0
-		),*/
 
         /**
          * MNR groups

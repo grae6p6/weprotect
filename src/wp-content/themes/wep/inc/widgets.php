@@ -340,22 +340,36 @@ class Wep_Widget_News_Links extends WP_Widget {
 			LIMIT " . (int)$instance['max']
 		);
 
-		$col_md = ( 12 / count( $links ) );
-
-		if( $links ) : ?>
+		if( $links ) :
+			$col_md = ( 12 / count( $links ) ); ?>
 		<div class="flex-container">
             <div class="row">
-				<?php foreach( $links as $link ) : ?>
-				<div class="col-6 col-md-<?php echo $col_md ?>">
-					<div class="block light">
+				<?php if( (int)$instance['max'] > 4 ) : ?>
+					<?php foreach( $links as $link ) : ?>
+					<div class="col-4 col-md-3">
+						[image]
+					</div>
+					<div class="col-8 col-md-9">
 						<a href="<?php echo $link->link_url ?>" target="_blank"><?php echo $link->link_name ?></a>
+						<p><span class="posted-on"><strong><?php echo parse_url( $link->link_url, PHP_URL_HOST ) ?></strong> &ndash; <?php echo date( get_option( 'date_format' ), strtotime( $link->link_updated ) ) ?></span></p>
 						<?php if( !empty( $link->link_description ) ) : ?>
 						<p><?php echo $link->link_description ?></p>
 						<?php endif; ?>
-						<p><span class="posted-on"><strong><?php echo parse_url( $link->link_url, PHP_URL_HOST ) ?></strong> &ndash; <?php echo date( get_option( 'date_format' ), strtotime( $link->link_updated ) ) ?></span></p>
 					</div>
-				</div>
-				<?php endforeach; ?>
+					<?php endforeach; ?>
+				<?php else : ?>
+					<?php foreach( $links as $link ) : ?>
+					<div class="col-6 col-md-<?php echo $col_md ?>">
+						<div class="block light">
+							<a href="<?php echo $link->link_url ?>" target="_blank"><?php echo $link->link_name ?></a>
+							<?php if( !empty( $link->link_description ) ) : ?>
+							<p><?php echo $link->link_description ?></p>
+							<?php endif; ?>
+							<p><span class="posted-on"><strong><?php echo parse_url( $link->link_url, PHP_URL_HOST ) ?></strong> &ndash; <?php echo date( get_option( 'date_format' ), strtotime( $link->link_updated ) ) ?></span></p>
+						</div>
+					</div>
+					<?php endforeach; ?>
+				<?php endif; ?>
 			</div>
 		</div>
 		<?php else: ?>
