@@ -257,7 +257,7 @@ class Wep_Plugin {
 		],
 		'latest-news-and-events' => [
 			'post_title' => 'Latest news and events',
-			'post_content' => '[wep-news-links max="4"]',
+			'post_content' => '[wep-news-links max="4"][wep-latest max="4" categories="events"]',
 			'title' => 'Latest news and events',
 			'linked_page' => 'news-and-events',
 			'button_label' => 'More news and events',
@@ -265,7 +265,7 @@ class Wep_Plugin {
 		],
 		'latest-news' => [
 			'post_title' => 'Latest news',
-			'post_content' => '[wep-latest max="4" categories="news"]',
+			'post_content' => '[wep-news-links max="4"]',
 			'title' => 'Latest news',
 			'linked_page' => 'news-and-events',
 			'button_label' => 'More news',
