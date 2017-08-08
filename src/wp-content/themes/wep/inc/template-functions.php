@@ -6,15 +6,27 @@ if ( ! function_exists( 'wep_posted_on' ) ) :
 	 */
 	function wep_posted_on() {
 
+		// Finally, let's write all of this to the page.
+		return '<span class="posted-on">' . wep_time_link() . '</span>';
+	}
+endif;
+
+
+if ( ! function_exists( 'wep_posted_by' ) ) :
+	/**
+	 * Prints HTML with meta information for the current post-date/time and author.
+	 */
+	function wep_posted_by() {
+
 		// Get the author name; wrap it in a link.
 		$byline = sprintf(
 		/* translators: %s: post author */
-			__( '%s<br>', 'wep' ),
-			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . get_the_author() . '</a></span>'
+			__( '%s', 'wep' ),
+			'<h6><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . get_the_author() . '</a></h6>'
 		);
 
 		// Finally, let's write all of this to the page.
-		echo '<span class="byline"> ' . $byline . '</span><span class="posted-on">' . wep_time_link() . '</span>';
+		return '<span class="byline"> ' . $byline . '</span>';
 	}
 endif;
 

@@ -29,7 +29,7 @@ if( count( $css ) ) {
 <div class="block"<?php echo $style ?>>
 	<?php wep_edit_link( get_the_ID() ); ?>
 	<?php if( $title || $button || ( get_the_content() != '' ) ) : ?>
-    <div class="container">
+    <div class="container px-5">
 		<div class="row align-items-center">
 			<div class="col-12">
 				<?php if( $title ) :

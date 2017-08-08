@@ -30,10 +30,10 @@ if( count( $css ) ) {
 }
 
 ?>
-<div class="block block-cta3"<?php echo $style ?>>
+<div class="block block-sections"<?php echo $style ?>>
 	<?php wep_edit_link( get_the_ID() ); ?>
 	<?php if( $title || $button || ( get_the_content() != '' ) ) : ?>
-	<div class="container">
+	<div class="container px-5">
 		<div class="row align-items-center">
 			<div class="col-12">
 				<?php if( $title ) :
@@ -43,21 +43,26 @@ if( count( $css ) ) {
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-12 col-lg-4">
+			<?php
+            
+            if( !empty( get_field( 'section_4' ) ) )
+                $count = 4;
+            elseif( !empty( get_field( 'section_3' ) ) )
+                $count = 3;
+            elseif( !empty( get_field( 'section_2' ) ) )
+                $count = 2;
+
+            $col = 12 / $count;
+
+            //Increase public awareness of the risks posed by children’s activities online
+            
+            for( $i = 1; $i <= $count; $i++ ) : ?>
+            <div class="col-12 col-lg-<?php echo $col ?>">
 				<div class="block light">
-					<?php the_field('section_1' ) ?>
+					<?php the_field( 'section_' . $i ) ?>
 				</div>
 			</div>
-			<div class="col-12 col-lg-4">
-				<div class="block light">
-					<?php the_field('section_2' ) ?>
-				</div>
-			</div>
-			<div class="col-12 col-lg-4">
-				<div class="block light">
-					<?php the_field('section_3' ) ?>
-				</div>
-			</div>
+            <?php endfor; ?>
 		</div>
         <?php if( $button ) : ?>
         <div class="row">

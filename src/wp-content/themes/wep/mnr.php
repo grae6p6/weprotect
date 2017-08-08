@@ -57,7 +57,7 @@ get_header(); ?>
                                     <li class="entry<?php echo ( count( $sections ) ? ' expandable' : '' ) ?><?php echo ( $is_active ? ' expanded active' : '' ) ?>">
                                         <div class="container-flex">
                                             <div class="row align-items-center">
-                                                <?php if( $i > 1 ) : ?>
+                                                <?php if( $i > 0 ) : ########################### ?>
                                                 <div class="col-2 col-sm-1 col-md-2 col-lg-2">
                                                     <i class="fa fa-bank"></i>
                                                 </div>
@@ -67,7 +67,7 @@ get_header(); ?>
                                                         <?php echo ( !$i ? __( 'Introduction', 'wep' ) : get_the_title( $group->ID ) ); ?>
                                                     </a>
                                                 </div>
-                                                <?php if( $i > 1 ) : ?>
+                                                <?php if( $i > 0 ) : ########################### ?>
                                                 <div class="col">
                                                     <a href="javascript:void(0)" class="toggle float-right" aria-label="<?php _e( 'Menu for ' . get_the_title( $group->ID ), 'wep' ); ?>"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                                                 </div>

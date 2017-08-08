@@ -15,6 +15,7 @@
 </head>
 <body <?php body_class( 'debugd no-js' ); ?>>
 <div id="page">
+	<?php wep_edit_link( get_the_ID() ); ?>
 	<header class="body" role="banner">
         <div class="top">
             <div class="container">
@@ -40,13 +41,12 @@
             </div>
         </div>
         <div class="primary">
-			<?php wep_edit_link( get_the_ID() ); ?>
             <div class="container">
                 <div class="row justify-content-end align-items-center">
-                    <div class="col-12 col-lg-3 text-center">
+                    <div class="col-12 col-xl-3 pr-0 text-center">
                         <?php the_custom_logo() ?>
                     </div>
-                    <div class="col-12 col-lg-9">
+                    <div class="col-12 col-xl-9 pl-0">
 	                    <?php if ( has_nav_menu( 'main' ) ) : ?>
                             <nav role="navigation" aria-label="<?php esc_attr_e( 'Main Menu', 'wep' ); ?>">
 			                    <?php
@@ -60,7 +60,7 @@
                                     'walker'         => new Boostrap_Nav_Menu,
 			                    ) );
 								?>
-								<a href="#" class="search"><i class="fa fa-search"></i></a>
+								<a href="#" class="search" alt="<?php _e( 'Search', 'wep' ) ?>"><i class="fa fa-search" aria-hidden="true"></i></a>
 							</nav>
 	                    <?php endif; ?>
                     </div>

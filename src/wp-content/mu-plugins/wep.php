@@ -22,7 +22,7 @@ class Wep_Plugin {
 		'stock-1.jpg' => 0,
 		'stock-2.jpg' => 0,
 		'stock-3.jpg' => 0,
-		'wep-logo.gif' => 0
+		'weprotect-logo.png' => 0
     ];
 	/*public static $menus = [
 
@@ -188,6 +188,7 @@ class Wep_Plugin {
         'section_1' => '5964e987a10bb',
         'section_2' => '5964e9a8a10bc',
         'section_3' => '5964e9b2a10bd',
+		'section_4' => '5964e9b2a10be',
         'shortcode' => '5964ec11ed4db',
         'group' => '5975c5f60af7e'
     ];
@@ -205,13 +206,13 @@ class Wep_Plugin {
 			'post_title' => 'Header - Why we must act',
 			'post_content' => '<p>It is an uncomfortable reality that while technology offers incredible possibilities to our societies, never before has it been easier for those who want to sexually exploit children to make contact with potential victims around the world, share images of their abuse and encourage each other to commit further crimes.</p>',
 			'title' => 'Why we must act',
-			'type' => 'cta1'
+			'type' => 'cta'
         ],
 		'why-we-must-act' => [
 			'post_title' => 'Why we must act',
 			'post_content' => '<p>The Internet is an extraordinary catalyst of innovation, education, and expanding global economic growth. Technology offers endless benefits and possibilities to our children that we never experienced as they have unlimited access to information with the ability to communicate and connect with people they have never met from all over the planet. But with this comes a range of ever more sophisticated threats.</p><p>Included in that range of threats is online child sexual exploitation—a heinous crime that, through the reach of the internet, has become a major international crime of our age. Never before has it been easier for perpetrators to make contact with children, share images of abuse and inspire each other to commit further crimes.</p><p>It is a huge problem, with children being exploited on an industrial scale:</p>',
 			'title' => 'Why we must act',
-			'type' => 'cta3',
+			'type' => 'sections',
 			//'bg_colour' => '#eaeaea',
 			'linked_page' => 'who-we-work-with',
 			'section_1' => '<p>The National Centre for Missing and Exploited Children, which handles reports of child sexual exploitation from major tech companies in the US, has received more than 7.5 million reports since 1998.  4.4 million of these were received in 2015 alone.</p>',
@@ -223,7 +224,7 @@ class Wep_Plugin {
 			'post_title' => 'Why we must act - statistics',
 			'post_content' => '<p>The images and videos being shared are of the worst kind, with an apparent trend towards younger children and greater violence. Of the 68,000 reports handled by the Internet Watch Foundation in 2015:</p>',
 			'title' => '',
-			'type' => 'cta3',
+			'type' => 'sections',
 			'bg_colour' => '#eaeaea',
 			'section_1' => '<p>69% were of children assessed to be under 10 years of age</p>',
 			'section_2' => '<p>1,788 victims were assessed to be under 2 years of age</p>',
@@ -240,7 +241,7 @@ class Wep_Plugin {
 			'post_title' => 'Model National Response',
 			'post_content' => '<p>The WePROTECT Model National Response sets out what countries need to do to</p>',
 			'title' => 'Model National Response',
-			'type' => 'cta1',
+			'type' => 'cta',
 			'linked_page' => 'the-model-national-response',
 			'button_label' => 'View full guidance',
 			'image' => 'stock-2.jpg'
@@ -279,6 +280,13 @@ class Wep_Plugin {
 			'type' => '',
 			'bg_colour' => '#eaeaea'
 		],
+		'related-case-studies' => [
+			'post_title' => 'Related case studies',
+			'post_content' => '[wep-latest max="3" categories="case-studies"]',
+			'title' => 'Related case studies',
+			'type' => '',
+			'bg_colour' => '#eaeaea'
+		],
 		'weprotect-on-twitter' => [
 			'post_title' => 'WePROTECT on twitter',
 			'post_content' => '[twitter_profile screen_name="WeProtect" height="550"]',
@@ -291,7 +299,7 @@ class Wep_Plugin {
 			'post_title' => 'Our mission',
 			'post_content' => '<p>We have assembled, for the first time, the influence, resources and expertise to transform how this crime is dealt with worldwide, to deliver our vision of more victims safeguarded, more perpetrators apprehended and an end to online child sexual exploitation.</p>',
 			'title' => 'Our mission',
-			'type' => 'cta1',
+			'type' => 'cta',
 			'linked_page' => 'our-mission',
 			'button_label' => 'Our mission and strategy'
 		],
@@ -299,7 +307,7 @@ class Wep_Plugin {
 			'post_title' => 'Achieving our goals',
 			'post_content' => '<p>The WePROTECT Global Alliance Board are focused on four key areas to help deliver our mission</p>',
 			'title' => 'Achieving our goals',
-			'type' => 'cta3',
+			'type' => 'sections',
 			'linked_page' => 'what-we-do',
 			'section_1' => '<p>Securing high-level commitment by governments, the technology industry and international and civil society organisations to tackling this crime</p>',
 			'section_2' => '<p>Support comprehensive national action, through the WePROTECT Model National Response and the Fund to End Violence Against Children</p>',
@@ -308,7 +316,7 @@ class Wep_Plugin {
 		'un-sustainable-development-goals' => [
 			'post_title' => 'U.N. Sustainable development goals',
 			'post_content' => '<h4>WePROTECT Global Alliance will support the landmark commitment by world leaders to end abuse, exploitation, trafficking and all forms of violence and abuse of children by 2030 as part of the UN Sustainable Development Goals.</h4>',
-			'type' => 'cta1',
+			'type' => 'cta',
 			'linked_page' => 'donating',
 			'button_label' => 'Donate to the Fund'
 		],
@@ -341,7 +349,7 @@ class Wep_Plugin {
 			'post_title' => 'Membership',
 			'post_content' => '<p>The WePROTECT Global Alliance is a movement of unprecedented reach, with 70 countries already members of WePROTECT or the Global Alliance, along with major international organisations, 20 of the biggest names in the global technology industry, and 17 leading civil society organisations.</p>',
 			'title' => 'Membership',
-			'type' => 'cta1'
+			'type' => 'cta'
 		],
         'membership-form' => [
 	        'post_title' => 'Membership form',
@@ -352,7 +360,7 @@ class Wep_Plugin {
 			'post_title' => 'Membership - Why join',
 			'post_content' => '<p>By signing up to the Statement of Action, countries will be making a high profile statement of their intent to tackle this heinous crime;</p><p>They will have access to a growing global network of expertise and support to help countries build their capacity and capability against online child sexual exploitation;</p><p>They will benefit from global technology development and awareness raising of this issue, and</p>',
 			'title' => 'Why join?',
-			'type' => 'cta3',
+			'type' => 'sections',
 			'linked_page' => 'who-we-are',
 			'section_1' => '<p>The UNICEF hosted Fund to End Violence Against Children will support projects and programmes of developing countries and organisations from these countries that aim to prevent online CSE.</p>',
 			'section_2' => '<p>Our civil society organisation members gain access to a worldwide network of actors from varying backgrounds, all committed to ending online child sexual exploitation.</p>',
@@ -389,13 +397,13 @@ class Wep_Plugin {
 			'post_title' => 'Who we are',
 			'post_content' => '<p>The WePROTECT Global Alliance to End Child Sexual Exploitation Online is an international movement dedicated to national and global action to end the sexual exploitation of children online.</p>',
 			'title' => 'Who we are',
-			'type' => 'cta1'
+			'type' => 'cta'
 		],
 		'statements-of-action' => [
 			'post_title' => 'Statement of action',
 			'post_content' => '',
 			'title' => 'Statements of action',
-			'type' => 'cta3',
+			'type' => 'sections',
 			'section_1' => '<p>Identify victims, and ensure they receive necessary support</p>',
 			'section_2' => '<p>Investigate cases of exploitation and prosecute offenders</p>',
 			'section_3' => '<p>Increase public awareness of the risks posed by children’s activities online</p>',
@@ -407,7 +415,7 @@ class Wep_Plugin {
 			'post_title' => 'Our leadership',
 			'post_content' => '<p>The WePROTECT Global Alliance is led by a multi-stakeholder Board, comprised of representatives from key countries, international and civil society organisations, and the technology industry.</p>',
 			'title' => 'Our leadership',
-			'type' => 'cta1',
+			'type' => 'cta',
 			'linked_page' => 'home',
 			'button_label' => 'WePROTECT Board'
 		],
@@ -426,14 +434,14 @@ class Wep_Plugin {
 			'post_title' => 'What we do',
 			'post_content' => '<p>WePROTECT Global Alliance will support the landmark commitment by world leaders to end abuse, exploitation, trafficking and all forms of violence and abuse of children by 2030 as part of the UN Sustainable Development Goals.</p>',
 			'title' => 'What we do',
-			'type' => 'cta1'
+			'type' => 'cta'
 		],
 
 		'what-is-cso' => [
 			'post_title' => 'What is CSEO?',
 			'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>',
 			'title' => 'What is CSEO?',
-			'type' => 'cta1',
+			'type' => 'cta',
 			'image' => 'stock-3',
 			'linked_page' => 'the-model-national-response',
 			'button_label' => 'Find out more about CSEO'
@@ -442,11 +450,10 @@ class Wep_Plugin {
 
 		'funded-projects' => [
 			'post_title' => 'Funded projects',
-			'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>[wep-latest max="3" categories="projects"]',
+			'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>[wep-latest max="3" categories="case-studies"]',
 			'title' => 'Funded projects',
 			'type' => '',
-			'bg_colour' => '#eaeaea',
-			'linked_page' => 'funded-projects'
+			'bg_colour' => '#eaeaea'
 		],
 
 
@@ -454,7 +461,7 @@ class Wep_Plugin {
 			'post_title' => 'Header - funding',
 			'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
 			'title' => 'Fund to end violence against children',
-			'type' => 'cta1',
+			'type' => 'cta',
 			'linked_page' => 'about-the-fund'
 		],
 
@@ -464,7 +471,7 @@ class Wep_Plugin {
 			'title' => 'How the fund is spent',
 			'linked_page' => 'how-the-fund-is-spent',
             'button_label' => 'How the money is spent',
-			'type' => 'cta3',
+			'type' => 'sections',
 			'section_1' => '<p>Supporting statement copy to go here</p>',
 			'section_2' => '<p>Supporting statement copy to go here</p>',
 			'section_3' => '<p>Supporting statement copy to go here</p>'
@@ -495,14 +502,14 @@ class Wep_Plugin {
 			'post_title' => 'Get involved',
 			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>',
 			'title' => 'Get involved',
-			'type' => 'cta1'
+			'type' => 'cta'
 		],
 
 		/*'resources' => [
 			'post_title' => 'Resources',
 			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>',
 			'title' => 'Resources',
-			'type' => 'cta1'
+			'type' => 'cta'
 		],
 
 		'policy-and-legislation' => [
@@ -527,7 +534,7 @@ class Wep_Plugin {
 			'post_title' => 'Educators and parents',
 			'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>',
 			'title' => 'Educators and parents',
-			'type' => 'cta1',
+			'type' => 'cta',
 			'linked_page' => 'home',
 			'button_label' => 'Keeping children safe online',
 			'image' => 'stock-1'
@@ -993,7 +1000,7 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 			]
 		),*/
 
-		'enablers' => array(
+		/*'enablers' => array(
 			'post_type' => 'page',
 			'post_title' => 'Enablers',
 			'post_content' => '<h4>Leadership</h4><p>Lorem ipsum dolor sit amet</p>',
@@ -1004,7 +1011,7 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 			'blocks' => [
 				'model-national-response-header'
 			]
-		),
+		),*/
 
 		'policy-and-governance' => array(
 			'post_type' => 'page',
@@ -2335,7 +2342,7 @@ Statutory protections are in place to allow industry to fully and effectively re
 				wp_update_attachment_metadata( $id, $attach_data );
 
 				// Set logo
-				if( pathinfo( $filename, PATHINFO_FILENAME ) == 'wep-logo' ) {
+				if( pathinfo( $filename, PATHINFO_FILENAME ) == 'weprotect-logo' ) {
 					set_theme_mod( 'custom_logo', $id );
                 }
 			}

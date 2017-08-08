@@ -84,9 +84,18 @@ if(function_exists("register_field_group"))
 				array (
 					'param' => 'post_type',
 					'operator' => '==',
-					'value' => 'page',
+					'value' => 'post',
 					'order_no' => 0,
 					'group_no' => 0,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'page',
+					'order_no' => 0,
+					'group_no' => 1,
 				),
 			),
 		),
@@ -111,13 +120,9 @@ if(function_exists("register_field_group"))
 				'choices' => array(
 					'' => 'Standard',
 					'image' => 'Banner with title (optional image)',
-					'cta1' => 'Call-to-action (right-side image)',
-					'cta3' => 'Call-to-action (three paragraphs)',
-					'points' => 'Call-to-action (three points)',
-					'casestudies' => 'Text block with related case studies',
-					'events' => 'Text block with related events',
-					'news' => 'Text block with related news',
-					'any' => 'Text block with any related post',
+					'cta' => 'Call-to-action (with right-side image)',
+					'sections' => 'Call-to-action (with sections)',
+					'points' => 'Call-to-action (with points)',
 				),
 				'default_value' => '',
 				'allow_null' => 0,
@@ -347,7 +352,7 @@ if(function_exists("register_field_group"))
 						array (
 							'field' => 'field_595e465405629',
 							'operator' => '==',
-							'value' => 'cta3',
+							'value' => 'sections',
 						),
 						array (
 							'field' => 'field_595e465405629',
@@ -372,7 +377,7 @@ if(function_exists("register_field_group"))
 						array (
 							'field' => 'field_595e465405629',
 							'operator' => '==',
-							'value' => 'cta3',
+							'value' => 'sections',
 						),
 						array (
 							'field' => 'field_595e465405629',
@@ -397,7 +402,32 @@ if(function_exists("register_field_group"))
 						array (
 							'field' => 'field_595e465405629',
 							'operator' => '==',
-							'value' => 'cta3',
+							'value' => 'sections',
+						),
+						array (
+							'field' => 'field_595e465405629',
+							'operator' => '==',
+							'value' => 'points',
+						),
+					),
+					'allorany' => 'any',
+				),
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+			array (
+				'key' => 'field_5964e9b2a10be',
+				'label' => 'Section Four',
+				'name' => 'section_4',
+				'type' => 'wysiwyg',
+				'conditional_logic' => array (
+					'status' => 1,
+					'rules' => array (
+						array (
+							'field' => 'field_595e465405629',
+							'operator' => '==',
+							'value' => 'sections',
 						),
 						array (
 							'field' => 'field_595e465405629',

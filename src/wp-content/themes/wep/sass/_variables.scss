@@ -163,6 +163,10 @@ $spacers: (
                 y: ($spacer-y * 1.5)
         ),
         5: (
+                x: ($spacer-x * 2),
+                y: ($spacer-y * 2)
+        ),
+        6: (
                 x: ($spacer-x * 3),
                 y: ($spacer-y * 3)
         )
@@ -416,7 +420,7 @@ $input-padding-x:                .75em !default;
 $input-padding-y:                .5em !default;
 $input-line-height:              1.25 !default;
 
-$input-bg:                       rgba($primary-light-color,.05) !default;
+$input-bg:                       rgba($white,.5) !default;
 $input-bg-disabled:              $gray-lighter !default;
 
 $input-color:                    $gray !default;

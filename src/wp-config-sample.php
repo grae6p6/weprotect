@@ -37,6 +37,13 @@ define('DB_CHARSET', 'utf8');
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 
+/**
+ * Contact form 7
+ */
+define( 'WPCF7_AUTOP', false ); // no extra <p>
+define( 'WPCF7_LOAD_JS', false );  // disables JavaScript
+define( 'WPCF7_LOAD_CSS', false ); // disables the default CSS
+
 /**#@+
  * Authentication Unique Keys and Salts.
  *

@@ -33,7 +33,7 @@ if( count( $css ) ) {
 <div class="block block-image"<?php echo $style ?>>
 	<?php wep_edit_link( get_the_ID() ); ?>
 	<?php if( $title || $button || ( get_the_content() != '' ) ) : ?>
-    <div class="container">
+    <div class="container p-0">
 		<header class="article">
 			<?php if( $title ) :
 				printf( '<%s>%s</%s>', $heading, $title, $heading );

@@ -1,7 +1,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <?php if( get_the_content() != '' ) : ?>
-    <div class="block block-cta1">
-        <div class="container">
+    <div class="block block-cta">
+        <div class="container px-5">
             <div class="row align-items-center">
                 <div class="col">
                     <h1><?php the_title() ?></h1>
@@ -26,5 +26,6 @@
         'link_before' => '<span class="page-number">',
         'link_after'  => '</span>',
     ) );
+    
     ?>
 </article>

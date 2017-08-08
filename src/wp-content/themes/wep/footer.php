@@ -18,7 +18,7 @@ $locations = get_nav_menu_locations();
         </div>
     </div>
     <div class="primary">
-        <div class="container">
+        <div class="container px-5">
             <div class="row">
                 <div class="col-12 col-lg-4 text-center text-lg-left">
 					<?php if ( has_nav_menu( 'support' ) ) :

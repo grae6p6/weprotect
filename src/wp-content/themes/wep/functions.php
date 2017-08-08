@@ -9,15 +9,17 @@ function wep_wpcf7_form_elements($res) {
             'has-error',
             'wpcf7-not-valid form-control',
             'alert alert-warning',
-            'class="wpcf7-response-output wpcf7-validation-errors alert alert-warning"',
+            'class="wpcf7-response-output wpcf7-validation-errors alert alert-danger"',
+			'class="radio"'
 
             //'wpcf7-validates-as-required form-control'
         ],
         [
-	        'has-error has-warning',
-            'wpcf7-not-valid form-control form-control-warning',
+	        'has-error has-danger',
+            'wpcf7-not-valid form-control form-control-danger',
             'form-control-feedback',
-            'class="wpcf7-response-output wpcf7-validation-errors alert alert-warning" role="alert"',
+            'class="wpcf7-response-output wpcf7-validation-errors alert alert-danger" role="alert"',
+			'class="form-check form-check-inline"',
 
             //'wpcf7-validates-as-required form-control form-control-success'
         ],
@@ -41,7 +43,38 @@ $post = get_post($id);
 //add_filter( 'post_type_link', 'wep_member_group_post_link', 1, 3 );
 
 
+function filter_search_results( $query ) {
+	if ( !is_admin() && $query->is_main_query() ) {
+    if ($query->is_search) {
+		//remove_action( 'pre_get_posts', 'filter_search_results' );
+		/*$my_secondary_loop = new WP_Query(...);
+		if( $my_secondary_loop->have_posts() ):
+			while( $my_secondary_loop->have_posts() ): $my_secondary_loop->the_post();
+			//The secondary loop
+			endwhile;
+		endif;
+		wp_reset_postdata();*/
 
+		//var_dump($query);
+      	//$query->set('post_type', 'post');
+		/*$meta_query = array('relation' => 'OR');
+        array_push($meta_query, array(
+			'key' => 'assigned_blocks',
+			'value' => ':267;',
+			'compare' => 'LIKE'
+		));
+		array_push($meta_query, array(
+			'key' => 'assigned_blocks',
+			'value' => ':248;',
+			'compare' => 'LIKE'
+		));*/
+        //$query->set("meta_query", $meta_query);
+		//var_dump($query2);
+		//var_dump( $GLOBALS['wp_query'] );
+    }
+  }
+}
+add_action( 'pre_get_posts', 'filter_search_results' );
 
 function add_taxonomies_to_pages() {
 	register_taxonomy_for_object_type( 'category', 'page' );
@@ -60,13 +93,13 @@ class Wep_Theme {
 		add_theme_support( 'html5' );
 		add_theme_support( 'post-thumbnails' );
 
-		load_theme_textdomain('wep');
+		load_theme_textdomain( 'wep' );
 
 	    $defaults = array(
 		    'height'      => 60,
-		    'width'       => 233,
-		    //'flex-height' => true,
-		    //'flex-width'  => true,
+		    'width'       => 232,
+		    'flex-height' => true,
+		    'flex-width'  => true,
 		    'header-text' => array( 'site-title' ),
 	    );
 	    add_theme_support( 'custom-logo', $defaults );
@@ -86,7 +119,7 @@ class Wep_Theme {
 		//wp_deregister_script( 'jquery' );
 		//wp_deregister_script( 'jquery-migrate' );
 
-		//wp_enqueue_script( 'jquery', 'http://code.jquery.com/jquery-1.11.3.min.js' );
+		wp_enqueue_script( 'jquery', 'http://code.jquery.com/jquery-1.11.3.min.js' );
 
 		// Theme stylesheet.
 		wp_enqueue_style( 'wep-style', get_stylesheet_uri() );
