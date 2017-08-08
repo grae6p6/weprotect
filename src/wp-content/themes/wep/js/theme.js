@@ -3,6 +3,10 @@ require("bootstrap/dist/js/bootstrap.min");
 
 (function($) {
     $(document).ready(function(){
+
+        // Mobile devices can double tab top level items to visit page
+        $( '#menu-main li:has(ul)' ).doubleTapToGo();
+
         $('[data-url]').on('click',function(e){
             e.preventDefault();
             window.location = $(this).data('url');

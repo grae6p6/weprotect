@@ -6239,8 +6239,7 @@ header.body {
       display: block;
       padding-bottom: 0.5em; }
     header.body .primary nav {
-      position: relative;
-      padding-right: 2em; }
+      position: relative; }
       header.body .primary nav .search {
         position: absolute;
         top: 0;
@@ -6366,7 +6365,7 @@ main.body {
       font-size: 1.2em; }
     main.body .block.block-image header.article > * {
       margin: 0; }
-    main.body .block.block-image header.article * + button {
+    main.body .block.block-image header.article * + .btn {
       margin: 1em 0 0 0; }
   main.body .block.block-related .wp-post-image {
     margin: 0 0 1em 0;
@@ -6390,6 +6389,11 @@ footer.body .primary {
   padding: 2em 0; }
   footer.body .primary nav.support-navigation a {
     text-decoration: underline; }
+  footer.body .primary .social {
+    padding-left: .5em; }
+    footer.body .primary .social a {
+      display: inline-block;
+      margin: 0 .5em; }
 
 footer.body .copyright {
   height: 3em;
@@ -6401,6 +6405,7 @@ footer.body .copyright {
 
 /* Form elements */
 button, .btn, .post-edit-link {
+  display: inline-block;
   background-color: #1ba39c;
   color: #fff !important;
   font-family: "Lato", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;

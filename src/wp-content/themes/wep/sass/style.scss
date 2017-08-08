@@ -130,7 +130,6 @@ header.body {
     }
     nav {
       position: relative;
-      padding-right: 2em;
       .search {
         position: absolute;
         top: 0;
@@ -307,7 +306,7 @@ main.body {
       &.article > * {
         margin: 0;
       }
-      &.article * + button {
+      &.article * + .btn {
         margin: 1em 0 0 0;
       }
     }
@@ -345,6 +344,13 @@ footer.body {
         text-decoration: underline;
       }
     }
+    .social {
+      padding-left: .5em;
+      a {
+        display: inline-block;
+        margin: 0 .5em;
+      }
+    }
   }
 
   .copyright {
@@ -360,6 +366,7 @@ footer.body {
 
 /* Form elements */
 button, .btn, .post-edit-link {
+  display: inline-block;
   background-color: #1ba39c;
   color: $white !important;
   font-family: $font-family-sans-serif-heading;

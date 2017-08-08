@@ -58,7 +58,7 @@ class Tests_Wep_Theme extends WP_UnitTestCase {
 		$menus = get_registered_nav_menus();
 		$this->assertTrue(array_key_exists('top', $menus));
 		$this->assertTrue(array_key_exists('main', $menus));
-		$this->assertTrue(array_key_exists('connect', $menus));
+		//$this->assertTrue(array_key_exists('connect', $menus));
 		$this->assertTrue(array_key_exists('support', $menus));
 	}
 

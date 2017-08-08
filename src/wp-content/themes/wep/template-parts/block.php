@@ -25,8 +25,8 @@ if( function_exists( 'get_field' ) ) :
 			$button = null;
 			if( $linked ) {
 				$linked = array_pop( $linked );
-				$button = '<button data-url="' . esc_url( get_the_permalink( $linked->ID ) ) . '">' .
-                          ( get_field( 'button_label' ) ?: get_the_title( $linked->ID ) ) . '</button>';
+				$button = '<a class="btn btn-primary" href="' . esc_url( get_the_permalink( $linked->ID ) ) . '">' .
+                          ( get_field( 'button_label' ) ?: get_the_title( $linked->ID ) ) . '</a>';
 			}
 
             // Block title

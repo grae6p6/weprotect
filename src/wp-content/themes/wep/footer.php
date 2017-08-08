@@ -40,23 +40,15 @@ $locations = get_nav_menu_locations();
 					<?php endif; ?>
                 </div>
                 <div class="col-12 col-lg-4 text-center text-lg-left">
-					<?php if ( has_nav_menu( 'connect' ) ) :
-                        $menu = get_term( $locations['connect'], 'nav_menu' ); ?>
-
-                        <nav class="connect-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Social Media', 'wep' ); ?>">
-							<?php
-							wp_nav_menu( array(
-								'theme_location' => 'connect',
-								'depth'          => 1,
-								'container'      => false,
-								'menu_class'     => 'nav flex-column',
-								'fallback_cb'    => '__return_false',
-								'items_wrap'     => '<h5>' . esc_html( $menu->name ) . '</h5><ul id="%1$s" class="%2$s">%3$s</ul>',
-								'walker'         => new Boostrap_Nav_Menu,
-							) );
-							?>
-                        </nav>
-					<?php endif; ?>
+                    <h5><?php _e( 'Connect', 'wep' ) ?></h5>
+					<div class="social">
+                        <?php if( !empty( Wep_Theme::$options['facebook'] ) ) : ?>
+                        <a href="<?php echo Wep_Theme::$options['facebook'] ?>"><i class="fa fa-facebook-official fa-2x"></i></a>
+                        <?php endif; ?>
+                        <?php if( !empty( Wep_Theme::$options['twitter'] ) ) : ?>
+                        <a href="<?php echo Wep_Theme::$options['twitter'] ?>"><i class="fa fa-twitter fa-2x"></i></a>
+                        <?php endif; ?>
+                    </div>
                 </div>
                 <div class="col-12 col-lg-4 text-center text-lg-left">
                     [newsletter]

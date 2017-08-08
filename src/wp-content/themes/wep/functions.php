@@ -88,6 +88,8 @@ add_action( 'init', 'add_taxonomies_to_pages' );
 
 
 class Wep_Theme {
+	public static $options = [];
+
 	public function after_switch_theme() {
 	    Wep_Plugin::setup();
     }
@@ -98,21 +100,23 @@ class Wep_Theme {
 
 		load_theme_textdomain( 'wep' );
 
-	    $defaults = array(
+	    /*$defaults = array(
 		    'height'      => 60,
 		    'width'       => 232,
 		    'flex-height' => true,
 		    'flex-width'  => true,
 		    'header-text' => array( 'site-title' ),
 	    );
-	    add_theme_support( 'custom-logo', $defaults );
+	    //add_theme_support( 'custom-logo', $defaults );*/
 
 		register_nav_menus( array(
 			'top' => __( 'Top Menu', 'wep' ),
 			'main' => __( 'Main Menu', 'wep' ),
-			'connect' => __( 'Connect', 'wep' ),
+			//'connect' => __( 'Connect', 'wep' ),
 			'support' => __( 'Contact and Support', 'wep' ),
 		) );
+
+		self::$options = get_option( 'weprotect_theme' );
 	}
 
 	// TODO: To be refactored
@@ -122,7 +126,7 @@ class Wep_Theme {
 		//wp_deregister_script( 'jquery' );
 		//wp_deregister_script( 'jquery-migrate' );
 
-		wp_enqueue_script( 'jquery', 'http://code.jquery.com/jquery-1.11.3.min.js' );
+		wp_enqueue_script( 'jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js' );
 
 		// Theme stylesheet.
 		wp_enqueue_style( 'wep-style', get_stylesheet_uri() );
@@ -132,6 +136,9 @@ class Wep_Theme {
 		// Load the html5 shiv.
 		wp_enqueue_script( 'html5', get_theme_file_uri( '/js/html5.js' ), array(), '3.7.3' );
 		wp_script_add_data( 'html5', 'conditional', 'lt IE 9' );
+
+		// Double tab for mobile devices clicking top level menu item
+		wp_enqueue_script( 'doubletaptogo', get_theme_file_uri( '/js/doubleTapToGo.js' ), array(), '1.0' );
 
 		// Theme script.
 		wp_enqueue_script( 'wep-scripts', get_theme_file_uri( '/js/scripts.min.js' ), array(), '1.0' );
@@ -174,6 +181,7 @@ class Wep_Theme {
 				'public' => true,
 				'publicly_queryable' => false,
 				'has_archive' => false,
+				'supports' => array( 'title', 'editor', 'thumbnail' )
 			)
 		);
 
@@ -299,3 +307,8 @@ require get_parent_theme_file_path( 'inc/widgets.php' );
  * Walkers
  */
 require get_parent_theme_file_path( 'inc/walkers.php' );
+
+/**
+ * Settings
+ */
+require get_parent_theme_file_path( 'inc/settings.php' );

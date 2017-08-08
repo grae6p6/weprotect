@@ -21,8 +21,8 @@ class Wep_Plugin {
 	public static $media = [
 		'stock-1.jpg' => 0,
 		'stock-2.jpg' => 0,
-		'stock-3.jpg' => 0,
-		'weprotect-logo.png' => 0
+		'stock-3.jpg' => 0//,
+		//'weprotect-logo.png' => 0
     ];
 	/*public static $menus = [
 
@@ -166,14 +166,15 @@ class Wep_Plugin {
 			'useful-contacts' => '',
 			'helplines-in-your-region' => '',
 			'feedback' => ''
-		],
+		]
 
+		/*,
 		// Social menu
 		'Connect' => [
 			'link_facebook' => '',
 			'link_twitter' => '',
 			'link_email' => ''
-		]
+		]*/
 	];
 	public static $slugs = [];
 	public static $fields = [
@@ -274,7 +275,7 @@ class Wep_Plugin {
 			'post_title' => 'Latest news',
 			'post_content' => '[wep-news-links max="4"]',
 			'title' => 'Latest news',
-			'linked_page' => 'news-and-events',
+			'linked_page' => 'news',
 			'button_label' => 'More news',
 			'type' => ''
 		],
@@ -2353,9 +2354,9 @@ Statutory protections are in place to allow industry to fully and effectively re
 				wp_update_attachment_metadata( $id, $attach_data );
 
 				// Set logo
-				if( pathinfo( $filename, PATHINFO_FILENAME ) == 'weprotect-logo' ) {
+				/*if( pathinfo( $filename, PATHINFO_FILENAME ) == 'weprotect-logo' ) {
 					set_theme_mod( 'custom_logo', $id );
-                }
+                }*/
 			}
 		}
 
@@ -2577,125 +2578,3 @@ Statutory protections are in place to allow industry to fully and effectively re
 		update_option('permalink_structure', '/%category%/%postname%/' );
 	}
 }
-
-/**
- * ACP settings
- * Class MySettingsPage
- */
-
-class MySettingsPage
-{
-	/**
-	 * Holds the values to be used in the fields callbacks
-	 */
-	private $options;
-
-	/**
-	 * Start up
-	 */
-	public function __construct()
-	{
-		add_action( 'admin_menu', array( $this, 'add_plugin_page' ) );
-		add_action( 'admin_init', array( $this, 'page_init' ) );
-	}
-
-	/**
-	 * Add options page
-	 */
-	public function add_plugin_page()
-	{
-		// This page will be under "Settings"
-		add_options_page(
-			'WePROTECT',
-			'WePROTECT',
-			'manage_options',
-			'wep-administration',
-			array( $this, 'create_admin_page' )
-		);
-	}
-
-	/**
-	 * Options page callback
-	 */
-	public function create_admin_page()
-	{
-		// Set class property
-		$this->options = get_option( 'my_option_name' );
-		?>
-		<div class="wrap">
-			<h1>Options</h1>
-            <p>No options available at this time.</p>
-			<form method="post">
-				<?php
-				// This prints out all hidden setting fields
-				settings_fields( 'my_option_group' );
-				do_settings_sections( 'my-setting-admin' );
-				//submit_button('Install core data', $type = 'primary', 'install-core');
-				?>
-			</form>
-		</div>
-		<?php
-	}
-
-	/**
-	 * Register and add settings
-	 */
-
-	// TODO: REFACTOR
-	public function page_init()
-	{
-		if( $_POST['install-core'] ) {
-			//Wep_Plugin::setup();
-		}
-	}
-
-	/**
-	 * Sanitize each setting field as needed
-	 *
-	 * @param array $input Contains all settings fields as array keys
-	 */
-	public function sanitize( $input )
-	{
-		$new_input = array();
-		if( isset( $input['id_number'] ) )
-			$new_input['id_number'] = absint( $input['id_number'] );
-
-		if( isset( $input['title'] ) )
-			$new_input['title'] = sanitize_text_field( $input['title'] );
-
-		return $new_input;
-	}
-
-	/**
-	 * Print the Section text
-	 */
-	public function print_section_info()
-	{
-		print 'Enter your settings below:';
-	}
-
-	/**
-	 * Get the settings option array and print one of its values
-	 */
-	public function id_number_callback()
-	{
-		printf(
-			'<input type="text" id="id_number" name="my_option_name[id_number]" value="%s" />',
-			isset( $this->options['id_number'] ) ? esc_attr( $this->options['id_number']) : ''
-		);
-	}
-
-	/**
-	 * Get the settings option array and print one of its values
-	 */
-	public function title_callback()
-	{
-		printf(
-			'<input type="text" id="title" name="my_option_name[title]" value="%s" />',
-			isset( $this->options['title'] ) ? esc_attr( $this->options['title']) : ''
-		);
-	}
-}
-
-if( is_admin() )
-	$my_settings_page = new MySettingsPage();

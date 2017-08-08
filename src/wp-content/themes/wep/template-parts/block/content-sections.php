@@ -52,12 +52,13 @@ if( count( $css ) ) {
             elseif( !empty( get_field( 'section_2' ) ) )
                 $count = 2;
 
-            $col = 12 / $count;
+            $col_md = 24 / $count;
+            $col_xl = 12 / $count;
 
             //Increase public awareness of the risks posed by children’s activities online
             
             for( $i = 1; $i <= $count; $i++ ) : ?>
-            <div class="col-12 col-lg-<?php echo $col ?>">
+            <div class="col-12 col-md-<?php echo $col_md ?> col-xl-<?php echo $col_xl ?>">
 				<div class="block light">
 					<?php the_field( 'section_' . $i ) ?>
 				</div>
