@@ -162,7 +162,7 @@ if ( $action ) {
 			@ini_set('display_errors', true); //Ensure that Fatal errors are displayed.
 			// Go back to "sandbox" scope so we get the same errors as before
 			plugin_sandbox_scrape( $plugin );
-			/** This action is documented in wp-admin/includes/plugins.php */
+			/** This action is documented in wp-admin/includes/plugin.php */
 			do_action( "activate_{$plugin}" );
 			exit;
 
