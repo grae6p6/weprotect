@@ -257,7 +257,7 @@ class Wep_Plugin {
 		],
 		'latest-news-and-events' => [
 			'post_title' => 'Latest news and events',
-			'post_content' => '[wep-latest max="3" categories="news,events"]',
+			'post_content' => '[wep-news-links max="4"]',
 			'title' => 'Latest news and events',
 			'linked_page' => 'news-and-events',
 			'button_label' => 'More news and events',
@@ -976,13 +976,13 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 			'menu_order' => 0
 		),
 
-		'news-test1' => array(
+		/*'news-test1' => array(
 			'post_type' => 'post',
 			'post_category' => array( 'news' ),
 			'post_title' => 'An article with a focus, a follow up to another study carried out.',
 			'post_content' => '<p>Lorem ipsum dolor sit amet.</p>',
 			'menu_order' => 0
-		),
+		),*/
 
         /**
          * MNR groups

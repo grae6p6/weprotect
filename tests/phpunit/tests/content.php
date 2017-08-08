@@ -35,6 +35,7 @@ class Tests_Wep_Content extends WP_UnitTestCase {
 		$this->assertEquals(1, count($posts));
 	}
 
+	// TODO: This test always fails on automation?
 	public function test_blocks_created() {
 		$this->assertTrue(true);
 		/*$this->assertTrue(post_type_exists( 'content_block' ));

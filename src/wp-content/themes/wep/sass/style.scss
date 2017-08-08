@@ -559,7 +559,6 @@ article {
 }
 
 /* Buttons */
-
 button:hover, button.active, .btn.active, .btn:hover {
   background-color: #2278ad;
 }
@@ -578,6 +577,19 @@ button:hover, button.active, .btn.active, .btn:hover {
   }
 }
 
+
+
+.widget_wep_widget_news_links {
+  ul {
+    list-style: none;
+  }
+}
+
+
+
+
+
+
 /* Members list */
 .jqvmap-label {
   position: absolute;
@@ -587,6 +599,8 @@ button:hover, button.active, .btn.active, .btn:hover {
   color: $white;
   font-size: .8em;
 }
+
+
 .widget_wep_widget_members_list {
   .buttons {
     margin: 0 0 1em 0;

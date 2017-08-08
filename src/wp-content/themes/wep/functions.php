@@ -1,5 +1,7 @@
 <?php
 
+add_filter( 'pre_option_link_manager_enabled', '__return_true' );
+
 /**
  * Update classes for bootstrap CF7 plugin HTML output
  */
@@ -170,7 +172,6 @@ class Wep_Theme {
 				),
 				'public' => true,
 				'publicly_queryable' => false,
-				//'rewrite' => array( 'slug' => 'our-members/%member%' ),
 				'has_archive' => false,
 			)
 		);
@@ -194,10 +195,10 @@ class Wep_Theme {
 	public static function register_field_groups() {
         $case_studies = get_term_by('name', 'Case studies', 'category');
         $events = get_term_by('name', 'Events', 'category');
-		$news = get_term_by('name', 'News', 'category');
+		//$news = get_term_by('name', 'News', 'category');
 		$mnr = get_term_by('name', 'Model National Response', 'category');
 
-        if( !$case_studies || !$events || !$news || !$mnr ) {
+        if( !$case_studies || !$events || !$mnr ) {
             return false;
         }
 
@@ -209,6 +210,7 @@ class Wep_Theme {
 	public static function widgets_init() {
 		register_widget( 'Wep_Widget_Latest' );
 		register_widget( 'Wep_Widget_Members_List' );
+		register_widget( 'Wep_Widget_News_Links' );
 	}
 
 	public static function widget_latest( $atts ) {
@@ -242,15 +244,23 @@ class Wep_Theme {
 			$atts
 		));
 
-		/*$args = array(
-			'before_widget' => '<div class="box widget scheme-' . $scheme . ' ">',
-			'after_widget'  => '</div>',
-			'before_title'  => '<div class="widget-title">',
-			'after_title'   => '</div>',
-		);*/
-
 		ob_start();
 		the_widget( 'Wep_Widget_Members_List', $atts/*, $args*/ );
+		$output = ob_get_clean();
+
+		return $output;
+	}
+
+	public static function widget_news_links( $atts ) {
+		extract( shortcode_atts(
+			array(
+				'max'   => 4
+			),
+			$atts
+		));
+
+		ob_start();
+		the_widget( 'Wep_Widget_News_Links', $atts/*, $args*/ );
 		$output = ob_get_clean();
 
 		return $output;
@@ -272,6 +282,7 @@ add_action( 'after_setup_theme', ['Wep_Theme', 'after_theme_setup'] );
  */
 add_shortcode( 'wep-latest', [ 'Wep_Theme', 'widget_latest' ] );
 add_shortcode( 'wep-members-list', [ 'Wep_Theme', 'widget_members_list' ] );
+add_shortcode( 'wep-news-links', [ 'Wep_Theme', 'widget_news_links' ] );
 
 /**
  * Theme template functions

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Latest news, events, case studies feed
+ * Latest events, case studies feed
  */
 class Wep_Widget_Latest extends WP_Widget {
 
@@ -94,7 +94,7 @@ class Wep_Widget_Latest extends WP_Widget {
 }
 
 /**
- * Latest news, events, case studies feed
+ * Members list
  */
 class Wep_Widget_Members_List extends WP_Widget {
 
@@ -103,7 +103,7 @@ class Wep_Widget_Members_List extends WP_Widget {
 			'Wep_Widget_Members_List',
 			__('WEP Members list', 'wep'),
 			array(
-				'description' => __( 'Latest news, events, or case studies list.', 'wep' ),
+				'description' => __( 'Latest events, or case studies list.', 'wep' ),
 			)
 		);
 	}
@@ -262,6 +262,105 @@ class Wep_Widget_Members_List extends WP_Widget {
             </div>
         </div>
         <?php endif;
+
+		echo $args['after_widget'];
+	}
+
+	/**
+	 * Widget back-end
+	 *
+	 * @param array $instance
+	 */
+	public function form( $instance ) {
+		if( isset( $instance[ 'title' ] ) ) {
+			$title = $instance[ 'title' ];
+		} else {
+			$title = __( 'New title', 'wep' );
+		}
+		?>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+		</p>
+		<?php
+	}
+
+	/**
+	 * Updating widget replacing old instances with new
+	 *
+	 * @param array $new_instance
+	 * @param array $old_instance
+	 *
+	 * @return array
+	 */
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		return $instance;
+	}
+}
+
+/**
+ * Latest news links
+ */
+class Wep_Widget_News_Links extends WP_Widget {
+
+	function __construct() {
+		parent::__construct(
+			'Wep_Widget_News_Links',
+			__('WEP News links', 'wep'),
+			array(
+				'description' => __( 'Latest news links.', 'wep' ),
+			)
+		);
+	}
+
+	/**
+	 * Widget front-end
+	 *
+	 * @param array $args
+	 * @param array $instance
+	 */
+	public function widget( $args, $instance ) {
+		global $wpdb;
+
+		$title = apply_filters( 'widget_title', $instance['title'] );
+
+		echo $args['before_widget'];
+		if ( ! empty( $title ) ) {
+			echo $args['before_title'] . $title . $args['after_title'];
+		}
+
+		// Get latest links
+		$links = $wpdb->get_results(
+			"SELECT link_url, link_name, link_description
+			FROM {$wpdb->links}
+			WHERE link_visible = 'Y'
+			ORDER BY link_updated
+			LIMIT " . (int)$instance['max']
+		);
+
+		$col_md = ( count( $links ) / 12 );
+
+		if( $links ) : ?>
+		<div class="flex-container">
+            <div class="row">
+				<?php foreach( $links as $link ) : ?>
+				<div class="col-6 col-md-<?php echo $col_md ?>">
+					<div class="block light">
+						<a href="<?php echo $link->link_url ?>" target="_blank"><?php echo $link->link_name ?></a>
+						<?php if( !empty( $link->link_description ) ) : ?>
+						<p><?php echo $link->link_description ?></p>
+						<?php endif; ?>
+						<span class="posted-on"><strong><?php echo parse_url( $link->link_url, PHP_URL_HOST ) ?></strong> &ndash; <?php echo date( get_option( 'date_format' ), $link->link_updated ) ?></span>
+					</div>
+				</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+		<?php else: ?>
+			<p><?php _e( 'No news links were found, please try later.' , 'wep' ); ?></p>
+		<?php endif;
 
 		echo $args['after_widget'];
 	}

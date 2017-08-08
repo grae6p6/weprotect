@@ -105,6 +105,7 @@ class Tests_Wep_Theme extends WP_UnitTestCase {
 		//Wep_Theme::widgets_init();
 		$this->assertTrue( class_exists('Wep_Widget_Latest') );
 		$this->assertTrue( class_exists('Wep_Widget_Members_List') );
+		$this->assertTrue( class_exists('Wep_Widget_News_Links') );
 		//is_active_widget();
 	}
 }

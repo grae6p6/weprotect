@@ -177,7 +177,7 @@ if(function_exists("register_field_group"))
 				'type' => 'color_picker',
 				'default_value' => '',
 			),
-			array (
+			/*array (
 				'key' => 'field_59648b7bc3baf',
 				'label' => 'Related Case Studies',
 				'name' => 'related_casestudies',
@@ -306,7 +306,7 @@ if(function_exists("register_field_group"))
 					0 => 'post_title',
 				),
 				'max' => '',
-			),
+			),*/
 			array (
 				'key' => 'field_5964b1b8127f0',
 				'label' => 'Linked Page',

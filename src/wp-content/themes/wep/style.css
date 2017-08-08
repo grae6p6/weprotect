@@ -6579,6 +6579,9 @@ button:hover, button.active, .btn.active, .btn:hover {
   .post-edit-link a {
     color: #fff !important; }
 
+.widget_wep_widget_news_links ul {
+  list-style: none; }
+
 /* Members list */
 .jqvmap-label {
   position: absolute;
