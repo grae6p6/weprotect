@@ -333,14 +333,14 @@ class Wep_Widget_News_Links extends WP_Widget {
 
 		// Get latest links
 		$links = $wpdb->get_results(
-			"SELECT link_url, link_name, link_description
+			"SELECT link_url, link_name, link_description, link_updated
 			FROM {$wpdb->links}
 			WHERE link_visible = 'Y'
 			ORDER BY link_updated
 			LIMIT " . (int)$instance['max']
 		);
 
-		$col_md = ( count( $links ) / 12 );
+		$col_md = ( 12 / count( $links ) );
 
 		if( $links ) : ?>
 		<div class="flex-container">
@@ -352,7 +352,7 @@ class Wep_Widget_News_Links extends WP_Widget {
 						<?php if( !empty( $link->link_description ) ) : ?>
 						<p><?php echo $link->link_description ?></p>
 						<?php endif; ?>
-						<span class="posted-on"><strong><?php echo parse_url( $link->link_url, PHP_URL_HOST ) ?></strong> &ndash; <?php echo date( get_option( 'date_format' ), $link->link_updated ) ?></span>
+						<p><span class="posted-on"><strong><?php echo parse_url( $link->link_url, PHP_URL_HOST ) ?></strong> &ndash; <?php echo date( get_option( 'date_format' ), strtotime( $link->link_updated ) ) ?></span></p>
 					</div>
 				</div>
 				<?php endforeach; ?>
