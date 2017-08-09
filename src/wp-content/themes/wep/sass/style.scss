@@ -365,14 +365,13 @@ footer.body {
 }
 
 /* Form elements */
-button, .btn, .post-edit-link {
+/*button, */.btn, .post-edit-link {
   display: inline-block;
   background-color: #1ba39c;
   color: $white !important;
   font-family: $font-family-sans-serif-heading;
   font-weight: 500;
   text-decoration: none !important;
-  padding: .4em 1em;
   border: none;
   letter-spacing: 1px;
   font-size: 0.9em;
@@ -566,7 +565,7 @@ article {
 }
 
 /* Buttons */
-button:hover, button.active, .btn.active, .btn:hover {
+/*button:hover, */button.active, .btn.active, .btn:hover {
   background-color: #2278ad;
 }
 
@@ -630,11 +629,11 @@ button:hover, button.active, .btn.active, .btn:hover {
         text-decoration: none;
       }
       div {
-        font-size: 0;
         position: relative;
         border-radius: 0.25em;
         color: $white;
         &:first-child {
+          font-size: 0;
           min-height: 120px;
           &::after {
             position: absolute;

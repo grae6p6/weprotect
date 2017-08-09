@@ -345,7 +345,7 @@ class Wep_Widget_Board_List extends WP_Widget {
 		            $criticality = get_field( 'criticality', $member->ID );
 
 		            ?>
-                    <div class="col-6 col-sm-4 col-md-3 entry <?php echo get_field( 'group', $member->ID ) ?>" data-code="<?php echo $country ?>">
+                    <div class="col-6 col-sm-4 col-md-3 entry <?php echo get_field( 'group', $member->ID ) ?>" data-code="board-<?php echo $member->ID ?>">
 						<a href="javascript:void(0)" data-toggle="modal" data-target="#memberModal">
 							<div>
 								<?php if( has_post_thumbnail( $member->ID ) ) : ?>
@@ -354,7 +354,7 @@ class Wep_Widget_Board_List extends WP_Widget {
 								<i class="fa fa-info-circle"></i>
 							</div>
 							<strong data-type="name"><?php echo get_the_title( $member->ID ) ?></strong>
-							<div class="sr-only4" data-type="detail">
+							<div class="sr-only" data-type="detail">
 								<?php echo $member->post_content ?>
 							</div>
 						</a>

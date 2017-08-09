@@ -52,7 +52,7 @@ if( count( $css ) ) {
             elseif( !empty( get_field( 'section_2' ) ) )
                 $count = 2;
 
-            $col_md = 24 / $count;
+            $col_md = ( $count == 4 ? 24 : 12 ) / $count;
             $col_xl = 12 / $count;
             
             for( $i = 1; $i <= $count; $i++ ) : ?>

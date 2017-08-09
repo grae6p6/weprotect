@@ -5,8 +5,8 @@
 (function($) {
     $(document).ready(function(){
         var wml;
-        if( typeof ( wml = $('.widget_wep_widget_members_list') ) !== 'undefined' ) {
-            var WepWidgetMembers = {
+        if( typeof ( wml = $('.widget_wep_widget_board_list, .widget_wep_widget_members_list') ) !== 'undefined' ) {
+            var WepWidgetBMList = {
                 sug: [],
                 display: '',
                 code: '',
@@ -14,56 +14,60 @@
                 group: '',
                 values: [],
                 init: function(){
-                    if( typeof ( WepWidgetMembers.map = $('#jqvmap') ) !== 'undefined' ) {
+                    if( typeof ( WepWidgetBMList.map = $('#jqvmap') ) !== 'undefined' ) {
                         //var locale = $('html').attr('lang');
-                        WepWidgetMembers.map.empty();
-                        WepWidgetMembers.map.vectorMap({
-                            map: 'world_en',// + locale.split('-')[0],
-                            backgroundColor: null,
-                            color: '#ffffff',
-                            hoverOpacity: 0.7,
-                            selectedColor: '#d2c3d7',
-                            borderColor: '#2A0634',
-                            enableZoom: true,
-                            showTooltip: true,
-                            scaleColors: ['#8e699b','#ffffff'],
-                            values: WepWidgetMembers.values,
-                            normalizeFunction: 'polynomial',
-                            onRegionClick: function(element, code, region) {
-                                var obj = $('.entry.' + WepWidgetMembers.group + '[data-code="' + code + '"]');
-                                if( obj.length ) {
-                                    WepWidgetMembers.code = code;
-                                    $('#memberModal').modal('show');
-                                }
-                            }/*,
-                            onLabelShow: function(event, label, code) {
-                                console.log(event);
-                                label.html('<i class="fa fa-info-circle" aria-hidden="true"></i> ' + label);
-                            }*/
-                        });
-                        //console.log('init map');
+                        if( WepWidgetBMList.map.length ) {
+                            WepWidgetBMList.map.empty();
+                            WepWidgetBMList.map.vectorMap({
+                                map: 'world_en',// + locale.split('-')[0],
+                                backgroundColor: null,
+                                color: '#ffffff',
+                                hoverOpacity: 0.7,
+                                selectedColor: '#d2c3d7',
+                                borderColor: '#2A0634',
+                                enableZoom: true,
+                                showTooltip: true,
+                                scaleColors: ['#8e699b','#ffffff'],
+                                values: WepWidgetBMList.values,
+                                normalizeFunction: 'polynomial',
+                                onRegionClick: function(element, code, region) {
+                                    var obj = $('.entry.' + WepWidgetBMList.group + '[data-code="' + code + '"]');
+                                    if( obj.length ) {
+                                        WepWidgetBMList.code = code;
+                                        $('#memberModal').modal('show');
+                                    }
+                                }/*,
+                                onLabelShow: function(event, label, code) {
+                                    console.log(event);
+                                    label.html('<i class="fa fa-info-circle" aria-hidden="true"></i> ' + label);
+                                }*/
+                            });
+                            //console.log('init map');
+                        }
                     }
                 }
             };
 
-            WepWidgetMembers.sug['ga'] = 'Global Alliance';
-            WepWidgetMembers.sug['wp'] = 'WePROTECT';
-            WepWidgetMembers.sug['wpga'] = 'WePROTECT Global Alliance';
-            WepWidgetMembers.sug['none'] = '-';
+            WepWidgetBMList.sug['ga'] = 'Global Alliance';
+            WepWidgetBMList.sug['wp'] = 'WePROTECT';
+            WepWidgetBMList.sug['wpga'] = 'WePROTECT Global Alliance';
+            WepWidgetBMList.sug['none'] = '-';
 
             // Hide members not in default group.
-            WepWidgetMembers.group = $('.btn[data-group].active').data('group');
+            if( $('.btn[data-group].active').length ) {
+                WepWidgetBMList.group = $('.btn[data-group].active').data('group');
+            }
 
             // Set map values for current group type
-            WepWidgetMembers.values = [];
+            WepWidgetBMList.values = [];
             wml.find('.members .entry').hide().each(function(){
-                if( $(this).hasClass( WepWidgetMembers.group ) ) {
+                if( $(this).hasClass( WepWidgetBMList.group ) ) {
                     $(this).show();
-                    WepWidgetMembers.values[ $(this).data('code') ] = 1;
+                    WepWidgetBMList.values[ $(this).data('code') ] = 1;
                 }
             });
 
-            WepWidgetMembers.init();
+            WepWidgetBMList.init();
 
             // Member display change
             wml.find('.btn[data-display]').on('click',function(){
@@ -74,13 +78,13 @@
                 wml.find('.btn[data-display]').removeClass('active');
                 src.addClass('active');
 
-                WepWidgetMembers.display = src.data('display');
+                WepWidgetBMList.display = src.data('display');
                 wml.find('.members').addClass('hide');
-                wml.find('.members.' + WepWidgetMembers.display).removeClass('hide');
+                wml.find('.members.' + WepWidgetBMList.display).removeClass('hide');
 
                 // Render
-                if( WepWidgetMembers.display === 'map' ) {
-                    WepWidgetMembers.init();
+                if( WepWidgetBMList.display === 'map' ) {
+                    WepWidgetBMList.init();
                 }
             });
 
@@ -93,19 +97,19 @@
                 wml.find('.btn[data-group]').removeClass('active');
                 src.addClass('active');
 
-                WepWidgetMembers.values = [];
-                WepWidgetMembers.group = src.data('group');
+                WepWidgetBMList.values = [];
+                WepWidgetBMList.group = src.data('group');
 
                 // Process entries
                 wml.find('.members .entry').hide().each(function(){
-                    if( $(this).hasClass( WepWidgetMembers.group ) ) {
+                    if( $(this).hasClass( WepWidgetBMList.group ) ) {
                         $(this).show();
-                        WepWidgetMembers.values[ $(this).data('code') ] = 1;
+                        WepWidgetBMList.values[ $(this).data('code') ] = 1;
                     }
                 });
                 
                 // Render
-                WepWidgetMembers.init();
+                WepWidgetBMList.init();
             });
         }
 
@@ -114,11 +118,11 @@
             var src;
             if( typeof event.relatedTarget !== 'undefined' ) {
                 src = $($(event.relatedTarget).parent());
-                WepWidgetMembers.code = src.data('code');
+                WepWidgetBMList.code = src.data('code');
             } else {
-                src = $('.entry.' + WepWidgetMembers.group + '[data-code="' + WepWidgetMembers.code + '"]');
+                src = $('.entry' + ( WepWidgetBMList.group.length ? '.' + WepWidgetBMList.group : '' ) + '[data-code="' + WepWidgetBMList.code + '"]');
             }
-            //console.log(WepWidgetMembers.code);
+            //console.log(WepWidgetBMList.code);
             /*if( typeof src === 'undefined' ) {
                 event.preventDefault();
                 return false;
@@ -132,7 +136,7 @@
             });
             modal.find('.modal-body [data-name]').show().find('p').html(names.join('<br>'));
             
-            if( WepWidgetMembers.group === 'country' ) {
+            if( WepWidgetBMList.group === 'country' ) {
                 var minister = src.find('[data-type="minister"]').html();
                 if( minister.length > 4 ) {
                     modal.find('.modal-body [data-minister]').show().find('p').html(minister.trim());
@@ -140,10 +144,16 @@
                     modal.find('.modal-body [data-minister]').hide();
                 }
                 //console.log(src.find('[data-type="sign-up"]').text().trim());
-                modal.find('.modal-body [data-sign-up]').find('p').html( WepWidgetMembers.sug[ src.find('[data-type="sign-up"]').text().trim() ] );
+                modal.find('.modal-body [data-sign-up]').find('p').html( WepWidgetBMList.sug[ src.find('[data-type="sign-up"]').text().trim() ] );
             } else {
                 modal.find('.modal-body [data-minister]').hide();
                 modal.find('.modal-body [data-sign-up]').hide();
+                var detail = src.find('[data-type="detail"]').html();
+                if( detail.length > 4 ) {
+                    modal.find('.modal-body [data-detail]').show().find('p').html(detail.trim());
+                } else {
+                    modal.find('.modal-body [data-detail]').hide();
+                }
             }
 
             //var name = src.find('[data-type="name"]').html();
@@ -176,7 +186,7 @@
              modal.find('.modal-body [data-engagement]').hide();
              }*/
 
-            //modal.find('.modal-body [data-sign-up]').find('p').html( WepWidgetMembers.sug[ src.find('[data-type="sign-up"]').text() ] );
+            //modal.find('.modal-body [data-sign-up]').find('p').html( WepWidgetBMList.sug[ src.find('[data-type="sign-up"]').text() ] );
 
             /*var action = src.find('[data-type="action"]').html();
              if( action.length > 4 ) {
