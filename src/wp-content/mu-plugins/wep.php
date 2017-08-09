@@ -2466,7 +2466,7 @@ Statutory protections are in place to allow industry to fully and effectively re
 				date( 'm' )
 			];
 
-			$path_src = realpath( ABSPATH . '../data/images' );
+			$path_src = realpath( ABSPATH . '../data/ignore/images' );
 			$path_dest = ABSPATH . 'wp-content';
 			foreach( $directories as $directory ) {
 				if( !is_dir( $path_dest . '/' . $directory ) ) {
