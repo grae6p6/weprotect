@@ -634,18 +634,21 @@ button:hover, button.active, .btn.active, .btn:hover {
         position: relative;
         border-radius: 0.25em;
         color: $white;
-        &::after {
-          position: absolute;
-          bottom: 0;
-          right: 0;
-          content: '';
-          width: 0;
-          height: 0;
-          border-style: solid;
-          border-width: 0 0 80px 80px;
-          border-color: transparent transparent $primary-color transparent;
-          text-align: center;
-          font-size: 2rem;
+        &:first-child {
+          min-height: 120px;
+          &::after {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 80px 80px;
+            border-color: transparent transparent $primary-color transparent;
+            text-align: center;
+            font-size: 2rem;
+          }
         }
       }
       i {

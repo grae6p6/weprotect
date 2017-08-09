@@ -185,6 +185,19 @@ class Wep_Theme {
 			)
 		);
 
+		register_post_type( 'board',
+			array(
+				'labels' => array(
+					'name' => __( 'Board' ),
+					'singular_name' => __( 'Board' )
+				),
+				'public' => true,
+				'publicly_queryable' => false,
+				'has_archive' => false,
+				'supports' => array( 'title', 'editor', 'thumbnail' )
+			)
+		);
+
 		register_post_type( 'mnr',
 			array(
 				'labels' => array(
@@ -219,6 +232,7 @@ class Wep_Theme {
 	public static function widgets_init() {
 		register_widget( 'Wep_Widget_Latest' );
 		register_widget( 'Wep_Widget_Members_List' );
+		register_widget( 'Wep_Widget_Board_List' );
 		register_widget( 'Wep_Widget_News_Links' );
 	}
 
@@ -260,6 +274,14 @@ class Wep_Theme {
 		return $output;
 	}
 
+	public static function widget_board_list() {
+		ob_start();
+		the_widget( 'Wep_Widget_Board_List' );
+		$output = ob_get_clean();
+
+		return $output;
+	}
+
 	public static function widget_news_links( $atts ) {
 		extract( shortcode_atts(
 			array(
@@ -291,6 +313,7 @@ add_action( 'after_setup_theme', ['Wep_Theme', 'after_theme_setup'] );
  */
 add_shortcode( 'wep-latest', [ 'Wep_Theme', 'widget_latest' ] );
 add_shortcode( 'wep-members-list', [ 'Wep_Theme', 'widget_members_list' ] );
+add_shortcode( 'wep-board-list', [ 'Wep_Theme', 'widget_board_list' ] );
 add_shortcode( 'wep-news-links', [ 'Wep_Theme', 'widget_news_links' ] );
 
 /**

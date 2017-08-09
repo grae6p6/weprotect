@@ -86,6 +86,11 @@ class Tests_Wep_Theme extends WP_UnitTestCase {
 		$this->assertTrue(post_type_exists( 'member' ));
 	}
 
+	public function test_theme_has_board_post_type() {
+		Wep_Theme::create_post_type();
+		$this->assertTrue(post_type_exists( 'board' ));
+	}
+
 	public function test_theme_has_mnr_post_type() {
 		Wep_Theme::create_post_type();
 		$this->assertTrue(post_type_exists( 'mnr' ));
@@ -105,6 +110,7 @@ class Tests_Wep_Theme extends WP_UnitTestCase {
 		//Wep_Theme::widgets_init();
 		$this->assertTrue( class_exists('Wep_Widget_Latest') );
 		$this->assertTrue( class_exists('Wep_Widget_Members_List') );
+		$this->assertTrue( class_exists('Wep_Widget_Board_List') );
 		$this->assertTrue( class_exists('Wep_Widget_News_Links') );
 		//is_active_widget();
 	}

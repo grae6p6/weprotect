@@ -6618,18 +6618,20 @@ button:hover, button.active, .btn.active, .btn:hover {
         position: relative;
         border-radius: 0.25em;
         color: #fff; }
-        .members.list .entry div::after {
-          position: absolute;
-          bottom: 0;
-          right: 0;
-          content: '';
-          width: 0;
-          height: 0;
-          border-style: solid;
-          border-width: 0 0 80px 80px;
-          border-color: transparent transparent #562a64 transparent;
-          text-align: center;
-          font-size: 2rem; }
+        .members.list .entry div:first-child {
+          min-height: 120px; }
+          .members.list .entry div:first-child::after {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 80px 80px;
+            border-color: transparent transparent #562a64 transparent;
+            text-align: center;
+            font-size: 2rem; }
       .members.list .entry i {
         font-size: 2rem;
         position: absolute;

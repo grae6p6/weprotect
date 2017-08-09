@@ -17,12 +17,23 @@ class Wep_Plugin {
 	public static $forms = [
 		'Apply for membership' => 'apply-for-membership'
     ];
-	public static $media_path = '2017/07';
 	public static $media = [
 		'stock-1.jpg' => 0,
 		'stock-2.jpg' => 0,
-		'stock-3.jpg' => 0//,
-		//'weprotect-logo.png' => 0
+		'stock-3.jpg' => 0,
+		'antigone-davis.jpg' => 0,
+		'baroness-joanna-shields.png' => 0,
+		'cornelius-williams.png' => 0,
+		'dorothy-rozga.jpg' => 0,
+		'ernie-allen.png' => 0,
+		'jacqueline-f-beauchere.jpg' => 0,
+		'johnny-gwynne.jpg' => 0,
+		'maud-de-boer-buquicchio.jpg' => 0,
+		'mick-moran.jpg' => 0,
+		'steve-grocki.png' => 0,
+		'susan-molinari.jpg' => 0,
+		'susie-hargreaves.png' => 0,
+		'veronica-donoso.png' => 0,
     ];
 	/*public static $menus = [
 
@@ -408,6 +419,11 @@ class Wep_Plugin {
 			'type' => ''//,
 			//'shortcode' => ''
 		],
+		'our-board-list' => [
+			'post_title' => 'Our board list',
+			'post_content' => '[wep-board-list]',
+			'type' => ''
+		],
 		'who-we-are' => [
 			'post_title' => 'Who we are',
 			'post_content' => '<p>The WePROTECT Global Alliance to End Child Sexual Exploitation Online is an international movement dedicated to national and global action to end the sexual exploitation of children online.</p>',
@@ -658,8 +674,11 @@ class Wep_Plugin {
 		'our-board' => array(
 			'post_type' => 'page',
 			'post_title' => 'Our board',
-			'post_content' => '',
-			'menu_order' => 202
+			'post_content' => '<p>The WePROTECT Global Alliance is led by a multi-stakeholder Board, comprised of representatives from key countries, international and civil society organisations, and the technology industry.</p>',
+			'menu_order' => 202,
+			'blocks' => [
+				'our-board-list'
+			]
 		),
 		'statements-of-action' => array(
 			'post_type' => 'page',
@@ -1892,7 +1911,122 @@ Statutory protections are in place to allow industry to fully and effectively re
 			'post_excerpt' => 'Guidelines and application',
 			'group' => 'media-and-communications',
 			'menu_order' => 21
-		)
+		),
+
+		/**
+		 * Board members
+		 */
+
+		'ernie-allen' => [
+			'post_type' => 'board',
+			'post_title' => 'Ernie Allen',
+			'post_content' => '<p>Chair, Former President and CEO of the National Centre for Missing and Exploited Children (NCMEC) and the International Centre for Missing and Exploited Children (ICMEC)</p>',
+			'menu_order' => 0,
+			'thumbnail' => 'ernie-allen.png'
+		],
+
+		'baroness-joanna-shields' => [
+			'post_type' => 'board',
+			'post_title' => 'Baroness Joana Shields OBE',
+			'post_content' => '<p>UK Internet Safety and Security Minister<br>Founded WEPROTECT in 2014</p>',
+			'menu_order' => 1,
+			'thumbnail' => 'baroness-joanna-shields.png'
+		],
+
+		'veronica-donoso' => [
+			'post_type' => 'board',
+			'post_title' => 'Verónica Donoso',
+			'post_content' => '<p>EXECUTIVE DIRECTOR, INHOPE</p>',
+			'menu_order' => 2,
+			'thumbnail' => 'veronica-donoso.png'
+		],
+
+		'maud-de-boer-buquicchio' => [
+			'post_type' => 'board',
+			'post_title' => 'Maud de Boer-Buquicchio',
+			'post_content' => '<p>UN Special Rapporteur on the Sale of Children, Child Prostitution and Child Pornography</p>',
+			'menu_order' => 3,
+			'thumbnail' => 'maud-de-boer-buquicchio.jpg'
+		],
+
+		'jacqueline-f-beauchere' => [
+			'post_type' => 'board',
+			'post_title' => 'Jacqueline F. Beauchere',
+			'post_content' => '<p>Chief Online Safety Officer, Microsoft</p>',
+			'menu_order' => 4,
+			'thumbnail' => 'jacqueline-f-beauchere.jpg'
+		],
+
+		'antigone-davis' => [
+			'post_type' => 'board',
+			'post_title' => 'Antigone Davis',
+			'post_content' => '<p>Head of Global Safety, Facebook</p>',
+			'menu_order' => 5,
+			'thumbnail' => 'antigone-davis.jpg'
+		],
+
+		'johnny-gwynne' => [
+			'post_type' => 'board',
+			'post_title' => 'Johnny Gwynne',
+			'post_content' => '<p>Director, Child Exploitation and Online Protection (CEOP) Command, United Kingdom National Crime Agency</p>',
+			'menu_order' => 6,
+			'thumbnail' => 'johnny-gwynne.jpg'
+		],
+
+		'susie-hargreaves' => [
+			'post_type' => 'board',
+			'post_title' => 'Susie Hargreaves OBE',
+			'post_content' => '<p>CEO, Internet Watch Foundation</p>',
+			'menu_order' => 7,
+			'thumbnail' => 'susie-hargreaves.png'
+		],
+
+		'susan-molinari' => [
+			'post_type' => 'board',
+			'post_title' => 'Susan Molinari',
+			'post_content' => '<p>Vice President, Public Policy, Google</p>',
+			'menu_order' => 8,
+			'thumbnail' => 'susan-molinari.jpg'
+		],
+
+		'mick-moran' => [
+			'post_type' => 'board',
+			'post_title' => 'Mick Moran',
+			'post_content' => '<p>Assistant Director Vulnerable Communities, INTERPOL</p>',
+			'menu_order' => 9,
+			'thumbnail' => 'mick-moran.jpg'
+		],
+
+		'cornelius-williams' => [
+			'post_type' => 'board',
+			'post_title' => 'Cornelius Williams',
+			'post_content' => '<p>Associate Director, Child Protection, Programme Division, UNICEF</p>',
+			'menu_order' => 10,
+			'thumbnail' => 'cornelius-williams.png'
+		],
+
+		'dorothy-rozga' => [
+			'post_type' => 'board',
+			'post_title' => 'Dorothy Rozga',
+			'post_content' => '<p>Executive Director, ECPAT INTERNATIONAL</p>',
+			'menu_order' => 11,
+			'thumbnail' => 'dorothy-rozga.jpg'
+		],
+
+		'major-general-dr-nasser-salem-lakhrebani-al-nuaimi' => [
+			'post_type' => 'board',
+			'post_title' => 'Major General/Dr. Nasser Salem Lakhrebani Al Nuaimi',
+			'post_content' => '<p>CHAIR OF VIRTUAL GLOBAL TASKFORCE, SECRETARY GENERAL OF THE OFFICE OF HH THE MINISTER OF INTERIOR, UAE</p>',
+			'menu_order' => 12
+		],
+
+		'steve-grocki' => [
+			'post_type' => 'board',
+			'post_title' => 'Steve Grocki',
+			'post_content' => '<p>Chief, Child Exploitation and Obscenity Section, United States Department of Justice</p>',
+			'menu_order' => 13,
+			'thumbnail' => 'steve-grocki.png'
+		],
 	];
 
 	public static function _create_menu( $items = [], $menu_id = 0, $parent_id = 0 ) {
@@ -2327,21 +2461,40 @@ Statutory protections are in place to allow industry to fully and effectively re
 			// Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
 			require_once( ABSPATH . 'wp-admin/includes/image.php' );
 
+			$directories = [
+				date( 'Y' ),
+				date( 'm' )
+			];
+
+			$path_src = realpath( ABSPATH . '../data/images' );
+			$path_dest = ABSPATH . 'wp-content';
+			foreach( $directories as $directory ) {
+				if( !is_dir( $path_dest . '/' . $directory ) ) {
+					mkdir( $path_dest . '/' . $directory );
+				}
+				$path_dest .= '/' . $directory;
+			}
+
 			foreach( self::$media as $filename => $id ) {
-				$filename = $wp_upload_dir['baseurl'] . '/' . self::$media_path . '/' . $filename;
-				$filetype = wp_check_filetype( basename( $filename ), null );
+
+				// Copy from project ignored "/data/images" to WP uploads
+				$src = $path_src . '/' . $filename;
+				$dest = $path_dest . '/' . $filename;
+				copy( $src, $dest );
+
+				$filetype = wp_check_filetype( basename( $dest ), null );
 
                 // Prepare an array of post data for the attachment.
 				$attachment = array(
-					'guid'           => $wp_upload_dir['url'] . '/' . basename( $filename ),
+					'guid'           => $wp_upload_dir['url'] . '/' . basename( $dest ),
 					'post_mime_type' => $filetype['type'],
-					'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
+					'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $dest ) ),
 					'post_content'   => '',
 					'post_status'    => 'inherit'
 				);
 
                 // Insert the attachment.
-				$id = wp_insert_attachment( $attachment, $filename );
+				$id = wp_insert_attachment( $attachment, $wp_upload_dir['url'] . '/' . basename( $dest ) );
 				if( !$id ) {
 				    var_dump( 'MEDIA FAIL:', $attachment );
 				    return false;
@@ -2350,7 +2503,7 @@ Statutory protections are in place to allow industry to fully and effectively re
                 }
 
                 // Generate the metadata for the attachment, and update the database record.
-				$attach_data = wp_generate_attachment_metadata( $id, $filename );
+				$attach_data = wp_generate_attachment_metadata( $id, $wp_upload_dir['url'] . '/' . basename( $dest ) );
 				wp_update_attachment_metadata( $id, $attach_data );
 
 				// Set logo
@@ -2392,6 +2545,12 @@ Statutory protections are in place to allow industry to fully and effectively re
 					unset( $content['group'] );
 				}
 
+				$thumbnail = null;
+				if( array_key_exists( 'thumbnail', $content ) ) {
+					$thumbnail = $content['thumbnail'];
+					unset( $content['thumbnail'] );
+				}
+
 				if( array_key_exists( 'post_category', $content ) ) {
 					foreach( $content['post_category'] as $i => $slug ) {
 						$category = get_category_by_slug( $slug );
@@ -2411,6 +2570,10 @@ Statutory protections are in place to allow industry to fully and effectively re
 				if( $group ) {
 					update_post_meta( $id, 'group', array( (string)self::$slugs[$group] ) );
 					update_post_meta( $id, '_group', 'field_' . self::$fields['group'] );
+				}
+
+				if( $thumbnail ) {
+					update_post_meta( $id, '_thumbnail_id', self::$media[ $thumbnail ] );
 				}
 			}
 		}
@@ -2542,39 +2705,49 @@ Statutory protections are in place to allow industry to fully and effectively re
 		activate_plugin( 'wordpress-seo/wp-seo.php' );
 		activate_plugin( 'twitter/twitter.php' );
 
-		// Clear default content
-		wp_delete_comment( 1 );
-		wp_delete_post( 1, TRUE );
-		wp_delete_post( 2, TRUE );
-
-		// Add core content
-		include_once( ABSPATH . 'wp-admin/includes/taxonomy.php' );
-		self::create_categories();
-		self::create_members();
-		self::create_forms();
-		self::create_media();
-		self::create_pages();
-		self::create_menus();
-		self::create_blocks();
-		self::create_page_block_relations();
-
-		// Site labels
-		update_option( 'blogname', 'WePROTECT Global Alliance' );
-        update_option( 'blogdescription', '' );
-
-		// Set homepage as index
-		$post = get_posts([
-			'name'        => 'home',
-			'post_type'   => 'page',
-			'post_status' => 'publish',
-			'numberposts' => 1
-		]);
+		// Do we have default content? Install core data
+		$post = get_post( 1 );
 		if( $post ) {
-			update_option( 'page_on_front', $post[0]->ID );
-			update_option( 'show_on_front', 'page' );
-		}
+			wp_delete_comment( 1 );
+			wp_delete_post( 1, TRUE );
+			wp_delete_post( 2, TRUE );
 
-		// Permalinks
-		update_option('permalink_structure', '/%category%/%postname%/' );
+			// Add core content
+			include_once( ABSPATH . 'wp-admin/includes/taxonomy.php' );
+
+			self::create_media();
+			self::create_categories();
+			self::create_members();
+			self::create_forms();
+			self::create_pages();
+			self::create_menus();
+			self::create_blocks();
+			self::create_page_block_relations();
+
+			// Site labels
+			update_option( 'blogname', 'WePROTECT Global Alliance' );
+			update_option( 'blogdescription', '' );
+
+			// Set homepage as index
+			$post = get_posts([
+				'name'        => 'home',
+				'post_type'   => 'page',
+				'post_status' => 'publish',
+				'numberposts' => 1
+			]);
+			if( $post ) {
+				update_option( 'page_on_front', $post[0]->ID );
+				update_option( 'show_on_front', 'page' );
+			}
+
+			// Social media links
+			update_option( 'weprotect_theme', [
+				'facebook' => 'http://facebook.com/',
+				'twitter' => 'http://twitter.com/'
+			] );
+
+			// Permalinks
+			update_option('permalink_structure', '/%category%/%postname%/' );
+		}
 	}
 }
