@@ -40,11 +40,29 @@ $primary-light-color: #8e699b;
 body {
   color: #333334;
   font-size: 14px;
+  &.small {
+    font-size: 10px;
+  }
+  &.large {
+    font-size: 18px;
+  }
   @include media-breakpoint-up(md) {
     font-size: 18px;
+    &.small {
+      font-size: 14px;
+    }
+    &.large {
+      font-size: 20px;
+    }
   }
   @include media-breakpoint-up(lg) {
     font-size: 20px;
+    &.small {
+      font-size: 16px;
+    }
+    &.large {
+      font-size: 24px;
+    }
   }
   &.js {
     &.page-template-mnr {

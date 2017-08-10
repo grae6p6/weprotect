@@ -14,12 +14,15 @@ require("bootstrap/dist/js/bootstrap.min");
 
         // Font size scale
         $('a.text-size').on('click',function(){
-            var size = parseInt($('body').css('font-size'));
-            console.log(size);
-            size += 8;
-            if( size >= 36 )
-                size = 12;
-            $('body').css('font-size', size + 'px')
+            var body = $('body');
+            if( body.hasClass('small') ) {
+                body.removeClass('small');
+            } else if( body.hasClass('large') ) {
+                body.removeClass('large');
+                body.addClass('small');
+            } else {
+                body.addClass('large');
+            }
         });
 
         var body = $('body');

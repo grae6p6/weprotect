@@ -6180,12 +6180,24 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
 body {
   color: #333334;
   font-size: 14px; }
+  body.small {
+    font-size: 10px; }
+  body.large {
+    font-size: 18px; }
   @media (min-width: 768px) {
     body {
-      font-size: 18px; } }
+      font-size: 18px; }
+      body.small {
+        font-size: 14px; }
+      body.large {
+        font-size: 20px; } }
   @media (min-width: 992px) {
     body {
-      font-size: 20px; } }
+      font-size: 20px; }
+      body.small {
+        font-size: 16px; }
+      body.large {
+        font-size: 24px; } }
   body.js.page-template-mnr .mnr .section.links h3 {
     margin: 0;
     font-size: 1.25em; }
