@@ -6227,6 +6227,10 @@ p {
 /* Structure - Headers */
 header.body {
   font-size: 0.8em; }
+  header.body .top nav {
+    display: inline-block; }
+  header.body .top img {
+    height: 1em; }
   header.body .primary {
     padding: 1em 0;
     /*#menu-primary > li > a {

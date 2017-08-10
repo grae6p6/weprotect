@@ -122,6 +122,14 @@ p {
 /* Structure - Headers */
 header.body {
   font-size: 0.8em;
+  .top {
+    nav {
+      display: inline-block;
+    }
+    img {
+      height: 1em;
+    }
+  }
   .primary {
     padding: 1em 0;
     .custom-logo-link {

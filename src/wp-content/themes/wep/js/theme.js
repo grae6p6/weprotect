@@ -12,6 +12,16 @@ require("bootstrap/dist/js/bootstrap.min");
             window.location = $(this).data('url');
         });
 
+        // Font size scale
+        $('a.text-size').on('click',function(){
+            var size = parseInt($('body').css('font-size'));
+            console.log(size);
+            size += 8;
+            if( size >= 36 )
+                size = 12;
+            $('body').css('font-size', size + 'px')
+        });
+
         var body = $('body');
 
         // Dropdown hover show

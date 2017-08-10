@@ -19,21 +19,43 @@
         <div class="top">
             <div class="container">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 text-right">
+						<?php if( function_exists( 'pll_the_languages' ) ) : /* Language switcher for Polylang */ ?>
+						<nav role="navigation" aria-label="<?php esc_attr_e( 'Language Menu', 'wep' ); ?>">
+							<ul class="nav justify-content-end">
+							<?php $languages = pll_the_languages( array( 'raw' => 1 ) );
+							foreach( $languages as $language ) : $locale = explode( '-', strtolower( $language['locale'] ) ); ?>
+								<li class="nav-item">
+									<a href="<?php echo esc_url( $language['url'] ) ?>" class="nav-link"><img src="<?php echo get_template_directory_uri() ?>/flags/<?php echo $locale[1] ?>.svg" alt="<?php echo $language['name'] ?>"> <?php echo $language['name'] ?></a>
+								</li>
+							<?php endforeach; ?>
+							</ul>
+						</nav>
+						<?php endif; ?>
+						<nav role="navigation" aria-label="<?php esc_attr_e( 'Accessibility Menu', 'wep' ); ?>">
+							<ul class="nav justify-content-end">
+								<li class="nav-item">
+									<a href="javascript:void(0)" class="nav-link text-size">
+										<i class="fa fa-text-height" aria-label="hidden"></i>
+										<span class="sr-only"><?php _e( 'Change text size', 'wep' ) ?></span>
+									</a>
+								</li>
+							</ul>
+						</nav>
 	                    <?php if ( has_nav_menu( 'top' ) ) : ?>
-                            <nav role="navigation" aria-label="<?php esc_attr_e( 'Top Menu', 'wep' ); ?>">
-			                    <?php
-			                    wp_nav_menu( array(
-				                    'theme_location' => 'top',
-				                    'depth'          => 1,
-				                    'container'      => false,
-				                    'menu_class'     => 'nav justify-content-end',
-				                    'fallback_cb'    => '__return_false',
-				                    'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-				                    'walker'         => new Boostrap_Nav_Menu,
-			                    ) );
-			                    ?>
-                            </nav>
+						<nav role="navigation" aria-label="<?php esc_attr_e( 'Top Menu', 'wep' ); ?>">
+							<?php
+							wp_nav_menu( array(
+								'theme_location' => 'top',
+								'depth'          => 1,
+								'container'      => false,
+								'menu_class'     => 'nav justify-content-end',
+								'fallback_cb'    => '__return_false',
+								'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+								'walker'         => new Boostrap_Nav_Menu,
+							) );
+							?>
+						</nav>
 	                    <?php endif; ?>
                     </div>
                 </div>
