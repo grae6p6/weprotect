@@ -8,7 +8,7 @@ Compile vendor JS, and transpile SCSS to theme CSS
 
 ASSETS
 
-Image assets used on theme activation are not included in the repo "/data/images"
+Image assets used on theme activation are not included in the repo "/data/ignore/images"
 
 INSTALLATION
 

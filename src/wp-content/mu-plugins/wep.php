@@ -11,7 +11,7 @@ class Wep_Plugin {
 	public static $categories = [
 		'Case studies' => 0,
 		'Events' => 0,
-		//'News' => 0,
+		'News' => 0,
 		'Model National Response' => 0
 	];
 	public static $forms = [
@@ -2554,9 +2554,11 @@ Statutory protections are in place to allow industry to fully and effectively re
 				if( array_key_exists( 'post_category', $content ) ) {
 					foreach( $content['post_category'] as $i => $slug ) {
 						$category = get_category_by_slug( $slug );
-						$content['post_category'][$i] = $category->term_id;
+						if( $category ) {
+							$content['post_category'][$i] = $category->term_id;
+						}
 					}
-					var_dump($content['post_category']);
+					//var_dump($content['post_category']);
 				}
 
 				//var_dump($content);

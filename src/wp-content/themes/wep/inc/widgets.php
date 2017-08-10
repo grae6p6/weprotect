@@ -149,8 +149,8 @@ class Wep_Widget_Members_List extends WP_Widget {
 						<label class="btn btn-primary" data-group="industry">
 							<input type="radio" name="options" autocomplete="off"<?php echo ( $group == 'industry' ? ' checked' : '' ) ?>><i class="fa fa-filter" aria-hidden="true"></i>  <?php _e( 'Industries', 'wep' ) ?>
 						</label>
-						<label class="btn btn-primary" data-group="all">
-							<input type="radio" name="options" autocomplete="off"<?php echo ( $group == 'all' ? ' checked' : '' ) ?>><i class="fa fa-globe" aria-hidden="true"></i>  <?php _e( 'All', 'wep' ) ?>
+						<label class="btn btn-primary" data-group="">
+							<input type="radio" name="options" autocomplete="off"<?php echo ( $group == '' ? ' checked' : '' ) ?>><i class="fa fa-globe" aria-hidden="true"></i>  <?php _e( 'All', 'wep' ) ?>
 						</label>
 					</div>
                 </div>
@@ -213,6 +213,9 @@ class Wep_Widget_Members_List extends WP_Widget {
                 <div class="col">
                     <div id="jqvmap"></div>
                 </div>
+            </div>
+            <div class="row members all">
+                <div class="col"></div>
             </div>
         </div>
         <div class="modal fade" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
@@ -461,43 +464,103 @@ class Wep_Widget_News_Links extends WP_Widget {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
 
+		$max = (int)$instance['max'];
+
 		// Get latest links
 		$links = $wpdb->get_results(
 			"SELECT link_url, link_name, link_description, link_updated
 			FROM {$wpdb->links}
 			WHERE link_visible = 'Y'
-			ORDER BY link_updated
-			LIMIT " . (int)$instance['max']
+			ORDER BY link_updated DESC
+			LIMIT " . $max
 		);
 
-		if( $links ) :
-			$col_md = ( 12 / count( $links ) ); ?>
+		// Get latest posts
+		$posts = get_posts([
+            'category_name' => 'news',
+            'post_status' => 'publish',
+            'order' => 'DESC',
+            'orderby' => 'date',
+            'numberposts' => $max
+        ]);
+
+		if( $links or $posts ) :
+
+			// Create a list of entries (links and posts) by date
+			$entries = [];
+			for( $i = 0; $i <= max( count( $links ), count( $posts ) ); $i++ ) {
+				if( count( $entries ) == $max )
+					break;
+
+				$entry = $stamp = 0;
+				if( array_key_exists( $i, $links ) ) {
+					$entry = 'L';
+				}
+				if( array_key_exists( $i, $posts ) ) {
+					if( $entry == 'L' && $posts[ $i ]->post_date > $$links[ $i ]->link_updated ) {
+						$entry = 'P';
+					}
+				}
+
+				if( $entry == 'L' ) {
+					$entries[] = $links[ $i ];
+				} elseif( $entry == 'P' ) {
+					$entries[] = $posts[ $i ];
+				}
+			}
+			
+			$col_md = ( 12 / count( $entries ) ); ?>
 		<div class="flex-container">
             <div class="row">
-				<?php if( (int)$instance['max'] > 4 ) : ?>
-					<?php foreach( $links as $link ) : ?>
-					<div class="col-4 col-md-3">
-						[image]
-					</div>
-					<div class="col-8 col-md-9">
-						<a href="<?php echo $link->link_url ?>" target="_blank"><?php echo $link->link_name ?></a>
-						<p><span class="posted-on"><strong><?php echo parse_url( $link->link_url, PHP_URL_HOST ) ?></strong> &ndash; <?php echo date( get_option( 'date_format' ), strtotime( $link->link_updated ) ) ?></span></p>
-						<?php if( !empty( $link->link_description ) ) : ?>
-						<p><?php echo $link->link_description ?></p>
-						<?php endif; ?>
-					</div>
-					<?php endforeach; ?>
-				<?php else : ?>
-					<?php foreach( $links as $link ) : ?>
-					<div class="col-6 col-md-<?php echo $col_md ?>">
-						<div class="block light">
-							<a href="<?php echo $link->link_url ?>" target="_blank"><?php echo $link->link_name ?></a>
+				<?php if( $max > 4 ) : /* Layout for more than 4 entries */ ?>
+					<?php foreach( $entries as $link ) : ?>
+						<?php if( $link->link_name ) : /* Link */ ?>
+						<div class="col-4 col-md-3">
+							[image]
+						</div>
+						<div class="col-8 col-md-9">
+							<a href="<?php echo $link->link_url ?>" target="_blank"><?php echo $link->link_name ?></a>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i>
+							<p><span class="posted-on"><strong><?php echo parse_url( $link->link_url, PHP_URL_HOST ) ?></strong> &ndash; <?php echo date( get_option( 'date_format' ), strtotime( $link->link_updated ) ) ?></span></p>
 							<?php if( !empty( $link->link_description ) ) : ?>
 							<p><?php echo $link->link_description ?></p>
 							<?php endif; ?>
-							<p><span class="posted-on"><strong><?php echo parse_url( $link->link_url, PHP_URL_HOST ) ?></strong> &ndash; <?php echo date( get_option( 'date_format' ), strtotime( $link->link_updated ) ) ?></span></p>
 						</div>
-					</div>
+						<?php else : /* Post */ ?>
+						<div class="col-4 col-md-3">
+							[image]
+						</div>
+						<div class="col-8 col-md-9">
+							<a href="<?php echo get_the_permalink( $link->ID ) ?>"><?php echo get_the_title( $link->ID ) ?></a>
+							<p><span class="posted-on"><?php echo date( get_option( 'date_format' ), strtotime( $link->post_date ) ) ?></span></p>
+							<?php if( !empty( $link->post_content ) ) : ?>
+							<p><?php echo get_the_excerpt( $link->ID ) ?></p>
+							<?php endif; ?>
+						</div>
+						<?php endif; ?>
+					<?php endforeach; ?>
+				<?php else : /* Default layout */ ?>
+					<?php foreach( $entries as $link ) : ?>
+						<?php if( $link->link_name ) : /* Link */ ?>
+						<div class="col-6 col-md-<?php echo $col_md ?>">
+							<div class="block light">
+								<a href="<?php echo $link->link_url ?>" target="_blank"><?php echo $link->link_name ?></a>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i>
+								<?php if( !empty( $link->link_description ) ) : ?>
+								<p><?php echo $link->link_description ?></p>
+								<?php endif; ?>
+								<p><span class="posted-on"><strong><?php echo parse_url( $link->link_url, PHP_URL_HOST ) ?></strong> &ndash; <?php echo date( get_option( 'date_format' ), strtotime( $link->link_updated ) ) ?></span></p>
+							</div>
+						</div>
+						<?php else : /* Post */ ?>
+						<div class="col-6 col-md-<?php echo $col_md ?>">
+							<div class="block light">
+								<a href="<?php echo get_the_permalink( $link->ID ) ?>"><?php echo get_the_title( $link->ID ) ?></a>
+								<?php if( !empty( $link->post_content ) ) : ?>
+								<p><?php echo get_the_excerpt( $link->ID ) ?></p>
+								<?php endif; ?>
+								<p><span class="posted-on"><?php echo date( get_option( 'date_format' ), strtotime( $link->post_date ) ) ?></span></p>
+							</div>
+						</div>
+						<?php endif; ?>
 					<?php endforeach; ?>
 				<?php endif; ?>
 			</div>

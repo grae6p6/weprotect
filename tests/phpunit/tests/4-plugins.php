@@ -25,18 +25,6 @@ class Tests_Wep_Plugin extends WP_UnitTestCase {
 		$this->assertNull(activate_plugin('bootstrap-for-contact-form-7/bootstrap-for-contact-form-7.php'));
 		$this->assertTrue(is_plugin_active('bootstrap-for-contact-form-7/bootstrap-for-contact-form-7.php'));
 
-		// Storage for forms
-		//$this->assertNull(activate_plugin('flamingo/flamingo.php'));
-		//$this->assertTrue(is_plugin_active('flamingo/flamingo.php'));
-
-		// Multilingual support
-		$this->assertNull(activate_plugin('polylang/polylang.php'));
-		$this->assertTrue(is_plugin_active('polylang/polylang.php'));
-
-		// Form extension for Polylang
-		//$this->assertNull(activate_plugin('cf7-polylang/cf7-polylang.php'));
-		//$this->assertTrue(is_plugin_active('cf7-polylang/cf7-polylang.php'));
-
 		// SEO
 		$this->assertNull(activate_plugin('wordpress-seo/wp-seo.php'));
 		$this->assertTrue(is_plugin_active('wordpress-seo/wp-seo.php'));
@@ -49,9 +37,21 @@ class Tests_Wep_Plugin extends WP_UnitTestCase {
 		$this->assertNull(activate_plugin('w3-total-cache/w3-total-cache.php'));
 		$this->assertTrue(is_plugin_active('w3-total-cache/w3-total-cache.php'));
 
+		// Twiiter
+		$this->assertNull(activate_plugin('twitter/twitter.php'));
+		$this->assertTrue(is_plugin_active('twitter/twitter.php'));
+
+		// Multilingual support
+		$this->assertNull(activate_plugin('polylang/polylang.php'));
+		$this->assertTrue(is_plugin_active('polylang/polylang.php'));
+
+		// Form extension for Polylang
+		//$this->assertNull(activate_plugin('cf7-polylang/cf7-polylang.php'));
+		//$this->assertTrue(is_plugin_active('cf7-polylang/cf7-polylang.php'));
+
 		// Importer
-		$this->assertNull(activate_plugin('wordpress-importer/wordpress-importer.php'));
-		$this->assertTrue(is_plugin_active('wordpress-importer/wordpress-importer.php'));
+		//$this->assertNull(activate_plugin('wordpress-importer/wordpress-importer.php'));
+		//$this->assertTrue(is_plugin_active('wordpress-importer/wordpress-importer.php'));
 	}
 
 	/**

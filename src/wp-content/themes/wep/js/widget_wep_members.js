@@ -31,7 +31,7 @@
                                 values: WepWidgetBMList.values,
                                 normalizeFunction: 'polynomial',
                                 onRegionClick: function(element, code, region) {
-                                    var obj = $('.entry.' + WepWidgetBMList.group + '[data-code="' + code + '"]');
+                                    var obj = $('.entry' + ( WepWidgetBMList.group.length ? '.' + WepWidgetBMList.group : '' ) + '[data-code="' + code + '"]');
                                     if( obj.length ) {
                                         WepWidgetBMList.code = code;
                                         $('#memberModal').modal('show');
@@ -102,7 +102,7 @@
 
                 // Process entries
                 wml.find('.members .entry').hide().each(function(){
-                    if( $(this).hasClass( WepWidgetBMList.group ) ) {
+                    if( !WepWidgetBMList.group.length || $(this).hasClass( WepWidgetBMList.group ) ) {
                         $(this).show();
                         WepWidgetBMList.values[ $(this).data('code') ] = 1;
                     }
@@ -122,7 +122,8 @@
             } else {
                 src = $('.entry' + ( WepWidgetBMList.group.length ? '.' + WepWidgetBMList.group : '' ) + '[data-code="' + WepWidgetBMList.code + '"]');
             }
-            //console.log(WepWidgetBMList.code);
+            console.log(WepWidgetBMList.code);
+            console.log(src);
             /*if( typeof src === 'undefined' ) {
                 event.preventDefault();
                 return false;
@@ -138,7 +139,7 @@
             
             if( WepWidgetBMList.group === 'country' ) {
                 var minister = src.find('[data-type="minister"]').html();
-                if( minister.length > 4 ) {
+                if( typeof minister !== 'undefined' && minister.length > 4 ) {
                     modal.find('.modal-body [data-minister]').show().find('p').html(minister.trim());
                 } else {
                     modal.find('.modal-body [data-minister]').hide();
@@ -149,7 +150,7 @@
                 modal.find('.modal-body [data-minister]').hide();
                 modal.find('.modal-body [data-sign-up]').hide();
                 var detail = src.find('[data-type="detail"]').html();
-                if( detail.length > 4 ) {
+                if( typeof detail !== 'undefined' && detail.length > 4 ) {
                     modal.find('.modal-body [data-detail]').show().find('p').html(detail.trim());
                 } else {
                     modal.find('.modal-body [data-detail]').hide();

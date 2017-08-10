@@ -54,15 +54,5 @@ class Tests_Wep_Content extends WP_UnitTestCase {
 
 	public function test_post_categories_created() {
 		$this->assertTrue(Wep_Plugin::create_categories());
-		//$id = wp_create_category('Case studies');
-		//$this->assertGreaterThan(0, $id);
-		//$id = wp_create_category('Events');
-		//$this->assertGreaterThan(0, $id);
-		//$id = wp_create_category('News');
-		//$this->assertGreaterThan(0, $id);
 	}
-
-	//public function test_case_study() {
-		//get_field_objects
-	//}
 }

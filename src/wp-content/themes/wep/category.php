@@ -72,7 +72,7 @@ $cat = get_category( get_query_var( 'cat' ) );
                 </form>
             </div>
             <?php else : ?>
-            <div class="col col-md-3 pt-5 calendar">
+            <div class="col col-md-3 pt-5 pl-5 calendar">
                 <i class="fa fa-calendar" aria-hidden="true"></i>
             </div>
             <?php endif; ?>
