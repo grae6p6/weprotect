@@ -1,13 +1,5 @@
 <?php
 
-/*$path = opendir( '/Users/alex/VSProjects/weprotect/data/ignore/images' );
-
-while( ( $item = readdir( $path ) ) !== false ) {
-	echo "'" . $item . "' => 0,\n";
-}
-
-exit;*/
-
 /*
 Plugin Name: WePROTECT
 Description: Provides core data on activation of WEProtect theme if no content found

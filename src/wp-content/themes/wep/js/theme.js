@@ -12,6 +12,31 @@ require("bootstrap/dist/js/bootstrap.min");
             window.location = $(this).data('url');
         });
 
+        // Create listener for tallest nested block within 'has-blocks' parent
+        /*$('.has-blocks').each(function(){
+            var tallest = 0;
+            var listen;
+            $(this).find('.block').each(function(){
+                var height = parseInt( $(this).outerHeight() );
+                if( height > tallest ) {
+                    tallest = height;
+                    listen = $(this);
+                }
+            });
+            console.log(listen);
+            new ResizeSensor(listen, function(e) {
+                //console.log($(e).outerHeight() + '-' + tallest);
+                console.log(this);
+                $(e).parent().parent().find('.block').each(function(){
+                    //if( $(this).outerHeight() != tallest ) {
+                        console.log('Setting: ' + tallest + 'px');
+                        $(this).height(tallest + 'px');
+                    //}
+                });
+            });
+            //$(this).find('.block').height(tallest + 'px');
+        });*/
+
         // Font size scale
         $('a.text-size').on('click',function(){
             var body = $('body');

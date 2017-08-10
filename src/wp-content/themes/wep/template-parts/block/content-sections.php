@@ -42,7 +42,7 @@ if( count( $css ) ) {
 				<?php the_content() ?>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row has-blocks">
 			<?php
             
             if( !empty( get_field( 'section_4' ) ) )

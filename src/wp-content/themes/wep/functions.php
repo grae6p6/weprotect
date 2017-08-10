@@ -123,7 +123,7 @@ class Wep_Theme {
 	public static function enqueue_scripts() {
 
 		// jQuery is vendor compiled using webpack
-		//wp_deregister_script( 'jquery' );
+		wp_deregister_script( 'jquery' );
 		//wp_deregister_script( 'jquery-migrate' );
 
 		wp_enqueue_script( 'jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js' );
@@ -142,6 +142,8 @@ class Wep_Theme {
 
 		// Theme script.
 		wp_enqueue_script( 'wep-scripts', get_theme_file_uri( '/js/scripts.min.js' ), array(), '1.0' );
+
+		//wp_enqueue_script( 'resize-sensor', get_theme_file_uri( '/js/ResizeSensor.js' ), array(), '1.0' );
 
 		// Font awesome
 		wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' );
@@ -208,7 +210,6 @@ class Wep_Theme {
 				),
 				'public' => true,
 				'publicly_queryable' => false,
-				//'rewrite' => array( 'slug' => 'model-national-response' ),
 				'has_archive' => false,
 				'capability_type' => 'page',
 				'supports' => array('title','editor','excerpt','revisions')
@@ -219,10 +220,10 @@ class Wep_Theme {
 	public static function register_field_groups() {
         $case_studies = get_term_by('name', 'Case studies', 'category');
         $events = get_term_by('name', 'Events', 'category');
-		//$news = get_term_by('name', 'News', 'category');
+		$news = get_term_by('name', 'News', 'category');
 		$mnr = get_term_by('name', 'Model National Response', 'category');
 
-        if( !$case_studies || !$events || !$mnr ) {
+        if( !$case_studies || !$events || !$news || !$mnr ) {
             return false;
         }
 

@@ -68,7 +68,7 @@ global $post;
 						<?php endif; ?>
 					<?php endif; ?>
 				</div>
-				<?php if ( is_single() and $cat->slug == 'case-studies' ) : ?>
+				<?php if ( is_single() ) : ?>
 				<div class="col-12 col-md-1 text-right">
 					<div class="d-flex flex-row flex-md-column justify-content-center">
 						<div class="p-sm-4 px-md-0 py-md-2">

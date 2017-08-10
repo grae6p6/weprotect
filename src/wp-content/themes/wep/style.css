@@ -6408,7 +6408,12 @@ footer.body .primary {
     padding-left: .5em; }
     footer.body .primary .social a {
       display: inline-block;
-      margin: 0 .5em; }
+      margin: 0 .5em;
+      transition: color .2s ease; }
+      footer.body .primary .social a[href*="facebook"]:hover {
+        color: #3b5998; }
+      footer.body .primary .social a[href*="twitter"]:hover {
+        color: #00aced; }
 
 footer.body .copyright {
   height: 3em;

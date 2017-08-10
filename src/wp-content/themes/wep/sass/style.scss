@@ -374,6 +374,13 @@ footer.body {
       a {
         display: inline-block;
         margin: 0 .5em;
+        transition: color .2s ease;
+        &[href*="facebook"]:hover {
+          color: #3b5998;
+        }
+        &[href*="twitter"]:hover {
+          color: #00aced;
+        }
       }
     }
   }
