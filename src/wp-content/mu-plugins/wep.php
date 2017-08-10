@@ -1,8 +1,16 @@
 <?php
 
+/*$path = opendir( '/Users/alex/VSProjects/weprotect/data/ignore/images' );
+
+while( ( $item = readdir( $path ) ) !== false ) {
+	echo "'" . $item . "' => 0,\n";
+}
+
+exit;*/
+
 /*
 Plugin Name: WePROTECT
-Description: Provides core data on activation of WEP theme if no content found
+Description: Provides core data on activation of WEProtect theme if no content found
 Version: 1.0.0
 Author: Panlogic Ltd
 */
@@ -18,22 +26,60 @@ class Wep_Plugin {
 		'Apply for membership' => 'apply-for-membership'
     ];
 	public static $media = [
-		'stock-1.jpg' => 0,
-		'stock-2.jpg' => 0,
-		'stock-3.jpg' => 0,
+		'adobe.jpg' => 0,
 		'antigone-davis.jpg' => 0,
+		'apple.jpg' => 0,
+		'askfm.jpg' => 0,
+		'bae-systems.jpg' => 0,
 		'baroness-joanna-shields.png' => 0,
+		'child-helpline-international.jpg' => 0,
 		'cornelius-williams.png' => 0,
+		'dell.jpg' => 0,
 		'dorothy-rozga.jpg' => 0,
+		'ecpat.jpg' => 0,
 		'ernie-allen.png' => 0,
+		'europol.jpg' => 0,
+		'ey.jpg' => 0,
+		'facebook.jpg' => 0,
+		'family-online-safety-initiative.jpg' => 0,
+		'future-digital.jpg' => 0,
+		'getty-images.jpg' => 0,
+		'google.jpg' => 0,
+		'inhope-the-association-of-internet-hotlines.jpg' => 0,
+		'international-centre-for-missing-and-exploited-children.jpg' => 0,
+		'international-justice-mission.jpg' => 0,
+		'internet-watch-foundation.jpg' => 0,
+		'interpol.jpg' => 0,
 		'jacqueline-f-beauchere.jpg' => 0,
 		'johnny-gwynne.jpg' => 0,
 		'maud-de-boer-buquicchio.jpg' => 0,
 		'mick-moran.jpg' => 0,
+		'microsoft.jpg' => 0,
+		'multilingual-internet-group.jpg' => 0,
+		'netclean-technologies.jpg' => 0,
+		'pa-consulting.jpg' => 0,
+		'saievac.jpg' => 0,
+		'save-the-children.jpg' => 0,
 		'steve-grocki.png' => 0,
+		'stock-1.jpg' => 0,
+		'stock-2.jpg' => 0,
+		'stock-3.jpg' => 0,
 		'susan-molinari.jpg' => 0,
 		'susie-hargreaves.png' => 0,
+		'the-lucy-faithfull-foundation.jpg' => 0,
+		'the-marie-collins-foundation.jpg' => 0,
+		'the-national-center-for-missing-and-exploited-children.jpg' => 0,
+		'the-national-society-for-the-prevention-of-cruelty-to-children.jpg' => 0,
+		'thorn-digital-defenders-of-children.jpg' => 0,
+		'tulir-centre-for-prevention-and-healing-of-child-sexual-abuse.jpg' => 0,
+		'twitter.jpg' => 0,
+		'unicef.jpg' => 0,
 		'veronica-donoso.png' => 0,
+		'visa.jpg' => 0,
+		'vodafone.jpg' => 0,
+		'world-vision.jpg' => 0,
+		'yahoo.jpg' => 0,
+		'ziuz.jpg' => 0
     ];
 	/*public static $menus = [
 
@@ -2360,8 +2406,10 @@ Statutory protections are in place to allow industry to fully and effectively re
 			if( empty( $row['Organisation'] ) )
 		        continue;
 		
+			$name = sanitize_title( $row['Organisation'] );
+
 			$content = [];
-			$content['post_name'] = sanitize_title( $row['Organisation'] );
+			$content['post_name'] = $name;
 			$content['post_title'] = $row['Organisation'];
 			$content['post_content'] = '';
 			$content['post_type'] = 'member';
@@ -2388,6 +2436,17 @@ Statutory protections are in place to allow industry to fully and effectively re
 						update_post_meta( $id, '_' . $values[0], 'field_' . $values[1] );
 					}
                 }
+
+				$thumbnail = null;
+				if( array_key_exists( $name . '.jpg', self::$media ) ) {
+					$thumbnail = $name . '.jpg';
+				} elseif( array_key_exists( $name . '.png', self::$media ) ) {
+					$thumbnail = $name . '.png';
+				}
+
+				if( $thumbnail ) {
+					update_post_meta( $id, '_thumbnail_id', self::$media[ $thumbnail ] );
+				}
             }
 		}
 
@@ -2414,8 +2473,11 @@ Statutory protections are in place to allow industry to fully and effectively re
 		foreach( $results as $row ) {
 			if( empty( $row['Company'] ) )
 		        continue;
+
+			$name = sanitize_title( $row['Company'] );
+
 			$content = [];
-			$content['post_name'] = sanitize_title( $row['Company'] );
+			$content['post_name'] = $name;
 			$content['post_title'] = $row['Company'];
 			$content['post_content'] = '';
 			$content['post_type'] = 'member';
@@ -2441,6 +2503,17 @@ Statutory protections are in place to allow industry to fully and effectively re
 						update_post_meta( $id, '_' . $values[0], 'field_' . $values[1] );
 					}
                 }
+
+				$thumbnail = null;
+				if( array_key_exists( $name . '.jpg', self::$media ) ) {
+					$thumbnail = $name . '.jpg';
+				} elseif( array_key_exists( $name . '.png', self::$media ) ) {
+					$thumbnail = $name . '.png';
+				}
+
+				if( $thumbnail ) {
+					update_post_meta( $id, '_thumbnail_id', self::$media[ $thumbnail ] );
+				}
             }
 		}
 
