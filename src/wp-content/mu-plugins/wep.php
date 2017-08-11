@@ -415,11 +415,32 @@ class Wep_Plugin {
 			'title' => 'Membership',
 			'type' => 'cta'
 		],
-        'membership-form' => [
-	        'post_title' => 'Membership form',
-	        'title' => 'Apply for membership',
+		'membership-type' => [
+			'post_title' => 'Membership type',
+			'post_content' => '',
+			'title' => '',
+			'type' => 'sections',
+			'section_1' => '<h5 style="text-align: center;"><i class="fa fa-building fa-4x"></i><br> <a href="/apply-for-membership/industry-form/">Industries</a></h5>',
+			'section_2' => '<h5 style="text-align: center;"><i class="fa fa-globe fa-4x"></i><br> <a href="/apply-for-membership/government-form/">Governments</a></h5>',
+			'section_3' => '<h5 style="text-align: center;"><i class="fa fa-users fa-4x"></i><br> <a href="/apply-for-membership/organisation-form/">Organisations</a></h5>'
+		],
+        'membership-form-government' => [
+	        'post_title' => 'Membership form - Government',
+	        'title' => 'Apply for membership as a government',
 	        'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="4" title="Apply for membership"]</p>'
 		],
+		'membership-form-industry' => [
+	        'post_title' => 'Membership form - Industry',
+	        'title' => 'Apply for membership as an industry',
+	        'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="4" title="Apply for membership"]</p>'
+		],
+		'membership-form-organisation' => [
+	        'post_title' => 'Membership form - Organisation',
+	        'title' => 'Apply for membership as an organisation',
+	        'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="4" title="Apply for membership"]</p>'
+		],
+
+		
 		'why-join' => [
 			'post_title' => 'Membership - Why join',
 			'post_content' => '<p>By signing up to the Statement of Action, countries will be making a high profile statement of their intent to tackle this heinous crime;</p><p>They will have access to a growing global network of expertise and support to help countries build their capacity and capability against online child sexual exploitation;</p><p>They will benefit from global technology development and awareness raising of this issue, and</p>',
@@ -647,10 +668,39 @@ class Wep_Plugin {
 		'apply-for-membership' => array(
 			'post_type' => 'page',
 			'post_title' => 'Apply for membership',
+			'post_content' => '<p>Please select the suitable application type using the buttons below.</p>',
+            'blocks' => [
+	            'membership-type',
+            ]
+		),
+		'government-form' => array(
+			'post_type' => 'page',
+			'post_title' => 'Apply for membership - government',
 			'post_content' => '',
+			'post_parent' => 'apply-for-membership',
             'blocks' => [
 	            'membership',
-	            'membership-form'
+	            'membership-form-government'
+            ]
+		),
+		'industry-form' => array(
+			'post_type' => 'page',
+			'post_title' => 'Apply for membership - idustry',
+			'post_content' => '',
+			'post_parent' => 'apply-for-membership',
+            'blocks' => [
+	            'membership',
+	            'membership-form-industry'
+            ]
+		),
+		'organisation-form' => array(
+			'post_type' => 'page',
+			'post_title' => 'Apply for membership - organisation',
+			'post_content' => '',
+			'post_parent' => 'apply-for-membership',
+            'blocks' => [
+	            'membership',
+	            'membership-form-organisation'
             ]
 		),
 		'useful-contacts' => array(
@@ -2590,6 +2640,9 @@ Statutory protections are in place to allow industry to fully and effectively re
 
 		// Create pages
 		if( count( self::$posts ) ) {
+			remove_filter('content_save_pre', 'wp_filter_post_kses');
+			remove_filter('content_filtered_save_pre', 'wp_filter_post_kses');
+
 			foreach( self::$posts as $name => $content ) {
 				$blocks = null;
 				if( array_key_exists( 'blocks', $content ) ) {
@@ -2643,6 +2696,9 @@ Statutory protections are in place to allow industry to fully and effectively re
 					update_post_meta( $id, '_thumbnail_id', self::$media[ $thumbnail ] );
 				}
 			}
+
+			add_filter('content_save_pre', 'wp_filter_post_kses');
+			add_filter('content_filtered_save_pre', 'wp_filter_post_kses');
 		}
 
 		return true;

@@ -32,20 +32,6 @@ function wep_wpcf7_form_elements($res) {
 
 add_filter( 'wpcf7_form_elements', 'wep_wpcf7_form_elements', 10, 2 );
 
-/*function wep_member_group_post_link( $post_link, $id = 0 ){
-$post = get_post($id);
-	if ( is_object( $post ) && $post->post_type == 'mnr' ){
-		$terms = wp_get_object_terms( $post->ID, 'mnr_category' );
-		var_dump($terms);
-		if( $terms && !( $terms instanceof WP_Error ) ) {
-			return str_replace( '%mnr_category%', $terms[0]->slug, $post_link );
-		}
-	}
-	return $post_link;
-}*/
-//add_filter( 'post_type_link', 'wep_member_group_post_link', 1, 3 );
-
-
 function filter_search_results( $query ) {
 	if ( !is_admin() && $query->is_main_query() ) {
     if ($query->is_search) {
@@ -161,6 +147,7 @@ class Wep_Theme {
 	public static function create_post_type() {
 		add_editor_style([
 			'https://fonts.googleapis.com/css?family=Lato:400,700,900|Open+Sans:300,400,600,700',
+			'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
 			'css/editor.css'
 		]);
 
@@ -170,6 +157,7 @@ class Wep_Theme {
 					'name' => __( 'Content Blocks' ),
 					'singular_name' => __( 'Content Block' )
 				),
+				'menu_icon' => 'dashicons-admin-users',
 				'public' => true,
 				'publicly_queryable' => false,
 				'has_archive' => false,
@@ -182,6 +170,7 @@ class Wep_Theme {
 					'name' => __( 'Members' ),
 					'singular_name' => __( 'Member' )
 				),
+				'menu_icon' => 'dashicons-admin-users',
 				'public' => true,
 				'publicly_queryable' => false,
 				'has_archive' => false,
@@ -195,6 +184,7 @@ class Wep_Theme {
 					'name' => __( 'Board' ),
 					'singular_name' => __( 'Board' )
 				),
+				'menu_icon' => 'dashicons-admin-users',
 				'public' => true,
 				'publicly_queryable' => false,
 				'has_archive' => false,
@@ -208,6 +198,7 @@ class Wep_Theme {
 					'name' => __( 'Model National Response' ),
 					'singular_name' => __( 'Model National Response' )
 				),
+				'menu_icon' => 'dashicons-admin-page',
 				'public' => true,
 				'publicly_queryable' => false,
 				'has_archive' => false,
@@ -300,6 +291,11 @@ class Wep_Theme {
 		return $output;
 	}
 }
+
+/**
+ * Filters
+ */
+
 
 /**
  * Actions

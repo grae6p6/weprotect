@@ -32,8 +32,8 @@ if( count( $css ) ) {
 ?>
 <div class="block block-sections"<?php echo $style ?>>
 	<?php wep_edit_link( get_the_ID() ); ?>
-	<?php if( $title || $button || ( get_the_content() != '' ) ) : ?>
 	<div class="container px-5">
+		<?php if( $title || ( get_the_content() != '' ) ) : ?>
 		<div class="row align-items-center">
 			<div class="col-12">
 				<?php if( $title ) :
@@ -42,6 +42,7 @@ if( count( $css ) ) {
 				<?php the_content() ?>
 			</div>
 		</div>
+		<?php endif; ?>
 		<div class="row has-blocks">
 			<?php
             
@@ -71,8 +72,7 @@ if( count( $css ) ) {
         </div>
         <?php endif; ?>
 	</div>
-	<?php endif;
-	if( $shortcode ) :
+	<?php if( $shortcode ) :
 		do_shortcode( $shortcode );
 	endif; ?>
 </div>
