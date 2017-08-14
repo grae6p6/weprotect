@@ -47,7 +47,11 @@ class Wep_Widget_Latest extends WP_Widget {
 			<?php foreach( $posts as $post ) :
 				setup_postdata( $post ); ?>
 				<div class="col-12 col-md-6">
-                    <div class="block light"><a href="<?php the_permalink() ?>"><h5><?php the_title() ?></h5></a><span><?php the_time( get_option( 'date_format' ) ) ?></span></div>
+					<?php if( has_post_thumbnail() ) : ?>
+					<div class="block light"><div><img src="<?php echo get_the_post_thumbnail_url( null, 'large' ) ?>" alt="<?php the_title() ?>"></div><a href="<?php the_permalink() ?>"><h5><?php the_title() ?></h5></a><?php the_excerpt() ?></div>
+					<?php else : ?>
+					<div class="block light"><a href="<?php the_permalink() ?>"><h5><?php the_title() ?></h5></a><span><?php the_time( get_option( 'date_format' ) ) ?></span></div>
+					<?php endif; ?>
 				</div>
 			<?php endforeach; wp_reset_postdata(); ?>
 			</div>
@@ -519,7 +523,7 @@ class Wep_Widget_News_Links extends WP_Widget {
 						<?php foreach( $entries as $link ) : ?>
 							<?php if( $link->link_name ) : /* Link */ ?>
 							<div class="col-4 col-md-3">
-								[image]
+								&nbsp;
 							</div>
 							<div class="col-8 col-md-9">
 								<a href="<?php echo $link->link_url ?>" target="_blank"><h5><?php echo $link->link_name ?></h5></a>
@@ -530,7 +534,9 @@ class Wep_Widget_News_Links extends WP_Widget {
 							</div>
 							<?php else : /* Post */ ?>
 							<div class="col-4 col-md-3">
-								[image]
+								<?php if( has_post_thumbnail( $link->ID ) ) : ?>
+								<img src="<?php echo get_the_post_thumbnail_url( $link->ID, 'large' ) ?>" alt="<?php echo get_the_title( $link->ID ) ?>">
+								<?php endif; ?>
 							</div>
 							<div class="col-8 col-md-9">
 								<a href="<?php echo get_the_permalink( $link->ID ) ?>"><h5><?php echo get_the_title( $link->ID ) ?></h5></a>

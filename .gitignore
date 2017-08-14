@@ -28,4 +28,6 @@ src/license.txt
 src/readme.html
 src/sitemap.xml
 src/sitemap.xml.gz
+
+logs
 .DS_Store

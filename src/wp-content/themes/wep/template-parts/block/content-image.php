@@ -34,13 +34,15 @@ if( count( $css ) ) {
 	<?php wep_edit_link( get_the_ID() ); ?>
 	<?php if( $title || $button || ( get_the_content() != '' ) ) : ?>
     <div class="container p-0">
-		<header class="article">
-			<?php if( $title ) :
-				printf( '<%s>%s</%s>', $heading, $title, $heading );
-			endif; ?>
-            <?php the_content() ?>
-			<?php echo $button ?>
-		</header>
+		<div class="row">
+			<header class="article col-12 col-md-10 col-lg-8">
+				<?php if( $title ) :
+					printf( '<%s>%s</%s>', $heading, $title, $heading );
+				endif; ?>
+				<?php the_content() ?>
+				<?php echo $button ?>
+			</header>
+		</div>
 	</div>
 	<?php endif;
 	if( $shortcode ) :

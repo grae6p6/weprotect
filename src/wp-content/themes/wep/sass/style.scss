@@ -1,6 +1,6 @@
 /*
 Theme name: WePROTECT
-Description: The theme will install all core data from initial wire-frames upon activation (if content does not exist). Core data includes pages, menus, forms, and content blocks.
+Description: The theme will install all core data upon activation (if new WP installation). Core data includes pages, menus, forms, and content blocks.
 Version: 1.0
 Author: Panlogic Ltd
 Text Domain: wep
@@ -24,14 +24,6 @@ $primary-light-color: #8e699b;
   border-radius: $px;
 }
 
-@mixin blur($px) {
-  -webkit-filter: blur($px);
-  -moz-filter: blur($px);
-  -o-filter: blur($px);
-  -ms-filter: blur($px);
-  filter: blur($px);
-}
-
 /* Elements */
 .posted-on a {
   color: #aaa !important;
@@ -40,6 +32,8 @@ $primary-light-color: #8e699b;
 body {
   color: #333334;
   font-size: 14px;
+
+  // Accessibility scaling
   &.small {
     font-size: 10px;
   }
@@ -64,6 +58,8 @@ body {
       font-size: 24px;
     }
   }
+
+  // JS only syling
   &.js {
     &.page-template-mnr {
       .mnr {
@@ -127,7 +123,7 @@ h1, h2, h3, h3, h4, h5, h6 {
   font-family: $font-family-sans-serif-heading;
 }
 
-p {
+p, ul {
   margin: 0 0 1.5em 0;
 }
 
@@ -211,6 +207,11 @@ main.body {
     h1, h2, h3 {
       margin: 0 0 .5em 0;
     }
+    img {
+      width: 100%;
+      height: auto;
+      margin-bottom: .5em;
+    }
     /*.row:last-child {
       .col > *:last-child {
         margin-bottom: 0;
@@ -222,13 +223,6 @@ main.body {
       bottom: 0;
       left: 0;
       padding: 1.5em 2em;
-      width: 100%;
-      @include media-breakpoint-only(md) {
-        width: 72%;
-      }
-      @include media-breakpoint-up(lg) {
-        width: 64%;
-      }
     }
     .block {
       @include border-radius(1em);
@@ -237,9 +231,9 @@ main.body {
       min-height: 5em;
       padding: 1em;
       margin: 0 0 1.5em 0;
-      *:last-child {
+      /**:last-child {
         margin-bottom: 0;
-      }
+      }*/
       span {
         font-size: .8em;
       }

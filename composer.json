@@ -1,6 +1,14 @@
 {
+    "autoload": {
+        "psr-4": {
+            "SeleniumTests\\": "selenium-tests/"
+        }
+    },
     "require-dev": {
-        "phpunit/phpunit": "^5.7"
+        "phpunit/phpunit": "^5.7",
+        "facebook/webdriver": "^1.4",
+        "lmc/steward": "^2.2",
+        "fzaninotto/faker": "^1.6"
     },
     "require": {
         "phpoffice/phpexcel": "^1.8"

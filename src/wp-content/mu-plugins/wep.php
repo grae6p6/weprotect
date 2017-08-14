@@ -420,9 +420,9 @@ class Wep_Plugin {
 			'post_content' => '',
 			'title' => '',
 			'type' => 'sections',
-			'section_1' => '<h5 style="text-align: center;"><i class="fa fa-building fa-4x"></i><br> <a href="/apply-for-membership/industry-form/">Industries</a></h5>',
-			'section_2' => '<h5 style="text-align: center;"><i class="fa fa-globe fa-4x"></i><br> <a href="/apply-for-membership/government-form/">Governments</a></h5>',
-			'section_3' => '<h5 style="text-align: center;"><i class="fa fa-users fa-4x"></i><br> <a href="/apply-for-membership/organisation-form/">Organisations</a></h5>'
+			'section_1' => '<h5 style="text-align: center;"><a href="/apply-for-membership/industry-form/"><i class="fa fa-building fa-4x"></i><br> Industries</a></h5>',
+			'section_2' => '<h5 style="text-align: center;"><a href="/apply-for-membership/government-form/"><i class="fa fa-globe fa-4x"></i><br> Governments</a></h5>',
+			'section_3' => '<h5 style="text-align: center;"><a href="/apply-for-membership/organisation-form/"><i class="fa fa-users fa-4x"></i><br> Organisations</a></h5>'
 		],
         'membership-form-government' => [
 	        'post_title' => 'Membership form - Government',
@@ -506,7 +506,7 @@ class Wep_Plugin {
 			'post_content' => '<p>The WePROTECT Global Alliance is led by a multi-stakeholder Board, comprised of representatives from key countries, international and civil society organisations, and the technology industry.</p>',
 			'title' => 'Our leadership',
 			'type' => 'cta',
-			'linked_page' => 'home',
+			'linked_page' => 'our-board',
 			'button_label' => 'WePROTECT Board'
 		],
 		'our-history' => [
@@ -515,7 +515,7 @@ class Wep_Plugin {
 			'title' => 'Our history',
 			'type' => '',
 			'bg_colour' => '#eaeaea',
-			'linked_page' => 'home',
+			'linked_page' => 'our-history',
 			'button_label' => 'Why join WePROTECT?'
 		],
 
@@ -867,19 +867,19 @@ secretariat, responsible to all those who have signed up to WePROTECT, and which
 		'funded-projects' => array(
 			'post_type' => 'page',
 			'post_title' => 'Funded projects',
-			'post_content' => '',
+			'post_content' => '<p>Content to be completed.</p>',
 			'menu_order' => 302
 		),
 		'faqs' => array(
 			'post_type' => 'page',
 			'post_title' => 'FAQs',
-			'post_content' => '',
+			'post_content' => '<p>Content to be completed.</p>',
 			'menu_order' => 303
 		),
 		'how-you-can-help' => array(
 			'post_type' => 'page',
 			'post_title' => 'How you can help',
-			'post_content' => '',
+			'post_content' => '<p>Content to be completed.</p>',
 			'menu_order' => 304
 		),
 		'how-to-report-cseo' => array(
@@ -927,13 +927,13 @@ secretariat, responsible to all those who have signed up to WePROTECT, and which
 		'donors' => array(
 			'post_type' => 'page',
 			'post_title' => 'Donors',
-			'post_content' => '',
+			'post_content' => '<p>Content to be completed.</p>',
 			'menu_order' => 404
 		),
 		'other-funding-methods' => array(
 			'post_type' => 'page',
 			'post_title' => 'Other funding methods',
-			'post_content' => '',
+			'post_content' => '<p>Content to be completed.</p>',
 			'menu_order' => 405
 		),
 
@@ -1085,9 +1085,9 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 		),*/
 
 		/**
-		*
-		*/
-		'case-study-test1' => array(
+		 * Test posts
+		 */
+		'case-study' => array(
 			'post_type' => 'post',
 			'post_category' => array( 'case-studies' ),
 			'post_title' => 'A study of cases',
@@ -1095,9 +1095,17 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 			'menu_order' => 0
 		),
 
-		'case-study-test2' => array(
+		'news-article' => array(
 			'post_type' => 'post',
-			'post_category' => array( 'case-studies' ),
+			'post_category' => array( 'news' ),
+			'post_title' => 'Lorem ipsum dolor sit amet, sed amit a dorem.',
+			'post_content' => '<p>Lorem ipsum dolor sit amet.</p>',
+			'menu_order' => 0
+		),
+
+		'event' => array(
+			'post_type' => 'post',
+			'post_category' => array( 'events' ),
 			'post_title' => 'Lorem ipsum dolor sit amet, sed amit a dorem.',
 			'post_content' => '<p>Lorem ipsum dolor sit amet.</p>',
 			'menu_order' => 0

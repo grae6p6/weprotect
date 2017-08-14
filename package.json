@@ -10,6 +10,7 @@
     "prod": "npm run production",
     "production": "./node_modules/.bin/webpack -p",
     "test": "./vendor/bin/phpunit",
+    "btest": "./vendor/bin/steward run staging chrome --tests-dir ./selenium-tests -vvv",
     "debug": "./vendor/bin/phpunit --debug",
     "dev": "./node_modules/.bin/webpack",
     "watch": "./node_modules/.bin/webpack --watch"
@@ -17,7 +18,7 @@
   "author": "Panlogic Ltd",
   "license": "ISC",
   "devDependencies": {
-    "bootstrap": "^4.0.0-alpha.6",
+    "bootstrap": "4.0.0-alpha.6",
     "bootstrap-loader": "^2.1.0",
     "css-loader": "^0.28.4",
     "exports-loader": "^0.6.4",
