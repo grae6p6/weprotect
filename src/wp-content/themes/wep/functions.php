@@ -86,19 +86,9 @@ class Wep_Theme {
 
 		load_theme_textdomain( 'wep' );
 
-	    /*$defaults = array(
-		    'height'      => 60,
-		    'width'       => 232,
-		    'flex-height' => true,
-		    'flex-width'  => true,
-		    'header-text' => array( 'site-title' ),
-	    );
-	    //add_theme_support( 'custom-logo', $defaults );*/
-
 		register_nav_menus( array(
 			'top' => __( 'Top Menu', 'wep' ),
 			'main' => __( 'Main Menu', 'wep' ),
-			//'connect' => __( 'Connect', 'wep' ),
 			'support' => __( 'Contact and Support', 'wep' ),
 		) );
 
@@ -238,13 +228,6 @@ class Wep_Theme {
 			),
 			$atts
 		));
-
-		/*$args = array(
-			'before_widget' => '<div class="box widget scheme-' . $scheme . ' ">',
-			'after_widget'  => '</div>',
-			'before_title'  => '<div class="widget-title">',
-			'after_title'   => '</div>',
-		);*/
 
 		ob_start();
 		the_widget( 'Wep_Widget_Latest', $atts/*, $args*/ );
