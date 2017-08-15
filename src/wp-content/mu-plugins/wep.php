@@ -73,78 +73,6 @@ class Wep_Plugin {
 		'yahoo.jpg' => 0,
 		'ziuz.jpg' => 0
     ];
-	/*public static $menus = [
-
-		// Top menu
-		'Top' => [
-			'contact-us' => ''
-		],
-
-		// Main menu
-		'Main' => [
-			'who-we-are' => [
-				//'who-we-are' => '',
-				'our-mission' => '',
-				'our-commitments' => '',
-				'our-leadership' => '',
-				'our-members' => '',
-				'who-we-work-with' => '',
-				'our-history' => '',
-				'contact-us' => ''
-			],
-			'what-we-do' => [
-				//'what-we-do' => '',
-				'why-we-must-act' => '',
-				'funded-projects' => '',
-				'faqs' => '',
-				'how-you-can-help' => '',
-				'how-to-report-cseo' => ''
-			],
-			'funding' => [
-				//'funding' => '',
-				'about-the-fund' => '',
-				'how-the-fund-is-spent' => '',
-				'apply-for-funding' => '',
-				'donors' => '',
-				'other-funding-methods' => ''
-			],
-			'get-involved' => [
-				//'get-involved' => '',
-				'membership' => '',
-				'donating' => ''
-			],
-			'resources' => [
-				//'resources' => '',
-				'model-national-response' => '',
-				'policy-legislation' => '',
-				'case-studies' => '',
-				'educators-and-parents' => '',
-				'useful-links' => '',
-				'submit-resources' => ''
-			],
-			'news-and-events' => [
-				//'news-and-events' => '',
-				'news' => '',
-				'newsletter' => '',
-				'events' => ''
-			]
-		],
-
-		// Support menu
-		'Support' => [
-			'contact-us' => '',
-			'useful-contacts' => '',
-			'helplines-in-your-region' => '',
-			'feedback' => ''
-		],
-
-		// Social menu
-		'Connect' => [
-			'link_facebook' => '',
-			'link_twitter' => '',
-			'link_email' => ''
-		]
-	];*/
 	public static $menus = [
 
 		// Top menu
@@ -440,7 +368,7 @@ class Wep_Plugin {
 	        'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="4" title="Apply for membership"]</p>'
 		],
 
-		
+
 		'why-join' => [
 			'post_title' => 'Membership - Why join',
 			'post_content' => '<p>By signing up to the Statement of Action, countries will be making a high profile statement of their intent to tackle this heinous crime;</p><p>They will have access to a growing global network of expertise and support to help countries build their capacity and capability against online child sexual exploitation;</p><p>They will benefit from global technology development and awareness raising of this issue, and</p>',
@@ -1209,7 +1137,7 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 				'model-national-response-header'
 			]
 		),
-        
+
         /**
          * MNR sections
          */
@@ -2158,7 +2086,7 @@ Statutory protections are in place to allow industry to fully and effectively re
 					];
 				}
 			}
-			
+
 			if( count( $array ) ) {
 				$item_id = wp_update_nav_menu_item( $menu_id, 0, $array );
 
@@ -2168,27 +2096,6 @@ Statutory protections are in place to allow industry to fully and effectively re
 			}
 		}
 	}
-
-	/**
-	 * Create country taxonomies
-	 */
-	/*public static function create_countries() {
-		require_once '../themes/wep/inc/countries.php';
-
-		if( $countries ) {
-		    foreach( $countires as $iso => $name ) {
-		        $id = wp_insert_term( sanitize_title( $name ), $name );
-		        if( !$id ) {
-		            var_dump( 'FAILED COUNTRY TAX:', $name );
-		            return false;
-                }
-            }
-
-            return true;
-        }
-
-        return false;
-    }*/
 
 	/**
 	 * Create all CF7 forms
@@ -2312,8 +2219,6 @@ Statutory protections are in place to allow industry to fully and effectively re
 		$objReader->setReadDataOnly(true);
 
 		$objPHPExcel = $objReader->load(ABSPATH . "../data/ignore/WPGAmembership.xls");
-		//var_dump($objPHPExcel);
-
 
 		/**
 		 * Pull country entries from XLS
@@ -2447,7 +2352,7 @@ Statutory protections are in place to allow industry to fully and effectively re
 		foreach( $results as $row ) {
 			if( empty( $row['Organisation'] ) )
 		        continue;
-		
+
 			$name = sanitize_title( $row['Organisation'] );
 
 			$content = [];
@@ -2456,7 +2361,7 @@ Statutory protections are in place to allow industry to fully and effectively re
 			$content['post_content'] = '';
 			$content['post_type'] = 'member';
 			$content['post_status'] = 'publish';
-			
+
 			$id = wp_insert_post($content);
 			if( !$id ) {
 				return false;
@@ -2468,7 +2373,7 @@ Statutory protections are in place to allow industry to fully and effectively re
 				$row['Sign up'] = $signup_fields[ $row['Sign up'] ];
 				$row['Country'] = 'US';
 				//var_dump($row['Organisation']);
-				
+
 				update_post_meta( $id, 'group', 'organisation' );
 				update_post_meta( $id, '_group', 'field_597068f8afb36' );
 
@@ -2577,6 +2482,7 @@ Statutory protections are in place to allow industry to fully and effectively re
 			require_once( ABSPATH . 'wp-admin/includes/image.php' );
 
 			$directories = [
+				'uploads',
 				date( 'Y' ),
 				date( 'm' )
 			];
@@ -2620,11 +2526,6 @@ Statutory protections are in place to allow industry to fully and effectively re
                 // Generate the metadata for the attachment, and update the database record.
 				$attach_data = wp_generate_attachment_metadata( $id, $wp_upload_dir['url'] . '/' . basename( $dest ) );
 				wp_update_attachment_metadata( $id, $attach_data );
-
-				// Set logo
-				/*if( pathinfo( $filename, PATHINFO_FILENAME ) == 'weprotect-logo' ) {
-					set_theme_mod( 'custom_logo', $id );
-                }*/
 			}
 		}
 
