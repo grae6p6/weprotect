@@ -54,8 +54,10 @@ $locations = get_nav_menu_locations();
 					<h5><?php _e( 'Newsletter', 'wep' ) ?></h5>
 	                <?php
 
-	                $widgetNL = new WYSIJA_NL_Widget(true);
-	                echo $widgetNL->widget(array('form' => 1, 'form_type' => 'php'));
+					if( class_exists( 'WYSIJA_NL_Widget' ) ) {
+						$widgetNL = new WYSIJA_NL_Widget(true);
+						echo $widgetNL->widget(array('form' => 1, 'form_type' => 'php'));
+					}
 
 	                ?>
                 </div>
