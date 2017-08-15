@@ -2728,6 +2728,7 @@ Statutory protections are in place to allow industry to fully and effectively re
 		activate_plugin( 'bootstrap-for-contact-form-7/bootstrap-for-contact-form-7.php' );
 		activate_plugin( 'wordpress-seo/wp-seo.php' );
 		activate_plugin( 'twitter/twitter.php' );
+		activate_plugin( 'wp-mail-smtp/wp_mail_smtp.php' );
 
 		// Do we have default content? Install core data
 		$post = get_post( 1 );
