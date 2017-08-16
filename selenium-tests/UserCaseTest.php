@@ -21,10 +21,10 @@ define( 'TEST_URL', 'http://weprotect.dev/' );
 class UserCaseTest extends AbstractTestCase {
     
     /**
-     * User case - Any Non-member
-     * What to do to become a member
+     * User case - Government Non-member
+     * Find other members
      */
-    public function testAnyNonMemberWhatToDoToBecomeAMember() {
+    public function testGovernmentNonMemberFindCountriesInTheInitiative() {
         
         // Load the URL (will wait until page is loaded)
         $this->wd->get( TEST_URL );
@@ -35,26 +35,39 @@ class UserCaseTest extends AbstractTestCase {
         $this->log('Opening "Join Us" menu');
         $joinUsMenu->click();
 
-        $joinUsLinkElement = WebDriverBy::cssSelector( 'a.dropdown-item[href*="/join-us/"]' );
-        $joinUsLink = $this->wd->findElement( $joinUsLinkElement );
+        $ourMembersLinkElement = WebDriverBy::cssSelector( 'a.dropdown-item[href*="/our-members/"]' );
+        $ourMembersLink = $this->wd->findElement( $ourMembersLinkElement );
 
         $action = new WebDriverActions( $this->wd ); 
-        $action->moveToElement( $joinUsLink );
+        $action->moveToElement( $ourMembersLink );
         $action->perform();
         $this->wd->wait()->until(
-            WebDriverExpectedCondition::visibilityOfElementLocated( $joinUsLinkElement )
+            WebDriverExpectedCondition::visibilityOfElementLocated( $ourMembersLinkElement )
         );
 
-        $this->log('Clicking "Join Us" link');
-        $joinUsLink->click();
+        $this->log('Clicking "Our members" link');
+        $ourMembersLink->click();
 
         $this->wd->wait()->until(
-            WebDriverExpectedCondition::urlContains( '/join-us/' )
+            WebDriverExpectedCondition::urlContains( '/our-members/' )
         );
 
-        // Go to application form area to begin process of entering details.
-        $applyForMembershipElement = WebDriverBy::cssSelector( 'a.btn[href*="/apply-for-membership/"]' );
+        // Select the US
+        $usRegion = $this->wd->findElement( WebDriverBy::Id( 'jqvmap3_us' ) )->click();
         
+        $modalElement = WebDriverBy::cssSelector( '.modal-dialog' );
+        $modal = $this->wd->findElement( $modalElement );
+
+        $action = new WebDriverActions( $this->wd ); 
+        $action->moveToElement( $modal );
+        $action->perform();
+        $this->wd->wait()->until(
+            WebDriverExpectedCondition::visibilityOfElementLocated( $modalElement )
+        );
+
+        $memberName = $this->wd->findElement( WebDriverBy::cssSelector( '.modal-dialog [data-name] p' ) );
+        $this->assertEquals( 'United States', $memberName->getText() );
+
         $this->wd->quit();
     }
 
@@ -62,7 +75,7 @@ class UserCaseTest extends AbstractTestCase {
      * User case - NGO Non-member
      * Become a member (as an industry)
      */
-    public function testNgoNonMemberBecomeAMemberAsAnIndustry() {
+    /*public function testNgoNonMemberBecomeAMemberAsAnIndustry() {
         
         // Load the URL (will wait until page is loaded)
         $this->wd->get( TEST_URL );
@@ -194,13 +207,13 @@ class UserCaseTest extends AbstractTestCase {
         $submitMessage = $this->wd->findElement( WebDriverBy::cssSelector( '.wpcf7-response-output' ) );
         $this->assertContains( 'alert-success', $submitMessage->getAttribute('class') );
         $this->wd->quit();
-    }
+    }*/
 
     /**
      * User case - NGO Non-member
      * Become a member (as an organisation)
      */
-    public function testNonMemberNgoBecomeAMemberAsAnOrganisation() {
+    /*public function testNonMemberNgoBecomeAMemberAsAnOrganisation() {
 
         // Load the URL (will wait until page is loaded)
         $this->wd->get( TEST_URL );
@@ -332,13 +345,13 @@ class UserCaseTest extends AbstractTestCase {
         $submitMessage = $this->wd->findElement( WebDriverBy::cssSelector( '.wpcf7-response-output' ) );
         $this->assertContains( 'alert-success', $submitMessage->getAttribute('class') );
         $this->wd->quit();
-    }
+    }*/
 
     /**
      * User case - Government Non-member
      * Become a member (as a government)
      */
-    public function testGovernmentNonMemberBecomeAMemberAsAGovernment() {
+    /*public function testGovernmentNonMemberBecomeAMemberAsAGovernment() {
 
         // Load the URL (will wait until page is loaded)
         $this->wd->get( TEST_URL );
@@ -470,13 +483,13 @@ class UserCaseTest extends AbstractTestCase {
         $submitMessage = $this->wd->findElement( WebDriverBy::cssSelector( '.wpcf7-response-output' ) );
         $this->assertContains( 'alert-success', $submitMessage->getAttribute('class') );
         $this->wd->quit();
-    }
+    }*/
 
     /**
      * User case - Member
      * Access the MNR
      */
-    public function testMemberCanAccessModelNationalResponse() {
+    /*public function testMemberCanAccessModelNationalResponse() {
         
         // Load the URL (will wait until page is loaded)
         $this->wd->get( TEST_URL );
@@ -494,5 +507,5 @@ class UserCaseTest extends AbstractTestCase {
         $h2Title = $this->wd->findElement( WebDriverBy::tagName( 'h2' ) );
         $this->assertContains( 'The Model National Response', $h2Title->getText() );
         $this->wd->quit();
-    }
+    }*/
 }
