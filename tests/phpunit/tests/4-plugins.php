@@ -45,6 +45,10 @@ class Tests_Wep_Plugin extends WP_UnitTestCase {
 		$this->assertNull(activate_plugin('polylang/polylang.php'));
 		$this->assertTrue(is_plugin_active('polylang/polylang.php'));
 
+		// SMTP
+		$this->assertNull(activate_plugin('wp-mail-smtp/wp_mail_smtp.php'));
+		$this->assertTrue(is_plugin_active('wp-mail-smtp/wp_mail_smtp.php'));
+
 		// Form extension for Polylang
 		//$this->assertNull(activate_plugin('cf7-polylang/cf7-polylang.php'));
 		//$this->assertTrue(is_plugin_active('cf7-polylang/cf7-polylang.php'));
