@@ -6244,7 +6244,7 @@ header.body {
   header.body .top img {
     height: 1em; }
   header.body .primary {
-    padding: 1em 0;
+    padding: 2.5em 0;
     /*#menu-primary > li > a {
       color: $primary-color;
     }
@@ -6263,11 +6263,9 @@ header.body {
         font-size: 1.5em; }
   @media (min-width: 992px) {
     header.body .primary {
-      min-height: 6.75em; }
+      padding: 2.5em 0; }
       header.body .primary .custom-logo-link {
-        padding-bottom: 0; }
-      header.body .primary .row {
-        min-height: 6.75em; } }
+        padding-bottom: 0; } }
 
 header.body .top, footer.body .primary, header.article {
   background-color: #562a64;
