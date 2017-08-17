@@ -2,18 +2,31 @@ pipeline {
     agent any 
 
     stages {
+        stage('Build Deps') {
+            steps {
+                echo "Branch is ${env.BRANCH_NAME}..."
+        
+                withNPM(npmrcConfig:'my-custom-npmrc') {
+                    echo "Performing npm build..."
+                    sh 'npm install'
+                }
+            }
+        }
         stage('Dev') {
-            steps { 
-                sh 'npm run dev' 
+            withNPM(npmrcConfig:'my-custom-npmrc') {
+                echo "Performing npm dev..."
+                sh 'npm run dev'
             }
         }
         stage('Staging') {
-            steps {
+            withNPM(npmrcConfig:'my-custom-npmrc') {
+                echo "Performing npm tests..."
                 sh 'npm run test && npm run btest'
             }
         }
         stage('Production') {
-            steps {
+            withNPM(npmrcConfig:'my-custom-npmrc') {
+                echo "Performing npm production..."
                 sh 'npm run prod'
             }
         }
