@@ -67,7 +67,7 @@
                     <div class="col-12 col-xl-3 pr-0 text-center">
                         <a role="home" href="<?php echo esc_url( home_url( '/' ) ) ?>"><img src="<?php echo get_template_directory_uri() ?>/images/logo.svg" height="60" width="232" alt="WePROTECT Global Alliance"></a>
                     </div>
-                    <div class="col-12 col-xl-9 pl-0">
+                    <div class="col-12 col-xl-9 pt-4 pt-xl-0 pl-0">
 	                    <?php if ( has_nav_menu( 'main' ) ) : ?>
                             <nav role="navigation" class="pr-xl-5" aria-label="<?php esc_attr_e( 'Main Menu', 'wep' ); ?>">
 			                    <?php

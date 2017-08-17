@@ -6260,7 +6260,8 @@ header.body {
         position: absolute;
         top: 0;
         right: 0;
-        font-size: 1.5em; }
+        font-size: 1.5em;
+        color: #562a64; }
   @media (min-width: 992px) {
     header.body .primary {
       padding: 2.5em 0; }
