@@ -518,61 +518,65 @@ class Wep_Widget_News_Links extends WP_Widget {
 
 			?>
 			<div class="flex-container">
-				<div class="row has-blocks">
-					<?php if( $max > 4 ) : /* Layout for more than 4 entries */ ?>
-						<?php foreach( $entries as $link ) : ?>
-							<?php if( $link->link_name ) : /* Link */ ?>
-							<div class="col-4 col-md-3">
-								&nbsp;
-							</div>
-							<div class="col-8 col-md-9">
-								<a href="<?php echo $link->link_url ?>" target="_blank"><h5><?php echo $link->link_name ?></h5></a>
-								<p><span class="posted-on"><strong><?php echo parse_url( $link->link_url, PHP_URL_HOST ) ?></strong>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i><br><?php echo date( get_option( 'date_format' ), strtotime( $link->link_updated ) ) ?></span></p>
-								<?php if( !empty( $link->link_description ) ) : ?>
-								<p><?php echo $link->link_description ?></p>
-								<?php endif; ?>
-							</div>
-							<?php else : /* Post */ ?>
-							<div class="col-4 col-md-3">
-								<?php if( has_post_thumbnail( $link->ID ) ) : ?>
-								<img src="<?php echo get_the_post_thumbnail_url( $link->ID, 'large' ) ?>" alt="<?php echo get_the_title( $link->ID ) ?>">
-								<?php endif; ?>
-							</div>
-							<div class="col-8 col-md-9">
-								<a href="<?php echo get_the_permalink( $link->ID ) ?>"><h5><?php echo get_the_title( $link->ID ) ?></h5></a>
-								<p><span class="posted-on"><?php echo date( get_option( 'date_format' ), strtotime( $link->post_date ) ) ?></span></p>
-								<?php if( !empty( $link->post_content ) ) : ?>
-								<p><?php echo get_the_excerpt( $link->ID ) ?></p>
-								<?php endif; ?>
-							</div>
-							<?php endif; ?>
-						<?php endforeach; ?>
-					<?php else : /* Default layout */ ?>
-						<?php foreach( $entries as $link ) : ?>
-							<?php if( $link->link_name ) : /* Link */ ?>
-							<div class="col-6 col-md-<?php echo $col_md ?>">
-								<div class="block light">
-									<a href="<?php echo $link->link_url ?>" target="_blank"><h5><?php echo $link->link_name ?></h5></a>
-									<?php if( !empty( $link->link_description ) ) : ?>
-									<p><?php echo $link->link_description ?></p>
-									<?php endif; ?>
-									<p><span class="posted-on"><strong><?php echo parse_url( $link->link_url, PHP_URL_HOST ) ?></strong>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i><br><?php echo date( get_option( 'date_format' ), strtotime( $link->link_updated ) ) ?></span></p>
-								</div>
-							</div>
-							<?php else : /* Post */ ?>
-							<div class="col-6 col-md-<?php echo $col_md ?>">
-								<div class="block light">
-									<a href="<?php echo get_the_permalink( $link->ID ) ?>"><h5><?php echo get_the_title( $link->ID ) ?></h5></a>
-									<?php if( !empty( $link->post_content ) ) : ?>
-									<p><?php echo get_the_excerpt( $link->ID ) ?></p>
-									<?php endif; ?>
-									<p><span class="posted-on"><?php echo date( get_option( 'date_format' ), strtotime( $link->post_date ) ) ?></span></p>
-								</div>
-							</div>
-							<?php endif; ?>
-						<?php endforeach; ?>
+				<?php if( $max > 4 ) : /* Layout for more than 4 entries */ ?>
+				<div class="row">
+				<?php foreach( $entries as $link ) : ?>
+					<?php if( $link->link_name ) : /* Link */ ?>
+					<div class="col-4 col-md-3">
+						<i class="fa fa-newspaper-o" aria-hidden="true"></i>
+					</div>
+					<div class="col-8 col-md-9">
+						<h5><a href="<?php echo $link->link_url ?>" target="_blank"><?php echo $link->link_name ?></a></h5>
+						<p><span class="posted-on"><strong><?php echo parse_url( $link->link_url, PHP_URL_HOST ) ?></strong>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i><br><?php echo date( get_option( 'date_format' ), strtotime( $link->link_updated ) ) ?></span></p>
+						<?php if( !empty( $link->link_description ) ) : ?>
+						<p><?php echo $link->link_description ?></p>
+						<?php endif; ?>
+					</div>
+					<?php else : /* Post */ ?>
+					<div class="col-4 col-md-3">
+						<?php if( has_post_thumbnail( $link->ID ) ) : ?>
+						<img src="<?php echo get_the_post_thumbnail_url( $link->ID, 'large' ) ?>" alt="<?php echo get_the_title( $link->ID ) ?>">
+						<?php else : ?>
+						<i class="fa fa-newspaper-o" aria-hidden="true"></i>
+						<?php endif; ?>
+					</div>
+					<div class="col-8 col-md-9">
+						<h5><a href="<?php echo get_the_permalink( $link->ID ) ?>"><?php echo get_the_title( $link->ID ) ?></a></h5>
+						<span class="posted-on"><?php echo date( get_option( 'date_format' ), strtotime( $link->post_date ) ) ?></span>
+						<?php if( $link->post_content != '' ) : ?>
+						<p><?php echo get_the_excerpt( $link->ID ) ?></p>
+						<?php endif; ?>
+					</div>
 					<?php endif; ?>
+				<?php endforeach; ?>
 				</div>
+			<?php else : /* Default layout */ ?>
+				<div class="row has-blocks">
+				<?php foreach( $entries as $link ) : ?>
+					<?php if( $link->link_name ) : /* Link */ ?>
+					<div class="col-6 col-md-<?php echo $col_md ?>">
+						<div class="block light">
+							<h5><a href="<?php echo $link->link_url ?>" target="_blank"><?php echo $link->link_name ?></a></h5>
+							<?php if( !empty( $link->link_description ) ) : ?>
+							<p><?php echo $link->link_description ?></p>
+							<?php endif; ?>
+							<p><span class="posted-on"><strong><?php echo parse_url( $link->link_url, PHP_URL_HOST ) ?></strong>&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i><br><?php echo date( get_option( 'date_format' ), strtotime( $link->link_updated ) ) ?></span></p>
+						</div>
+					</div>
+					<?php else : /* Post */ ?>
+					<div class="col-6 col-md-<?php echo $col_md ?>">
+						<div class="block light">
+							<h5><a href="<?php echo get_the_permalink( $link->ID ) ?>"><?php echo get_the_title( $link->ID ) ?></a></h5>
+							<?php if( $link->post_content != '' ) : ?>
+							<p><?php echo get_the_excerpt( $link->ID ) ?></p>
+							<?php endif; ?>
+							<p><span class="posted-on"><?php echo date( get_option( 'date_format' ), strtotime( $link->post_date ) ) ?></span></p>
+						</div>
+					</div>
+					<?php endif; ?>
+				<?php endforeach; ?>
+				</div>
+				<?php endif; ?>
 			</div>
 		<?php else: ?>
 			<p><?php _e( 'No news links were found, please try later.' , 'wep' ); ?></p>

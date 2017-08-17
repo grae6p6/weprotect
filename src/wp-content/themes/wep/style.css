@@ -6603,6 +6603,10 @@ button.active, .btn.active, .btn:hover {
 .widget_wep_widget_news_links ul {
   list-style: none; }
 
+.widget_wep_widget_news_links .fa-newspaper-o {
+  color: #562a64;
+  font-size: 7em; }
+
 /* Members list */
 .jqvmap-label {
   position: absolute;
