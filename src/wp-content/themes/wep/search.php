@@ -4,7 +4,7 @@
  * Template Name: Search Page
  */
 
-/*global $query_string;
+global $query_string;
 
 $query_args = explode("&", $query_string);
 $search_query = array();
@@ -18,7 +18,7 @@ if( strlen($query_string) > 0 ) {
 
 $search = new WP_Query($search_query);
 
-get_header();*/
+get_header();
 
 ?>
 

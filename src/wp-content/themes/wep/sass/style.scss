@@ -11,8 +11,9 @@ $primary-color: #562a64;
 $primary-dark-color: #2a0637;
 $primary-light-color: #8e699b;
 
-/* Modified copy of the Bootstrap 4 variables */
-@import "variables";
+/* Modified copy of the Bootstrap 4 BETA variables */
+@import "./node_modules/bootstrap/scss/functions.scss";
+@import "variables2";
 
 /* Bootstrap 4 */
 @import "./node_modules/bootstrap/scss/bootstrap.scss";
