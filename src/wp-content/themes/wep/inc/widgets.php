@@ -514,11 +514,11 @@ class Wep_Widget_News_Links extends WP_Widget {
 				}
 			}
 			
-			$col_md = ( 24 / count( $entries ) );
+			$col_md = ( 12 / count( $entries ) );
 
 			?>
 			<div class="flex-container">
-				<?php if( $max > 4 ) : /* Layout for more than 4 entries */ ?>
+				<?php if( $max > 4 ) : /* Layout (listing) for more than 4 entries */ ?>
 				<div class="row">
 				<?php foreach( $entries as $link ) : ?>
 					<?php if( $link->link_name ) : /* Link */ ?>
@@ -550,7 +550,7 @@ class Wep_Widget_News_Links extends WP_Widget {
 					<?php endif; ?>
 				<?php endforeach; ?>
 				</div>
-			<?php else : /* Default layout */ ?>
+			<?php else : /* Default (blocks) layout */ ?>
 				<div class="row has-blocks">
 				<?php foreach( $entries as $link ) : ?>
 					<?php if( $link->link_name ) : /* Link */ ?>
