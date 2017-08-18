@@ -33,8 +33,8 @@ if( count( $css ) ) {
 <div class="block block-image"<?php echo $style ?>>
 	<?php wep_edit_link( get_the_ID() ); ?>
 	<?php if( $title || $button || ( get_the_content() != '' ) ) : ?>
-    <div class="container p-0">
-		<div class="row">
+    <div class="container">
+		<div class="row align-items-end">
 			<header class="article col-12 col-md-10 col-lg-8">
 				<?php if( $title ) :
 					printf( '<%s>%s</%s>', $heading, $title, $heading );

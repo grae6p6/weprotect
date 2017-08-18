@@ -6,7 +6,7 @@ Author: Panlogic Ltd
 Text Domain: wep
 */
 /*5c9ee0*/
-/* Modified copy of the Bootstrap 4 BETA variables */
+/* Modified copy of the Bootstrap 4 functions & variables */
 /* Bootstrap 4 */
 /*!
  * Bootstrap v4.0.0-beta (https://getbootstrap.com)
@@ -5847,10 +5847,6 @@ main.body {
       height: auto;
       margin-bottom: .5em; }
     main.body .block header.article {
-      display: inline-block;
-      position: absolute;
-      bottom: 0;
-      left: 0;
       padding: 1.5em 2em; }
     main.body .block .block {
       -webkit-border-radius: 1em;
@@ -5913,6 +5909,14 @@ main.body {
       @media (min-width: 768px) {
         main.body .block.block-image .container {
           height: 25em; } }
+      main.body .block.block-image .container .row {
+        height: 45em; }
+        @media (min-width: 576px) and (max-width: 767px) {
+          main.body .block.block-image .container .row {
+            height: 35em; } }
+        @media (min-width: 768px) {
+          main.body .block.block-image .container .row {
+            height: 25em; } }
     main.body .block.block-image header p {
       font-size: 1.2em; }
     main.body .block.block-image header.article > * {
