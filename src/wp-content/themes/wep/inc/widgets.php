@@ -157,7 +157,7 @@ class Wep_Widget_Members_List extends WP_Widget {
 							<input type="radio" name="options" autocomplete="off"<?php echo ( $group == 'organisation' ? ' checked' : '' ) ?>><i class="fa fa-filter" aria-hidden="true"></i>  <?php _e( 'Organisations', 'wep' ) ?>
 						</label>
 						<label class="btn btn-primary" data-group="industry">
-							<input type="radio" name="options" autocomplete="off"<?php echo ( $group == 'industry' ? ' checked' : '' ) ?>><i class="fa fa-filter" aria-hidden="true"></i>  <?php _e( 'Industries', 'wep' ) ?>
+							<input type="radio" name="options" autocomplete="off"<?php echo ( $group == 'industry' ? ' checked' : '' ) ?>><i class="fa fa-filter" aria-hidden="true"></i>  <?php _e( 'Companies', 'wep' ) ?>
 						</label>
 						<label class="btn btn-primary" data-group="">
 							<input type="radio" name="options" autocomplete="off"<?php echo ( $group == '' ? ' checked' : '' ) ?>><i class="fa fa-globe" aria-hidden="true"></i>  <?php _e( 'All', 'wep' ) ?>
