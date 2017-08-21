@@ -15,9 +15,9 @@ class Wep_Plugin {
 		'Model National Response' => 0
 	];
 	public static $forms = [
-		'Apply for membership - Company' => 'apply-for-membership',
+		'Apply for membership - Company' => 'apply-for-membership-company',
 		'Apply for membership - Government' => 'apply-for-membership-government',
-		'Apply for membership - Organisation' => 'apply-for-membership'
+		'Apply for membership - Organisation' => 'apply-for-membership-organisation'
     ];
 	public static $media = [
 		'adobe.jpg' => 0,
