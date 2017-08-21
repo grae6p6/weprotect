@@ -141,9 +141,15 @@ class Wep_Widget_Members_List extends WP_Widget {
         ]);
         if( $members ) : ?>
         <div class="flex-container">
+			<div class="row">
+				<div class="col">
+					<p><?php _e( 'Use the filters below to change which members are shown on screen.', 'wep' ); ?></p>
+				</div>
+			</div>
             <div class="row">
                 <div class="col-12 col-lg-8 text-center text-lg-left buttons">
-					<div class="btn-group" data-toggle="buttons">
+					<h6><?php _e( 'Display filter', 'wep' ); ?></h6>
+                    <div class="btn-group" data-toggle="buttons">
 						<label class="btn btn-primary active" data-group="country">
 							<input type="radio" name="options" autocomplete="off"<?php echo ( $group == 'country' ? ' checked' : '' ) ?>><i class="fa fa-filter" aria-hidden="true"></i> <?php _e( 'Countries', 'wep' ) ?>
 						</label>
@@ -159,6 +165,7 @@ class Wep_Widget_Members_List extends WP_Widget {
 					</div>
                 </div>
                 <div class="col-12 col-lg-4 text-center text-lg-right buttons">
+					<h6><?php _e( 'Display type', 'wep' ); ?></h6>
                     <div class="btn-group" data-toggle="buttons">
 						<label class="btn btn-primary" data-display="map">
 							<input type="radio" name="options" autocomplete="off"><i class="fa fa-map" aria-hidden="true"></i> <?php _e( 'Map', 'wep' ) ?>
