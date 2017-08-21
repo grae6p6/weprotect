@@ -18,7 +18,7 @@
   "author": "Panlogic Ltd",
   "license": "ISC",
   "devDependencies": {
-    "bootstrap": "^4.0.0-beta",
+    "bootstrap": "4.0.0-alpha.6",
     "bootstrap-loader": "^2.1.0",
     "css-loader": "^0.28.4",
     "exports-loader": "^0.6.4",
