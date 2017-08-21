@@ -148,7 +148,7 @@ class Wep_Widget_Members_List extends WP_Widget {
 			</div>
             <div class="row">
                 <div class="col-12 col-lg-8 text-center text-lg-left buttons">
-					<h6><?php _e( 'Display filter', 'wep' ); ?></h6>
+					<h5><?php _e( 'Display filter', 'wep' ); ?></h5>
                     <div class="btn-group" data-toggle="buttons">
 						<label class="btn btn-primary active" data-group="country">
 							<input type="radio" name="options" autocomplete="off"<?php echo ( $group == 'country' ? ' checked' : '' ) ?>><i class="fa fa-filter" aria-hidden="true"></i> <?php _e( 'Countries', 'wep' ) ?>
@@ -165,7 +165,7 @@ class Wep_Widget_Members_List extends WP_Widget {
 					</div>
                 </div>
                 <div class="col-12 col-lg-4 text-center text-lg-right buttons">
-					<h6><?php _e( 'Display type', 'wep' ); ?></h6>
+					<h5><?php _e( 'Display type', 'wep' ); ?></h5>
                     <div class="btn-group" data-toggle="buttons">
 						<label class="btn btn-primary" data-display="map">
 							<input type="radio" name="options" autocomplete="off"><i class="fa fa-map" aria-hidden="true"></i> <?php _e( 'Map', 'wep' ) ?>
