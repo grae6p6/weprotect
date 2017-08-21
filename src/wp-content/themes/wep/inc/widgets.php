@@ -160,16 +160,16 @@ class Wep_Widget_Members_List extends WP_Widget {
                 </div>
                 <div class="col-12 col-lg-4 text-center text-lg-right buttons">
                     <div class="btn-group" data-toggle="buttons">
-						<label class="btn btn-primary active" data-display="map">
-							<input type="radio" name="options" autocomplete="off" checked><i class="fa fa-map" aria-hidden="true"></i> <?php _e( 'Map', 'wep' ) ?>
+						<label class="btn btn-primary" data-display="map">
+							<input type="radio" name="options" autocomplete="off"><i class="fa fa-map" aria-hidden="true"></i> <?php _e( 'Map', 'wep' ) ?>
 						</label>
-						<label class="btn btn-primary" data-display="list">
-							<input type="radio" name="options" autocomplete="off"><i class="fa fa-th" aria-hidden="true"></i> <?php _e( 'List', 'wep' ) ?>
+						<label class="btn btn-primary active" data-display="list">
+							<input type="radio" name="options" autocomplete="off" checked><i class="fa fa-th" aria-hidden="true"></i> <?php _e( 'List', 'wep' ) ?>
 						</label>
 					</div>
                 </div>
             </div>
-            <div class="row members list hide">
+            <div class="row members list">
 	            <?php foreach( $members as $member ) :
 		            $criticality = get_field( 'criticality', $member->ID );
 		            switch( $criticality ) {
@@ -213,12 +213,12 @@ class Wep_Widget_Members_List extends WP_Widget {
                     </div>
 	            <?php endforeach; ?>
             </div>
-            <div class="row members map">
+            <div class="row members map hide">
                 <div class="col">
                     <div id="jqvmap"></div>
                 </div>
             </div>
-            <div class="row members all">
+            <div class="row members all hide">
                 <div class="col"></div>
             </div>
         </div>
