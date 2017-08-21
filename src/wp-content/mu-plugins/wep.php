@@ -15,7 +15,9 @@ class Wep_Plugin {
 		'Model National Response' => 0
 	];
 	public static $forms = [
-		'Apply for membership' => 'apply-for-membership'
+		'Apply for membership - Company' => 'apply-for-membership',
+		'Apply for membership - Government' => 'apply-for-membership-government',
+		'Apply for membership - Organisation' => 'apply-for-membership'
     ];
 	public static $media = [
 		'adobe.jpg' => 0,
@@ -348,24 +350,24 @@ class Wep_Plugin {
 			'post_content' => '',
 			'title' => '',
 			'type' => 'sections',
-			'section_1' => '<h5 style="text-align: center;"><a href="/apply-for-membership/industry-form/"><i class="fa fa-building fa-4x"></i><br> Industries</a></h5>',
+			'section_1' => '<h5 style="text-align: center;"><a href="/apply-for-membership/company-form/"><i class="fa fa-building fa-4x"></i><br> Companies</a></h5>',
 			'section_2' => '<h5 style="text-align: center;"><a href="/apply-for-membership/government-form/"><i class="fa fa-globe fa-4x"></i><br> Governments</a></h5>',
 			'section_3' => '<h5 style="text-align: center;"><a href="/apply-for-membership/organisation-form/"><i class="fa fa-users fa-4x"></i><br> Organisations</a></h5>'
 		],
         'membership-form-government' => [
 	        'post_title' => 'Membership form - Government',
 	        'title' => 'Apply for membership as a government',
-	        'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="4" title="Apply for membership"]</p>'
+	        'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="179" title="Apply for membership"]</p>'
 		],
-		'membership-form-industry' => [
-	        'post_title' => 'Membership form - Industry',
-	        'title' => 'Apply for membership as an industry',
+		'membership-form-company' => [
+	        'post_title' => 'Membership form - Company',
+	        'title' => 'Apply for membership as a company',
 	        'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="4" title="Apply for membership"]</p>'
 		],
 		'membership-form-organisation' => [
 	        'post_title' => 'Membership form - Organisation',
 	        'title' => 'Apply for membership as an organisation',
-	        'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="4" title="Apply for membership"]</p>'
+	        'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="180" title="Apply for membership"]</p>'
 		],
 
 
@@ -611,14 +613,14 @@ class Wep_Plugin {
 	            'membership-form-government'
             ]
 		),
-		'industry-form' => array(
+		'company-form' => array(
 			'post_type' => 'page',
-			'post_title' => 'Apply for membership - idustry',
+			'post_title' => 'Apply for membership - company',
 			'post_content' => '',
 			'post_parent' => 'apply-for-membership',
             'blocks' => [
 	            'membership',
-	            'membership-form-industry'
+	            'membership-form-company'
             ]
 		),
 		'organisation-form' => array(
