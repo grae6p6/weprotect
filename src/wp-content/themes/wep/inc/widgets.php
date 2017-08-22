@@ -41,12 +41,13 @@ class Wep_Widget_Latest extends WP_Widget {
             'numberposts' => (int)$instance['max']
 		]);
 
-		if( $posts ) : ?>
+		if( $posts ) :
+			$col_md = ( 12 / count( $posts ) ); ?>
 		<div class="flex-container">
             <div class="row has-blocks">
 			<?php foreach( $posts as $post ) :
 				setup_postdata( $post ); ?>
-				<div class="col-12 col-md-6">
+				<div class="col-12 col-md-<?php echo $col_md ?>">
 					<?php if( has_post_thumbnail() ) : ?>
 					<div class="block light"><div><img src="<?php echo get_the_post_thumbnail_url( null, 'large' ) ?>" alt="<?php the_title() ?>"></div><a href="<?php the_permalink() ?>"><h5><?php the_title() ?></h5></a><?php the_excerpt() ?></div>
 					<?php else : ?>

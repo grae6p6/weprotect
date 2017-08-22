@@ -26,6 +26,13 @@ class Wep_Plugin {
 		'askfm.jpg' => 0,
 		'bae-systems.jpg' => 0,
 		'baroness-joanna-shields.png' => 0,
+		'cs-1.jpg' => 0,
+		'cs-2.jpg' => 0,
+		'cs-3.jpg' => 0,
+		'cs-3.jpg' => 0,
+		'cs-4.jpg' => 0,
+		'cs-5.jpg' => 0,
+		'cs-6.jpg' => 0,
 		'child-helpline-international.jpg' => 0,
 		'cornelius-williams.png' => 0,
 		'dell.jpg' => 0,
@@ -1017,13 +1024,62 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 		/**
 		 * Test posts
 		 */
-		'case-study' => array(
+		 'case-study-andrea' => array(
 			'post_type' => 'post',
 			'post_category' => array( 'case-studies' ),
-			'post_title' => 'A study of cases',
-			'post_content' => '<p>Lorem ipsum dolor sit amet.</p>',
+			'post_title' => 'Winny',
+			'post_content' => '<p>“Andrea” from El Salvador, pictured here, was 13 when she created a social media profile. A man began flirting with her and said he wanted to meet her. For two weeks he harassed her and demanded sexually explicit pictures. When she refused, his messages became increasingly menacing, so she shared the messages with her parents who took her to the police. Following an investigation, the police located the man, arrested him and charged him with sexual harassment. He received a long prison sentence for multiple instances of sexual harassment. Andrea now works with a gender violence prevention team with the NGO OXFAM as part of a UNICEFsupported programme for the prevention of sexual violence, abuse and exploitation of children online.</p>',
+			'thumbnail' => 'cs-1.jpg',
 			'menu_order' => 0
 		),
+
+		'case-study-charlotte' => array(
+			'post_type' => 'post',
+			'post_category' => array( 'case-studies' ),
+			'post_title' => 'Charlotte',
+			'post_content' => '<p>“Charlotte” from Nottingham, England was groomed online by a person posing as a young girl. After a diagnosis of Asperger Syndrome, Charlotte turned to social media for friendship. The "girl", later identified by police as a man who had exploited other young people in this way, befriended Charlotte but then began demanding naked photos, using them to blackmail her in exchange for more. The abuser leaked the photos on a social media site. These were eventually circulated to Charlotte’s mother who instantly reported this to the police. After moving away to escape bullying at school, Charlotte was contacted again by the same man under another name. Her case was investigated by a specialist police unit, and the man was successfully prosecuted and placed on the UK’s sexual offences register for five years. The police also referred Charlotte to the National Society for the Prevention of Cruelty to Children (NSPCC), which provides support for the victims of online child sexual exploitation in the UK, as well as the UK’s child helpline. Charlotte says, “I used to think that what happened to me was all my fault but they helped me to realise that it wasn\'t”. The NSPCC also taught her mother about online safety, who says she now feels “a lot more confident” in helping Charlotte stay safe online.</p>',
+			'thumbnail' => 'cs-2.jpg',
+			'menu_order' => 0
+		),
+
+		'case-study-elisa-and-gina' => array(
+			'post_type' => 'post',
+			'post_category' => array( 'case-studies' ),
+			'post_title' => 'Elisa and Gina',
+			'post_content' => '<p>These girls, known to us as “Elisa” (12) and “Gina” (13), were sexually exploited in Madagascar by a 59- year-old European man, whom police believe is part of a larger network of criminals involved in the production and online distribution of child sexual abuse material. The mother of one of the girls, who was employed by the man as a domestic worker, introduced him to the girls, and they began to spend evenings with him at his home. Elisa testified that the man, who took nude photographs of both girls for online distribution, sexually assaulted her. He is now in prison, awaiting extradition to France.</p>',
+			'thumbnail' => 'cs-3.jpg',
+			'menu_order' => 0
+		),
+
+		'case-study-rosalyn' => array(
+			'post_type' => 'post',
+			'post_category' => array( 'case-studies' ),
+			'post_title' => 'Rosalyn',
+			'post_content' => '<p>This teenager, known to us as “Rosalyn”, is at a shelter in the Philippines. She and her six siblings were rescued during a cybercrime police raid six years ago when their parents were caught forcing the two oldest girls to perform in live streaming of child sexual abuse in their home. Estey Rosalyn was drawn into online sexual abuse by a neighbour, and her parents were paid for Rosalyn’s acts. Her younger sister began to perform online as well, financing the parents’ ability to purchase their own computer system. Using this, they continued to force their two older daughters to participate in live-streaming of child sexual abuse in front of a webcam in their home. Rosalyn is now an advocate for online safety and agreed to share her story to help raise awareness of child sexual exploitation online.</p>',
+			'thumbnail' => 'cs-4.jpg',
+			'menu_order' => 0
+		),
+
+		'case-study-proteja-brazil' => array(
+			'post_type' => 'post',
+			'post_category' => array( 'case-studies' ),
+			'post_title' => 'Proteja Brazil',
+			'post_content' => '<p>A woman in Fortaleza, Brazil, shows the app “Proteja Brasil” (Protect Brazil) on her smartphone. The app was developed by UNICEF Brasil and its partners, with support from the UK and the WePROTECT Global Alliance. The app facilitates reporting to authorities violence against children and adolescents, including online violence and sexual exploitation. It provides guidance on where to report incidents, and displays contact details and locations of police stations, protection councils and organisations in major Brazilian cities.</p>',
+			'thumbnail' => 'cs-5.jpg',
+			'menu_order' => 0
+		),
+
+		'case-study-winny' => array(
+			'post_type' => 'post',
+			'post_category' => array( 'case-studies' ),
+			'post_title' => 'Winny',
+			'post_content' => '<p>Young people’s participation in tackling online sexual exploitation and all forms of abuse and violence is central to the WePROTECT Model National Response and the UN Convention on the Rights of the Child. Winny Moreira (17), centre, is a Brazilian advocate against online child sexual exploitation and cyberbullying. Winny was herself bullied online at school. However, she became a passionate advocate for young people when her friend Jessica was bullied and harassed after inappropriate images from her phone were stolen and shared with her peers in school. Winny supported her friend and participated in a UNICEF-sponsored girls’ empowerment programme in Brazil. In 2015, she was a finalist of UNICEF Brazil’s Safe Surf Campaign for her YouTube video, “Internet sem Vacilo” (Internet without Hesitation). The stories of the two friends have been highlighted in an online video for the UNICEF/WePROTECT Global Alliance #ReplyForAll campaign. Just three weeks into this campaign, this and other true life stories had received some two million views and helped to generate a positive online discussion amongst young people.</p>',
+			'thumbnail' => 'cs-6.jpg',
+			'menu_order' => 0
+		),
+
+
+
 
 		'news-article' => array(
 			'post_type' => 'post',
