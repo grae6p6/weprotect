@@ -47,7 +47,7 @@ get_header(); ?>
 			                            'order' => 'ASC',
 			                            'orderby' => 'menu_order',
 			                            'meta_key' => 'group',
-			                            'meta_value' => serialize( array( (string)$group->ID ) ) // Thats a bit nuts??
+			                            'meta_value' => serialize( array( (string)$group->ID ) ) // ??
 		                            ]);
 
                                     // Is group current page
@@ -58,17 +58,17 @@ get_header(); ?>
                                         <div class="container-flex">
                                             <div class="row align-items-center">
                                                 <?php if( $i > 0 ) : ########################### ?>
-                                                <div class="col-2 col-sm-1 col-md-2 col-lg-2">
+                                                <div class="col-2 col-sm-2 col-md-3 col-lg-3 p-0 pl-3 pr-2 text-center">
                                                     <i class="fa fa-bank"></i>
                                                 </div>
                                                 <?php endif; ?>
-                                                <div class="col text">
+                                                <div class="col text <?php echo ( !$i ? '' : 'px-0' ) ?>">
                                                     <a href="<?php echo get_the_permalink( $group->ID ); ?>" alt="<?php echo get_the_title( $group->ID ); ?>">
                                                         <?php echo ( !$i ? __( 'Introduction', 'wep' ) : get_the_title( $group->ID ) ); ?>
                                                     </a>
                                                 </div>
                                                 <?php if( $i > 0 ) : ########################### ?>
-                                                <div class="col">
+                                                <div class="col p-0 pr-3">
                                                     <a href="javascript:void(0)" class="toggle float-right" aria-label="<?php _e( 'Menu for ' . get_the_title( $group->ID ), 'wep' ); ?>"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                                                 </div>
                                                 <?php endif; ?>
@@ -83,10 +83,10 @@ get_header(); ?>
                                                 <li>
                                                     <div class="container-flex">
                                                         <div class="row align-items-center">
-                                                            <div class="col-2 col-sm-1 col-md-2 col-lg-2 text">
+                                                            <div class="col-2 col-sm-1 col-md-3 col-lg-3 p-0 pl-2 text-center text">
                                                                 <?php echo $section->menu_order ?>
                                                             </div>
-                                                            <div class="col text">
+                                                            <div class="col p-0 pr-2 text">
                                                                 <a href="<?php echo get_the_permalink( $group->ID ); ?>#<?php echo $section->post_name; ?>">
                                                                     <span><?php echo get_the_title( $section->ID ); ?></span>
                                                                 </a>
@@ -103,35 +103,24 @@ get_header(); ?>
                                     <li class="entry">
                                         <div class="container-flex">
                                             <div class="row align-items-center">
-                                                <div class="col-2 col-sm-1 col-md-2 col-lg-2">
+                                                <div class="col-2 col-sm-2 col-md-3 col-lg-3 p-0 pl-3 text-center">
                                                     <i class="fa fa-file-text"></i>
                                                 </div>
-                                                <div class="col text">
-                                                    <a href="#"><?php _e( 'Download full MNR document', 'wep' ) ?></a>
+                                                <div class="col text px-0">
+                                                <?php $posts = get_posts([
+                                                    'name' => 'weprotectglobalalliancestrategy',
+                                                    'post_type' => 'attachment',
+                                                    'post_status' => 'inherit',
+                                                    'numberposts' => 1
+                                                ]);
+                                                if( count( $posts ) ) : ?>
+                                                    <a href="<?php echo wp_get_attachment_url( $posts[0]->ID ) ?>"><?php _e( 'Download full MNR document', 'wep' ) ?></a>
+                                                <?php endif; ?>
                                                 </div>
                                             </div>
                                         </div>
                                     </li>
                             <?php endif; ?>
-							<!--<div class="entry">Introduction</div>
-							<div class="entry">Enablers</div>
-							<div class="entry expandable active">
-                                <div class="container-flex">
-                                    <div class="row align-items-center">
-                                        <div class="col-1 col-lg-3">
-                                            <img src="/wp-content/themes/wep/screenshot.png">
-                                        </div>
-                                        <div class="col">
-                                            <span>Policy and Governance</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-							<div class="entry expandable">Criminal Justice</div>
-							<div class="entry expandable">Societal</div>
-							<div class="entry expandable">Industry</div>
-							<div class="entry expandable">Media and communications</div>
-                            <div class="entry">Download full MNR document</div>-->
                             </ul>
 						</div>
 						<div class="col-12 col-md-8 col-lg-9 content">
@@ -149,7 +138,7 @@ get_header(); ?>
                                     'order' => 'ASC',
                                     'orderby' => 'menu_order',
                                     'meta_key' => 'group',
-                                    'meta_value' => serialize( array( (string)$post->ID ) ) // Thats a bit nuts??
+                                    'meta_value' => serialize( array( (string)$post->ID ) ) // ??
                                 ]);
 
                                 // Section links

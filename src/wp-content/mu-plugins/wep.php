@@ -2610,6 +2610,8 @@ Statutory protections are in place to allow industry to fully and effectively re
 				$dest = $path_dest . '/' . $filename;
 				copy( $src, $dest );
 
+				var_dump( $filename );
+
 				$filetype = wp_check_filetype( basename( $dest ), null );
 
                 // Prepare an array of post data for the attachment.
