@@ -42,7 +42,7 @@ class Wep_Widget_Latest extends WP_Widget {
 		]);
 
 		if( $posts ) :
-			$col_md = ( 12 / count( $posts ) ); ?>
+			$col_md = ( 24 / count( $posts ) ); ?>
 		<div class="flex-container">
             <div class="row has-blocks">
 			<?php foreach( $posts as $post ) :
