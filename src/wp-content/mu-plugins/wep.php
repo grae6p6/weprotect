@@ -827,7 +827,13 @@ secretariat, responsible to all those who have signed up to WePROTECT, and which
 		'how-to-report-cseo' => array(
 			'post_type' => 'page',
 			'post_title' => 'How to report CSEO',
-			'post_content' => '<p>If you think you may know someone who is involved in viewing online child sexual abuse material, please speak to your local law enforcement in the first instance.</p>',
+			'post_content' => 'If you think you may know someone who is involved in viewing online child sexual abuse material or has been affected by child sexual exploitation online, please speak to your local law enforcement in the first instance.
+			
+			You can also visit the following websites for more help and guidance on reporting child sexual exploitation online.
+			<ul>
+				 <li><a href="https://www.interpol.int/">Interpol</a></span></li>
+				 <li><a href="http://www.nationalcrimeagency.gov.uk/">National Crime Agency</a></span></li>
+			</ul>',
 			'menu_order' => 305
 		),
 

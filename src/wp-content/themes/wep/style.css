@@ -6344,7 +6344,7 @@ main.body {
     }*/
     color: #fff;
     background-color: #562a64; }
-    main.body .block.block-cta h1, main.body .block.block-cta h2, main.body .block.block-cta h3, main.body .block.block-cta h4, main.body .block.block-cta h5, main.body .block.block-cta h6 {
+    main.body .block.block-cta * {
       color: #fff; }
     main.body .block.block-cta img {
       width: 100%;
