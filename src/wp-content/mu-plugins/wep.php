@@ -512,11 +512,10 @@ class Wep_Plugin {
 
 		'applying-for-funding' => [
 			'post_title' => 'Header - funding',
-			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>',
+			'post_content' => '<p>For more information about the fund and how to apply, please visit <a href="http://fund.end-violence.org/">The Fund to End Violence Against Children</a></p>',
 			'title' => 'Apply for funding',
 			'type' => '',
-			'bg_colour' => '#eaeaea',
-			'linked_page' => 'apply-for-funding'
+			'bg_colour' => '#eaeaea'
 		],
 
 		'other-funding-methods' => [
@@ -2609,8 +2608,6 @@ Statutory protections are in place to allow industry to fully and effectively re
 				$src = $path_src . '/' . $filename;
 				$dest = $path_dest . '/' . $filename;
 				copy( $src, $dest );
-
-				var_dump( $filename );
 
 				$filetype = wp_check_filetype( basename( $dest ), null );
 
