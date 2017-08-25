@@ -298,7 +298,7 @@ class Wep_Plugin {
 		// Our mission
 		'our-mission' => [
 			'post_title' => 'Our mission',
-			'post_content' => '<p>We have assembled, for the first time, the influence, resources and expertise to transform how this crime is dealt with worldwide, to deliver our vision of more victims safeguarded, more perpetrators apprehended and an end to online child sexual exploitation.</p>',
+			'post_content' => '<p>The Internet is an extraordinary catalyst of innovation, education, and expanding global economic growth. Technology offers endless benefits and possibilities to our children that we never experienced as they have unlimited access to information with the ability to communicate and connect with people from all over the planet. But with this comes a range of ever more sophisticated threats.</p>',
 			'title' => 'Our mission',
 			'type' => 'cta',
 			'linked_page' => 'our-mission',
@@ -410,7 +410,7 @@ class Wep_Plugin {
 		],
 		'our-members-list' => [
 			'post_title' => 'Our members list',
-			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>[wep-members-list group="country"]',
+			'post_content' => '[wep-members-list group="country"]',
 			'title' => 'Our members',
 			'type' => ''//,
 			//'shortcode' => ''
@@ -486,7 +486,7 @@ class Wep_Plugin {
 
 		'header-funding' => [
 			'post_title' => 'Header - funding',
-			'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
+			'post_content' => '<p>The Fund to End Violence Against children is the linked Fund to End Violence Against Children, hosted by UNICEF, which sits alongside the Global Partnership to End Violence Against Children – an initiative comprised of civil society, governments and other stakeholders working to deliver SDG 16.2, the commitment to end all forms of violence against children by 2030.</p>',
 			'title' => 'Fund to end violence against children',
 			'type' => 'cta',
 			'linked_page' => 'about-the-fund'
@@ -699,7 +699,7 @@ class Wep_Plugin {
 		'our-board' => array(
 			'post_type' => 'page',
 			'post_title' => 'Our board',
-			'post_content' => '<p>The WePROTECT Global Alliance is led by a multi-stakeholder Board, comprised of representatives from key countries, international and civil society organisations, and the technology industry.</p>',
+			'post_content' => '<p>The WePROTECT Global Alliance is led by an executive Board and supported by the UK, which is providing a secretariat to support the Board’s leadership for an initial period. Our board members are:</p>',
 			'menu_order' => 202,
 			'blocks' => [
 				'our-board-list'
@@ -744,7 +744,8 @@ secretariat, responsible to all those who have signed up to WePROTECT, and which
 			'menu_order' => 204,
 			'blocks' => [
 				'membership',
-                'our-members-list'
+				'our-members-list',
+				'join-us'
 			]
 		),
 		'who-we-work-with' => array(
@@ -845,8 +846,23 @@ secretariat, responsible to all those who have signed up to WePROTECT, and which
 		'about-the-fund' => array(
 			'post_type' => 'page',
 			'post_title' => 'About the fund',
-			'post_content' => '<p>The Fund to End Violence Against Children (EVAC) is in its first year of operation, and the UK has donated 10 million pounds to finance projects that will build national and international capacity to tackle online child sexual exploitation (CSE) between 2016-17. The Fund’s window for applications for the UK’s funding opened between 12 July and 4 September 2016 and we understand there was a healthy number of quality applications received.</p>
-<p>The Fund is now preparing a list of projects recommended to receive funding following advice from an impartial and international panel of experts to inform the final decision of the Fund Steering Committee. In conducting an initial sift of the applications received, the Fund Unit used the WePROTECT Global Alliance’s Model National Response to prioritise the applications received in September 2016, and the WePROTECT Global Alliance will continue to work with the Fund in an advisory capacity to help ensure the disbursement of money from the Fund is targeted to projects offering the most impactful changes on the ground in tackling online CSE. Currently the UK is the only donor to the Fund, pledging 40 million pounds over the course of this parliament in annual 10 million pound instalments, the first of which has already been donated. We are working with other governments who have shown an interest in donating to the Fund to ensure the Fund can deliver to its full potential.</p>',
+			'post_content' => 'The Fund to End Violence Against children is the linked Fund to End Violence Against Children, hosted by UNICEF, which sits alongside the Global Partnership to End Violence Against Children - an initiative comprised of civil society, governments and other stakeholders working to deliver SDG 16.2, the commitment to end all forms of violence against children by 2030. The Partnership and its linked Fund aim to accelerate action in three priority areas:
+				<ul>
+					 <li>Preventing "online" violence with a particular focus on sexual exploitation</li>
+					 <li>Addressing violence in the every-day lives of children with an initial focus on investments in Pathfinder countries and sub-national actors to implement evidence based programming</li>
+					 <li>Addressing the prevention of violence children facing conflict and crisis.</li>
+				</ul>
+				The UK has committed £40 million over four years from 2016 onwards to the Fund to support efforts intending to tackle online child sexual exploitation, and as Partner of the Fund, the WePROTECT Global Alliance has a key role in providing strategic advice to the Fund in relation to its core objectives and funding priorities for supporting activities to tackle online CSE.
+				
+				The Fund launched in 2016 for the first time inviting applications from across government, civil society and industry to deliver activities to build national and international capacity to tackle online CSE. As a result, 15 successful applications are now being implemented in various countries around the world.
+				
+				This July the Fund launched its second call for proposals, seeking:
+				<ul>
+					 <li>Applications from ODA-eligible countries or third party organisations applying on behalf of their governments to develop a coordinated multi-stakeholder national action plan to respond to online CSE, in line with the WePROTECT Global Alliance\'s Model National Response</li>
+					 <li>Applications from regional and international organisations seeking to generate awareness of the threat of online CSE within regions to mobilise their membership towards national action</li>
+					 <li>Applications from organisations that seek to enhance the quality of MNR capabilities and the consistency with which they are delivered at a global level</li>
+				</ul>
+				For more information about the Fund and how to apply, please visit <a href="http://fund.end-violence.org/">The Fund to End Violence Against Children </a>',
 			'menu_order' => 401
 		),
 		'how-the-fund-is-spent' => array(
@@ -1092,8 +1108,15 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 		'event' => array(
 			'post_type' => 'post',
 			'post_category' => array( 'events' ),
-			'post_title' => 'Lorem ipsum dolor sit amet, sed amit a dorem.',
-			'post_content' => '<p>Lorem ipsum dolor sit amet.</p>',
+			'post_title' => 'CHILD DIGNITY IN THE DIGITAL WORLD WORLD CONGRESS ROME, 2017',
+			'post_content' => '<p>Children and adolescents make up over a quarter of the more than 3.2 billion Internet users worldwide. This generation of over 800 million young users is in danger of becoming victims of sextortion, sexting, cyberbullying and harassment.</p>
+			This global problem calls for a global solution. We need an open and thorough discussion to build awareness, and to mobilize action for a better protection of minors online.
+			
+			‘Child Dignity in the Digital World’ is the first world congress of its kind that brings together key stakeholders and international leaders from all relevant areas.
+			
+			This pioneering congress hosted by the Centre for Child Protection at the Pontifical Gregorian University in Rome sets a milestone in the international fight against digital sexual child abuse.
+			
+			The invitation-only congress brings together distinguished academic experts, business leaders, leaders of civil society, high-level politicians and religious representatives from across the globe. This provides a historic opportunity to set the global agenda for the fight against online sexual child abuse and for child protection in the digital world.',
 			'menu_order' => 0
 		),
 
