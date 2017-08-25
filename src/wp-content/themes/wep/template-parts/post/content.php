@@ -22,10 +22,15 @@ global $post;
 
 	?>
         <div class="container">
-			<?php if( is_single() and has_post_thumbnail() ) : ?>
+			<?php if( is_single() and has_post_thumbnail() ) :
+				$ptid = get_post_thumbnail_id();
+				$post_thumbnail = get_post( $pdid );
+				$post_thumbnail_meta = get_post_meta( $ptid );
+			?>
 			<div class="row">
-				<div class="col">
-					<div style="height:35vh;background-image:url(<?php echo get_the_post_thumbnail_url() ?>);background-size:cover;"></div>
+				<div class="col image">
+					<!--<div style="height:35vh;background-image:url(<?php echo get_the_post_thumbnail_url() ?>);background-size:cover;"></div>-->
+					<img src="<?php echo get_the_post_thumbnail_url() ?>" alt="<?php echo $post_thumbnail_meta['_wp_attachment_image_alt'][0] ?>" title="<?php echo $post_thumbnail->post_excerpt ?>">
 				</div>
 			</div>
 			<?php endif; ?>

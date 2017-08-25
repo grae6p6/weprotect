@@ -87,6 +87,10 @@ body {
     p:first-of-type {
       font-size: 1.2em;
     }
+    .image img {
+      width: 100%;
+      height: auto;
+    }
   }
   &.category, &.search {
     h4 {
