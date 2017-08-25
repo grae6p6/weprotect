@@ -1110,7 +1110,7 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 			'menu_order' => 0
 		),
 
-		'event' => array(
+		'event-one' => array(
 			'post_type' => 'post',
 			'post_category' => array( 'events' ),
 			'post_title' => 'CHILD DIGNITY IN THE DIGITAL WORLD WORLD CONGRESS ROME, 2017',
@@ -1123,6 +1123,18 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 			
 			The invitation-only congress brings together distinguished academic experts, business leaders, leaders of civil society, high-level politicians and religious representatives from across the globe. This provides a historic opportunity to set the global agenda for the fight against online sexual child abuse and for child protection in the digital world.',
 			'thumbnail' => 'cddw.jpg',
+			'menu_order' => 0
+		),
+
+		'event-two' => array(
+			'post_type' => 'post',
+			'post_category' => array( 'events' ),
+			'post_title' => 'CHILD DIGNITY IN THE DIGITAL WORLD WORLD CONGRESS ROME, 2017',
+			'post_content' => '<p>The WePROTECT Global Alliance brings together, for the first time, both the political will and the resources to end the sexual exploitation of children online.  It is working in partnership with the new Fund to End Violence Against Children to deliver a global program of capacity and capability, with an initial donation of £40m from the UK government.  The Fund will be hosted by UNICEF and the WePROTECT Global Alliance Board will be responsible for advising how to prioritize its activities for maximum impact.</p>
+			The Board and the UK government are working with the Fund to seek further donors to support this critical work and identify interventions that can make a real difference to the lives of children worldwide.  For further information, and to find out how to make a bid to the Fund, visit <a href="http://www.end-violence.org/">www.end-violence.org</a>.
+			
+			To find out more about how the Fund to End Violence Against Children will work with WePROTECT Global Alliance, and the difference the UK and UNICEF have already made on this issue, see our strategy <a href="https://cj-lewis-nsh8.squarespace.com/s/WePROTECT-Global-Alliance-Strategy.pdf">here</a>.',
+			'thumbnail' => 'stock-3.jpg',
 			'menu_order' => 0
 		),
 
