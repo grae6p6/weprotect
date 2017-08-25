@@ -26,6 +26,7 @@ class Wep_Plugin {
 		'askfm.jpg' => 0,
 		'bae-systems.jpg' => 0,
 		'baroness-joanna-shields.png' => 0,
+		'cddw.jpg' => 0,
 		'cs-1.jpg' => 0,
 		'cs-2.jpg' => 0,
 		'cs-3.jpg' => 0,
@@ -80,7 +81,11 @@ class Wep_Plugin {
 		'vodafone.jpg' => 0,
 		'world-vision.jpg' => 0,
 		'yahoo.jpg' => 0,
-		'ziuz.jpg' => 0
+		'ziuz.jpg' => 0,
+
+		// PDF documents
+		'WePROTECT+Global+Alliance+Model+National+Response+Guidance.pdf' => 0,
+		'WePROTECT+Global+Alliance+Strategy.pdf' => 0
     ];
 	public static $menus = [
 
@@ -233,7 +238,7 @@ class Wep_Plugin {
 		],
 		'model-national-response' => [
 			'post_title' => 'Model National Response',
-			'post_content' => '<p>The WePROTECT Model National Response sets out what countries need to do to</p>',
+			'post_content' => '<p>At the Abu-Dhabi Summit in 2015, governments and organisations agreed to establish and deliver, in their own countries, a coordinated national response to online child sexual exploitation, guided by the WePROTECT Global Alliance Model National response (MNR).</p>',
 			'title' => 'Model National Response',
 			'type' => 'cta',
 			'linked_page' => 'the-model-national-response',
@@ -242,7 +247,7 @@ class Wep_Plugin {
 		],
 		'fund-to-end-violence-against-children' => [
 			'post_title' => 'Fund to end violence against children',
-			'post_content' => '<p>Leo suspendisse imperdiet augue etiam ac in a ullamcorper tortor suspendisse ad ullamcorper maecenas class at a.</p><h4>Case studies</h4>[wep-latest max="3" categories="case-studies"]',
+			'post_content' => '<p>The WePROTECT Global Alliance’s mission is to transform how the crime of online child sexual exploitation is dealt with, resulting in more victims identified and safeguarded, more perpetrators apprehended and an internet free from child sexual exploitation.</p><h4>Case studies</h4>[wep-latest max="4" categories="case-studies"]',
 			'title' => 'Fund to end violence against children',
 			'type' => '',
 			'bg_colour' => '#eaeaea',
@@ -1117,6 +1122,7 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 			This pioneering congress hosted by the Centre for Child Protection at the Pontifical Gregorian University in Rome sets a milestone in the international fight against digital sexual child abuse.
 			
 			The invitation-only congress brings together distinguished academic experts, business leaders, leaders of civil society, high-level politicians and religious representatives from across the globe. This provides a historic opportunity to set the global agenda for the fight against online sexual child abuse and for child protection in the digital world.',
+			'thumbnail' => 'cddw.jpg',
 			'menu_order' => 0
 		),
 
@@ -2576,7 +2582,7 @@ Statutory protections are in place to allow industry to fully and effectively re
 				date( 'm' )
 			];
 
-			$path_src = realpath( ABSPATH . '../data/ignore/images' );
+			$path_src = realpath( ABSPATH . '../data/ignore' );
 			$path_dest = ABSPATH . 'wp-content';
 			foreach( $directories as $directory ) {
 				if( !is_dir( $path_dest . '/' . $directory ) ) {
@@ -2587,7 +2593,7 @@ Statutory protections are in place to allow industry to fully and effectively re
 
 			foreach( self::$media as $filename => $id ) {
 
-				// Copy from project ignored "/data/images" to WP uploads
+				// Copy from project ignored "/data/ignore" to WP uploads
 				$src = $path_src . '/' . $filename;
 				$dest = $path_dest . '/' . $filename;
 				copy( $src, $dest );
