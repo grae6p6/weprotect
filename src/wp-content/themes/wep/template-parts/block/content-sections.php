@@ -54,7 +54,7 @@ if( count( $css ) ) {
                 $count = 2;
 
             $col_md = ( $count == 4 ? 24 : 12 ) / $count;
-            $col_xl = 12 / $count;
+            $col_xl = 24 / $count;
             
             for( $i = 1; $i <= $count; $i++ ) : ?>
             <div class="col-12 col-md-<?php echo $col_md ?> col-xl-<?php echo $col_xl ?>">
