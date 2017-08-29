@@ -58,7 +58,7 @@ if( count( $css ) ) {
             
             for( $i = 1; $i <= $count; $i++ ) : ?>
             <div class="col-12 col-md-<?php echo $col_md ?> col-xl-<?php echo $col_xl ?>">
-				<div class="block light">
+				<div class="block light" id="block-<?php the_ID() ?>-<?php echo $i ?>">
 					<?php the_field( 'section_' . $i ) ?>
 				</div>
 			</div>

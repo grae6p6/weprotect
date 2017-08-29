@@ -12,30 +12,38 @@ require("bootstrap/dist/js/bootstrap.min");
             window.location = $(this).data('url');
         });
 
-        // Create listener for tallest nested block within 'has-blocks' parent
-        /*$('.has-blocks').each(function(){
-            var tallest = 0;
-            var listen;
+        // Create listener for tallest sibling ".block" within ".has-blocks" parent
+        $('.has-blocks').each(function(i){
+            var parent = $(this);
+            var elTallest = 0;
+            var elLongest = 0;
+            var elTarget;
             $(this).find('.block').each(function(){
                 var height = parseInt( $(this).outerHeight() );
-                if( height > tallest ) {
-                    tallest = height;
-                    listen = $(this);
+                var length = $(this).text().length;
+
+                // Check rendered height AND computed text length
+                if( height >= elTallest && length > elLongest ) {
+					elTallest = height;
+					elLongest = length;
+					elTarget = $(this);
                 }
             });
-            console.log(listen);
-            new ResizeSensor(listen, function(e) {
-                //console.log($(e).outerHeight() + '-' + tallest);
-                console.log(this);
-                $(e).parent().parent().find('.block').each(function(){
-                    //if( $(this).outerHeight() != tallest ) {
-                        console.log('Setting: ' + tallest + 'px');
-                        $(this).height(tallest + 'px');
-                    //}
+
+            // Add ID to tallest block for ref
+			var elId = elTarget.attr('id');
+			console.log('Listen: ' + elId);
+
+			// Resize sensor for the tallest block amongst siblings
+            new resizeSensor.create(document.getElementById(elId), function() {
+                var height = $('#' + elId).height();
+                parent.find('.block:not(#' + elId + ')').each(function(){
+                    console.log( 'Height: ' + height );
+					console.log( 'Setting: ' + $(this).attr('id'));
+                    $(this).height(height + 'px');
                 });
             });
-            //$(this).find('.block').height(tallest + 'px');
-        });*/
+        });
 
         // Font size scale
         $('a.text-size').on('click',function(){
