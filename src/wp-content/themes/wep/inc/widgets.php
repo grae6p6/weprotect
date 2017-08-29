@@ -510,7 +510,7 @@ class Wep_Widget_News_Links extends WP_Widget {
 					$entry = 'L';
 				}
 				if( array_key_exists( $i, $articles ) ) {
-					if( $entry == 'L' && $articles[ $i ]->post_date > $$links[ $i ]->link_updated ) {
+					if( $entry == 'L' && $articles[ $i ]->post_date > $links[ $i ]->link_updated ) {
 						$entry = 'P';
 					}
 				}
