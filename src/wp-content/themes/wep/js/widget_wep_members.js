@@ -122,8 +122,8 @@
 			} else {
 				src = $('.entry' + ( WepWidgetBMList.group.length ? '.' + WepWidgetBMList.group : '' ) + '[data-code="' + WepWidgetBMList.code + '"]');
 			}
-			console.log(WepWidgetBMList.code);
-			console.log(src);
+			//console.log(WepWidgetBMList.code);
+			//console.log(src);
 			/*if( typeof src === 'undefined' ) {
 			 event.preventDefault();
 			 return false;

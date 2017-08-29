@@ -256,7 +256,7 @@ class Wep_Widget_Members_List extends WP_Widget {
 					<div class="col"></div>
 				</div>
 			</div>
-			<div class="modal fade" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel"
+			<div class="modal" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel"
 				 aria-hidden="true">
 				<div class="modal-dialog vertical-align-center" role="document">
 					<div class="modal-content">
