@@ -74,12 +74,16 @@ if ( ! function_exists( 'wep_entry_footer' ) ) :
 		$tags_list = get_the_tag_list( '', $separate_meta );
 
 		// We don't want to output .entry-footer if it will be empty, so make sure its not.
-		if ( ( /*( wep_categorized_blog() && $categories_list ) ||*/ $tags_list ) || get_edit_post_link() ) {
+		if ( ( /*( wep_categorized_blog() && $categories_list ) ||*/
+		     $tags_list ) || get_edit_post_link()
+		) {
 
 			echo '<footer class="article">';
 
 			if ( 'post' === get_post_type() ) {
-				if ( /*( $categories_list && wep_categorized_blog() ) ||*/ $tags_list ) {
+				if ( /*( $categories_list && wep_categorized_blog() ) ||*/
+				$tags_list
+				) {
 					echo '<span class="cat-tags-links">';
 
 					// Make sure there's more than one category before displaying.
