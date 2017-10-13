@@ -7,7 +7,14 @@ Version: 1.0.0
 Author: Panlogic Ltd
 */
 
+define( 'WEP_VENDOR', realpath( ABSPATH . '../vendor' ) );
+
 class Wep_Plugin {
+  public static $message = [
+    'error' => [],
+    'alert' => []
+  ];
+
 	public static $categories = [
 		'Case studies'            => 0,
 		'Events'                  => 0,
@@ -942,7 +949,7 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 		'case-study-andrea'           => array(
 			'post_type'     => 'post',
 			'post_category' => array( 'case-studies' ),
-			'post_title'    => 'Winny',
+			'post_title'    => 'Andrea',
 			'post_content'  => '<p>“Andrea” from El Salvador, pictured here, was 13 when she created a social media profile. A man began flirting with her and said he wanted to meet her. For two weeks he harassed her and demanded sexually explicit pictures. When she refused, his messages became increasingly menacing, so she shared the messages with her parents who took her to the police. Following an investigation, the police located the man, arrested him and charged him with sexual harassment. He received a long prison sentence for multiple instances of sexual harassment. Andrea now works with a gender violence prevention team with the NGO OXFAM as part of a UNICEFsupported programme for the prevention of sexual violence, abuse and exploitation of children online.</p>',
 			'thumbnail'     => 'cs-1.jpg',
 			'menu_order'    => 0
@@ -2184,13 +2191,18 @@ Statutory protections are in place to allow industry to fully and effectively re
 	 * @return bool
 	 */
 	public static function create_members() {
-		require ABSPATH . '../vendor/phpoffice/phpexcel/Classes/PHPExcel.php';
-		require ABSPATH . 'wp-content/themes/wep/inc/countries.php';
+	  $path = ABSPATH . "../data/WPGAM.xls";
+	  if( !file_exists( $path ) ) {
+	    Wep_Plugin::$message['alert'][] = 'Missing asset: ' . basename( $path );
+      return false;
+    }
+
+		require WEP_VENDOR . '/phpoffice/phpexcel/Classes/PHPExcel.php';
+		$countries = require WEP_VENDOR . '/umpirsky/country-list/data/en_GB/country.php';
 
 		$objReader = PHPExcel_IOFactory::createReader( 'Excel5' );
 		$objReader->setReadDataOnly( true );
-
-		$objPHPExcel = $objReader->load( ABSPATH . "../data/ignore/WPGAmembership.xls" );
+		$objPHPExcel = $objReader->load( $path );
 
 		/**
 		 * Pull country entries from XLS
@@ -2283,13 +2295,12 @@ Statutory protections are in place to allow industry to fully and effectively re
 				return false;
 			} else {
 				if ( empty( $row[ 'Criticality' ] ) ) {
-					$row[ 'Criticality' ] = 'High';
+					$row[ 'Criticality' ] = 'Medium';
 				}
 				$row[ 'Criticality' ] = $criticality_fields[ $row[ 'Criticality' ] ];
 
 				$row[ 'Sign up' ] = $signup_fields[ $row[ 'Sign up' ] ];
 				$row[ 'Country' ] = array_search( $row[ 'Country' ], $countries );
-				//var_dump($content,$row);
 
 				update_post_meta( $id, 'group', 'country' );
 				update_post_meta( $id, '_group', 'field_597068f8afb36' );
@@ -2315,13 +2326,17 @@ Statutory protections are in place to allow industry to fully and effectively re
 		$columns = $results = [];
 		for ( $row = 1; $row <= $highestRow; ++ $row ) {
 			for ( $col = 0; $col <= $highestColumnIndex; ++ $col ) {
-				if ( $row == 1 ) {
+        if ( $row == 1 )
+          continue;
+				if ( $row == 2 ) {
 					$columns[ $col ] = trim( $objWorksheet->getCellByColumnAndRow( $col, $row )->getValue() );
 				} else {
 					$results[ $row ][ $columns[ $col ] ] = trim( $objWorksheet->getCellByColumnAndRow( $col, $row )->getValue() );
 				}
 			}
 		}
+
+		var_dump($results);
 
 		foreach ( $results as $row ) {
 			if ( empty( $row[ 'Organisation' ] ) ) {
@@ -2339,6 +2354,7 @@ Statutory protections are in place to allow industry to fully and effectively re
 
 			$id = wp_insert_post( $content );
 			if ( ! $id ) {
+			  var_dump('FAIL', $content);exit;
 				return false;
 			} else {
 				if ( empty( $row[ 'Criticality' ] ) ) {
@@ -2384,7 +2400,9 @@ Statutory protections are in place to allow industry to fully and effectively re
 		$columns = $results = [];
 		for ( $row = 1; $row <= $highestRow; ++ $row ) {
 			for ( $col = 0; $col <= $highestColumnIndex; ++ $col ) {
-				if ( $row == 1 ) {
+        if ( $row == 1 )
+          continue;
+        if ( $row == 2 ) {
 					$columns[ $col ] = trim( $objWorksheet->getCellByColumnAndRow( $col, $row )->getValue() );
 				} else {
 					$results[ $row ][ $columns[ $col ] ] = trim( $objWorksheet->getCellByColumnAndRow( $col, $row )->getValue() );
@@ -2407,6 +2425,7 @@ Statutory protections are in place to allow industry to fully and effectively re
 			$content[ 'post_status' ]  = 'publish';
 			$id                        = wp_insert_post( $content );
 			if ( ! $id ) {
+        //var_dump('FAIL', $content);exit;
 				return false;
 			} else {
 				if ( empty( $row[ 'Criticality' ] ) ) {
@@ -2463,7 +2482,7 @@ Statutory protections are in place to allow industry to fully and effectively re
 				date( 'm' )
 			];
 
-			$path_src  = realpath( ABSPATH . '../data/ignore' );
+			$path_src  = realpath( ABSPATH . '../data/assets' );
 			$path_dest = ABSPATH . 'wp-content';
 			foreach ( $directories as $directory ) {
 				if ( ! is_dir( $path_dest . '/' . $directory ) ) {
@@ -2474,10 +2493,13 @@ Statutory protections are in place to allow industry to fully and effectively re
 
 			foreach ( self::$media as $filename => $id ) {
 
-				// Copy from project ignored "/data/ignore" to WP uploads
+				// Copy project assets "/data/assets" to WP uploads
 				$src  = $path_src . '/' . $filename;
 				$dest = $path_dest . '/' . $filename;
-				copy( $src, $dest );
+				if( file_exists( $src ) )
+          copy( $src, $dest );
+        else
+          self::$message['alert'][] = 'Missing asset not copied: ' . basename( $src );
 
 				$filetype = wp_check_filetype( basename( $dest ), null );
 
@@ -2493,8 +2515,7 @@ Statutory protections are in place to allow industry to fully and effectively re
 				// Insert the attachment.
 				$id = wp_insert_attachment( $attachment, $wp_upload_dir[ 'url' ] . '/' . basename( $dest ) );
 				if ( ! $id ) {
-					var_dump( 'MEDIA FAIL:', $attachment );
-
+					//var_dump( 'MEDIA FAIL:', $attachment );
 					return false;
 				} else {
 					self::$media[ $filename ] = $id;
@@ -2651,8 +2672,6 @@ Statutory protections are in place to allow industry to fully and effectively re
 					return false;
 				}
 
-				//var_dump($id, $content);
-
 				foreach ( $data as $key => $val ) {
 					if ( array_key_exists( $key, self::$fields ) ) {
 						if ( $key == 'linked_page' ) {
@@ -2698,6 +2717,12 @@ Statutory protections are in place to allow industry to fully and effectively re
 	}
 
 	public static function setup() {
+
+	  // Check for composer
+	  if( !is_dir( WEP_VENDOR ) ) {
+      self::$message['error'][] = 'Composer has not been installed.';
+      return false;
+    }
 
 		// Plugins!
 		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );

@@ -142,8 +142,10 @@ class Wep_Widget_Members_List extends WP_Widget {
 		// Default group
 		$group = $instance[ 'group' ];
 
-		// TODO: Content to be based on member records in the database
-		//require_once 'countries.php';
+		// Get countries in current language
+        $path = WEP_VENDOR . '/umpirsky/country-list/data/' . get_locale() . '/country.php';
+        if( file_exists( $path ) )
+		    $countries = require_once $path;
 
 		$members = get_posts( [
 			'post_type'   => 'member',

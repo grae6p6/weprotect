@@ -76,8 +76,21 @@ add_action( 'init', 'add_taxonomies_to_pages' );
 class Wep_Theme {
 	public static $options = [];
 
-	public function after_switch_theme() {
-		Wep_Plugin::setup();
+    public static function admin_notices() {
+      foreach( Wep_Plugin::$message['error'] as $error ) : ?>
+        <div class="error notice">
+          <p><?php _e( $error, 'wep' ); ?></p>
+        </div>
+      <?php endforeach;
+    }
+
+	public function after_switch_theme( $oldtheme_name, $oldtheme ) {
+      Wep_Plugin::setup();
+      if( count( Wep_Plugin::$message['error'] ) ) {
+        switch_theme( $oldtheme->stylesheet );
+      }
+
+      Wep_Plugin::$message['error'] = Wep_Plugin::$message['error'] + Wep_Plugin::$message['alert'];
 	}
 
 	public static function after_theme_setup() {
@@ -284,7 +297,8 @@ class Wep_Theme {
 /**
  * Actions
  */
-add_action( 'after_switch_theme', [ 'Wep_Theme', 'after_switch_theme' ] );
+add_action( 'admin_notices', [ 'Wep_Theme', 'admin_notices' ] );
+add_action( 'after_switch_theme', [ 'Wep_Theme', 'after_switch_theme' ], 10, 2 );
 add_action( 'widgets_init', [ 'Wep_Theme', 'widgets_init' ] );
 add_action( 'init', [ 'Wep_Theme', 'create_post_type' ] );
 add_action( 'init', [ 'Wep_Theme', 'register_field_groups' ] );
