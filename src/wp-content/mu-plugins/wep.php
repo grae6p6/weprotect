@@ -1,11 +1,18 @@
 <?php
 
-/*
-Plugin Name: WePROTECT
-Description: Provides core data on activation of WEProtect theme if no content found
-Version: 1.0.0
-Author: Panlogic Ltd
-*/
+/**
+ * Class Wep_Plugin
+ *
+ * WePROTECT
+ * Version: 1.0
+ * Author: Alex Gailey-White @ Panlogic Ltd
+ */
+
+/*$handle = opendir( realpath( '../../../data/assets' ) );
+while( ( $item = readdir( $handle ) ) !== false ) {
+  echo '"' . $item . '" => 0,' . "\n";
+}
+closedir( $handle );*/
 
 define( 'WEP_VENDOR', realpath( ABSPATH . '../vendor' ) );
 
@@ -15,650 +22,663 @@ class Wep_Plugin {
     'alert' => []
   ];
 
-	public static $categories = [
-		'Case studies'            => 0,
-		'Events'                  => 0,
-		'News'                    => 0,
-		'Model National Response' => 0
-	];
-	public static $forms = [
-		'Apply for membership - Company'      => 'apply-for-membership-company',
-		'Apply for membership - Government'   => 'apply-for-membership-government',
-		'Apply for membership - Organisation' => 'apply-for-membership-organisation'
-	];
-	public static $media = [
-		'adobe.jpg'                                                          => 0,
-		'antigone-davis.jpg'                                                 => 0,
-		'apple.jpg'                                                          => 0,
-		'askfm.jpg'                                                          => 0,
-		'bae-systems.jpg'                                                    => 0,
-		'baroness-joanna-shields.png'                                        => 0,
-		'cddw.jpg'                                                           => 0,
-		'cs-1.jpg'                                                           => 0,
-		'cs-2.jpg'                                                           => 0,
-		'cs-3.jpg'                                                           => 0,
-		'cs-4.jpg'                                                           => 0,
-		'cs-5.jpg'                                                           => 0,
-		'cs-6.jpg'                                                           => 0,
-		'child-helpline-international.jpg'                                   => 0,
-		'cornelius-williams.png'                                             => 0,
-		'dell.jpg'                                                           => 0,
-		'dorothy-rozga.jpg'                                                  => 0,
-		'ecpat.jpg'                                                          => 0,
-		'ernie-allen.png'                                                    => 0,
-		'europol.jpg'                                                        => 0,
-		'ey.jpg'                                                             => 0,
-		'facebook.jpg'                                                       => 0,
-		'family-online-safety-initiative.jpg'                                => 0,
-		'future-digital.jpg'                                                 => 0,
-		'getty-images.jpg'                                                   => 0,
-		'google.jpg'                                                         => 0,
-		'inhope-the-association-of-internet-hotlines.jpg'                    => 0,
-		'international-centre-for-missing-and-exploited-children.jpg'        => 0,
-		'international-justice-mission.jpg'                                  => 0,
-		'internet-watch-foundation.jpg'                                      => 0,
-		'interpol.jpg'                                                       => 0,
-		'jacqueline-f-beauchere.jpg'                                         => 0,
-		'johnny-gwynne.jpg'                                                  => 0,
-		'maud-de-boer-buquicchio.jpg'                                        => 0,
-		'mick-moran.jpg'                                                     => 0,
-		'microsoft.jpg'                                                      => 0,
-		'multilingual-internet-group.jpg'                                    => 0,
-		'netclean-technologies.jpg'                                          => 0,
-		'pa-consulting.jpg'                                                  => 0,
-		'saievac.jpg'                                                        => 0,
-		'save-the-children.jpg'                                              => 0,
-		'steve-grocki.png'                                                   => 0,
-		'stock-1.jpg'                                                        => 0,
-		'stock-2.jpg'                                                        => 0,
-		'stock-3.jpg'                                                        => 0,
-		'susan-molinari.jpg'                                                 => 0,
-		'susie-hargreaves.png'                                               => 0,
-		'the-lucy-faithfull-foundation.jpg'                                  => 0,
-		'the-marie-collins-foundation.jpg'                                   => 0,
-		'the-national-center-for-missing-and-exploited-children.jpg'         => 0,
-		'the-national-society-for-the-prevention-of-cruelty-to-children.jpg' => 0,
-		'thorn-digital-defenders-of-children.jpg'                            => 0,
-		'tulir-centre-for-prevention-and-healing-of-child-sexual-abuse.jpg'  => 0,
-		'twitter.jpg'                                                        => 0,
-		'unicef.jpg'                                                         => 0,
-		'veronica-donoso.png'                                                => 0,
-		'visa.jpg'                                                           => 0,
-		'vodafone.jpg'                                                       => 0,
-		'world-vision.jpg'                                                   => 0,
-		'yahoo.jpg'                                                          => 0,
-		'ziuz.jpg'                                                           => 0,
+  public static $categories = [
+    'Case studies'            => 0,
+    'Events'                  => 0,
+    'News'                    => 0,
+    'Model National Response' => 0
+  ];
+  public static $forms = [
+    'Apply for membership - Company'      => 'apply-for-membership-company',
+    'Apply for membership - Government'   => 'apply-for-membership-government',
+    'Apply for membership - Organisation' => 'apply-for-membership-organisation'
+  ];
+  public static $media = [
+    "adobe.jpg"                                                          => 0,
+    "antigone-davis.jpg"                                                 => 0,
+    "apple.jpg"                                                          => 0,
+    "askfm.jpg"                                                          => 0,
+    "bae-systems.jpg"                                                    => 0,
+    "baroness-joanna-shields.png"                                        => 0,
+    "cddw.jpg"                                                           => 0,
+    "child-helpline-international.jpg"                                   => 0,
+    "cornelius-williams.png"                                             => 0,
+    "cs-1.jpg"                                                           => 0,
+    "cs-2.jpg"                                                           => 0,
+    "cs-3.jpg"                                                           => 0,
+    "cs-4.jpg"                                                           => 0,
+    "cs-5.jpg"                                                           => 0,
+    "cs-6.jpg"                                                           => 0,
+    "dell.jpg"                                                           => 0,
+    "dorothy-rozga.jpg"                                                  => 0,
+    "ecpat.jpg"                                                          => 0,
+    "ernie-allen.png"                                                    => 0,
+    "europol.jpg"                                                        => 0,
+    "ey.jpg"                                                             => 0,
+    "facebook.jpg"                                                       => 0,
+    "family-online-safety-initiative.jpg"                                => 0,
+    "future-digital.jpg"                                                 => 0,
+    "getty-images.jpg"                                                   => 0,
+    "GettyImages-155298725_super.jpg"                                    => 0,
+    "GettyImages-537460890_super.jpg"                                    => 0,
+    "GettyImages-640610458_super.jpg"                                    => 0,
+    "GettyImages-730132775_super.jpg"                                    => 0,
+    "GettyImages-740526801_super.jpg"                                    => 0,
+    "GettyImages-748490893_high.jpg"                                     => 0,
+    "GettyImages-813540356_high.jpg"                                     => 0,
+    "GettyImages-827679250_super.jpg"                                    => 0,
+    "GettyImages-88583888_super.jpg"                                     => 0,
+    "google.jpg"                                                         => 0,
+    "inhope-the-association-of-internet-hotlines.jpg"                    => 0,
+    "international-centre-for-missing-and-exploited-children.jpg"        => 0,
+    "international-justice-mission.jpg"                                  => 0,
+    "internet-watch-foundation.jpg"                                      => 0,
+    "interpol.jpg"                                                       => 0,
+    "jacqueline-f-beauchere.jpg"                                         => 0,
+    "johnny-gwynne.jpg"                                                  => 0,
+    "maud-de-boer-buquicchio.jpg"                                        => 0,
+    "mick-moran.jpg"                                                     => 0,
+    "microsoft.jpg"                                                      => 0,
+    "multilingual-internet-group.jpg"                                    => 0,
+    "netclean-technologies.jpg"                                          => 0,
+    "pa-consulting.jpg"                                                  => 0,
+    "saievac.jpg"                                                        => 0,
+    "save-the-children.jpg"                                              => 0,
+    "steve-grocki.png"                                                   => 0,
+    "susan-molinari.jpg"                                                 => 0,
+    "susie-hargreaves.png"                                               => 0,
+    "the-lucy-faithfull-foundation.jpg"                                  => 0,
+    "the-marie-collins-foundation.jpg"                                   => 0,
+    "the-national-center-for-missing-and-exploited-children.jpg"         => 0,
+    "the-national-society-for-the-prevention-of-cruelty-to-children.jpg" => 0,
+    "thorn-digital-defenders-of-children.jpg"                            => 0,
+    "tulir-centre-for-prevention-and-healing-of-child-sexual-abuse.jpg"  => 0,
+    "twitter.jpg"                                                        => 0,
+    "unicef.jpg"                                                         => 0,
+    "veronica-donoso.png"                                                => 0,
+    "visa.jpg"                                                           => 0,
+    "vodafone.jpg"                                                       => 0,
+    "world-vision.jpg"                                                   => 0,
+    "yahoo.jpg"                                                          => 0,
+    "ziuz.jpg"                                                           => 0,
 
-		// PDF documents
-		'WePROTECT+Global+Alliance+Model+National+Response+Guidance.pdf'     => 0,
-		'WePROTECT+Global+Alliance+Strategy.pdf'                             => 0
-	];
-	public static $menus = [
+    // PDF documents
+    "WePROTECT+Global+Alliance+Model+National+Response+Guidance.pdf"     => 0,
+    "WePROTECT+Global+Alliance+Strategy.pdf"                             => 0
+  ];
+  public static $menus = [
 
-		// Top menu
-		'Top'     => [
-			'contact-us' => ''
-		],
+    // Top menu
+    'Top'     => [
+      'contact-us' => ''
+    ],
 
-		// Main menu
-		'Main'    => [
-			'who-we-are'                  => [
-				'who-we-are'           => '',
-				'our-mission'          => '',
-				'our-board'            => '',
-				'our-members'          => '',
-				'statements-of-action' => '',
-				'who-we-work-with'     => '',
-				'our-history'          => '',
-				'contact-us'           => ''
-			],
-			'what-we-do'                  => [
-				'what-we-do'            => '',
-				'why-we-must-act'       => '',
-				'category_case-studies' => '',
-				'how-to-report-cseo'    => ''
-			],
-			'the-model-national-response' => [
-				'the-model-national-response'
-			],
-			'funding'                     => [
-				'funding'               => '',
-				'about-the-fund'        => '',
-				'how-the-fund-is-spent' => '',
-				'apply-for-funding'     => '',
-				'donors'                => '',
-				'other-funding-methods' => ''
-			],
-			'join-us'                     => [
-				'join-us'              => '',
-				'apply-for-membership' => '',
-				'our-members'          => ''
-			],
-			'news-and-events'             => [
-				'news-and-events' => '',
-				'news'            => '',
-				'newsletter'      => '',
-				'category_events' => ''
-			]
-		],
+    // Main menu
+    'Main'    => [
+      'who-we-are'                  => [
+        'who-we-are'           => '',
+        'our-mission'          => '',
+        'our-board'            => '',
+        'our-members'          => '',
+        'statements-of-action' => '',
+        'who-we-work-with'     => '',
+        'our-history'          => '',
+        'contact-us'           => ''
+      ],
+      'what-we-do'                  => [
+        'what-we-do'            => '',
+        'why-we-must-act'       => '',
+        'category_case-studies' => '',
+        'how-to-report-cseo'    => ''
+      ],
+      'the-model-national-response' => [
+        'the-model-national-response'
+      ],
+      'funding'                     => [
+        'funding'               => '',
+        'about-the-fund'        => '',
+        'how-the-fund-is-spent' => '',
+        'apply-for-funding'     => '',
+        'donors'                => '',
+        'other-funding-methods' => ''
+      ],
+      'join-us'                     => [
+        'join-us'              => '',
+        'apply-for-membership' => '',
+        'our-members'          => ''
+      ],
+      'news-and-events'             => [
+        'news-and-events' => '',
+        'news'            => '',
+        'newsletter'      => '',
+        'category_events' => ''
+      ]
+    ],
 
-		// Support menu
-		'Support' => [
-			'contact-us'               => '',
-			'useful-contacts'          => '',
-			'helplines-in-your-region' => '',
-			'feedback'                 => ''
-		]
-	];
-	public static $slugs = [];
-	public static $fields = [
-		'title'        => '5964ec11ce4cb',
-		'type'         => '595e465405629',
-		'bg_colour'    => '595e57673b050',
-		'colour'       => '595e57673b049',
-		'image'        => '595e56cb3b048',
-		'linked_page'  => '5964b1b8127f0',
-		'button_label' => '5964ec11ee4db',
-		'section_1'    => '5964e987a10bb',
-		'section_2'    => '5964e9a8a10bc',
-		'section_3'    => '5964e9b2a10bd',
-		'section_4'    => '5964e9b2a10be',
-		'shortcode'    => '5964ec11ed4db',
-		'group'        => '5975c5f60af7e'
-	];
-	public static $blocks = [
-		'landing-banner'                        => [
-			'post_title'   => 'Landing banner',
-			'post_content' => '',
-			'title'        => 'Worldwide cooperation to end child sexual exploitation online',
-			'type'         => 'image',
-			'bg_colour'    => '#eaeaea',
-			'linked_page'  => 'our-mission',
-			'image'        => 'stock-1.jpg'
-		],
-		'contact-us-form'                       => [
-			'post_title'   => 'Contact us form',
-			'post_content' => '<p>[form]</p>',
-			'title'        => '',
-			'bg_colour'    => '#eaeaea',
-			'type'         => ''
-		],
-		'why-we-must-act-header'                => [
-			'post_title'   => 'Header - Why we must act',
-			'post_content' => '<p>It is an uncomfortable reality that while technology offers incredible possibilities to our societies, never before has it been easier for those who want to sexually exploit children to make contact with potential victims around the world, share images of their abuse and encourage each other to commit further crimes.</p>',
-			'title'        => 'Why we must act',
-			'type'         => 'cta'
-		],
-		'why-we-must-act'                       => [
-			'post_title'   => 'Why we must act',
-			'post_content' => '<p>The Internet is an extraordinary catalyst of innovation, education, and expanding global economic growth. Technology offers endless benefits and possibilities to our children that we never experienced as they have unlimited access to information with the ability to communicate and connect with people they have never met from all over the planet. But with this comes a range of ever more sophisticated threats.</p><p>Included in that range of threats is online child sexual exploitation—a heinous crime that, through the reach of the internet, has become a major international crime of our age. Never before has it been easier for perpetrators to make contact with children, share images of abuse and inspire each other to commit further crimes.</p><p>It is a huge problem, with children being exploited on an industrial scale:</p>',
-			'title'        => 'Why we must act',
-			'type'         => 'sections',
-			//'bg_colour' => '#eaeaea',
-			'linked_page'  => 'who-we-work-with',
-			'section_1'    => '<p>The National Centre for Missing and Exploited Children, which handles reports of child sexual exploitation from major tech companies in the US, has received more than 7.5 million reports since 1998.  4.4 million of these were received in 2015 alone.</p>',
-			'section_2'    => '<p>In 2014, INHOPE, the association of INTERNET hotlines, assessed 83,644 URLS as containing child sexual abuse material worldwide – a 64% increase from 2013.</p>',
-			'section_3'    => '<p>The exact extent of sexual exploitation on peer-to-peer networks, cloud services and the encrypted or dark web is less certain, but it is likely to be significant. For instance, the NGO Thorn assesses that some 30% of searches on the eDonkey P2P platform are for child sexual abuse material.</p>',
-			'section_4'    => '<p>A recent study concluded that only 2% of hidden web services on TOR host child abuse material, yet these sites accounted for 80% of traffic.</p>'
-		],
-		'why-we-must-act-statistics'            => [
-			'post_title'   => 'Why we must act - statistics',
-			'post_content' => '<p>The images and videos being shared are of the worst kind, with an apparent trend towards younger children and greater violence. Of the 68,000 reports handled by the Internet Watch Foundation in 2015:</p>',
-			'title'        => '',
-			'type'         => 'sections',
-			'bg_colour'    => '#eaeaea',
-			'section_1'    => '<p>69% were of children assessed to be under 10 years of age</p>',
-			'section_2'    => '<p>1,788 victims were assessed to be under 2 years of age</p>',
-			'section_3'    => '<p>34% of images involved the rape or sexual torture of children</p>'
-		],
-		'why-we-must-act-join-us'               => [
-			'post_title'   => 'Why we must act - join us',
-			'post_content' => '<p>This issue is a global problem and cannot be dealt with by countries working in isolation. It demands a coordinated global response by governments, technology companies and civil society.</p>',
-			'title'        => 'Join us',
-			'linked_page'  => 'join-us',
-			'type'         => '',
-		],
-		'model-national-response'               => [
-			'post_title'   => 'Model National Response',
-			'post_content' => '<p>At the Abu-Dhabi Summit in 2015, governments and organisations agreed to establish and deliver, in their own countries, a coordinated national response to online child sexual exploitation, guided by the WePROTECT Global Alliance Model National response (MNR).</p>',
-			'title'        => 'Model National Response',
-			'type'         => 'cta',
-			'linked_page'  => 'the-model-national-response',
-			'button_label' => 'View full guidance',
-			'image'        => 'stock-2.jpg'
-		],
-		'fund-to-end-violence-against-children' => [
-			'post_title'   => 'Fund to end violence against children',
-			'post_content' => '<p>The WePROTECT Global Alliance’s mission is to transform how the crime of online child sexual exploitation is dealt with, resulting in more victims identified and safeguarded, more perpetrators apprehended and an internet free from child sexual exploitation.</p><h4>Case studies</h4>[wep-latest max="4" categories="case-studies"]',
-			'title'        => 'Fund to end violence against children',
-			'type'         => '',
-			'bg_colour'    => '#eaeaea',
-			'linked_page'  => 'funding',
-			'button_label' => 'Find out about funding'
-		],
-		'latest-news-and-events'                => [
-			'post_title'   => 'Latest news and events',
-			'post_content' => '[wep-news-links max="4"][wep-latest max="4" categories="events"]',
-			'title'        => 'Latest news and events',
-			'linked_page'  => 'news-and-events',
-			'button_label' => 'More news and events',
-			'type'         => ''
-		],
-		'latest-news'                           => [
-			'post_title'   => 'Latest news',
-			'post_content' => '[wep-news-links max="4"]',
-			'title'        => 'Latest news',
-			'linked_page'  => 'news',
-			'button_label' => 'More news',
-			'type'         => ''
-		],
-		'latest-events'                         => [
-			'post_title'   => 'Latest events',
-			'post_content' => '[wep-latest max="4" categories="events"]',
-			'title'        => 'Latest events',
-			'linked_page'  => 'news-and-events',
-			'button_label' => 'More events',
-			'type'         => '',
-			'bg_colour'    => '#eaeaea'
-		],
-		'related-case-studies'                  => [
-			'post_title'   => 'Related case studies',
-			'post_content' => '[wep-latest max="3" categories="case-studies"]',
-			'title'        => 'Related case studies',
-			'type'         => '',
-			'bg_colour'    => '#eaeaea'
-		],
-		'news-list'                             => [
-			'post_title'   => 'News list',
-			'post_content' => '[wep-news-links max="12"]',
-			'title'        => '',
-			'type'         => '',
-			'bg_colour'    => '#eaeaea'
-		],
-		'weprotect-on-twitter'                  => [
-			'post_title'   => 'WePROTECT on twitter',
-			'post_content' => '[twitter_profile screen_name="WeProtect" height="550"]',
-			'title'        => 'WePROTECT on twitter',
-			'type'         => ''
-		],
+    // Support menu
+    'Support' => [
+      'contact-us'               => '',
+      'useful-contacts'          => '',
+      'helplines-in-your-region' => '',
+      'feedback'                 => ''
+    ]
+  ];
+  public static $slugs = [];
+  public static $fields = [
+    'title'        => '5964ec11ce4cb',
+    'type'         => '595e465405629',
+    'bg_colour'    => '595e57673b050',
+    'colour'       => '595e57673b049',
+    'image'        => '595e56cb3b048',
+    'linked_page'  => '5964b1b8127f0',
+    'button_label' => '5964ec11ee4db',
+    'section_1'    => '5964e987a10bb',
+    'section_2'    => '5964e9a8a10bc',
+    'section_3'    => '5964e9b2a10bd',
+    'section_4'    => '5964e9b2a10be',
+    'shortcode'    => '5964ec11ed4db',
+    'group'        => '5975c5f60af7e'
+  ];
+  public static $blocks = [
+    'landing-banner'                        => [
+      'post_title'   => 'Landing banner',
+      'post_content' => '',
+      'title'        => 'Worldwide cooperation to end child sexual exploitation online',
+      'type'         => 'image',
+      'bg_colour'    => '#eaeaea',
+      'linked_page'  => 'our-mission',
+      'image'        => 'GettyImages-88583888_super.jpg'
+    ],
+    'contact-us-form'                       => [
+      'post_title'   => 'Contact us form',
+      'post_content' => '<p>[form]</p>',
+      'title'        => '',
+      'bg_colour'    => '#eaeaea',
+      'type'         => ''
+    ],
+    'why-we-must-act-header'                => [
+      'post_title'   => 'Header - Why we must act',
+      'post_content' => '<p>It is an uncomfortable reality that while technology offers incredible possibilities to our societies, never before has it been easier for those who want to sexually exploit children to make contact with potential victims around the world, share images of their abuse and encourage each other to commit further crimes.</p>',
+      'title'        => 'Why we must act',
+      'type'         => 'cta'
+    ],
+    'why-we-must-act'                       => [
+      'post_title'   => 'Why we must act',
+      'post_content' => '<p>The Internet is an extraordinary catalyst of innovation, education, and expanding global economic growth. Technology offers endless benefits and possibilities to our children that we never experienced as they have unlimited access to information with the ability to communicate and connect with people they have never met from all over the planet. But with this comes a range of ever more sophisticated threats.</p><p>Included in that range of threats is online child sexual exploitation—a heinous crime that, through the reach of the internet, has become a major international crime of our age. Never before has it been easier for perpetrators to make contact with children, share images of abuse and inspire each other to commit further crimes.</p><p>It is a huge problem, with children being exploited on an industrial scale:</p>',
+      'title'        => 'Why we must act',
+      'type'         => 'sections',
+      //'bg_colour' => '#eaeaea',
+      'linked_page'  => 'who-we-work-with',
+      'section_1'    => '<p>The National Centre for Missing and Exploited Children, which handles reports of child sexual exploitation from major tech companies in the US, has received more than 7.5 million reports since 1998.  4.4 million of these were received in 2015 alone.</p>',
+      'section_2'    => '<p>In 2014, INHOPE, the association of INTERNET hotlines, assessed 83,644 URLS as containing child sexual abuse material worldwide – a 64% increase from 2013.</p>',
+      'section_3'    => '<p>The exact extent of sexual exploitation on peer-to-peer networks, cloud services and the encrypted or dark web is less certain, but it is likely to be significant. For instance, the NGO Thorn assesses that some 30% of searches on the eDonkey P2P platform are for child sexual abuse material.</p>',
+      'section_4'    => '<p>A recent study concluded that only 2% of hidden web services on TOR host child abuse material, yet these sites accounted for 80% of traffic.</p>'
+    ],
+    'why-we-must-act-statistics'            => [
+      'post_title'   => 'Why we must act - statistics',
+      'post_content' => '<p>The images and videos being shared are of the worst kind, with an apparent trend towards younger children and greater violence. Of the 68,000 reports handled by the Internet Watch Foundation in 2015:</p>',
+      'title'        => '',
+      'type'         => 'sections',
+      'bg_colour'    => '#eaeaea',
+      'section_1'    => '<p>69% were of children assessed to be under 10 years of age</p>',
+      'section_2'    => '<p>1,788 victims were assessed to be under 2 years of age</p>',
+      'section_3'    => '<p>34% of images involved the rape or sexual torture of children</p>'
+    ],
+    'why-we-must-act-join-us'               => [
+      'post_title'   => 'Why we must act - join us',
+      'post_content' => '<p>This issue is a global problem and cannot be dealt with by countries working in isolation. It demands a coordinated global response by governments, technology companies and civil society.</p>',
+      'title'        => 'Join us',
+      'linked_page'  => 'join-us',
+      'type'         => '',
+    ],
+    'model-national-response'               => [
+      'post_title'   => 'Model National Response',
+      'post_content' => '<p>At the Abu-Dhabi Summit in 2015, governments and organisations agreed to establish and deliver, in their own countries, a coordinated national response to online child sexual exploitation, guided by the WePROTECT Global Alliance Model National response (MNR).</p>',
+      'title'        => 'Model National Response',
+      'type'         => 'cta',
+      'linked_page'  => 'the-model-national-response',
+      'button_label' => 'View full guidance',
+      'image'        => 'GettyImages-537460890_super.jpg'
+    ],
+    'fund-to-end-violence-against-children' => [
+      'post_title'   => 'Fund to end violence against children',
+      'post_content' => '<p>The WePROTECT Global Alliance’s mission is to transform how the crime of online child sexual exploitation is dealt with, resulting in more victims identified and safeguarded, more perpetrators apprehended and an internet free from child sexual exploitation.</p><h4>Case studies</h4>[wep-latest max="4" categories="case-studies"]',
+      'title'        => 'Fund to end violence against children',
+      'type'         => '',
+      'bg_colour'    => '#eaeaea',
+      'linked_page'  => 'funding',
+      'button_label' => 'Find out about funding'
+    ],
+    'latest-news-and-events'                => [
+      'post_title'   => 'Latest news and events',
+      'post_content' => '[wep-news-links max="4"][wep-latest max="4" categories="events"]',
+      'title'        => 'Latest news and events',
+      'linked_page'  => 'news-and-events',
+      'button_label' => 'More news and events',
+      'type'         => ''
+    ],
+    'latest-news'                           => [
+      'post_title'   => 'Latest news',
+      'post_content' => '[wep-news-links max="4"]',
+      'title'        => 'Latest news',
+      'linked_page'  => 'news',
+      'button_label' => 'More news',
+      'type'         => ''
+    ],
+    'latest-events'                         => [
+      'post_title'   => 'Latest events',
+      'post_content' => '[wep-latest max="4" categories="events"]',
+      'title'        => 'Latest events',
+      'linked_page'  => 'news-and-events',
+      'button_label' => 'More events',
+      'type'         => '',
+      'bg_colour'    => '#eaeaea'
+    ],
+    'related-case-studies'                  => [
+      'post_title'   => 'Related case studies',
+      'post_content' => '[wep-latest max="3" categories="case-studies"]',
+      'title'        => 'Related case studies',
+      'type'         => '',
+      'bg_colour'    => '#eaeaea'
+    ],
+    'news-list'                             => [
+      'post_title'   => 'News list',
+      'post_content' => '[wep-news-links max="12"]',
+      'title'        => '',
+      'type'         => '',
+      'bg_colour'    => '#eaeaea'
+    ],
+    'weprotect-on-twitter'                  => [
+      'post_title'   => 'WePROTECT on twitter',
+      'post_content' => '[twitter_profile screen_name="WeProtect" height="550"]',
+      'title'        => 'WePROTECT on twitter',
+      'type'         => ''
+    ],
 
-		// Our mission
-		'our-mission'                           => [
-			'post_title'   => 'Our mission',
-			'post_content' => '<p>The Internet is an extraordinary catalyst of innovation, education, and expanding global economic growth. Technology offers endless benefits and possibilities to our children that we never experienced as they have unlimited access to information with the ability to communicate and connect with people from all over the planet. But with this comes a range of ever more sophisticated threats.</p>',
-			'title'        => 'Our mission',
-			'type'         => 'cta',
-			'linked_page'  => 'our-mission',
-			'button_label' => 'Our mission and strategy'
-		],
-		'achieving-our-goals'                   => [
-			'post_title'   => 'Achieving our goals',
-			'post_content' => '<p>The WePROTECT Global Alliance Board are focused on four key areas to help deliver our mission</p>',
-			'title'        => 'Achieving our goals',
-			'type'         => 'sections',
-			'linked_page'  => 'what-we-do',
-			'section_1'    => '<p>Securing high-level commitment by governments, the technology industry and international and civil society organisations to tackling this crime</p>',
-			'section_2'    => '<p>Support comprehensive national action, through the WePROTECT Model National Response and the Fund to End Violence Against Children</p>',
-			'section_3'    => '<p>Galvanising global action by catalysing and driving critical interventions needed to end online child sexual exploitation</p>'
-		],
-		'un-sustainable-development-goals'      => [
-			'post_title'   => 'U.N. Sustainable development goals',
-			'post_content' => '<h4>WePROTECT Global Alliance will support the landmark commitment by world leaders to end abuse, exploitation, trafficking and all forms of violence and abuse of children by 2030 as part of the UN Sustainable Development Goals.</h4>',
-			'type'         => 'cta',
-			'linked_page'  => 'donating',
-			'button_label' => 'Donate to the Fund'
-		],
-		'our-members'                           => [
-			'post_title'   => 'Our members',
-			'post_content' => '<p>WePROTECT Global Alliance to End Child Sexual Exploitation Online combines two major initiatives: the Global Alliance, led by the U.S. Department of Justice and the EU Commission and WePROTECT, which was convened by the UK.</p><p>This new, merged initiative has unprecedented reach, with 70 countries already members of WePROTECT or the Global Alliance, along with major international organisations, 20 of the biggest names in the global technology industry, and 17 leading civil society organisations.</p>',
-			'title'        => 'Our members',
-			'type'         => '',
-			'linked_page'  => 'our-members'
-		],
-		'global-alliance-strategy'              => [
-			'post_title'   => 'WePROTECT Global Alliance Strategy',
-			'post_content' => '<p>Read more about our vision and objectives in the <u>WePROTECT Global Alliance Strategy.</u></p>',
-			'title'        => 'WePROTECT Global Alliance Strategy',
-			'type'         => '',
-			'bg_colour'    => '#eaeaea',
-			'linked_page'  => 'home',
-			'button_label' => 'Download our strategy'
-		],
-		'join-us'                               => [
-			'post_title'   => 'Join us',
-			'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us to learn more.</p>',
-			'title'        => 'Join us',
-			'type'         => '',
-			'linked_page'  => 'join-us',
-			'button_label' => 'Why join WePROTECT?'
-		],
+    // Our mission
+    'our-mission'                           => [
+      'post_title'   => 'Our mission',
+      'post_content' => '<p>The Internet is an extraordinary catalyst of innovation, education, and expanding global economic growth. Technology offers endless benefits and possibilities to our children that we never experienced as they have unlimited access to information with the ability to communicate and connect with people from all over the planet. But with this comes a range of ever more sophisticated threats.</p>',
+      'title'        => 'Our mission',
+      'type'         => 'cta',
+      'image'        => 'GettyImages-813540356_high.jpg',
+      'linked_page'  => 'our-mission',
+      'button_label' => 'Our mission and strategy'
+    ],
+    'achieving-our-goals'                   => [
+      'post_title'   => 'Achieving our goals',
+      'post_content' => '<p>The WePROTECT Global Alliance Board are focused on four key areas to help deliver our mission</p>',
+      'title'        => 'Achieving our goals',
+      'type'         => 'sections',
+      'linked_page'  => 'what-we-do',
+      'section_1'    => '<p>Securing high-level commitment by governments, the technology industry and international and civil society organisations to tackling this crime</p>',
+      'section_2'    => '<p>Support comprehensive national action, through the WePROTECT Model National Response and the Fund to End Violence Against Children</p>',
+      'section_3'    => '<p>Galvanising global action by catalysing and driving critical interventions needed to end online child sexual exploitation</p>'
+    ],
+    'un-sustainable-development-goals'      => [
+      'post_title'   => 'U.N. Sustainable development goals',
+      'post_content' => '<h4>WePROTECT Global Alliance will support the landmark commitment by world leaders to end abuse, exploitation, trafficking and all forms of violence and abuse of children by 2030 as part of the UN Sustainable Development Goals.</h4>',
+      'type'         => 'cta',
+      'linked_page'  => 'donating',
+      'button_label' => 'Donate to the Fund'
+    ],
+    'our-members'                           => [
+      'post_title'   => 'Our members',
+      'post_content' => '<p>WePROTECT Global Alliance to End Child Sexual Exploitation Online combines two major initiatives: the Global Alliance, led by the U.S. Department of Justice and the EU Commission and WePROTECT, which was convened by the UK.</p><p>This new, merged initiative has unprecedented reach, with 70 countries already members of WePROTECT or the Global Alliance, along with major international organisations, 20 of the biggest names in the global technology industry, and 17 leading civil society organisations.</p>',
+      'title'        => 'Our members',
+      'type'         => '',
+      'linked_page'  => 'our-members'
+    ],
+    'global-alliance-strategy'              => [
+      'post_title'   => 'WePROTECT Global Alliance Strategy',
+      'post_content' => '<p>Read more about our vision and objectives in the <u>WePROTECT Global Alliance Strategy.</u></p>',
+      'title'        => 'WePROTECT Global Alliance Strategy',
+      'type'         => '',
+      'bg_colour'    => '#eaeaea',
+      'linked_page'  => 'home',
+      'button_label' => 'Download our strategy'
+    ],
+    'join-us'                               => [
+      'post_title'   => 'Join us',
+      'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us to learn more.</p>',
+      'title'        => 'Join us',
+      'type'         => '',
+      'linked_page'  => 'join-us',
+      'button_label' => 'Why join WePROTECT?'
+    ],
 
-		'membership'                   => [
-			'post_title'   => 'Membership',
-			'post_content' => '<p>The WePROTECT Global Alliance is a movement of unprecedented reach, with 70 countries already members of WePROTECT or the Global Alliance, along with major international organisations, 20 of the biggest names in the global technology industry, and 17 leading civil society organisations.</p>',
-			'title'        => 'Membership',
-			'type'         => 'cta'
-		],
-		'membership-type'              => [
-			'post_title'   => 'Membership type',
-			'post_content' => '',
-			'title'        => '',
-			'type'         => 'sections',
-			'section_1'    => '<h5 style="text-align: center;"><a href="/apply-for-membership/company-form/"><i class="fa fa-building fa-4x"></i><br> Companies</a></h5>',
-			'section_2'    => '<h5 style="text-align: center;"><a href="/apply-for-membership/government-form/"><i class="fa fa-globe fa-4x"></i><br> Governments</a></h5>',
-			'section_3'    => '<h5 style="text-align: center;"><a href="/apply-for-membership/organisation-form/"><i class="fa fa-users fa-4x"></i><br> Organisations</a></h5>'
-		],
-		'membership-form-government'   => [
-			'post_title'   => 'Membership form - Government',
-			'title'        => 'Apply for membership as a government',
-			'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="179" title="Apply for membership"]</p>'
-		],
-		'membership-form-company'      => [
-			'post_title'   => 'Membership form - Company',
-			'title'        => 'Apply for membership as a company',
-			'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="4" title="Apply for membership"]</p>'
-		],
-		'membership-form-organisation' => [
-			'post_title'   => 'Membership form - Organisation',
-			'title'        => 'Apply for membership as an organisation',
-			'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="180" title="Apply for membership"]</p>'
-		],
-
-
-		'why-join'             => [
-			'post_title'   => 'Membership - Why join',
-			'post_content' => '<p>By signing up to the Statement of Action, countries will be making a high profile statement of their intent to tackle this heinous crime;</p><p>They will have access to a growing global network of expertise and support to help countries build their capacity and capability against online child sexual exploitation;</p><p>They will benefit from global technology development and awareness raising of this issue, and</p>',
-			'title'        => 'Why join?',
-			'type'         => 'sections',
-			'linked_page'  => 'who-we-are',
-			'section_1'    => '<p>The UNICEF hosted Fund to End Violence Against Children will support projects and programmes of developing countries and organisations from these countries that aim to prevent online CSE.</p>',
-			'section_2'    => '<p>Our civil society organisation members gain access to a worldwide network of actors from varying backgrounds, all committed to ending online child sexual exploitation.</p>',
-			'section_3'    => '<p>Companies who sign up to the WePROTECT Global Alliance have a unique opportunity to play a part in ending this heinous crime, working together with Government, Law enforcement and civil society to have a real voice in the solutions to this problem.</p>'
-		],
-		'how-to-join'          => [
-			'post_title'   => 'How to join',
-			'post_content' => '<p>Leo suspendisse imperdiet augue etiam ac in a ullamcorper tortor suspendisse ad ullamcorper maecenas class at a.</p>',
-			'title'        => 'How to join',
-			'type'         => 'points',
-			'bg_colour'    => '#eaeaea',
-			'linked_page'  => 'apply-for-membership',
-			'button_label' => 'Apply for membership',
-			'section_1'    => '<p>Online child sexual exploitation is a global crime that requires a global response.  This issue cannot be dealt with by countries working in isolation. It demands a coordinated global response by governments, technology companies and civil society.</p>',
-			'section_2'    => '<p><strong>Children are being exploited on an industrial scale and we have to act now.</strong> The National Centre for Missing and Exploited Children, which handles reports from major tech companies in the US of images of child sexual abuse being viewed by people all around the world, has received more than 7.5 million reports since 1998.  4.4 million of these were received in 2015 alone.</p>',
-			'section_3'    => '<p>&nbsp;</p>'
-		],
-		'who-is-a-member'      => [
-			'post_title'   => 'Who\'s a member?',
-			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>',
-			'title'        => 'Our members',
-			'type'         => '',
-			'linked_page'  => 'our-members',
-			'button_label' => 'Who\'s a member?'
-		],
-		'our-members-list'     => [
-			'post_title'   => 'Our members list',
-			'post_content' => '[wep-members-list group="country"]',
-			'title'        => 'Our members',
-			'type'         => ''//,
-			//'shortcode' => ''
-		],
-		'our-board-list'       => [
-			'post_title'   => 'Our board list',
-			'post_content' => '[wep-board-list]',
-			'type'         => ''
-		],
-		'who-we-are'           => [
-			'post_title'   => 'Who we are',
-			'post_content' => '<p>The WePROTECT Global Alliance to End Child Sexual Exploitation Online is an international movement dedicated to national and global action to end the sexual exploitation of children online.</p>',
-			'title'        => 'Who we are',
-			'type'         => 'cta'
-		],
-		'statements-of-action' => [
-			'post_title'   => 'Statement of action',
-			'post_content' => '',
-			'title'        => 'Statements of action',
-			'type'         => 'sections',
-			'section_1'    => '<p>Identify victims, and ensure they receive necessary support</p>',
-			'section_2'    => '<p>Investigate cases of exploitation and prosecute offenders</p>',
-			'section_3'    => '<p>Increase public awareness of the risks posed by children’s activities online</p>',
-			'section_4'    => '<p>Reduce the availability of child sexual abuse material online</p>',
-			'linked_page'  => 'statements-of-action',
-			'button_label' => 'Statements of action'
-		],
-		'our-board'            => [
-			'post_title'   => 'Our leadership',
-			'post_content' => '<p>The WePROTECT Global Alliance is led by a multi-stakeholder Board, comprised of representatives from key countries, international and civil society organisations, and the technology industry.</p>',
-			'title'        => 'Our leadership',
-			'type'         => 'cta',
-			'linked_page'  => 'our-board',
-			'button_label' => 'WePROTECT Board'
-		],
-		'our-history'          => [
-			'post_title'   => 'Our history',
-			'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us to learn more.</p>',
-			'title'        => 'Our history',
-			'type'         => '',
-			'bg_colour'    => '#eaeaea',
-			'linked_page'  => 'our-history',
-			'button_label' => 'Why join WePROTECT?'
-		],
+    'membership'                   => [
+      'post_title'   => 'Membership',
+      'post_content' => '<p>The WePROTECT Global Alliance is a movement of unprecedented reach, with 70 countries already members of WePROTECT or the Global Alliance, along with major international organisations, 20 of the biggest names in the global technology industry, and 17 leading civil society organisations.</p>',
+      'title'        => 'Membership',
+      'image'        => 'GettyImages-730132775_super.jpg',
+      'type'         => 'image'
+    ],
+    'membership-type'              => [
+      'post_title'   => 'Membership type',
+      'post_content' => '',
+      'title'        => '',
+      'type'         => 'sections',
+      'section_1'    => '<h5 style="text-align: center;"><a href="/apply-for-membership/company-form/"><i class="fa fa-building fa-4x"></i><br> Companies</a></h5>',
+      'section_2'    => '<h5 style="text-align: center;"><a href="/apply-for-membership/government-form/"><i class="fa fa-globe fa-4x"></i><br> Governments</a></h5>',
+      'section_3'    => '<h5 style="text-align: center;"><a href="/apply-for-membership/organisation-form/"><i class="fa fa-users fa-4x"></i><br> Organisations</a></h5>'
+    ],
+    'membership-form-government'   => [
+      'post_title'   => 'Membership form - Government',
+      'title'        => 'Apply for membership as a government',
+      'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="179" title="Apply for membership"]</p>'
+    ],
+    'membership-form-company'      => [
+      'post_title'   => 'Membership form - Company',
+      'title'        => 'Apply for membership as a company',
+      'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="4" title="Apply for membership"]</p>'
+    ],
+    'membership-form-organisation' => [
+      'post_title'   => 'Membership form - Organisation',
+      'title'        => 'Apply for membership as an organisation',
+      'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="180" title="Apply for membership"]</p>'
+    ],
 
 
-		'what-we-do' => [
-			'post_title'   => 'What we do',
-			'post_content' => '<p>WePROTECT Global Alliance will support the landmark commitment by world leaders to end abuse, exploitation, trafficking and all forms of violence and abuse of children by 2030 as part of the UN Sustainable Development Goals.</p>',
-			'title'        => 'What we do',
-			'type'         => 'cta'
-		],
-
-		'what-is-cso' => [
-			'post_title'   => 'What is CSEO?',
-			'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>',
-			'title'        => 'What is CSEO?',
-			'type'         => 'cta',
-			'image'        => 'stock-3',
-			'linked_page'  => 'the-model-national-response',
-			'button_label' => 'Find out more about CSEO'
-		],
-
-
-		'funded-projects' => [
-			'post_title'   => 'Funded projects',
-			'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>[wep-latest max="3" categories="case-studies"]',
-			'title'        => 'Funded projects',
-			'type'         => '',
-			'bg_colour'    => '#eaeaea'
-		],
-
-
-		'header-funding' => [
-			'post_title'   => 'Header - funding',
-			'post_content' => '<p>The Fund to End Violence Against children is the linked Fund to End Violence Against Children, hosted by UNICEF, which sits alongside the Global Partnership to End Violence Against Children – an initiative comprised of civil society, governments and other stakeholders working to deliver SDG 16.2, the commitment to end all forms of violence against children by 2030.</p>',
-			'title'        => 'Fund to end violence against children',
-			'type'         => 'cta',
-			'linked_page'  => 'about-the-fund'
-		],
-
-		'how-the-fund-is-spent' => [
-			'post_title'   => 'How the fund is spent',
-			'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
-			'title'        => 'How the fund is spent',
-			'linked_page'  => 'how-the-fund-is-spent',
-			'button_label' => 'How the money is spent',
-			'type'         => 'sections',
-			'section_1'    => '<p>Supporting statement copy to go here</p>',
-			'section_2'    => '<p>Supporting statement copy to go here</p>',
-			'section_3'    => '<p>Supporting statement copy to go here</p>'
-		],
-
-
-		'applying-for-funding' => [
-			'post_title'   => 'Header - funding',
-			'post_content' => '<p>For more information about the fund and how to apply, please visit <a href="http://fund.end-violence.org/">The Fund to End Violence Against Children</a></p>',
-			'title'        => 'Apply for funding',
-			'type'         => '',
-			'bg_colour'    => '#eaeaea'
-		],
-
-		'other-funding-methods' => [
-			'post_title'   => 'Other funding methods',
-			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>',
-			'title'        => 'Other funding methods',
-			'type'         => '',
-			'linked_page'  => 'other-funding-methods',
-			'button_label' => 'Alternative funding'
-		],
-
-
-		'get-involved' => [
-			'post_title'   => 'Get involved',
-			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>',
-			'title'        => 'Get involved',
-			'type'         => 'cta'
-		],
-
-		'case-studies' => [
-			'post_title'   => 'Case studies',
-			'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>',
-			'title'        => 'Case studies',
-			'type'         => '',
-			'linked_page'  => 'home',
-			'button_label' => 'Case studies'
-		],
-
-		'model-national-response-header' => [
-			'post_title'   => 'The Model National Response',
-			'post_content' => '<p>Preventing and Tackling Child Sexual Exploitation and Abuse (CESA)</p>',
-			'title'        => 'The Model National Response',
-			'type'         => 'image',
-			'image'        => 'stock-1.jpg',
-			'linked_page'  => 'home',
-			'button_label' => 'Download PDF'
-		],
+    'why-join'             => [
+      'post_title'   => 'Membership - Why join',
+      'post_content' => '<p>By signing up to the Statement of Action, countries will be making a high profile statement of their intent to tackle this heinous crime;</p><p>They will have access to a growing global network of expertise and support to help countries build their capacity and capability against online child sexual exploitation;</p><p>They will benefit from global technology development and awareness raising of this issue, and</p>',
+      'title'        => 'Why join?',
+      'type'         => 'sections',
+      'linked_page'  => 'who-we-are',
+      'section_1'    => '<p>The UNICEF hosted Fund to End Violence Against Children will support projects and programmes of developing countries and organisations from these countries that aim to prevent online CSE.</p>',
+      'section_2'    => '<p>Our civil society organisation members gain access to a worldwide network of actors from varying backgrounds, all committed to ending online child sexual exploitation.</p>',
+      'section_3'    => '<p>Companies who sign up to the WePROTECT Global Alliance have a unique opportunity to play a part in ending this heinous crime, working together with Government, Law enforcement and civil society to have a real voice in the solutions to this problem.</p>'
+    ],
+    'how-to-join'          => [
+      'post_title'   => 'How to join',
+      'post_content' => '<p>Leo suspendisse imperdiet augue etiam ac in a ullamcorper tortor suspendisse ad ullamcorper maecenas class at a.</p>',
+      'title'        => 'How to join',
+      'type'         => 'points',
+      'bg_colour'    => '#eaeaea',
+      'linked_page'  => 'apply-for-membership',
+      'button_label' => 'Apply for membership',
+      'section_1'    => '<p>Online child sexual exploitation is a global crime that requires a global response.  This issue cannot be dealt with by countries working in isolation. It demands a coordinated global response by governments, technology companies and civil society.</p>',
+      'section_2'    => '<p><strong>Children are being exploited on an industrial scale and we have to act now.</strong> The National Centre for Missing and Exploited Children, which handles reports from major tech companies in the US of images of child sexual abuse being viewed by people all around the world, has received more than 7.5 million reports since 1998.  4.4 million of these were received in 2015 alone.</p>',
+      'section_3'    => '<p>&nbsp;</p>'
+    ],
+    'who-is-a-member'      => [
+      'post_title'   => 'Who\'s a member?',
+      'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>',
+      'title'        => 'Our members',
+      'type'         => '',
+      'linked_page'  => 'our-members',
+      'button_label' => 'Who\'s a member?'
+    ],
+    'our-members-list'     => [
+      'post_title'   => 'Our members list',
+      'post_content' => '[wep-members-list group="country"]',
+      'title'        => 'Our members',
+      'type'         => ''//,
+      //'shortcode' => ''
+    ],
+    'our-board-list'       => [
+      'post_title'   => 'Our board list',
+      'post_content' => '[wep-board-list]',
+      'type'         => ''
+    ],
+    'who-we-are'           => [
+      'post_title'   => 'Who we are',
+      'post_content' => '<p>The WePROTECT Global Alliance to End Child Sexual Exploitation Online is an international movement dedicated to national and global action to end the sexual exploitation of children online.</p>',
+      'title'        => 'Who we are',
+      'image'        => 'GettyImages-155298725_super.jpg',
+      'type'         => 'image'
+    ],
+    'statements-of-action' => [
+      'post_title'   => 'Statement of action',
+      'post_content' => '',
+      'title'        => 'Statements of action',
+      'type'         => 'sections',
+      'section_1'    => '<p>Identify victims, and ensure they receive necessary support</p>',
+      'section_2'    => '<p>Investigate cases of exploitation and prosecute offenders</p>',
+      'section_3'    => '<p>Increase public awareness of the risks posed by children’s activities online</p>',
+      'section_4'    => '<p>Reduce the availability of child sexual abuse material online</p>',
+      'linked_page'  => 'statements-of-action',
+      'button_label' => 'Statements of action'
+    ],
+    'our-board'            => [
+      'post_title'   => 'Our leadership',
+      'post_content' => '<p>The WePROTECT Global Alliance is led by a multi-stakeholder Board, comprised of representatives from key countries, international and civil society organisations, and the technology industry.</p>',
+      'title'        => 'Our leadership',
+      'type'         => 'cta',
+      'linked_page'  => 'our-board',
+      'button_label' => 'WePROTECT Board'
+    ],
+    'our-history'          => [
+      'post_title'   => 'Our history',
+      'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us to learn more.</p>',
+      'title'        => 'Our history',
+      'type'         => '',
+      'bg_colour'    => '#eaeaea',
+      'linked_page'  => 'our-history',
+      'button_label' => 'Why join WePROTECT?'
+    ],
 
 
-		//Preventing and Tackling Child Sexual Exploitation and Abuse (CESA)
-	];
-	public static $posts = [
-		'home'                        => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Worldwide cooperation to end child sexual exploitation online',
-			'post_content' => '',
-			'blocks'       => [
-				'landing-banner',
-				'why-we-must-act',
-				'model-national-response',
-				'fund-to-end-violence-against-children',
-				'latest-news-and-events'
-			]
-		),
-		'apply-for-membership'        => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Apply for membership',
-			'post_content' => '<p>Please select the suitable application type using the buttons below.</p>',
-			'blocks'       => [
-				'membership-type',
-			]
-		),
-		'government-form'             => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Apply for membership - government',
-			'post_content' => '',
-			'post_parent'  => 'apply-for-membership',
-			'blocks'       => [
-				'membership',
-				'membership-form-government'
-			]
-		),
-		'company-form'                => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Apply for membership - company',
-			'post_content' => '',
-			'post_parent'  => 'apply-for-membership',
-			'blocks'       => [
-				'membership',
-				'membership-form-company'
-			]
-		),
-		'organisation-form'           => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Apply for membership - organisation',
-			'post_content' => '',
-			'post_parent'  => 'apply-for-membership',
-			'blocks'       => [
-				'membership',
-				'membership-form-organisation'
-			]
-		),
-		'useful-contacts'             => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Useful contacts',
-			'post_content' => '',
-			'menu_order'   => 100
-		),
-		'i-need-help'                 => array(
-			'post_type'    => 'page',
-			'post_title'   => 'I need help',
-			'post_content' => '',
-			'menu_order'   => 101
-		),
-		'helplines-in-your-region'    => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Helplines in your region',
-			'post_content' => '',
-			'menu_order'   => 102
-		),
-		'feedback'                    => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Feedback',
-			'post_content' => '',
-			'menu_order'   => 103
-		),
+    'what-we-do'  => [
+      'post_title'   => 'What we do',
+      'post_content' => '<p>WePROTECT Global Alliance will support the landmark commitment by world leaders to end abuse, exploitation, trafficking and all forms of violence and abuse of children by 2030 as part of the UN Sustainable Development Goals.</p>',
+      'title'        => 'What we do',
+      'type'         => 'image',
+      'image'        => 'GettyImages-827679250_super.jpg'
+    ],
 
-		/**
-		 * Who we are
-		 */
-		'who-we-are'                  => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Who we are',
-			'post_content' => '',
-			'menu_order'   => 200,
-			'blocks'       => [
-				'who-we-are',
-				'statements-of-action',
-				'our-mission',
-				'our-members',
-				'our-board',
-				'our-history'
-			]
-		),
-		'our-mission'                 => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Our mission',
-			'post_content' => '',
-			'menu_order'   => 201,
-			'blocks'       => [
-				'our-mission',
-				'achieving-our-goals',
-				'un-sustainable-development-goals',
-				'who-is-a-member',
-				'global-alliance-strategy',
-				'join-us'
-			]
-		),
-		'our-board'                   => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Our board',
-			'post_content' => '<p>The WePROTECT Global Alliance is led by an executive Board and supported by the UK, which is providing a secretariat to support the Board’s leadership for an initial period. Our board members are:</p>',
-			'menu_order'   => 202,
-			'blocks'       => [
-				'our-board-list'
-			]
-		),
-		'statements-of-action'        => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Statements of action',
-			'post_content' => '<strong>STATEMENT OF ACTION BY GOVERNMENTS TO TACKLE ONLINE CSE: ABU DHABI WEPROTECT SUMMIT 16-17 NOVEMBER 2015</strong>
+
+    // Used?
+    'what-is-cso' => [
+      'post_title'   => 'What is CSEO?',
+      'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>',
+      'title'        => 'What is CSEO?',
+      'type'         => 'cta',
+      //'image'        => 'stock-3',
+      'linked_page'  => 'the-model-national-response',
+      'button_label' => 'Find out more about CSEO'
+    ],
+
+
+    'funded-projects' => [
+      'post_title'   => 'Funded projects',
+      'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>[wep-latest max="3" categories="case-studies"]',
+      'title'        => 'Funded projects',
+      'type'         => '',
+      'bg_colour'    => '#eaeaea'
+    ],
+
+
+    'header-funding' => [
+      'post_title'   => 'Header - funding',
+      'post_content' => '<p>The Fund to End Violence Against children is the linked Fund to End Violence Against Children, hosted by UNICEF, which sits alongside the Global Partnership to End Violence Against Children – an initiative comprised of civil society, governments and other stakeholders working to deliver SDG 16.2, the commitment to end all forms of violence against children by 2030.</p>',
+      'title'        => 'Fund to end violence against children',
+      'type'         => 'cta',
+      'image'        => 'GettyImages-88583888_super.jpg',
+      'linked_page'  => 'about-the-fund'
+    ],
+
+    'how-the-fund-is-spent' => [
+      'post_title'   => 'How the fund is spent',
+      'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
+      'title'        => 'How the fund is spent',
+      'linked_page'  => 'how-the-fund-is-spent',
+      'button_label' => 'How the money is spent',
+      'type'         => 'sections',
+      'section_1'    => '<p>Supporting statement copy to go here</p>',
+      'section_2'    => '<p>Supporting statement copy to go here</p>',
+      'section_3'    => '<p>Supporting statement copy to go here</p>'
+    ],
+
+
+    'applying-for-funding' => [
+      'post_title'   => 'Header - funding',
+      'post_content' => '<p>For more information about the fund and how to apply, please visit <a href="http://fund.end-violence.org/">The Fund to End Violence Against Children</a></p>',
+      'title'        => 'Apply for funding',
+      'type'         => '',
+      'bg_colour'    => '#eaeaea'
+    ],
+
+    'other-funding-methods' => [
+      'post_title'   => 'Other funding methods',
+      'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>',
+      'title'        => 'Other funding methods',
+      'type'         => '',
+      'linked_page'  => 'other-funding-methods',
+      'button_label' => 'Alternative funding'
+    ],
+
+
+    'get-involved' => [
+      'post_title'   => 'Get involved',
+      'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>',
+      'title'        => 'Get involved',
+      'type'         => 'cta'
+    ],
+
+    'case-studies' => [
+      'post_title'   => 'Case studies',
+      'post_content' => '<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>',
+      'title'        => 'Case studies',
+      'type'         => '',
+      'linked_page'  => 'home',
+      'button_label' => 'Case studies'
+    ],
+
+    'model-national-response-header' => [
+      'post_title'   => 'The Model National Response',
+      'post_content' => '<p>Preventing and Tackling Child Sexual Exploitation and Abuse (CESA)</p>',
+      'title'        => 'The Model National Response',
+      'type'         => 'image',
+      'image'        => 'GettyImages-640610458_super.jpg',
+      'linked_page'  => 'home',
+      'button_label' => 'Download PDF'
+    ],
+
+
+    //Preventing and Tackling Child Sexual Exploitation and Abuse (CESA)
+  ];
+  public static $posts = [
+    'home'                        => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Worldwide cooperation to end child sexual exploitation online',
+      'post_content' => '',
+      'blocks'       => [
+        'landing-banner',
+        'why-we-must-act',
+        'model-national-response',
+        'fund-to-end-violence-against-children',
+        'latest-news-and-events'
+      ]
+    ),
+    'apply-for-membership'        => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Apply for membership',
+      'post_content' => '<p>Please select the suitable application type using the buttons below.</p>',
+      'blocks'       => [
+        'membership-type',
+      ]
+    ),
+    'government-form'             => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Apply for membership - government',
+      'post_content' => '',
+      'post_parent'  => 'apply-for-membership',
+      'blocks'       => [
+        'membership',
+        'membership-form-government'
+      ]
+    ),
+    'company-form'                => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Apply for membership - company',
+      'post_content' => '',
+      'post_parent'  => 'apply-for-membership',
+      'blocks'       => [
+        'membership',
+        'membership-form-company'
+      ]
+    ),
+    'organisation-form'           => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Apply for membership - organisation',
+      'post_content' => '',
+      'post_parent'  => 'apply-for-membership',
+      'blocks'       => [
+        'membership',
+        'membership-form-organisation'
+      ]
+    ),
+    'useful-contacts'             => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Useful contacts',
+      'post_content' => '',
+      'menu_order'   => 100
+    ),
+    'i-need-help'                 => array(
+      'post_type'    => 'page',
+      'post_title'   => 'I need help',
+      'post_content' => '',
+      'menu_order'   => 101
+    ),
+    'helplines-in-your-region'    => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Helplines in your region',
+      'post_content' => '',
+      'menu_order'   => 102
+    ),
+    'feedback'                    => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Feedback',
+      'post_content' => '',
+      'menu_order'   => 103
+    ),
+
+    /**
+     * Who we are
+     */
+    'who-we-are'                  => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Who we are',
+      'post_content' => '',
+      'menu_order'   => 200,
+      'blocks'       => [
+        'who-we-are',
+        'statements-of-action',
+        'our-mission',
+        'our-members',
+        'our-board',
+        'our-history'
+      ]
+    ),
+    'our-mission'                 => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Our mission',
+      'post_content' => '',
+      'menu_order'   => 201,
+      'blocks'       => [
+        'our-mission',
+        'achieving-our-goals',
+        'un-sustainable-development-goals',
+        'who-is-a-member',
+        'global-alliance-strategy',
+        'join-us'
+      ]
+    ),
+    'our-board'                   => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Our board',
+      'post_content' => '<p>The WePROTECT Global Alliance is led by an executive Board and supported by the UK, which is providing a secretariat to support the Board’s leadership for an initial period. Our board members are:</p>',
+      'menu_order'   => 202,
+      'blocks'       => [
+        'our-board-list'
+      ]
+    ),
+    'statements-of-action'        => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Statements of action',
+      'post_content' => '<strong>STATEMENT OF ACTION BY GOVERNMENTS TO TACKLE ONLINE CSE: ABU DHABI WEPROTECT SUMMIT 16-17 NOVEMBER 2015</strong>
 
 <p>We, the leaders of countries and international organisations gathered in the United Arab Emirates, believe that online child sexual exploitation is a heinous crime that demands a coordinated global response.</p>
 
@@ -685,124 +705,124 @@ secretariat, responsible to all those who have signed up to WePROTECT, and which
  	<li>Meet biennially at Ministerial level to review our progress and agree action to tackle emerging threats to children from sexual exploitation online;</li>
  	<li>Represent the importance of tackling online child sexual exploitation and WePROTECT within all relevant global forums.</li>
 </ul>',
-			'menu_order'   => 203
-		),
-		'our-members'                 => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Our members',
-			'post_content' => '',
-			'menu_order'   => 204,
-			'blocks'       => [
-				'membership',
-				'our-members-list',
-				'join-us'
-			]
-		),
-		'who-we-work-with'            => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Who we work with',
-			'post_content' => '<p>One of our greatest strengths lies in the breadth and richness of our partnerships. The WePROTECT Global Alliance truly harnesses the power of multistakeholder working, and we are proud of our relationships with our partners which include members of industry, civil society, law enforcement, international organisations and Governments around the world.</p>',
-			'menu_order'   => 205
-		),
-		'our-history'                 => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Our history',
-			'post_content' => '<p>In 2012, the then US Attorney General Eric Holder and EU Commissioner Celia Malmstrom launched the Global Alliance Against Child Sexual Abuse Online, which united 54 countries through their high-level ministers’ commitments to pursue shared policy targets in the fight against online child sexual exploitation.</p>
+      'menu_order'   => 203
+    ),
+    'our-members'                 => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Our members',
+      'post_content' => '',
+      'menu_order'   => 204,
+      'blocks'       => [
+        'membership',
+        'our-members-list',
+        'join-us'
+      ]
+    ),
+    'who-we-work-with'            => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Who we work with',
+      'post_content' => '<p>One of our greatest strengths lies in the breadth and richness of our partnerships. The WePROTECT Global Alliance truly harnesses the power of multistakeholder working, and we are proud of our relationships with our partners which include members of industry, civil society, law enforcement, international organisations and Governments around the world.</p>',
+      'menu_order'   => 205
+    ),
+    'our-history'                 => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Our history',
+      'post_content' => '<p>In 2012, the then US Attorney General Eric Holder and EU Commissioner Celia Malmstrom launched the Global Alliance Against Child Sexual Abuse Online, which united 54 countries through their high-level ministers’ commitments to pursue shared policy targets in the fight against online child sexual exploitation.</p>
 <p>In 2013, the then Prime Minister of the UK, David Cameron, launched a major push against online child sexual exploitation at the Internet Safety and Security Summit.</p>
 <p>In 2014, he then brought together the WePROTECT Children Online initiative, with a landmark summit of ministers and leaders of technology companies and civil society in London.</p>
 <p>With the second WePROTECT Summit in the UAE in 2015, 63 countries and international organisations, plus some of the biggest technology firms and leading NGOs, have made commitments to comprehensive national and international action against this crime.</p>
 <p>At the 2015 Abu Dhabi Summit, the UK, US and EU Commission also announced their intention to merge WePROTECT and the Global Alliance, to create – for the first time – a single initiative with the influence, resources and expertise to transform how this crime is dealt with worldwide.  It merges the best elements of both of these major initiatives: their dynamism, the scope and ambition of their membership and vision, and the commitment to concrete action and report on progress.  And crucially, at its heart are the commitment to multistakeholder action needed to tackle this crime.</p>',
-			'menu_order'   => 206
-		),
-		'contact-us'                  => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Contact us',
-			'post_content' => '<p>Contact WePROTECT Global Alliance using the form below. If you wish to become a member, please follow the \'Join us\' link below.</p>',
-			'menu_order'   => 207,
-			'blocks'       => [
-				'contact-us-form',
-				'join-us'
-			]
-		),
+      'menu_order'   => 206
+    ),
+    'contact-us'                  => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Contact us',
+      'post_content' => '<p>Contact WePROTECT Global Alliance using the form below. If you wish to become a member, please follow the \'Join us\' link below.</p>',
+      'menu_order'   => 207,
+      'blocks'       => [
+        'contact-us-form',
+        'join-us'
+      ]
+    ),
 
-		/**
-		 * What we do
-		 */
-		'what-we-do'                  => array(
-			'post_type'    => 'page',
-			'post_title'   => 'What we do',
-			'post_content' => '',
-			'menu_order'   => 300,
-			'blocks'       => [
-				'what-we-do',
-				'why-we-must-act',
-				'what-is-cso',
-				'funded-projects'//,
-				//'other'
-			]
-		),
-		'why-we-must-act'             => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Why we must act',
-			'post_content' => '',
-			'menu_order'   => 301,
-			'blocks'       => [
-				'why-we-must-act',
-				'why-we-must-act-statistics',
-				'why-we-must-act-join-us'
-			]
-		),
-		'funded-projects'             => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Funded projects',
-			'post_content' => '<p>Content to be completed.</p>',
-			'menu_order'   => 302
-		),
-		'faqs'                        => array(
-			'post_type'    => 'page',
-			'post_title'   => 'FAQs',
-			'post_content' => '<p>Content to be completed.</p>',
-			'menu_order'   => 303
-		),
-		'how-you-can-help'            => array(
-			'post_type'    => 'page',
-			'post_title'   => 'How you can help',
-			'post_content' => '<p>Content to be completed.</p>',
-			'menu_order'   => 304
-		),
-		'how-to-report-cseo'          => array(
-			'post_type'    => 'page',
-			'post_title'   => 'How to report CSEO',
-			'post_content' => 'If you think you may know someone who is involved in viewing online child sexual abuse material or has been affected by child sexual exploitation online, please speak to your local law enforcement in the first instance.
+    /**
+     * What we do
+     */
+    'what-we-do'                  => array(
+      'post_type'    => 'page',
+      'post_title'   => 'What we do',
+      'post_content' => '',
+      'menu_order'   => 300,
+      'blocks'       => [
+        'what-we-do',
+        'why-we-must-act',
+        'what-is-cso',
+        'funded-projects'//,
+        //'other'
+      ]
+    ),
+    'why-we-must-act'             => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Why we must act',
+      'post_content' => '',
+      'menu_order'   => 301,
+      'blocks'       => [
+        'why-we-must-act',
+        'why-we-must-act-statistics',
+        'why-we-must-act-join-us'
+      ]
+    ),
+    'funded-projects'             => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Funded projects',
+      'post_content' => '<p>Content to be completed.</p>',
+      'menu_order'   => 302
+    ),
+    'faqs'                        => array(
+      'post_type'    => 'page',
+      'post_title'   => 'FAQs',
+      'post_content' => '<p>Content to be completed.</p>',
+      'menu_order'   => 303
+    ),
+    'how-you-can-help'            => array(
+      'post_type'    => 'page',
+      'post_title'   => 'How you can help',
+      'post_content' => '<p>Content to be completed.</p>',
+      'menu_order'   => 304
+    ),
+    'how-to-report-cseo'          => array(
+      'post_type'    => 'page',
+      'post_title'   => 'How to report CSEO',
+      'post_content' => 'If you think you may know someone who is involved in viewing online child sexual abuse material or has been affected by child sexual exploitation online, please speak to your local law enforcement in the first instance.
 			
 			You can also visit the following websites for more help and guidance on reporting child sexual exploitation online.
 			<ul>
 				 <li><a href="https://www.interpol.int/">Interpol</a></span></li>
 				 <li><a href="http://www.nationalcrimeagency.gov.uk/">National Crime Agency</a></span></li>
 			</ul>',
-			'menu_order'   => 305
-		),
+      'menu_order'   => 305
+    ),
 
-		/**
-		 * Funding
-		 */
-		'funding'                     => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Funding',
-			'post_content' => '',
-			'menu_order'   => 400,
-			'blocks'       => [
-				'header-funding',
-				'how-the-fund-is-spent',
-				'applying-for-funding',
-				'un-sustainable-development-goals',
-				'other-funding-methods'
-			]
-		),
-		'about-the-fund'              => array(
-			'post_type'    => 'page',
-			'post_title'   => 'About the fund',
-			'post_content' => 'The Fund to End Violence Against children is the linked Fund to End Violence Against Children, hosted by UNICEF, which sits alongside the Global Partnership to End Violence Against Children - an initiative comprised of civil society, governments and other stakeholders working to deliver SDG 16.2, the commitment to end all forms of violence against children by 2030. The Partnership and its linked Fund aim to accelerate action in three priority areas:
+    /**
+     * Funding
+     */
+    'funding'                     => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Funding',
+      'post_content' => '',
+      'menu_order'   => 400,
+      'blocks'       => [
+        'header-funding',
+        'how-the-fund-is-spent',
+        'applying-for-funding',
+        'un-sustainable-development-goals',
+        'other-funding-methods'
+      ]
+    ),
+    'about-the-fund'              => array(
+      'post_type'    => 'page',
+      'post_title'   => 'About the fund',
+      'post_content' => 'The Fund to End Violence Against children is the linked Fund to End Violence Against Children, hosted by UNICEF, which sits alongside the Global Partnership to End Violence Against Children - an initiative comprised of civil society, governments and other stakeholders working to deliver SDG 16.2, the commitment to end all forms of violence against children by 2030. The Partnership and its linked Fund aim to accelerate action in three priority areas:
 				<ul>
 					 <li>Preventing "online" violence with a particular focus on sexual exploitation</li>
 					 <li>Addressing violence in the every-day lives of children with an initial focus on investments in Pathfinder countries and sub-national actors to implement evidence based programming</li>
@@ -819,73 +839,73 @@ secretariat, responsible to all those who have signed up to WePROTECT, and which
 					 <li>Applications from organisations that seek to enhance the quality of MNR capabilities and the consistency with which they are delivered at a global level</li>
 				</ul>
 				For more information about the Fund and how to apply, please visit <a href="http://fund.end-violence.org/">The Fund to End Violence Against Children </a>',
-			'menu_order'   => 401
-		),
-		'how-the-fund-is-spent'       => array(
-			'post_type'    => 'page',
-			'post_title'   => 'How the fund is spent',
-			'post_content' => '',
-			'menu_order'   => 402
-		),
-		'apply-for-funding'           => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Apply for funding',
-			'post_content' => '',
-			'menu_order'   => 403
-		),
-		'donors'                      => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Donors',
-			'post_content' => '<p>Content to be completed.</p>',
-			'menu_order'   => 404
-		),
-		'other-funding-methods'       => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Other funding methods',
-			'post_content' => '<p>Content to be completed.</p>',
-			'menu_order'   => 405
-		),
+      'menu_order'   => 401
+    ),
+    'how-the-fund-is-spent'       => array(
+      'post_type'    => 'page',
+      'post_title'   => 'How the fund is spent',
+      'post_content' => '',
+      'menu_order'   => 402
+    ),
+    'apply-for-funding'           => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Apply for funding',
+      'post_content' => '',
+      'menu_order'   => 403
+    ),
+    'donors'                      => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Donors',
+      'post_content' => '<p>Content to be completed.</p>',
+      'menu_order'   => 404
+    ),
+    'other-funding-methods'       => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Other funding methods',
+      'post_content' => '<p>Content to be completed.</p>',
+      'menu_order'   => 405
+    ),
 
-		/**
-		 * Get involved
-		 */
-		'get-involved'                => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Get involved',
-			'post_content' => '',
-			'menu_order'   => 500,
-			'blocks'       => [
-				'get-involved',
-				'membership',
-				'un-sustainable-development-goals'
-			]
-		),
-		'join-us'                     => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Join us',
-			'post_content' => '',
-			'menu_order'   => 501,
-			'blocks'       => [
-				'membership',
-				'why-join',
-				'how-to-join',
-				'who-is-a-member'
-			]
-		),
-		'donating'                    => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Donating',
-			'post_content' => '',
-			'menu_order'   => 502
-		),
+    /**
+     * Get involved
+     */
+    'get-involved'                => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Get involved',
+      'post_content' => '',
+      'menu_order'   => 500,
+      'blocks'       => [
+        'get-involved',
+        'membership',
+        'un-sustainable-development-goals'
+      ]
+    ),
+    'join-us'                     => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Join us',
+      'post_content' => '',
+      'menu_order'   => 501,
+      'blocks'       => [
+        'membership',
+        'why-join',
+        'how-to-join',
+        'who-is-a-member'
+      ]
+    ),
+    'donating'                    => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Donating',
+      'post_content' => '',
+      'menu_order'   => 502
+    ),
 
-		/**
-		 * Resources
-		 */
-		'the-model-national-response' => array(
-			'post_type'     => 'page',
-			'post_title'    => 'Model National Response',
-			'post_content'  => '<h2>A Model National Response</h2>
+    /**
+     * Resources
+     */
+    'the-model-national-response' => array(
+      'post_type'     => 'page',
+      'post_title'    => 'Model National Response',
+      'post_content'  => '<h2>A Model National Response</h2>
 At the Abu-Dhabi Summit in 2015, governments and organisations agreed to establish and deliver, in their own countries, a coordinated national response to online child sexual exploitation, guided by the WePROTECT Global Alliance Model National response (MNR). This document provides guidance and support on the MNR to countries and organisations to help them deliver on this commitment. Whilst the Model is focused on helping countries to build their response to online child sexual exploitation, it acknowledges that this cannot be addressed in isolation and a wider set of capabilities to prevent and tackle child sexual exploitation and abuse are required to be in place to ensure a complete national response.
 
 This Model will:
@@ -905,115 +925,115 @@ Whilst countries will develop their own individual approaches, by doing so withi
 Implementing the capabilities will lead to significant outcomes for protecting children from online CSE. These are clearly detailed in the Model along with a number of enablers which, if in place and effective, will accelerate and improve the outcomes.
 
 We hope you find this Model a useful tool to aid capacity building in online CSE, leading to the highest level of response to victims and offenders. We look forward to hearing how this Model has contributed towards the development and coordination of national, regional and international responses to CSE at the next WePROTECT Summit. We also welcome feedback which can be sent via the <a href="/feedback/">feedback form</a>.',
-			'page_template' => 'mnr.php',
-			'menu_order'    => 601,
-			'blocks'        => [
-				'model-national-response-header'
-			]
-		),
+      'page_template' => 'mnr.php',
+      'menu_order'    => 601,
+      'blocks'        => [
+        'model-national-response-header'
+      ]
+    ),
 
-		/**
-		 * News and events
-		 */
-		'news-and-events'             => array(
-			'post_type'    => 'page',
-			'post_title'   => 'News and events',
-			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>',
-			'menu_order'   => 700,
-			'blocks'       => [
-				'latest-news',
-				'latest-events',
-				'weprotect-on-twitter'
-			]
-		),
-		'news'                        => array(
-			'post_type'    => 'page',
-			'post_title'   => 'News',
-			'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>',
-			'menu_order'   => 701,
-			'blocks'       => [
-				'news-list',
-				'weprotect-on-twitter'
-			]
-		),
-		'newsletter'                  => array(
-			'post_type'    => 'page',
-			'post_title'   => 'Newsletter',
-			'post_content' => '',
-			'menu_order'   => 702
-		),
+    /**
+     * News and events
+     */
+    'news-and-events'             => array(
+      'post_type'    => 'page',
+      'post_title'   => 'News and events',
+      'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>',
+      'menu_order'   => 700,
+      'blocks'       => [
+        'latest-news',
+        'latest-events',
+        'weprotect-on-twitter'
+      ]
+    ),
+    'news'                        => array(
+      'post_type'    => 'page',
+      'post_title'   => 'News',
+      'post_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>',
+      'menu_order'   => 701,
+      'blocks'       => [
+        'news-list',
+        'weprotect-on-twitter'
+      ]
+    ),
+    'newsletter'                  => array(
+      'post_type'    => 'page',
+      'post_title'   => 'Newsletter',
+      'post_content' => '',
+      'menu_order'   => 702
+    ),
 
-		/**
-		 * Test posts
-		 */
-		'case-study-andrea'           => array(
-			'post_type'     => 'post',
-			'post_category' => array( 'case-studies' ),
-			'post_title'    => 'Andrea',
-			'post_content'  => '<p>“Andrea” from El Salvador, pictured here, was 13 when she created a social media profile. A man began flirting with her and said he wanted to meet her. For two weeks he harassed her and demanded sexually explicit pictures. When she refused, his messages became increasingly menacing, so she shared the messages with her parents who took her to the police. Following an investigation, the police located the man, arrested him and charged him with sexual harassment. He received a long prison sentence for multiple instances of sexual harassment. Andrea now works with a gender violence prevention team with the NGO OXFAM as part of a UNICEFsupported programme for the prevention of sexual violence, abuse and exploitation of children online.</p>',
-			'thumbnail'     => 'cs-1.jpg',
-			'menu_order'    => 0
-		),
+    /**
+     * Test posts
+     */
+    'case-study-andrea'           => array(
+      'post_type'     => 'post',
+      'post_category' => array( 'case-studies' ),
+      'post_title'    => 'Andrea',
+      'post_content'  => '<p>“Andrea” from El Salvador, pictured here, was 13 when she created a social media profile. A man began flirting with her and said he wanted to meet her. For two weeks he harassed her and demanded sexually explicit pictures. When she refused, his messages became increasingly menacing, so she shared the messages with her parents who took her to the police. Following an investigation, the police located the man, arrested him and charged him with sexual harassment. He received a long prison sentence for multiple instances of sexual harassment. Andrea now works with a gender violence prevention team with the NGO OXFAM as part of a UNICEFsupported programme for the prevention of sexual violence, abuse and exploitation of children online.</p>',
+      'thumbnail'     => 'cs-1.jpg',
+      'menu_order'    => 0
+    ),
 
-		'case-study-charlotte' => array(
-			'post_type'     => 'post',
-			'post_category' => array( 'case-studies' ),
-			'post_title'    => 'Charlotte',
-			'post_content'  => '<p>“Charlotte” from Nottingham, England was groomed online by a person posing as a young girl. After a diagnosis of Asperger Syndrome, Charlotte turned to social media for friendship. The "girl", later identified by police as a man who had exploited other young people in this way, befriended Charlotte but then began demanding naked photos, using them to blackmail her in exchange for more. The abuser leaked the photos on a social media site. These were eventually circulated to Charlotte’s mother who instantly reported this to the police. After moving away to escape bullying at school, Charlotte was contacted again by the same man under another name. Her case was investigated by a specialist police unit, and the man was successfully prosecuted and placed on the UK’s sexual offences register for five years. The police also referred Charlotte to the National Society for the Prevention of Cruelty to Children (NSPCC), which provides support for the victims of online child sexual exploitation in the UK, as well as the UK’s child helpline. Charlotte says, “I used to think that what happened to me was all my fault but they helped me to realise that it wasn\'t”. The NSPCC also taught her mother about online safety, who says she now feels “a lot more confident” in helping Charlotte stay safe online.</p>',
-			'thumbnail'     => 'cs-2.jpg',
-			'menu_order'    => 0
-		),
+    'case-study-charlotte' => array(
+      'post_type'     => 'post',
+      'post_category' => array( 'case-studies' ),
+      'post_title'    => 'Charlotte',
+      'post_content'  => '<p>“Charlotte” from Nottingham, England was groomed online by a person posing as a young girl. After a diagnosis of Asperger Syndrome, Charlotte turned to social media for friendship. The "girl", later identified by police as a man who had exploited other young people in this way, befriended Charlotte but then began demanding naked photos, using them to blackmail her in exchange for more. The abuser leaked the photos on a social media site. These were eventually circulated to Charlotte’s mother who instantly reported this to the police. After moving away to escape bullying at school, Charlotte was contacted again by the same man under another name. Her case was investigated by a specialist police unit, and the man was successfully prosecuted and placed on the UK’s sexual offences register for five years. The police also referred Charlotte to the National Society for the Prevention of Cruelty to Children (NSPCC), which provides support for the victims of online child sexual exploitation in the UK, as well as the UK’s child helpline. Charlotte says, “I used to think that what happened to me was all my fault but they helped me to realise that it wasn\'t”. The NSPCC also taught her mother about online safety, who says she now feels “a lot more confident” in helping Charlotte stay safe online.</p>',
+      'thumbnail'     => 'cs-2.jpg',
+      'menu_order'    => 0
+    ),
 
-		'case-study-elisa-and-gina' => array(
-			'post_type'     => 'post',
-			'post_category' => array( 'case-studies' ),
-			'post_title'    => 'Elisa and Gina',
-			'post_content'  => '<p>These girls, known to us as “Elisa” (12) and “Gina” (13), were sexually exploited in Madagascar by a 59- year-old European man, whom police believe is part of a larger network of criminals involved in the production and online distribution of child sexual abuse material. The mother of one of the girls, who was employed by the man as a domestic worker, introduced him to the girls, and they began to spend evenings with him at his home. Elisa testified that the man, who took nude photographs of both girls for online distribution, sexually assaulted her. He is now in prison, awaiting extradition to France.</p>',
-			'thumbnail'     => 'cs-3.jpg',
-			'menu_order'    => 0
-		),
+    'case-study-elisa-and-gina' => array(
+      'post_type'     => 'post',
+      'post_category' => array( 'case-studies' ),
+      'post_title'    => 'Elisa and Gina',
+      'post_content'  => '<p>These girls, known to us as “Elisa” (12) and “Gina” (13), were sexually exploited in Madagascar by a 59- year-old European man, whom police believe is part of a larger network of criminals involved in the production and online distribution of child sexual abuse material. The mother of one of the girls, who was employed by the man as a domestic worker, introduced him to the girls, and they began to spend evenings with him at his home. Elisa testified that the man, who took nude photographs of both girls for online distribution, sexually assaulted her. He is now in prison, awaiting extradition to France.</p>',
+      'thumbnail'     => 'cs-3.jpg',
+      'menu_order'    => 0
+    ),
 
-		'case-study-rosalyn' => array(
-			'post_type'     => 'post',
-			'post_category' => array( 'case-studies' ),
-			'post_title'    => 'Rosalyn',
-			'post_content'  => '<p>This teenager, known to us as “Rosalyn”, is at a shelter in the Philippines. She and her six siblings were rescued during a cybercrime police raid six years ago when their parents were caught forcing the two oldest girls to perform in live streaming of child sexual abuse in their home. Estey Rosalyn was drawn into online sexual abuse by a neighbour, and her parents were paid for Rosalyn’s acts. Her younger sister began to perform online as well, financing the parents’ ability to purchase their own computer system. Using this, they continued to force their two older daughters to participate in live-streaming of child sexual abuse in front of a webcam in their home. Rosalyn is now an advocate for online safety and agreed to share her story to help raise awareness of child sexual exploitation online.</p>',
-			'thumbnail'     => 'cs-4.jpg',
-			'menu_order'    => 0
-		),
+    'case-study-rosalyn' => array(
+      'post_type'     => 'post',
+      'post_category' => array( 'case-studies' ),
+      'post_title'    => 'Rosalyn',
+      'post_content'  => '<p>This teenager, known to us as “Rosalyn”, is at a shelter in the Philippines. She and her six siblings were rescued during a cybercrime police raid six years ago when their parents were caught forcing the two oldest girls to perform in live streaming of child sexual abuse in their home. Estey Rosalyn was drawn into online sexual abuse by a neighbour, and her parents were paid for Rosalyn’s acts. Her younger sister began to perform online as well, financing the parents’ ability to purchase their own computer system. Using this, they continued to force their two older daughters to participate in live-streaming of child sexual abuse in front of a webcam in their home. Rosalyn is now an advocate for online safety and agreed to share her story to help raise awareness of child sexual exploitation online.</p>',
+      'thumbnail'     => 'cs-4.jpg',
+      'menu_order'    => 0
+    ),
 
-		'case-study-proteja-brazil' => array(
-			'post_type'     => 'post',
-			'post_category' => array( 'case-studies' ),
-			'post_title'    => 'Proteja Brazil',
-			'post_content'  => '<p>A woman in Fortaleza, Brazil, shows the app “Proteja Brasil” (Protect Brazil) on her smartphone. The app was developed by UNICEF Brasil and its partners, with support from the UK and the WePROTECT Global Alliance. The app facilitates reporting to authorities violence against children and adolescents, including online violence and sexual exploitation. It provides guidance on where to report incidents, and displays contact details and locations of police stations, protection councils and organisations in major Brazilian cities.</p>',
-			'thumbnail'     => 'cs-5.jpg',
-			'menu_order'    => 0
-		),
+    'case-study-proteja-brazil' => array(
+      'post_type'     => 'post',
+      'post_category' => array( 'case-studies' ),
+      'post_title'    => 'Proteja Brazil',
+      'post_content'  => '<p>A woman in Fortaleza, Brazil, shows the app “Proteja Brasil” (Protect Brazil) on her smartphone. The app was developed by UNICEF Brasil and its partners, with support from the UK and the WePROTECT Global Alliance. The app facilitates reporting to authorities violence against children and adolescents, including online violence and sexual exploitation. It provides guidance on where to report incidents, and displays contact details and locations of police stations, protection councils and organisations in major Brazilian cities.</p>',
+      'thumbnail'     => 'cs-5.jpg',
+      'menu_order'    => 0
+    ),
 
-		'case-study-winny' => array(
-			'post_type'     => 'post',
-			'post_category' => array( 'case-studies' ),
-			'post_title'    => 'Winny',
-			'post_content'  => '<p>Young people’s participation in tackling online sexual exploitation and all forms of abuse and violence is central to the WePROTECT Model National Response and the UN Convention on the Rights of the Child. Winny Moreira (17), centre, is a Brazilian advocate against online child sexual exploitation and cyberbullying. Winny was herself bullied online at school. However, she became a passionate advocate for young people when her friend Jessica was bullied and harassed after inappropriate images from her phone were stolen and shared with her peers in school. Winny supported her friend and participated in a UNICEF-sponsored girls’ empowerment programme in Brazil. In 2015, she was a finalist of UNICEF Brazil’s Safe Surf Campaign for her YouTube video, “Internet sem Vacilo” (Internet without Hesitation). The stories of the two friends have been highlighted in an online video for the UNICEF/WePROTECT Global Alliance #ReplyForAll campaign. Just three weeks into this campaign, this and other true life stories had received some two million views and helped to generate a positive online discussion amongst young people.</p>',
-			'thumbnail'     => 'cs-6.jpg',
-			'menu_order'    => 0
-		),
+    'case-study-winny' => array(
+      'post_type'     => 'post',
+      'post_category' => array( 'case-studies' ),
+      'post_title'    => 'Winny',
+      'post_content'  => '<p>Young people’s participation in tackling online sexual exploitation and all forms of abuse and violence is central to the WePROTECT Model National Response and the UN Convention on the Rights of the Child. Winny Moreira (17), centre, is a Brazilian advocate against online child sexual exploitation and cyberbullying. Winny was herself bullied online at school. However, she became a passionate advocate for young people when her friend Jessica was bullied and harassed after inappropriate images from her phone were stolen and shared with her peers in school. Winny supported her friend and participated in a UNICEF-sponsored girls’ empowerment programme in Brazil. In 2015, she was a finalist of UNICEF Brazil’s Safe Surf Campaign for her YouTube video, “Internet sem Vacilo” (Internet without Hesitation). The stories of the two friends have been highlighted in an online video for the UNICEF/WePROTECT Global Alliance #ReplyForAll campaign. Just three weeks into this campaign, this and other true life stories had received some two million views and helped to generate a positive online discussion amongst young people.</p>',
+      'thumbnail'     => 'cs-6.jpg',
+      'menu_order'    => 0
+    ),
 
 
-		'news-article' => array(
-			'post_type'     => 'post',
-			'post_category' => array( 'news' ),
-			'post_title'    => 'Lorem ipsum dolor sit amet, sed amit a dorem.',
-			'post_content'  => '<p>Lorem ipsum dolor sit amet.</p>',
-			'menu_order'    => 0
-		),
+    'news-article' => array(
+      'post_type'     => 'post',
+      'post_category' => array( 'news' ),
+      'post_title'    => 'Lorem ipsum dolor sit amet, sed amit a dorem.',
+      'post_content'  => '<p>Lorem ipsum dolor sit amet.</p>',
+      'menu_order'    => 0
+    ),
 
-		'event-one' => array(
-			'post_type'     => 'post',
-			'post_category' => array( 'events' ),
-			'post_title'    => 'CHILD DIGNITY IN THE DIGITAL WORLD WORLD CONGRESS ROME, 2017',
-			'post_content'  => '<p>Children and adolescents make up over a quarter of the more than 3.2 billion Internet users worldwide. This generation of over 800 million young users is in danger of becoming victims of sextortion, sexting, cyberbullying and harassment.</p>
+    'event-one' => array(
+      'post_type'     => 'post',
+      'post_category' => array( 'events' ),
+      'post_title'    => 'CHILD DIGNITY IN THE DIGITAL WORLD WORLD CONGRESS ROME, 2017',
+      'post_content'  => '<p>Children and adolescents make up over a quarter of the more than 3.2 billion Internet users worldwide. This generation of over 800 million young users is in danger of becoming victims of sextortion, sexting, cyberbullying and harassment.</p>
 			This global problem calls for a global solution. We need an open and thorough discussion to build awareness, and to mobilize action for a better protection of minors online.
 			
 			‘Child Dignity in the Digital World’ is the first world congress of its kind that brings together key stakeholders and international leaders from all relevant areas.
@@ -1021,112 +1041,112 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 			This pioneering congress hosted by the Centre for Child Protection at the Pontifical Gregorian University in Rome sets a milestone in the international fight against digital sexual child abuse.
 			
 			The invitation-only congress brings together distinguished academic experts, business leaders, leaders of civil society, high-level politicians and religious representatives from across the globe. This provides a historic opportunity to set the global agenda for the fight against online sexual child abuse and for child protection in the digital world.',
-			'thumbnail'     => 'cddw.jpg',
-			'menu_order'    => 0
-		),
+      'thumbnail'     => 'cddw.jpg',
+      'menu_order'    => 0
+    ),
 
-		'event-two' => array(
-			'post_type'     => 'post',
-			'post_category' => array( 'events' ),
-			'post_title'    => 'CHILD DIGNITY IN THE DIGITAL WORLD WORLD CONGRESS ROME, 2017',
-			'post_content'  => '<p>The WePROTECT Global Alliance brings together, for the first time, both the political will and the resources to end the sexual exploitation of children online.  It is working in partnership with the new Fund to End Violence Against Children to deliver a global program of capacity and capability, with an initial donation of £40m from the UK government.  The Fund will be hosted by UNICEF and the WePROTECT Global Alliance Board will be responsible for advising how to prioritize its activities for maximum impact.</p>
+    'event-two' => array(
+      'post_type'     => 'post',
+      'post_category' => array( 'events' ),
+      'post_title'    => 'CHILD DIGNITY IN THE DIGITAL WORLD WORLD CONGRESS ROME, 2017',
+      'post_content'  => '<p>The WePROTECT Global Alliance brings together, for the first time, both the political will and the resources to end the sexual exploitation of children online.  It is working in partnership with the new Fund to End Violence Against Children to deliver a global program of capacity and capability, with an initial donation of £40m from the UK government.  The Fund will be hosted by UNICEF and the WePROTECT Global Alliance Board will be responsible for advising how to prioritize its activities for maximum impact.</p>
 			The Board and the UK government are working with the Fund to seek further donors to support this critical work and identify interventions that can make a real difference to the lives of children worldwide.  For further information, and to find out how to make a bid to the Fund, visit <a href="http://www.end-violence.org/">www.end-violence.org</a>.
 			
 			To find out more about how the Fund to End Violence Against Children will work with WePROTECT Global Alliance, and the difference the UK and UNICEF have already made on this issue, see our strategy <a href="https://cj-lewis-nsh8.squarespace.com/s/WePROTECT-Global-Alliance-Strategy.pdf">here</a>.',
-			'thumbnail'     => 'stock-3.jpg',
-			'menu_order'    => 0
-		),
+      'thumbnail'     => 'stock-3.jpg',
+      'menu_order'    => 0
+    ),
 
-		/**
-		 * MNR groups
-		 */
+    /**
+     * MNR groups
+     */
 
-		'policy-and-governance' => array(
-			'post_type'     => 'page',
-			'post_title'    => 'Policy and Governance',
-			'post_content'  => '<h4>Highest level national commitment to CSEA prevention and response</h4><p>Comprehensive understanding of CSEA within highest levels of government and law enforcement. WIllingness to work with, and co-ordinate to efforts of, multiple stakeholders to ensure the enhanced protection of victims and an enhanced response to CSEA offending.</p>',
-			'post_parent'   => 'the-model-national-response',
-			'post_category' => array( 'model-national-response' ),
-			'page_template' => 'mnr.php',
-			'menu_order'    => 802,
-			'blocks'        => [
-				'model-national-response-header'
-			]
-		),
+    'policy-and-governance' => array(
+      'post_type'     => 'page',
+      'post_title'    => 'Policy and Governance',
+      'post_content'  => '<h4>Highest level national commitment to CSEA prevention and response</h4><p>Comprehensive understanding of CSEA within highest levels of government and law enforcement. WIllingness to work with, and co-ordinate to efforts of, multiple stakeholders to ensure the enhanced protection of victims and an enhanced response to CSEA offending.</p>',
+      'post_parent'   => 'the-model-national-response',
+      'post_category' => array( 'model-national-response' ),
+      'page_template' => 'mnr.php',
+      'menu_order'    => 802,
+      'blocks'        => [
+        'model-national-response-header'
+      ]
+    ),
 
-		'criminal-justice' => array(
-			'post_type'     => 'page',
-			'post_title'    => 'Criminal Justice',
-			'post_content'  => '<h4>Effective and successful CSEA investigations, convictions and offender management</h4><p>Law Enforcement and judiciary have the knowledge, skills, systems and tools required to enable them to perform victim-focused investigations and secure positive judicial outcomes. CSEA offenders are managed and reoffending prevented.</p>',
-			'post_parent'   => 'the-model-national-response',
-			'post_category' => array( 'model-national-response' ),
-			'page_template' => 'mnr.php',
-			'menu_order'    => 803,
-			'blocks'        => [
-				'model-national-response-header'
-			]
-		),
+    'criminal-justice' => array(
+      'post_type'     => 'page',
+      'post_title'    => 'Criminal Justice',
+      'post_content'  => '<h4>Effective and successful CSEA investigations, convictions and offender management</h4><p>Law Enforcement and judiciary have the knowledge, skills, systems and tools required to enable them to perform victim-focused investigations and secure positive judicial outcomes. CSEA offenders are managed and reoffending prevented.</p>',
+      'post_parent'   => 'the-model-national-response',
+      'post_category' => array( 'model-national-response' ),
+      'page_template' => 'mnr.php',
+      'menu_order'    => 803,
+      'blocks'        => [
+        'model-national-response-header'
+      ]
+    ),
 
-		'victim' => array(
-			'post_type'     => 'page',
-			'post_title'    => 'Victim',
-			'post_content'  => '<h4>Appropriate suppor ervices for children and young people</h4><p>Children and yound people have access to services that support them thorugh the investigation and prosecution of crimes against them. They have access to shelter; specialised medical and psychological services; and rehabilitation, repatriation and resocialization services.</p>',
-			'post_parent'   => 'the-model-national-response',
-			'post_category' => array( 'model-national-response' ),
-			'page_template' => 'mnr.php',
-			'menu_order'    => 804,
-			'blocks'        => [
-				'model-national-response-header'
-			]
-		),
+    'victim' => array(
+      'post_type'     => 'page',
+      'post_title'    => 'Victim',
+      'post_content'  => '<h4>Appropriate suppor ervices for children and young people</h4><p>Children and yound people have access to services that support them thorugh the investigation and prosecution of crimes against them. They have access to shelter; specialised medical and psychological services; and rehabilitation, repatriation and resocialization services.</p>',
+      'post_parent'   => 'the-model-national-response',
+      'post_category' => array( 'model-national-response' ),
+      'page_template' => 'mnr.php',
+      'menu_order'    => 804,
+      'blocks'        => [
+        'model-national-response-header'
+      ]
+    ),
 
-		'societal' => array(
-			'post_type'     => 'page',
-			'post_title'    => 'Societal',
-			'post_content'  => '<h4>CSEA prevented</h4><p>Children and young people are informed and empwered to protect themselves from CSEA. Parents, carers, teachers, and childcare professionals are better prepared to keep children safe from CSEA, including addressing taboos surrounding sexual violence.</p>',
-			'post_parent'   => 'the-model-national-response',
-			'post_category' => array( 'model-national-response' ),
-			'page_template' => 'mnr.php',
-			'menu_order'    => 805,
-			'blocks'        => [
-				'model-national-response-header'
-			]
-		),
+    'societal' => array(
+      'post_type'     => 'page',
+      'post_title'    => 'Societal',
+      'post_content'  => '<h4>CSEA prevented</h4><p>Children and young people are informed and empwered to protect themselves from CSEA. Parents, carers, teachers, and childcare professionals are better prepared to keep children safe from CSEA, including addressing taboos surrounding sexual violence.</p>',
+      'post_parent'   => 'the-model-national-response',
+      'post_category' => array( 'model-national-response' ),
+      'page_template' => 'mnr.php',
+      'menu_order'    => 805,
+      'blocks'        => [
+        'model-national-response-header'
+      ]
+    ),
 
-		'industry' => array(
-			'post_type'     => 'page',
-			'post_title'    => 'Industry',
-			'post_content'  => '<h4>Industry engagement in developing solutions to prevent and tackle CSEA</h4><p>Industry has the power and willingness to block and remove online CSEA content and proactively adress local CSEA issues. Industry proactively reports online CSEA.</p>',
-			'post_parent'   => 'the-model-national-response',
-			'post_category' => array( 'model-national-response' ),
-			'page_template' => 'mnr.php',
-			'menu_order'    => 806,
-			'blocks'        => [
-				'model-national-response-header'
-			]
-		),
+    'industry' => array(
+      'post_type'     => 'page',
+      'post_title'    => 'Industry',
+      'post_content'  => '<h4>Industry engagement in developing solutions to prevent and tackle CSEA</h4><p>Industry has the power and willingness to block and remove online CSEA content and proactively adress local CSEA issues. Industry proactively reports online CSEA.</p>',
+      'post_parent'   => 'the-model-national-response',
+      'post_category' => array( 'model-national-response' ),
+      'page_template' => 'mnr.php',
+      'menu_order'    => 806,
+      'blocks'        => [
+        'model-national-response-header'
+      ]
+    ),
 
-		'media-and-communications' => array(
-			'post_type'     => 'page',
-			'post_title'    => 'Media and Communications',
-			'post_content'  => '<h4>Awareness raised among the public, professionals and policy makers</h4><p>Potential future offenders are deterred. CSEA offending and reoffending is reduced.</p>',
-			'post_parent'   => 'the-model-national-response',
-			'post_category' => array( 'model-national-response' ),
-			'page_template' => 'mnr.php',
-			'menu_order'    => 807,
-			'blocks'        => [
-				'model-national-response-header'
-			]
-		),
+    'media-and-communications' => array(
+      'post_type'     => 'page',
+      'post_title'    => 'Media and Communications',
+      'post_content'  => '<h4>Awareness raised among the public, professionals and policy makers</h4><p>Potential future offenders are deterred. CSEA offending and reoffending is reduced.</p>',
+      'post_parent'   => 'the-model-national-response',
+      'post_category' => array( 'model-national-response' ),
+      'page_template' => 'mnr.php',
+      'menu_order'    => 807,
+      'blocks'        => [
+        'model-national-response-header'
+      ]
+    ),
 
-		/**
-		 * MNR sections
-		 */
+    /**
+     * MNR sections
+     */
 
-		'leadership' => array(
-			'post_type'    => 'mnr',
-			'post_title'   => 'Leadership',
-			'post_content' => '<h2>Capability 1 – Leadership</h2>
+    'leadership' => array(
+      'post_type'    => 'mnr',
+      'post_title'   => 'Leadership',
+      'post_content' => '<h2>Capability 1 – Leadership</h2>
 <h4>Definition</h4>
 <ul>
  	<li>Good governance brings together those with a responsibility to protect children from online sexual exploitation and is a multi-stakeholder, cross-sector national body or bodies (herewith referred to as body)</li>
@@ -1148,15 +1168,15 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 <ul>
  	<li>Guidance for Governments on national strategies to address ICT-related violence, exploitation and abuse in collaboration with partners is being developed by UNICEF and will be made available in 2017.</li>
 </ul>',
-			'post_excerpt' => 'An accountable national governance and Oversight Committee',
-			'group'        => 'policy-and-governance',
-			'menu_order'   => 1
-		),
+      'post_excerpt' => 'An accountable national governance and Oversight Committee',
+      'group'        => 'policy-and-governance',
+      'menu_order'   => 1
+    ),
 
-		'research-analysis-and-monitoring' => array(
-			'post_type'    => 'mnr',
-			'post_title'   => 'Research, analysis and monitoring',
-			'post_content' => '<h2>Capability 2 – Research, Analysis and Monitoring</h2>
+    'research-analysis-and-monitoring' => array(
+      'post_type'    => 'mnr',
+      'post_title'   => 'Research, analysis and monitoring',
+      'post_content' => '<h2>Capability 2 – Research, Analysis and Monitoring</h2>
 <h4>Definition</h4>
 <ul>
  	<li>The nature and scale of the country’s current CSEA threat, vulnerability, risk and response – and the intelligence and evidence supporting these assessments – is clearly articulated. The assessment is collectively endorsed by members of the national body (see Capability 1 – Leadership) as being credibly and comprehensively informed.</li>
@@ -1184,15 +1204,15 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
  	<li>The Special Representative of the UN Secretary-General on Violence against Children has published a study entitled Releasing Children’s Potential and Minimizing Risks – ICTs, the Internet and Violence against Children – <a href="http://www.srsg.violenceagainstchildren.org">www.srsg.violenceagainstchildren.org</a></li>
  	<li>Global Kids Online is an international research project which aims to advance understanding of whether and how the internet amplifies the risks of harm to children. It does this by stimulating and guiding investigations of how children around the globe use new digital, networked and mobile technologies. More information can be found at <a href="http://www.unicef-irc.org/article/1194/">www.unicef-irc.org/article/1194/</a></li>
 </ul>',
-			'post_excerpt' => 'National situational analysis of CSEA risk and response; measurements/indicators',
-			'group'        => 'policy-and-governance',
-			'menu_order'   => 2
-		),
+      'post_excerpt' => 'National situational analysis of CSEA risk and response; measurements/indicators',
+      'group'        => 'policy-and-governance',
+      'menu_order'   => 2
+    ),
 
-		'legislation' => array(
-			'post_type'    => 'mnr',
-			'post_title'   => 'Legislation',
-			'post_content' => '<h2>Capability 3 – Legislation</h2>
+    'legislation' => array(
+      'post_type'    => 'mnr',
+      'post_title'   => 'Legislation',
+      'post_content' => '<h2>Capability 3 – Legislation</h2>
 <h4>Definition</h4>
 <ul>
  	<li>Comprehensive and effective domestic legislation to protect children from all forms of sexual exploitation and abuse – both online and offline.</li>
@@ -1220,18 +1240,18 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
  	<li>The International Centre for Missing &amp; Exploited Children (ICMEC) researches and analyses national legislation from around the world to identify good practice and useful models that may benefit other countries. ICMEC’s ‘Child Pornography: Model Legislation &amp; Global Review’ provides a legal framework for countries to consider when implementing/enhancing legislation. Please see ICMEC’s website for further details – <a href="http://www.icmec.org">www.icmec.org</a></li>
  	<li>Other international organisations such as ECPAT and UNICEF are undertaking research and analysis of legislation and policies for the prevention and response to CSEA and more information can be found at their websites – <a href="http://www.unicef.org/protection">www.unicef.org/protection</a> and <a href="http://www.ecpat.net">www.ecpat.net</a></li>
 </ul>',
-			'post_excerpt' => 'Comprehensive and effective legal framework to investigate offenders and ensure protection for victims',
-			'group'        => 'policy-and-governance',
-			'menu_order'   => 3
-		),
+      'post_excerpt' => 'Comprehensive and effective legal framework to investigate offenders and ensure protection for victims',
+      'group'        => 'policy-and-governance',
+      'menu_order'   => 3
+    ),
 
 
-		############
+    ############
 
-		'dedicated-law-enforcement' => array(
-			'post_type'    => 'mnr',
-			'post_title'   => 'Dedicated Law Enforcement',
-			'post_content' => '<h2>Capability 4 – Dedicated Law Enforcement</h2>
+    'dedicated-law-enforcement' => array(
+      'post_type'    => 'mnr',
+      'post_title'   => 'Dedicated Law Enforcement',
+      'post_content' => '<h2>Capability 4 – Dedicated Law Enforcement</h2>
 <h4>Definition</h4>
 <ul>
  	<li>Law enforcement capability with an explicit remit to lead, support and coordinate investigations into child sexual exploitation and abuse (CSEA) – both online and offline.</li>
@@ -1260,15 +1280,15 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 <ul>
  	<li>There are a number of national law enforcement agencies around the world that have experience in establishing and delivering a dedicated CSEA capability, using the multi-stakeholder approach detailed above. Requests for advice and support from these agencies can be made through Interpol (<a href="http://www.interpol.int">www.interpol.int</a>) which will connect a country with a mutually agreeable partner law enforcement agency.</li>
 </ul>',
-			'post_excerpt' => 'National remit; trained officers; proactive and reactive investigations; victim-focused; international cooperation',
-			'group'        => 'criminal-justice',
-			'menu_order'   => 4
-		),
+      'post_excerpt' => 'National remit; trained officers; proactive and reactive investigations; victim-focused; international cooperation',
+      'group'        => 'criminal-justice',
+      'menu_order'   => 4
+    ),
 
-		'judiciary-and-prosecutors' => array(
-			'post_type'    => 'mnr',
-			'post_title'   => 'Judiciary and Prosecutors',
-			'post_content' => '<h2>Capability 5 – Judiciary and Prosecutors</h2>
+    'judiciary-and-prosecutors' => array(
+      'post_type'    => 'mnr',
+      'post_title'   => 'Judiciary and Prosecutors',
+      'post_content' => '<h2>Capability 5 – Judiciary and Prosecutors</h2>
 <h4>Definition</h4>
 <ul>
  	<li>Judiciary and prosecutors have the specialist knowledge and skills required to enable positive judicial outcomes for CSEA victims.</li>
@@ -1302,15 +1322,15 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 <ul>
  	<li>Guidelines on the treatment of young victims and witnesses should be followed closely. The United Nations has produced Guidelines on Justice in Matters involving Child Victims and Witnesses of Crime (<a href="http://www.unodc.org">www.unodc.org</a>). An example of national guidelines from the United Kingdom can be found at – <a href="http://www.cps.gov.uk/publications/docs/best_evidence_in_criminal_proceedings.pdf">www.cps.gov.uk/publications/docs/best_evidence_in_criminal_proceedings.pdf</a></li>
 </ul>',
-			'post_excerpt' => 'Trained; victim-focused',
-			'group'        => 'criminal-justice',
-			'menu_order'   => 5
-		),
+      'post_excerpt' => 'Trained; victim-focused',
+      'group'        => 'criminal-justice',
+      'menu_order'   => 5
+    ),
 
-		'offender-management-process' => array(
-			'post_type'    => 'mnr',
-			'post_title'   => 'Offender Management Process',
-			'post_content' => '<h2>Capability 6 – Offender Management Process</h2>
+    'offender-management-process' => array(
+      'post_type'    => 'mnr',
+      'post_title'   => 'Offender Management Process',
+      'post_content' => '<h2>Capability 6 – Offender Management Process</h2>
 <h4>Definition</h4>
 <ul>
  	<li>A multi-agency system to manage and rehabilitate child sex offenders to prevent their reoffending. This includes all types of child sex offences – both online and offline. The system covers:
@@ -1351,15 +1371,15 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
  	<li>The United Kingdom’s National Offender Management Service has published an evaluation of the latest approaches to managing sex offenders in the community and assessing the risk they pose: <a href="https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/308159/sex-offender-management-and-dynamic-risk.pdf">https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/308159/sex-offender-management-and-dynamic-risk.pdf</a></li>
  	<li>The United States’ Center for Sex Offender Management website has a variety of information relating to Sex Offender management: <a href="http://www.csom.org/">http://www.csom.org/</a></li>
 </ul>',
-			'post_excerpt' => 'Prevent re-offending of those in the criminal justice system nationally and internationally.',
-			'group'        => 'criminal-justice',
-			'menu_order'   => 6
-		),
+      'post_excerpt' => 'Prevent re-offending of those in the criminal justice system nationally and internationally.',
+      'group'        => 'criminal-justice',
+      'menu_order'   => 6
+    ),
 
-		'access-to-image-databases' => array(
-			'post_type'    => 'mnr',
-			'post_title'   => 'Access to Image Databases',
-			'post_content' => '<h2>Capability 7 – Access to Image Databases</h2>
+    'access-to-image-databases' => array(
+      'post_type'    => 'mnr',
+      'post_title'   => 'Access to Image Databases',
+      'post_content' => '<h2>Capability 7 – Access to Image Databases</h2>
 <h4>Definition</h4>
 <ul>
  	<li>Law enforcement use Interpol’s International Child Sexual Exploitation database (ICSE DB) to improve the efficiency and effectiveness of their efforts to identify victims and offenders.</li>
@@ -1385,17 +1405,17 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
  	<li>More information about connection to the ICSE DB can be found at <a href="http://www.interpol.int">www.interpol.int</a>. Good practice in the establishment of a national database can be provided by a number of countries that have developed and implemented their own version. Advice and guidance from these countries can be accessed through Interpol.</li>
 </ul>
 &nbsp;',
-			'post_excerpt' => 'National database; link to Interpol database (ICSE)',
-			'group'        => 'criminal-justice',
-			'menu_order'   => 7
-		),
+      'post_excerpt' => 'National database; link to Interpol database (ICSE)',
+      'group'        => 'criminal-justice',
+      'menu_order'   => 7
+    ),
 
-		############
+    ############
 
-		'end-to-end-support' => array(
-			'post_type'    => 'mnr',
-			'post_title'   => 'End to End Support',
-			'post_content' => '<h2>Capability 8 – End-to-end Support</h2>
+    'end-to-end-support' => array(
+      'post_type'    => 'mnr',
+      'post_title'   => 'End to End Support',
+      'post_content' => '<h2>Capability 8 – End-to-end Support</h2>
 <h4>Definition</h4>
 <ul>
  	<li>CSEA victims are provided with planned and integrated end-to-end support to help them cope with the immediate impact of their abuse and recover from the harm experienced.</li>
@@ -1432,15 +1452,15 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 <ul>
  	<li>UNICEF works with organisations across the world to build capacity and capability and share good practice in the provision of victim support services. For more information, contact UNCIEF through www.unicef.org/protection</li>
 </ul>',
-			'post_excerpt' => 'Integrated services provided during investigation, prosecution and after-care',
-			'group'        => 'victim',
-			'menu_order'   => 8
-		),
+      'post_excerpt' => 'Integrated services provided during investigation, prosecution and after-care',
+      'group'        => 'victim',
+      'menu_order'   => 8
+    ),
 
-		'child-protection-workforce' => array(
-			'post_type'    => 'mnr',
-			'post_title'   => 'Child Protection Workforce',
-			'post_content' => '<h2>Capability 9 – Child Protection Workforce</h2>
+    'child-protection-workforce' => array(
+      'post_type'    => 'mnr',
+      'post_title'   => 'Child Protection Workforce',
+      'post_content' => '<h2>Capability 9 – Child Protection Workforce</h2>
 <h4>Definition</h4>
 <ul>
  	<li>A skilled, specialist statutory workforce that is trained, coordinated and available to provide support to CSEA victims.</li>
@@ -1466,15 +1486,15 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 <ul>
  	<li>The International Federation of Social Workers is a global organisation that shares best practice models and facilitates international cooperation. It has 116 member countries and more information and guidance can be found on its website at <a href="http://www.ifsw.org">www.ifsw.org</a>. More information can also be found at the Global Social Service Workforce Alliance (<a href="http://www.socialserviceworkforce.org">www.socialserviceworkforce.org</a>) which has a number of resources, including a competency framework for para-professional services, and the Marie Collins Foundation (<a href="http://www.mariecollinsfoundation.org.uk">www.mariecollinsfoundation.org.uk</a>)</li>
 </ul>',
-			'post_excerpt' => 'Trained, coordinated and available to provide victim support',
-			'group'        => 'victim',
-			'menu_order'   => 9
-		),
+      'post_excerpt' => 'Trained, coordinated and available to provide victim support',
+      'group'        => 'victim',
+      'menu_order'   => 9
+    ),
 
-		'compensation-remedies-and-complaints-arrangements' => array(
-			'post_type'    => 'mnr',
-			'post_title'   => 'Compensation, remedies, and complaints arrangments',
-			'post_content' => '<h2>Capability 10 – Compensation, Remedies and Complaints Arrangements</h2>
+    'compensation-remedies-and-complaints-arrangements' => array(
+      'post_type'    => 'mnr',
+      'post_title'   => 'Compensation, remedies, and complaints arrangments',
+      'post_content' => '<h2>Capability 10 – Compensation, Remedies and Complaints Arrangements</h2>
 <h4>Definition</h4>
 <ul>
  	<li>The provision of effective remedy and reparations for CSEA victims and their guardians/ caregivers. This includes:
@@ -1504,15 +1524,15 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
  	<li>Information can be found within the United Nations’ Guidelines on Justice in Matters involving Child Victims and Witnesses of Crime. In addition, further information can be found within the United Nations’ Model Strategies and Practical Measures on the Elimination of Violence against Children in the Field of Crime Prevention and Criminal Justice, A/C.3/69/L.5, Part V – Offering effective protection to child victims of violence and the UN’s Safe and Child-Sensitive Counselling, Complaint and Reporting Mechanisms to Address Violence Against Children – <a href="http://www.srsg.violenceagainstchildren.org/page/849">www.srsg.violenceagainstchildren.org/page/849</a></li>
  	<li>The Third Optional Protocol to the UNCRC on a Communications Procedure sets out an international complaints procedure for child rights violations – <a href="http://www.ohchr.org/EN/ProfessionalInterest/Pages/OPICCRC.aspx">www.ohchr.org/EN/ProfessionalInterest/Pages/OPICCRC.aspx</a></li>
 </ul>',
-			'post_excerpt' => 'Accessible procedures',
-			'group'        => 'victim',
-			'menu_order'   => 10
-		),
+      'post_excerpt' => 'Accessible procedures',
+      'group'        => 'victim',
+      'menu_order'   => 10
+    ),
 
-		'child-helpline' => array(
-			'post_type'    => 'mnr',
-			'post_title'   => 'Child Helpline',
-			'post_content' => '<h2>Capability 11 – Child Helpline</h2>
+    'child-helpline' => array(
+      'post_type'    => 'mnr',
+      'post_title'   => 'Child Helpline',
+      'post_content' => '<h2>Capability 11 – Child Helpline</h2>
 <h4>Definition</h4>
 <ul>
  	<li>A support and intervention service for children and young people run by civil society organisations or government.</li>
@@ -1539,17 +1559,17 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 <ul>
  	<li>Child Helpline International aims to strengthen child protection systems across the globe, including working with local, regional and national stakeholders and partners to support the creation and consolidation of national free-of-charge child helplines worldwide. Members and partners are provided with vital opportunities to enhance their service through workshops, training and information-sharing. Further information can be found at <a href="http://www.childhelplineinternational.org">www.childhelplineinternational.org</a></li>
 </ul>',
-			'post_excerpt' => 'Victim reporting and support; referrals to services for ongoing assistance',
-			'group'        => 'victim',
-			'menu_order'   => 11
-		),
+      'post_excerpt' => 'Victim reporting and support; referrals to services for ongoing assistance',
+      'group'        => 'victim',
+      'menu_order'   => 11
+    ),
 
-		############
+    ############
 
-		'csea-hotline' => array(
-			'post_type'    => 'mnr',
-			'post_title'   => 'CSEA Hotline',
-			'post_content' => '<h2>Capability 12 – CSEA Hotline</h2>
+    'csea-hotline' => array(
+      'post_type'    => 'mnr',
+      'post_title'   => 'CSEA Hotline',
+      'post_content' => '<h2>Capability 12 – CSEA Hotline</h2>
 <h4>Definition</h4>
 <ul>
  	<li>A dedicated hotline to report internet material suspected to be illegal, including child sexual abuse material.</li>
@@ -1574,15 +1594,15 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 <ul>
  	<li>The INHOPE Foundation supports the development of new internet hotlines worldwide. This ensures that swift action can be taken in responding to reports of child sexual abuse material on the internet wherever the illegal material is found to be hosted. An online guide is available at GSMA/INHOPE. For those countries that already have a hotline, INHOPE also supports a hotline’s long-term development and education on the issue. Further information can be found on their website at <a href="http://www.inhope.org">www.inhope.org</a></li>
 </ul>',
-			'post_excerpt' => 'Mechanism for reporting online CSEA content; link to law enforcement and Internet service providers',
-			'group'        => 'societal',
-			'menu_order'   => 12
-		),
+      'post_excerpt' => 'Mechanism for reporting online CSEA content; link to law enforcement and Internet service providers',
+      'group'        => 'societal',
+      'menu_order'   => 12
+    ),
 
-		'education-programme' => array(
-			'post_type'    => 'mnr',
-			'post_title'   => 'Education Programme',
-			'post_content' => '<h2>Capability 13 – Education Programme</h2>
+    'education-programme' => array(
+      'post_type'    => 'mnr',
+      'post_title'   => 'Education Programme',
+      'post_content' => '<h2>Capability 13 – Education Programme</h2>
 <h4>Definition</h4>
 <ul>
  	<li>A national education programme to raise awareness of CSEA (both offline and online) – empowering children, young people, parents, guardians, caregivers and practitioners with information about CSEA; their rights to protection; where to find help and support, and report sexual exploitation and abuse.</li>
@@ -1611,15 +1631,15 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
  	<li>Insafe is a European network of Awareness Centres promoting safer and better usage of the internet, empowering people – particularly children and young people – to use the internet, mobile phones and other online technologies positively, safely and effectively. More information about the education work undertaken by these Awareness Centres can be found at <a href="http://www.betterinternetforkids.eu">www.betterinternetforkids.eu</a></li>
  	<li>UNICEF supports governments and civil society organisations across the world in the provision of information and education to prevent child sexual abuse and exploitation. More information can be found at <a href="http://www.unicef.org/protection">www.unicef.org/protection</a></li>
 </ul>',
-			'post_excerpt' => 'For children/young people; parents/carers; teachers; practitioners; faith representatives',
-			'group'        => 'societal',
-			'menu_order'   => 13
-		),
+      'post_excerpt' => 'For children/young people; parents/carers; teachers; practitioners; faith representatives',
+      'group'        => 'societal',
+      'menu_order'   => 13
+    ),
 
-		'child-participation' => array(
-			'post_type'    => 'mnr',
-			'post_title'   => 'Child Participation',
-			'post_content' => '<h2>Capability 14 – Child Participation</h2>
+    'child-participation' => array(
+      'post_type'    => 'mnr',
+      'post_title'   => 'Child Participation',
+      'post_content' => '<h2>Capability 14 – Child Participation</h2>
 <h4>Definition</h4>
 <ul>
  	<li>Children and young people are encouraged and enabled to give their ideas and influence the development of CSEA-related policy and practices.</li>
@@ -1644,15 +1664,15 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
  	<li>In addition, the Council of Europe has produced a Child Participation Assessment Tool which provides indicators for measuring progress in promoting the right of children and young people to participate in matters of concern to them: <a href="http://www.coe.int/t/dg3/children/participation/Child_participation_AssementTool_en.pdf">http://www.coe.int/t/dg3/children/participation/Child_participation_AssementTool_en.pdf</a></li>
  	<li>The Child Rights International Network (CRIN) is a global research, policy and advocacy organisation. It provides extensive information and guidance on child rights at its website – <a href="http://www.crin.org">www.crin.org</a></li>
 </ul>',
-			'post_excerpt' => 'For children/young people; parents/carers; teachers; practitioners; faith representatives',
-			'group'        => 'societal',
-			'menu_order'   => 14
-		),
+      'post_excerpt' => 'For children/young people; parents/carers; teachers; practitioners; faith representatives',
+      'group'        => 'societal',
+      'menu_order'   => 14
+    ),
 
-		'offender-support-systems' => array(
-			'post_type'    => 'mnr',
-			'post_title'   => 'Offender Support Systems',
-			'post_content' => '<h2>Capability 15 – Offender Support Systems</h2>
+    'offender-support-systems' => array(
+      'post_type'    => 'mnr',
+      'post_title'   => 'Offender Support Systems',
+      'post_content' => '<h2>Capability 15 – Offender Support Systems</h2>
 <h4>Definition</h4>
 <ul>
  	<li>Support systems are in place for people with a sexual interest in children to prevent them from acting on their interest and sexually abusing children, and to prevent them from accessing child sexual abuse material on the Internet before they commit a crime.</li>
@@ -1687,17 +1707,17 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 </ul>
 </li>
 </ul>',
-			'post_excerpt' => 'Medical, psychological, self-help, awareness',
-			'group'        => 'societal',
-			'menu_order'   => 15
-		),
+      'post_excerpt' => 'Medical, psychological, self-help, awareness',
+      'group'        => 'societal',
+      'menu_order'   => 15
+    ),
 
-		############
+    ############
 
-		'takedown-proceedures' => array(
-			'post_type'    => 'mnr',
-			'post_title'   => 'Takedown Proceedures',
-			'post_content' => '<h2>Capability 16 – Takedown Procedures</h2>
+    'takedown-proceedures' => array(
+      'post_type'    => 'mnr',
+      'post_title'   => 'Takedown Proceedures',
+      'post_content' => '<h2>Capability 16 – Takedown Procedures</h2>
 <h4>Definition</h4>
 <ul>
  	<li>Procedures to enable the timely decommissioning/removal of child sexual abuse material when a company confirms its presence on its service. Reports can be made by customers, members of the public, law enforcement agencies or hotline organisations.</li>
@@ -1721,15 +1741,15 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
  	<li>The INHOPE international network of hotlines can offer guidance and support to companies to help them prevent access, or the facilitation of access, to child sexual abuse material (<a href="http://www.inhope.org">www.inhope.org</a>) – including a guide to Notice and Takedown procedures that was produced in partnership with the GSMA Mobile Alliance. In addition, the United Kingdom’s hotline – the Internet Watch Foundation – offers advice and guidance (<a href="http://www.iwf.org.uk">www.iwf.org.uk</a>).</li>
  	<li>The Technology Coalition encourages the development of technology solutions that disrupt the ability to use the Internet to sexually exploit children and to distribute child sexual abuse material. It also seeks and creates platforms for collaboration across sectors and to share best practice. (<a href="http://www.technologycoalition.org">www.technologycoalition.org</a>)</li>
 </ul>',
-			'post_excerpt' => 'Local removal and blocking of online CSEA content',
-			'group'        => 'industry',
-			'menu_order'   => 16
-		),
+      'post_excerpt' => 'Local removal and blocking of online CSEA content',
+      'group'        => 'industry',
+      'menu_order'   => 16
+    ),
 
-		'csea-reporting' => array(
-			'post_type'    => 'mnr',
-			'post_title'   => 'CSEA Reporting',
-			'post_content' => '<h2>Capability 17 – CSEA Reporting</h2>
+    'csea-reporting' => array(
+      'post_type'    => 'mnr',
+      'post_title'   => 'CSEA Reporting',
+      'post_content' => '<h2>Capability 17 – CSEA Reporting</h2>
 <h4>Definition</h4>
 Industry puts in place processes and allocates resources to enable the timely identification and reporting to authorities of online child sexual exploitation and abuse.
 
@@ -1760,15 +1780,15 @@ Statutory protections are in place to allow industry to fully and effectively re
 </ul>
 </li>
 </ul>',
-			'post_excerpt' => 'Statutory protections that would allow industry to fully and effectively report CSEA, including the transmission of content, to law enforcement or another designated agency',
-			'group'        => 'industry',
-			'menu_order'   => 17
-		),
+      'post_excerpt' => 'Statutory protections that would allow industry to fully and effectively report CSEA, including the transmission of content, to law enforcement or another designated agency',
+      'group'        => 'industry',
+      'menu_order'   => 17
+    ),
 
-		'innovative-solution-development' => array(
-			'post_type'    => 'mnr',
-			'post_title'   => 'Innovative Solution Development',
-			'post_content' => '<h2>Capability 18 – Innovative Solution Development</h2>
+    'innovative-solution-development' => array(
+      'post_type'    => 'mnr',
+      'post_title'   => 'Innovative Solution Development',
+      'post_content' => '<h2>Capability 18 – Innovative Solution Development</h2>
 <h4>Definition</h4>
 <ul>
  	<li>The development of innovative technological solutions that enhance existing approaches to preventing and tackling online CSEA or enable the development of new approaches.</li>
@@ -1796,15 +1816,15 @@ Statutory protections are in place to allow industry to fully and effectively re
 </ul>
 </li>
 </ul>',
-			'post_excerpt' => 'Industry engagement to help address local CSEA issues',
-			'group'        => 'industry',
-			'menu_order'   => 18
-		),
+      'post_excerpt' => 'Industry engagement to help address local CSEA issues',
+      'group'        => 'industry',
+      'menu_order'   => 18
+    ),
 
-		'corporate-social-responsibility' => array(
-			'post_type'    => 'mnr',
-			'post_title'   => 'Corporate Social Responsibility',
-			'post_content' => '<h2>Capability 19 – Corporate Social Responsibility</h2>
+    'corporate-social-responsibility' => array(
+      'post_type'    => 'mnr',
+      'post_title'   => 'Corporate Social Responsibility',
+      'post_content' => '<h2>Capability 19 – Corporate Social Responsibility</h2>
 <h4>Definition</h4>
 <ul>
  	<li>Companies (national and international) ensure child safety issues are paramount in the development and delivery of products and services, giving particular attention to putting systems in place to prevent violations of children’s safety – including sexual abuse and exploitation.</li>
@@ -1834,17 +1854,17 @@ Statutory protections are in place to allow industry to fully and effectively re
  	<li>UNICEF has produced several tools for companies within the ICT sector, including a specific Child Online Safety Assessment tool: <a href="http://www.unicef.org/csr/toolsforcompanies.htm">http://www.unicef.org/csr/toolsforcompanies.htm</a></li>
  	<li>More information about the Global Partnership to End Violence Against Children can be found here – <a href="http://www.end-violence.org">www.end-violence.org</a></li>
 </ul>',
-			'post_excerpt' => 'Effective child-focused programme',
-			'group'        => 'industry',
-			'menu_order'   => 19
-		),
+      'post_excerpt' => 'Effective child-focused programme',
+      'group'        => 'industry',
+      'menu_order'   => 19
+    ),
 
-		############
+    ############
 
-		'ethical-and-informed-media-reporting' => array(
-			'post_type'    => 'mnr',
-			'post_title'   => 'Ethical and Informed Media Reporting',
-			'post_content' => '<h2>Capability 20 – Ethical and Informed Media Reporting</h2>
+    'ethical-and-informed-media-reporting' => array(
+      'post_type'    => 'mnr',
+      'post_title'   => 'Ethical and Informed Media Reporting',
+      'post_content' => '<h2>Capability 20 – Ethical and Informed Media Reporting</h2>
 <h4>Definition</h4>
 <ul>
  	<li>Media coverage of CSEA is ethical, informed and balanced, and reported in a sensitive manner with victims’ dignity and rights respected at all times. This is best approached by journalists and editors in partnership with all those involved in preventing and tackling CSEA.</li>
@@ -1874,15 +1894,15 @@ Statutory protections are in place to allow industry to fully and effectively re
  	<li>UNICEF has produced guidelines – ‘The Media and Children’s Rights’ – designed to strengthen journalists’ understanding of children’s rights and to suggest how the issue can generate news stories and features for print and broadcast media. For more information visit: <a href="http://www.unicef.org">www.unicef.org</a></li>
  	<li>The International Federation of Journalists has launched a global ‘Ethical Journalism Initiative’ looking at reporting standards within professional bodies worldwide. For more information visit: <a href="http://www.ethicaljournalisminitiative.org">www.ethicaljournalisminitiative.org</a></li>
 </ul>',
-			'post_excerpt' => 'Enable awareness and accurate understanding of problem',
-			'group'        => 'media-and-communications',
-			'menu_order'   => 20
-		),
+      'post_excerpt' => 'Enable awareness and accurate understanding of problem',
+      'group'        => 'media-and-communications',
+      'menu_order'   => 20
+    ),
 
-		'universal-technology' => array(
-			'post_type'    => 'mnr',
-			'post_title'   => 'Universal Technology',
-			'post_content' => '<h2>Capability 21 – Universal Terminology</h2>
+    'universal-technology' => array(
+      'post_type'    => 'mnr',
+      'post_title'   => 'Universal Technology',
+      'post_content' => '<h2>Capability 21 – Universal Terminology</h2>
 <h4>Definition</h4>
 <ul>
  	<li>The use of universally-agreed terminology relating to CSEA to enable information and ideas to be communicated rapidly and legibly amongst all stakeholders.</li>
@@ -1905,877 +1925,881 @@ Statutory protections are in place to allow industry to fully and effectively re
 <ul>
  	<li>Further information can be found at <a href="http://www.luxembourgguidelines.org">www.luxembourgguidelines.org</a> and includes a list of the organisations that participated in the Working Group to produce the Guidelines.</li>
 </ul>',
-			'post_excerpt' => 'Guidelines and application',
-			'group'        => 'media-and-communications',
-			'menu_order'   => 21
-		),
+      'post_excerpt' => 'Guidelines and application',
+      'group'        => 'media-and-communications',
+      'menu_order'   => 21
+    ),
 
-		/**
-		 * Board members
-		 */
+    /**
+     * Board members
+     */
 
-		'ernie-allen' => [
-			'post_type'    => 'board',
-			'post_title'   => 'Ernie Allen',
-			'post_content' => '<p>Chair, Former President and CEO of the National Centre for Missing and Exploited Children (NCMEC) and the International Centre for Missing and Exploited Children (ICMEC)</p>',
-			'menu_order'   => 0,
-			'thumbnail'    => 'ernie-allen.png'
-		],
+    'ernie-allen' => [
+      'post_type'    => 'board',
+      'post_title'   => 'Ernie Allen',
+      'post_content' => '<p>Chair, Former President and CEO of the National Centre for Missing and Exploited Children (NCMEC) and the International Centre for Missing and Exploited Children (ICMEC)</p>',
+      'menu_order'   => 0,
+      'thumbnail'    => 'ernie-allen.png'
+    ],
 
-		'baroness-joanna-shields' => [
-			'post_type'    => 'board',
-			'post_title'   => 'Baroness Joana Shields OBE',
-			'post_content' => '<p>UK Internet Safety and Security Minister<br>Founded WEPROTECT in 2014</p>',
-			'menu_order'   => 1,
-			'thumbnail'    => 'baroness-joanna-shields.png'
-		],
+    'baroness-joanna-shields' => [
+      'post_type'    => 'board',
+      'post_title'   => 'Baroness Joana Shields OBE',
+      'post_content' => '<p>UK Internet Safety and Security Minister<br>Founded WEPROTECT in 2014</p>',
+      'menu_order'   => 1,
+      'thumbnail'    => 'baroness-joanna-shields.png'
+    ],
 
-		'veronica-donoso' => [
-			'post_type'    => 'board',
-			'post_title'   => 'Verónica Donoso',
-			'post_content' => '<p>EXECUTIVE DIRECTOR, INHOPE</p>',
-			'menu_order'   => 2,
-			'thumbnail'    => 'veronica-donoso.png'
-		],
+    'veronica-donoso' => [
+      'post_type'    => 'board',
+      'post_title'   => 'Verónica Donoso',
+      'post_content' => '<p>EXECUTIVE DIRECTOR, INHOPE</p>',
+      'menu_order'   => 2,
+      'thumbnail'    => 'veronica-donoso.png'
+    ],
 
-		'maud-de-boer-buquicchio' => [
-			'post_type'    => 'board',
-			'post_title'   => 'Maud de Boer-Buquicchio',
-			'post_content' => '<p>UN Special Rapporteur on the Sale of Children, Child Prostitution and Child Pornography</p>',
-			'menu_order'   => 3,
-			'thumbnail'    => 'maud-de-boer-buquicchio.jpg'
-		],
+    'maud-de-boer-buquicchio' => [
+      'post_type'    => 'board',
+      'post_title'   => 'Maud de Boer-Buquicchio',
+      'post_content' => '<p>UN Special Rapporteur on the Sale of Children, Child Prostitution and Child Pornography</p>',
+      'menu_order'   => 3,
+      'thumbnail'    => 'maud-de-boer-buquicchio.jpg'
+    ],
 
-		'jacqueline-f-beauchere' => [
-			'post_type'    => 'board',
-			'post_title'   => 'Jacqueline F. Beauchere',
-			'post_content' => '<p>Chief Online Safety Officer, Microsoft</p>',
-			'menu_order'   => 4,
-			'thumbnail'    => 'jacqueline-f-beauchere.jpg'
-		],
+    'jacqueline-f-beauchere' => [
+      'post_type'    => 'board',
+      'post_title'   => 'Jacqueline F. Beauchere',
+      'post_content' => '<p>Chief Online Safety Officer, Microsoft</p>',
+      'menu_order'   => 4,
+      'thumbnail'    => 'jacqueline-f-beauchere.jpg'
+    ],
 
-		'antigone-davis' => [
-			'post_type'    => 'board',
-			'post_title'   => 'Antigone Davis',
-			'post_content' => '<p>Head of Global Safety, Facebook</p>',
-			'menu_order'   => 5,
-			'thumbnail'    => 'antigone-davis.jpg'
-		],
+    'antigone-davis' => [
+      'post_type'    => 'board',
+      'post_title'   => 'Antigone Davis',
+      'post_content' => '<p>Head of Global Safety, Facebook</p>',
+      'menu_order'   => 5,
+      'thumbnail'    => 'antigone-davis.jpg'
+    ],
 
-		'johnny-gwynne' => [
-			'post_type'    => 'board',
-			'post_title'   => 'Johnny Gwynne',
-			'post_content' => '<p>Director, Child Exploitation and Online Protection (CEOP) Command, United Kingdom National Crime Agency</p>',
-			'menu_order'   => 6,
-			'thumbnail'    => 'johnny-gwynne.jpg'
-		],
+    'johnny-gwynne' => [
+      'post_type'    => 'board',
+      'post_title'   => 'Johnny Gwynne',
+      'post_content' => '<p>Director, Child Exploitation and Online Protection (CEOP) Command, United Kingdom National Crime Agency</p>',
+      'menu_order'   => 6,
+      'thumbnail'    => 'johnny-gwynne.jpg'
+    ],
 
-		'susie-hargreaves' => [
-			'post_type'    => 'board',
-			'post_title'   => 'Susie Hargreaves OBE',
-			'post_content' => '<p>CEO, Internet Watch Foundation</p>',
-			'menu_order'   => 7,
-			'thumbnail'    => 'susie-hargreaves.png'
-		],
+    'susie-hargreaves' => [
+      'post_type'    => 'board',
+      'post_title'   => 'Susie Hargreaves OBE',
+      'post_content' => '<p>CEO, Internet Watch Foundation</p>',
+      'menu_order'   => 7,
+      'thumbnail'    => 'susie-hargreaves.png'
+    ],
 
-		'susan-molinari' => [
-			'post_type'    => 'board',
-			'post_title'   => 'Susan Molinari',
-			'post_content' => '<p>Vice President, Public Policy, Google</p>',
-			'menu_order'   => 8,
-			'thumbnail'    => 'susan-molinari.jpg'
-		],
+    'susan-molinari' => [
+      'post_type'    => 'board',
+      'post_title'   => 'Susan Molinari',
+      'post_content' => '<p>Vice President, Public Policy, Google</p>',
+      'menu_order'   => 8,
+      'thumbnail'    => 'susan-molinari.jpg'
+    ],
 
-		'mick-moran' => [
-			'post_type'    => 'board',
-			'post_title'   => 'Mick Moran',
-			'post_content' => '<p>Assistant Director Vulnerable Communities, INTERPOL</p>',
-			'menu_order'   => 9,
-			'thumbnail'    => 'mick-moran.jpg'
-		],
+    'mick-moran' => [
+      'post_type'    => 'board',
+      'post_title'   => 'Mick Moran',
+      'post_content' => '<p>Assistant Director Vulnerable Communities, INTERPOL</p>',
+      'menu_order'   => 9,
+      'thumbnail'    => 'mick-moran.jpg'
+    ],
 
-		'cornelius-williams' => [
-			'post_type'    => 'board',
-			'post_title'   => 'Cornelius Williams',
-			'post_content' => '<p>Associate Director, Child Protection, Programme Division, UNICEF</p>',
-			'menu_order'   => 10,
-			'thumbnail'    => 'cornelius-williams.png'
-		],
+    'cornelius-williams' => [
+      'post_type'    => 'board',
+      'post_title'   => 'Cornelius Williams',
+      'post_content' => '<p>Associate Director, Child Protection, Programme Division, UNICEF</p>',
+      'menu_order'   => 10,
+      'thumbnail'    => 'cornelius-williams.png'
+    ],
 
-		'dorothy-rozga' => [
-			'post_type'    => 'board',
-			'post_title'   => 'Dorothy Rozga',
-			'post_content' => '<p>Executive Director, ECPAT INTERNATIONAL</p>',
-			'menu_order'   => 11,
-			'thumbnail'    => 'dorothy-rozga.jpg'
-		],
+    'dorothy-rozga' => [
+      'post_type'    => 'board',
+      'post_title'   => 'Dorothy Rozga',
+      'post_content' => '<p>Executive Director, ECPAT INTERNATIONAL</p>',
+      'menu_order'   => 11,
+      'thumbnail'    => 'dorothy-rozga.jpg'
+    ],
 
-		'major-general-dr-nasser-salem-lakhrebani-al-nuaimi' => [
-			'post_type'    => 'board',
-			'post_title'   => 'Major General/Dr. Nasser Salem Lakhrebani Al Nuaimi',
-			'post_content' => '<p>CHAIR OF VIRTUAL GLOBAL TASKFORCE, SECRETARY GENERAL OF THE OFFICE OF HH THE MINISTER OF INTERIOR, UAE</p>',
-			'menu_order'   => 12
-		],
+    'major-general-dr-nasser-salem-lakhrebani-al-nuaimi' => [
+      'post_type'    => 'board',
+      'post_title'   => 'Major General/Dr. Nasser Salem Lakhrebani Al Nuaimi',
+      'post_content' => '<p>CHAIR OF VIRTUAL GLOBAL TASKFORCE, SECRETARY GENERAL OF THE OFFICE OF HH THE MINISTER OF INTERIOR, UAE</p>',
+      'menu_order'   => 12
+    ],
 
-		'steve-grocki' => [
-			'post_type'    => 'board',
-			'post_title'   => 'Steve Grocki',
-			'post_content' => '<p>Chief, Child Exploitation and Obscenity Section, United States Department of Justice</p>',
-			'menu_order'   => 13,
-			'thumbnail'    => 'steve-grocki.png'
-		],
-	];
+    'steve-grocki' => [
+      'post_type'    => 'board',
+      'post_title'   => 'Steve Grocki',
+      'post_content' => '<p>Chief, Child Exploitation and Obscenity Section, United States Department of Justice</p>',
+      'menu_order'   => 13,
+      'thumbnail'    => 'steve-grocki.png'
+    ],
+  ];
 
-	public static function _create_menu( $items = [], $menu_id = 0, $parent_id = 0 ) {
-		foreach ( $items as $key => $val ) {
-			$array = [];
-			if ( strpos( $key, 'category_' ) !== false ) {
-				$category = get_category_by_slug( substr( $key, 9 ) );
-				if ( $category ) {
-					$array = [
-						'menu-item-object'    => 'category',
-						'menu-item-object-id' => $category->term_id,
-						'menu-item-type'      => 'taxonomy',
-						'menu-item-status'    => 'publish',
-						'menu-item-parent-id' => $parent_id
-					];
-				}
-			} elseif ( strpos( $key, 'link_' ) !== false ) {
-				$name  = substr( $key, 5 );
-				$array = [
-					'menu-item-type'      => 'custom',
-					'menu-item-url'       => 'http://example.com/',
-					'menu-item-class'     => 'fa fa-' . $name . '-offical',
-					'menu-item-title'     => ucfirst( $name ),
-					'menu-item-status'    => 'publish',
-					'menu-item-parent-id' => $parent_id
-				];
-			} else {
-				$post = get_posts( [
-					'name'        => $key,
-					'post_type'   => 'page',
-					'post_status' => 'publish',
-					'numberposts' => 1
-				] );
-				if ( count( $post ) ) {
-					$array = [
-						'menu-item-object'    => 'page',
-						'menu-item-object-id' => $post[ 0 ]->ID,
-						'menu-item-type'      => 'post_type',
-						'menu-item-status'    => 'publish',
-						'menu-item-parent-id' => $parent_id
-					];
-				}
-			}
+  public static function _create_menu( $items = [], $menu_id = 0, $parent_id = 0 ) {
+    foreach ( $items as $key => $val ) {
+      $array = [];
+      if ( strpos( $key, 'category_' ) !== false ) {
+        $category = get_category_by_slug( substr( $key, 9 ) );
+        if ( $category ) {
+          $array = [
+            'menu-item-object'    => 'category',
+            'menu-item-object-id' => $category->term_id,
+            'menu-item-type'      => 'taxonomy',
+            'menu-item-status'    => 'publish',
+            'menu-item-parent-id' => $parent_id
+          ];
+        }
+      } elseif ( strpos( $key, 'link_' ) !== false ) {
+        $name  = substr( $key, 5 );
+        $array = [
+          'menu-item-type'      => 'custom',
+          'menu-item-url'       => 'http://example.com/',
+          'menu-item-class'     => 'fa fa-' . $name . '-offical',
+          'menu-item-title'     => ucfirst( $name ),
+          'menu-item-status'    => 'publish',
+          'menu-item-parent-id' => $parent_id
+        ];
+      } else {
+        $post = get_posts( [
+          'name'        => $key,
+          'post_type'   => 'page',
+          'post_status' => 'publish',
+          'numberposts' => 1
+        ] );
+        if ( count( $post ) ) {
+          $array = [
+            'menu-item-object'    => 'page',
+            'menu-item-object-id' => $post[0]->ID,
+            'menu-item-type'      => 'post_type',
+            'menu-item-status'    => 'publish',
+            'menu-item-parent-id' => $parent_id
+          ];
+        }
+      }
 
-			if ( count( $array ) ) {
-				$item_id = wp_update_nav_menu_item( $menu_id, 0, $array );
+      if ( count( $array ) ) {
+        $item_id = wp_update_nav_menu_item( $menu_id, 0, $array );
 
-				if ( is_array( $val ) ) {
-					self::_create_menu( $val, $menu_id, $item_id );
-				}
-			}
-		}
-	}
+        if ( is_array( $val ) ) {
+          self::_create_menu( $val, $menu_id, $item_id );
+        }
+      }
+    }
+  }
 
-	/**
-	 * Create all CF7 forms
-	 *
-	 * @return bool
-	 */
-	public static function create_forms() {
+  /**
+   * Create all CF7 forms
+   *
+   * @return bool
+   */
+  public static function create_forms() {
 
-		// Create forms
-		if ( count( self::$forms ) ) {
-			$i = 1;
-			foreach ( self::$forms as $title => $name ) {
-				$path = realpath( ABSPATH . '../data/forms' ) . '/' . $name . '.php';
-				if ( file_exists( $path ) ) {
-					include $path;
-					if ( isset( $array ) ) {
+    // Create forms
+    if ( count( self::$forms ) ) {
+      $i = 1;
+      foreach ( self::$forms as $title => $name ) {
+        $path = realpath( ABSPATH . '../data/forms' ) . '/' . $name . '.php';
+        if ( file_exists( $path ) ) {
+          include $path;
+          if ( isset( $array ) ) {
 
-						// Post
-						if ( $i == 1 ) {
-							$post = get_posts( [
-								'name'        => 'contact-form-1',
-								'post_type'   => 'wpcf7_contact_form',
-								'post_status' => 'publish',
-								'numberposts' => 1
-							] );
-							if ( $post ) {
-								$id = wp_update_post( [
-									'ID'           => $post[ 0 ]->ID,
-									'post_title'   => $title,
-									'post_content' => '',//$contents
-								] );
-							}
-						} else {
-							$id = wp_insert_post( [
-								'post_name'    => 'contact-form-' . $i,
-								'post_type'    => 'wpcf7_contact_form',
-								'post_title'   => $title,
-								'post_status'  => 'publish',
-								'post_content' => '',//$contents
-							] );
-						}
+            // Post
+            if ( $i == 1 ) {
+              $post = get_posts( [
+                'name'        => 'contact-form-1',
+                'post_type'   => 'wpcf7_contact_form',
+                'post_status' => 'publish',
+                'numberposts' => 1
+              ] );
+              if ( $post ) {
+                $id = wp_update_post( [
+                  'ID'           => $post[0]->ID,
+                  'post_title'   => $title,
+                  'post_content' => '',//$contents
+                ] );
+              }
+            } else {
+              $id = wp_insert_post( [
+                'post_name'    => 'contact-form-' . $i,
+                'post_type'    => 'wpcf7_contact_form',
+                'post_title'   => $title,
+                'post_status'  => 'publish',
+                'post_content' => '',//$contents
+              ] );
+            }
 
-						if ( ! $id ) {
-							return false;
-						} // Meta
-						else {
-							//var_dump( "POST: " . $id );
-							foreach ( $array as $key => $value ) {
-								update_post_meta( $id, $key, $value );
-							}
-						}
-					}
-				}
-				$i ++;
-			}
-		}
+            if ( ! $id ) {
+              return false;
+            } // Meta
+            else {
+              //var_dump( "POST: " . $id );
+              foreach ( $array as $key => $value ) {
+                update_post_meta( $id, $key, $value );
+              }
+            }
+          }
+        }
+        $i ++;
+      }
+    }
 
-		return true;
-	}
+    return true;
+  }
 
-	/**
-	 * Create all categories
-	 *
-	 * @return bool
-	 */
-	public static function create_categories() {
+  /**
+   * Create all categories
+   *
+   * @return bool
+   */
+  public static function create_categories() {
 
-		// Create categories
-		if ( count( self::$categories ) ) {
-			foreach ( self::$categories as $name => $id ) {
-				$category_id = wp_create_category( $name );
-				if ( ! $category_id ) {
-					return false;
-				}
-				self::$categories[ $name ] = $category_id;
-			}
-		}
+    // Create categories
+    if ( count( self::$categories ) ) {
+      foreach ( self::$categories as $name => $id ) {
+        $category_id = wp_create_category( $name );
+        if ( ! $category_id ) {
+          return false;
+        }
+        self::$categories[ $name ] = $category_id;
+      }
+    }
 
-		return true;
-	}
+    return true;
+  }
 
-	/**
-	 * Create all menus and assign items
-	 *
-	 * @return bool
-	 */
-	public static function create_menus() {
+  /**
+   * Create all menus and assign items
+   *
+   * @return bool
+   */
+  public static function create_menus() {
 
-		// Create menus
-		if ( count( self::$menus ) ) {
-			$locations = [];
-			foreach ( self::$menus as $name => $items ) {
-				//wp_delete_nav_menu($name);
-				$menu_id = wp_create_nav_menu( $name );
-				if ( ! $menu_id ) {
-					return false;
-				}
-				self::_create_menu( $items, $menu_id );
+    // Create menus
+    if ( count( self::$menus ) ) {
+      $locations = [];
+      foreach ( self::$menus as $name => $items ) {
+        //wp_delete_nav_menu($name);
+        $menu_id = wp_create_nav_menu( $name );
+        if ( ! $menu_id ) {
+          return false;
+        }
+        self::_create_menu( $items, $menu_id );
 
-				$term                     = get_term_by( 'name', $name, 'nav_menu' );
-				$locations[ $term->slug ] = $term->term_id;
-			}
-			set_theme_mod( 'nav_menu_locations', $locations );
-		}
+        $term                     = get_term_by( 'name', $name, 'nav_menu' );
+        $locations[ $term->slug ] = $term->term_id;
+      }
+      set_theme_mod( 'nav_menu_locations', $locations );
+    }
 
-		return true;
-	}
+    return true;
+  }
 
-	/**
-	 * Create memebers
-	 *
-	 * @return bool
-	 */
-	public static function create_members() {
-	  $path = ABSPATH . "../data/WPGAM.xls";
-	  if( !file_exists( $path ) ) {
-	    Wep_Plugin::$message['alert'][] = 'Missing asset: ' . basename( $path );
+  /**
+   * Create memebers
+   *
+   * @return bool
+   */
+  public static function create_members() {
+    $path = ABSPATH . "../data/WPGAM.xls";
+    if ( ! file_exists( $path ) ) {
+      Wep_Plugin::$message['alert'][] = 'Missing asset: ' . basename( $path );
+
       return false;
     }
 
-		require WEP_VENDOR . '/phpoffice/phpexcel/Classes/PHPExcel.php';
-		$countries = require WEP_VENDOR . '/umpirsky/country-list/data/en_GB/country.php';
+    require WEP_VENDOR . '/phpoffice/phpexcel/Classes/PHPExcel.php';
+    $countries = require WEP_VENDOR . '/umpirsky/country-list/data/en_GB/country.php';
 
-		$objReader = PHPExcel_IOFactory::createReader( 'Excel5' );
-		$objReader->setReadDataOnly( true );
-		$objPHPExcel = $objReader->load( $path );
+    $objReader = PHPExcel_IOFactory::createReader( 'Excel5' );
+    $objReader->setReadDataOnly( true );
+    $objPHPExcel = $objReader->load( $path );
 
-		/**
-		 * Pull country entries from XLS
-		 */
-		$objWorksheet = $objPHPExcel->getSheet( 0 );
+    /**
+     * Pull country entries from XLS
+     */
+    $objWorksheet = $objPHPExcel->getSheet( 0 );
 
-		$highestRow         = $objWorksheet->getHighestRow();
-		$highestColumn      = $objWorksheet->getHighestColumn();
-		$highestColumnIndex = PHPExcel_Cell::columnIndexFromString( $highestColumn );
+    $highestRow         = $objWorksheet->getHighestRow();
+    $highestColumn      = $objWorksheet->getHighestColumn();
+    $highestColumnIndex = PHPExcel_Cell::columnIndexFromString( $highestColumn );
 
-		$columns = $results = [];
-		for ( $row = 1; $row <= $highestRow; ++ $row ) {
-			for ( $col = 0; $col <= $highestColumnIndex; ++ $col ) {
-				if ( $row == 1 ) {
-					$columns[ $col ] = trim( $objWorksheet->getCellByColumnAndRow( $col, $row )->getValue() );
-				} else {
-					$results[ $row ][ $columns[ $col ] ] = trim( $objWorksheet->getCellByColumnAndRow( $col, $row )->getValue() );
-				}
-			}
-		}
+    $columns = $results = [];
+    for ( $row = 1; $row <= $highestRow; ++ $row ) {
+      for ( $col = 0; $col <= $highestColumnIndex; ++ $col ) {
+        if ( $row == 1 ) {
+          $columns[ $col ] = trim( $objWorksheet->getCellByColumnAndRow( $col, $row )->getValue() );
+        } else {
+          $results[ $row ][ $columns[ $col ] ] = trim( $objWorksheet->getCellByColumnAndRow( $col, $row )->getValue() );
+        }
+      }
+    }
 
-		$fields = [
-			'Country'           => [
-				'country',
-				'597069491a1af'
-			],
-			'Sign up'           => [
-				'sign_up',
-				'59706f6101217'
-			],
-			'Engagement update' => [
-				'engagement',
-				'597070b8f57f1'
-			],
-			'Actions'           => [
-				'actions',
-				'597070cd13e15'
-			],
-			'Criticality'       => [
-				'criticality',
-				'597070892d24e'
-			],
-			'Official contact'  => [
-				'official_contact',
-				'5970700ba285d'
-			],
-			'Email'             => [
-				'official_contact_email',
-				'597070273ed0c'
-			],
-			'Minister'          => [
-				'minister',
-				'59706fb813519'
-			],
-			'Minister Email'    => [
-				'minister_email',
-				'59706ffc5d1c4'
-			]
-		];
+    $fields = [
+      'Country'           => [
+        'country',
+        '597069491a1af'
+      ],
+      'Sign up'           => [
+        'sign_up',
+        '59706f6101217'
+      ],
+      'Engagement update' => [
+        'engagement',
+        '597070b8f57f1'
+      ],
+      'Actions'           => [
+        'actions',
+        '597070cd13e15'
+      ],
+      'Criticality'       => [
+        'criticality',
+        '597070892d24e'
+      ],
+      'Official contact'  => [
+        'official_contact',
+        '5970700ba285d'
+      ],
+      'Email'             => [
+        'official_contact_email',
+        '597070273ed0c'
+      ],
+      'Minister'          => [
+        'minister',
+        '59706fb813519'
+      ],
+      'Minister Email'    => [
+        'minister_email',
+        '59706ffc5d1c4'
+      ]
+    ];
 
-		$criticality_fields = [
-			'Low'    => 0,
-			'Medium' => 1,
-			'High'   => 2
-		];
+    $criticality_fields = [
+      'Low'    => 0,
+      'Medium' => 1,
+      'High'   => 2
+    ];
 
-		$signup_fields = [
-			''                => 'ga',
-			'Global Alliance' => 'ga',
-			'WePROTECT'       => 'wp',
-			'None'            => 'none',
-			'WPGA'            => 'wpga',
-			'Confirmed'       => 'wpga' // TODO: Check what 'COnfirmed' should be classed as.
-		];
+    $signup_fields = [
+      ''                => 'ga',
+      'Global Alliance' => 'ga',
+      'WePROTECT'       => 'wp',
+      'None'            => 'none',
+      'WPGA'            => 'wpga',
+      'Confirmed'       => 'wpga' // TODO: Check what 'COnfirmed' should be classed as.
+    ];
 
-		foreach ( $results as $row ) {
-			if ( empty( $row[ 'Country' ] ) ) {
-				continue;
-			}
-			$content                   = [];
-			$content[ 'post_name' ]    = sanitize_title( $row[ 'Country' ] );
-			$content[ 'post_title' ]   = $row[ 'Country' ];
-			$content[ 'post_content' ] = '';
-			$content[ 'post_type' ]    = 'member';
-			$content[ 'post_status' ]  = 'publish';
-			$id                        = wp_insert_post( $content );
-			if ( ! $id ) {
-				var_dump( $content );
+    foreach ( $results as $row ) {
+      if ( empty( $row['Country'] ) ) {
+        continue;
+      }
+      $content                 = [];
+      $content['post_name']    = sanitize_title( $row['Country'] );
+      $content['post_title']   = $row['Country'];
+      $content['post_content'] = '';
+      $content['post_type']    = 'member';
+      $content['post_status']  = 'publish';
+      $id                      = wp_insert_post( $content );
+      if ( ! $id ) {
+        var_dump( $content );
 
-				return false;
-			} else {
-				if ( empty( $row[ 'Criticality' ] ) ) {
-					$row[ 'Criticality' ] = 'Medium';
-				}
-				$row[ 'Criticality' ] = $criticality_fields[ $row[ 'Criticality' ] ];
+        return false;
+      } else {
+        if ( empty( $row['Criticality'] ) ) {
+          $row['Criticality'] = 'Medium';
+        }
+        $row['Criticality'] = $criticality_fields[ $row['Criticality'] ];
 
-				$row[ 'Sign up' ] = $signup_fields[ $row[ 'Sign up' ] ];
-				$row[ 'Country' ] = array_search( $row[ 'Country' ], $countries );
+        $row['Sign up'] = $signup_fields[ $row['Sign up'] ];
+        $row['Country'] = array_search( $row['Country'], $countries );
 
-				update_post_meta( $id, 'group', 'country' );
-				update_post_meta( $id, '_group', 'field_597068f8afb36' );
+        update_post_meta( $id, 'group', 'country' );
+        update_post_meta( $id, '_group', 'field_597068f8afb36' );
 
-				foreach ( $fields as $key => $values ) {
-					if ( array_key_exists( $key, $row ) ) {
-						update_post_meta( $id, $values[ 0 ], $row[ $key ] );
-						update_post_meta( $id, '_' . $values[ 0 ], 'field_' . $values[ 1 ] );
-					}
-				}
-			}
-		}
+        foreach ( $fields as $key => $values ) {
+          if ( array_key_exists( $key, $row ) ) {
+            update_post_meta( $id, $values[0], $row[ $key ] );
+            update_post_meta( $id, '_' . $values[0], 'field_' . $values[1] );
+          }
+        }
+      }
+    }
 
-		/**
-		 * Organisations
-		 */
-		$objWorksheet = $objPHPExcel->getSheet( 1 );
+    /**
+     * Organisations
+     */
+    $objWorksheet = $objPHPExcel->getSheet( 1 );
 
-		$highestRow         = $objWorksheet->getHighestRow();
-		$highestColumn      = $objWorksheet->getHighestColumn();
-		$highestColumnIndex = PHPExcel_Cell::columnIndexFromString( $highestColumn );
+    $highestRow         = $objWorksheet->getHighestRow();
+    $highestColumn      = $objWorksheet->getHighestColumn();
+    $highestColumnIndex = PHPExcel_Cell::columnIndexFromString( $highestColumn );
 
-		$columns = $results = [];
-		for ( $row = 1; $row <= $highestRow; ++ $row ) {
-			for ( $col = 0; $col <= $highestColumnIndex; ++ $col ) {
-        if ( $row == 1 )
+    $columns = $results = [];
+    for ( $row = 1; $row <= $highestRow; ++ $row ) {
+      for ( $col = 0; $col <= $highestColumnIndex; ++ $col ) {
+        if ( $row == 1 ) {
           continue;
-				if ( $row == 2 ) {
-					$columns[ $col ] = trim( $objWorksheet->getCellByColumnAndRow( $col, $row )->getValue() );
-				} else {
-					$results[ $row ][ $columns[ $col ] ] = trim( $objWorksheet->getCellByColumnAndRow( $col, $row )->getValue() );
-				}
-			}
-		}
-
-		var_dump($results);
-
-		foreach ( $results as $row ) {
-			if ( empty( $row[ 'Organisation' ] ) ) {
-				continue;
-			}
-
-			$name = sanitize_title( $row[ 'Organisation' ] );
-
-			$content                   = [];
-			$content[ 'post_name' ]    = $name;
-			$content[ 'post_title' ]   = $row[ 'Organisation' ];
-			$content[ 'post_content' ] = '';
-			$content[ 'post_type' ]    = 'member';
-			$content[ 'post_status' ]  = 'publish';
-
-			$id = wp_insert_post( $content );
-			if ( ! $id ) {
-			  var_dump('FAIL', $content);exit;
-				return false;
-			} else {
-				if ( empty( $row[ 'Criticality' ] ) ) {
-					$row[ 'Criticality' ] = 'High';
-				}
-				$row[ 'Criticality' ] = $criticality_fields[ $row[ 'Criticality' ] ];
-				$row[ 'Sign up' ]     = $signup_fields[ $row[ 'Sign up' ] ];
-				$row[ 'Country' ]     = 'US';
-				//var_dump($row['Organisation']);
-
-				update_post_meta( $id, 'group', 'organisation' );
-				update_post_meta( $id, '_group', 'field_597068f8afb36' );
-
-				foreach ( $fields as $key => $values ) {
-					if ( array_key_exists( $key, $row ) ) {
-						update_post_meta( $id, $values[ 0 ], $row[ $key ] );
-						update_post_meta( $id, '_' . $values[ 0 ], 'field_' . $values[ 1 ] );
-					}
-				}
-
-				$thumbnail = null;
-				if ( array_key_exists( $name . '.jpg', self::$media ) ) {
-					$thumbnail = $name . '.jpg';
-				} elseif ( array_key_exists( $name . '.png', self::$media ) ) {
-					$thumbnail = $name . '.png';
-				}
-
-				if ( $thumbnail ) {
-					update_post_meta( $id, '_thumbnail_id', self::$media[ $thumbnail ] );
-				}
-			}
-		}
-
-		/**
-		 * Industry
-		 */
-		$objWorksheet = $objPHPExcel->getSheet( 2 );
-
-		$highestRow         = $objWorksheet->getHighestRow();
-		$highestColumn      = $objWorksheet->getHighestColumn();
-		$highestColumnIndex = PHPExcel_Cell::columnIndexFromString( $highestColumn );
-
-		$columns = $results = [];
-		for ( $row = 1; $row <= $highestRow; ++ $row ) {
-			for ( $col = 0; $col <= $highestColumnIndex; ++ $col ) {
-        if ( $row == 1 )
-          continue;
+        }
         if ( $row == 2 ) {
-					$columns[ $col ] = trim( $objWorksheet->getCellByColumnAndRow( $col, $row )->getValue() );
-				} else {
-					$results[ $row ][ $columns[ $col ] ] = trim( $objWorksheet->getCellByColumnAndRow( $col, $row )->getValue() );
-				}
-			}
-		}
+          $columns[ $col ] = trim( $objWorksheet->getCellByColumnAndRow( $col, $row )->getValue() );
+        } else {
+          $results[ $row ][ $columns[ $col ] ] = trim( $objWorksheet->getCellByColumnAndRow( $col, $row )->getValue() );
+        }
+      }
+    }
 
-		foreach ( $results as $row ) {
-			if ( empty( $row[ 'Company' ] ) ) {
-				continue;
-			}
+    foreach ( $results as $row ) {
+      if ( empty( $row['Organisation'] ) ) {
+        continue;
+      }
 
-			$name = sanitize_title( $row[ 'Company' ] );
+      $name = sanitize_title( $row['Organisation'] );
 
-			$content                   = [];
-			$content[ 'post_name' ]    = $name;
-			$content[ 'post_title' ]   = $row[ 'Company' ];
-			$content[ 'post_content' ] = '';
-			$content[ 'post_type' ]    = 'member';
-			$content[ 'post_status' ]  = 'publish';
-			$id                        = wp_insert_post( $content );
-			if ( ! $id ) {
+      $content                 = [];
+      $content['post_name']    = $name;
+      $content['post_title']   = $row['Organisation'];
+      $content['post_content'] = '';
+      $content['post_type']    = 'member';
+      $content['post_status']  = 'publish';
+
+      $id = wp_insert_post( $content );
+      if ( ! $id ) {
+        var_dump( 'FAIL', $content );
+        exit;
+
+        return false;
+      } else {
+        if ( empty( $row['Criticality'] ) ) {
+          $row['Criticality'] = 'High';
+        }
+        $row['Criticality'] = $criticality_fields[ $row['Criticality'] ];
+        $row['Sign up']     = $signup_fields[ $row['Sign up'] ];
+        $row['Country']     = 'US';
+
+        update_post_meta( $id, 'group', 'organisation' );
+        update_post_meta( $id, '_group', 'field_597068f8afb36' );
+
+        foreach ( $fields as $key => $values ) {
+          if ( array_key_exists( $key, $row ) ) {
+            update_post_meta( $id, $values[0], $row[ $key ] );
+            update_post_meta( $id, '_' . $values[0], 'field_' . $values[1] );
+          }
+        }
+
+        $thumbnail = null;
+        if ( array_key_exists( $name . '.jpg', self::$media ) ) {
+          $thumbnail = $name . '.jpg';
+        } elseif ( array_key_exists( $name . '.png', self::$media ) ) {
+          $thumbnail = $name . '.png';
+        }
+
+        if ( $thumbnail ) {
+          update_post_meta( $id, '_thumbnail_id', self::$media[ $thumbnail ] );
+        }
+      }
+    }
+
+    /**
+     * Industry
+     */
+    $objWorksheet = $objPHPExcel->getSheet( 2 );
+
+    $highestRow         = $objWorksheet->getHighestRow();
+    $highestColumn      = $objWorksheet->getHighestColumn();
+    $highestColumnIndex = PHPExcel_Cell::columnIndexFromString( $highestColumn );
+
+    $columns = $results = [];
+    for ( $row = 1; $row <= $highestRow; ++ $row ) {
+      for ( $col = 0; $col <= $highestColumnIndex; ++ $col ) {
+        if ( $row == 1 ) {
+          continue;
+        }
+        if ( $row == 2 ) {
+          $columns[ $col ] = trim( $objWorksheet->getCellByColumnAndRow( $col, $row )->getValue() );
+        } else {
+          $results[ $row ][ $columns[ $col ] ] = trim( $objWorksheet->getCellByColumnAndRow( $col, $row )->getValue() );
+        }
+      }
+    }
+
+    foreach ( $results as $row ) {
+      if ( empty( $row['Company'] ) ) {
+        continue;
+      }
+
+      $name = sanitize_title( $row['Company'] );
+
+      $content                 = [];
+      $content['post_name']    = $name;
+      $content['post_title']   = $row['Company'];
+      $content['post_content'] = '';
+      $content['post_type']    = 'member';
+      $content['post_status']  = 'publish';
+      $id                      = wp_insert_post( $content );
+      if ( ! $id ) {
         //var_dump('FAIL', $content);exit;
-				return false;
-			} else {
-				if ( empty( $row[ 'Criticality' ] ) ) {
-					$row[ 'Criticality' ] = 'High';
-				}
-				$row[ 'Criticality' ] = $criticality_fields[ $row[ 'Criticality' ] ];
+        return false;
+      } else {
+        if ( empty( $row['Criticality'] ) ) {
+          $row['Criticality'] = 'High';
+        }
+        $row['Criticality'] = $criticality_fields[ $row['Criticality'] ];
 
-				$row[ 'Sign up' ] = $signup_fields[ $row[ 'Sign up' ] ];
-				//var_dump($content,$row);
+        $row['Sign up'] = $signup_fields[ $row['Sign up'] ];
+        //var_dump($content,$row);
 
-				update_post_meta( $id, 'group', 'industry' );
-				update_post_meta( $id, '_group', 'field_597068f8afb36' );
+        update_post_meta( $id, 'group', 'industry' );
+        update_post_meta( $id, '_group', 'field_597068f8afb36' );
 
-				foreach ( $fields as $key => $values ) {
-					if ( array_key_exists( $key, $row ) ) {
-						update_post_meta( $id, $values[ 0 ], $row[ $key ] );
-						update_post_meta( $id, '_' . $values[ 0 ], 'field_' . $values[ 1 ] );
-					}
-				}
+        foreach ( $fields as $key => $values ) {
+          if ( array_key_exists( $key, $row ) ) {
+            update_post_meta( $id, $values[0], $row[ $key ] );
+            update_post_meta( $id, '_' . $values[0], 'field_' . $values[1] );
+          }
+        }
 
-				$thumbnail = null;
-				if ( array_key_exists( $name . '.jpg', self::$media ) ) {
-					$thumbnail = $name . '.jpg';
-				} elseif ( array_key_exists( $name . '.png', self::$media ) ) {
-					$thumbnail = $name . '.png';
-				}
+        $thumbnail = null;
+        if ( array_key_exists( $name . '.jpg', self::$media ) ) {
+          $thumbnail = $name . '.jpg';
+        } elseif ( array_key_exists( $name . '.png', self::$media ) ) {
+          $thumbnail = $name . '.png';
+        }
 
-				if ( $thumbnail ) {
-					update_post_meta( $id, '_thumbnail_id', self::$media[ $thumbnail ] );
-				}
-			}
-		}
+        if ( $thumbnail ) {
+          update_post_meta( $id, '_thumbnail_id', self::$media[ $thumbnail ] );
+        }
+      }
+    }
 
-		return true;
-	}
+    return true;
+  }
 
-	/**
-	 * Create all media for the site
-	 *
-	 * @return bool
-	 */
-	public static function create_media() {
+  /**
+   * Create all media for the site
+   *
+   * @return bool
+   */
+  public static function create_media() {
 
-		// Create pages
-		if ( count( self::$media ) ) {
-			$wp_upload_dir = wp_upload_dir();
+    // Create pages
+    if ( count( self::$media ) ) {
+      $wp_upload_dir = wp_upload_dir();
 
-			// Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
-			require_once( ABSPATH . 'wp-admin/includes/image.php' );
+      // Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
+      require_once( ABSPATH . 'wp-admin/includes/image.php' );
 
-			$directories = [
-				'uploads',
-				date( 'Y' ),
-				date( 'm' )
-			];
+      $directories = [
+        'uploads',
+        date( 'Y' ),
+        date( 'm' )
+      ];
 
-			$path_src  = realpath( ABSPATH . '../data/assets' );
-			$path_dest = ABSPATH . 'wp-content';
-			foreach ( $directories as $directory ) {
-				if ( ! is_dir( $path_dest . '/' . $directory ) ) {
-					mkdir( $path_dest . '/' . $directory );
-				}
-				$path_dest .= '/' . $directory;
-			}
+      $path_src  = realpath( ABSPATH . '../data/assets' );
+      $path_dest = ABSPATH . 'wp-content';
+      foreach ( $directories as $directory ) {
+        if ( ! is_dir( $path_dest . '/' . $directory ) ) {
+          mkdir( $path_dest . '/' . $directory );
+        }
+        $path_dest .= '/' . $directory;
+      }
 
-			foreach ( self::$media as $filename => $id ) {
+      foreach ( self::$media as $filename => $id ) {
 
-				// Copy project assets "/data/assets" to WP uploads
-				$src  = $path_src . '/' . $filename;
-				$dest = $path_dest . '/' . $filename;
-				if( file_exists( $src ) )
+        // Copy project assets "/data/assets" to WP uploads
+        $src  = $path_src . '/' . $filename;
+        $dest = $path_dest . '/' . $filename;
+        if ( file_exists( $src ) ) {
           copy( $src, $dest );
-        else
+        } else {
           self::$message['alert'][] = 'Missing asset not copied: ' . basename( $src );
+        }
 
-				$filetype = wp_check_filetype( basename( $dest ), null );
+        $filetype = wp_check_filetype( basename( $dest ), null );
 
-				// Prepare an array of post data for the attachment.
-				$attachment = array(
-					'guid'           => $wp_upload_dir[ 'url' ] . '/' . basename( $dest ),
-					'post_mime_type' => $filetype[ 'type' ],
-					'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $dest ) ),
-					'post_content'   => '',
-					'post_status'    => 'inherit'
-				);
+        // Prepare an array of post data for the attachment.
+        $attachment = array(
+          'guid'           => $wp_upload_dir['url'] . '/' . basename( $dest ),
+          'post_mime_type' => $filetype['type'],
+          'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $dest ) ),
+          'post_content'   => '',
+          'post_status'    => 'inherit'
+        );
 
-				// Insert the attachment.
-				$id = wp_insert_attachment( $attachment, $wp_upload_dir[ 'url' ] . '/' . basename( $dest ) );
-				if ( ! $id ) {
-					//var_dump( 'MEDIA FAIL:', $attachment );
-					return false;
-				} else {
-					self::$media[ $filename ] = $id;
-				}
+        // Insert the attachment.
+        $id = wp_insert_attachment( $attachment, $wp_upload_dir['url'] . '/' . basename( $dest ) );
+        if ( ! $id ) {
+          //var_dump( 'MEDIA FAIL:', $attachment );
+          return false;
+        } else {
+          self::$media[ $filename ] = $id;
+        }
 
-				// Generate the metadata for the attachment, and update the database record.
-				$attach_data = wp_generate_attachment_metadata( $id, $wp_upload_dir[ 'url' ] . '/' . basename( $dest ) );
-				wp_update_attachment_metadata( $id, $attach_data );
-			}
-		}
+        // Generate the metadata for the attachment, and update the database record.
+        $attach_data = wp_generate_attachment_metadata( $id, $wp_upload_dir['url'] . '/' . basename( $dest ) );
+        wp_update_attachment_metadata( $id, $attach_data );
+      }
+    }
 
-		return true;
-	}
+    return true;
+  }
 
-	/**
-	 * Create all pages for the site
-	 *
-	 * @return bool
-	 */
-	public static function create_pages() {
+  /**
+   * Create all pages for the site
+   *
+   * @return bool
+   */
+  public static function create_pages() {
 
-		// Create pages
-		if ( count( self::$posts ) ) {
-			remove_filter( 'content_save_pre', 'wp_filter_post_kses' );
-			remove_filter( 'content_filtered_save_pre', 'wp_filter_post_kses' );
+    // Create pages
+    if ( count( self::$posts ) ) {
+      remove_filter( 'content_save_pre', 'wp_filter_post_kses' );
+      remove_filter( 'content_filtered_save_pre', 'wp_filter_post_kses' );
 
-			foreach ( self::$posts as $name => $content ) {
-				$blocks = null;
-				if ( array_key_exists( 'blocks', $content ) ) {
-					//$blocks = $content['blocks'];
-					unset( $content[ 'blocks' ] );
-				}
+      foreach ( self::$posts as $name => $content ) {
+        $blocks = null;
+        if ( array_key_exists( 'blocks', $content ) ) {
+          //$blocks = $content['blocks'];
+          unset( $content['blocks'] );
+        }
 
-				$content[ 'post_name' ] = $name;
-				if ( array_key_exists( 'post_parent', $content ) ) {
-					if ( array_key_exists( $content[ 'post_parent' ], self::$slugs ) ) {
-						$content[ 'post_parent' ] = self::$slugs[ $content[ 'post_parent' ] ];
-					}
-				}
+        $content['post_name'] = $name;
+        if ( array_key_exists( 'post_parent', $content ) ) {
+          if ( array_key_exists( $content['post_parent'], self::$slugs ) ) {
+            $content['post_parent'] = self::$slugs[ $content['post_parent'] ];
+          }
+        }
 
-				$group = null;
-				if ( array_key_exists( 'group', $content ) ) {
-					$group = $content[ 'group' ];
-					unset( $content[ 'group' ] );
-				}
+        $group = null;
+        if ( array_key_exists( 'group', $content ) ) {
+          $group = $content['group'];
+          unset( $content['group'] );
+        }
 
-				$thumbnail = null;
-				if ( array_key_exists( 'thumbnail', $content ) ) {
-					$thumbnail = $content[ 'thumbnail' ];
-					unset( $content[ 'thumbnail' ] );
-				}
+        $thumbnail = null;
+        if ( array_key_exists( 'thumbnail', $content ) ) {
+          $thumbnail = $content['thumbnail'];
+          unset( $content['thumbnail'] );
+        }
 
-				if ( array_key_exists( 'post_category', $content ) ) {
-					foreach ( $content[ 'post_category' ] as $i => $slug ) {
-						$category = get_category_by_slug( $slug );
-						if ( $category ) {
-							$content[ 'post_category' ][ $i ] = $category->term_id;
-						}
-					}
-					//var_dump($content['post_category']);
-				}
+        if ( array_key_exists( 'post_category', $content ) ) {
+          foreach ( $content['post_category'] as $i => $slug ) {
+            $category = get_category_by_slug( $slug );
+            if ( $category ) {
+              $content['post_category'][ $i ] = $category->term_id;
+            }
+          }
+          //var_dump($content['post_category']);
+        }
 
-				//var_dump($content);
-				$content[ 'post_status' ] = 'publish';
-				$id                       = wp_insert_post( $content );
-				if ( ! $id ) {
-					return false;
-				}
-				self::$slugs[ $name ] = $id;
+        //var_dump($content);
+        $content['post_status'] = 'publish';
+        $id                     = wp_insert_post( $content );
+        if ( ! $id ) {
+          return false;
+        }
+        self::$slugs[ $name ] = $id;
 
-				if ( $group ) {
-					update_post_meta( $id, 'group', array( (string) self::$slugs[ $group ] ) );
-					update_post_meta( $id, '_group', 'field_' . self::$fields[ 'group' ] );
-				}
+        if ( $group ) {
+          update_post_meta( $id, 'group', array( (string) self::$slugs[ $group ] ) );
+          update_post_meta( $id, '_group', 'field_' . self::$fields['group'] );
+        }
 
-				if ( $thumbnail ) {
-					update_post_meta( $id, '_thumbnail_id', self::$media[ $thumbnail ] );
-				}
-			}
+        if ( $thumbnail ) {
+          update_post_meta( $id, '_thumbnail_id', self::$media[ $thumbnail ] );
+        }
+      }
 
-			add_filter( 'content_save_pre', 'wp_filter_post_kses' );
-			add_filter( 'content_filtered_save_pre', 'wp_filter_post_kses' );
-		}
+      add_filter( 'content_save_pre', 'wp_filter_post_kses' );
+      add_filter( 'content_filtered_save_pre', 'wp_filter_post_kses' );
+    }
 
-		return true;
-	}
+    return true;
+  }
 
-	/**
-	 * Create post block relations
-	 *
-	 * @return bool
-	 */
-	public static function create_page_block_relations() {
+  /**
+   * Create post block relations
+   *
+   * @return bool
+   */
+  public static function create_page_block_relations() {
 
-		// Create page block relations
-		if ( count( self::$posts ) ) {
-			foreach ( self::$posts as $name => $content ) {
-				if ( $content[ 'blocks' ] ) {
-					$post = get_posts( [
-						'name'        => $name,
-						'post_type'   => 'page',
-						'post_status' => 'publish',
-						'numberposts' => 1
-					] );
-					if ( $post ) {
-						$id   = $post[ 0 ]->ID;
-						$meta = [];
-						foreach ( $content[ 'blocks' ] as $block ) {
-							$data = [
-								'name'        => $block,
-								'post_type'   => 'content_block',
-								'post_status' => 'publish',
-								'numberposts' => 1
-							];
-							$post = get_posts( $data );
-							if ( $post ) {
-								$meta[] = $post[ 0 ]->ID;
-							} else {
-								var_dump( 'BLOCK NOT FOUND:', $block );
-							}
-						}
-						if ( $meta ) {
-							update_post_meta( $id, 'assigned_blocks', $meta );
-							update_post_meta( $id, '_assigned_blocks', 'field_595e437018a98' );
-						}
-					}
-				}
-			}
-		}
+    // Create page block relations
+    if ( count( self::$posts ) ) {
+      foreach ( self::$posts as $name => $content ) {
+        if ( $content['blocks'] ) {
+          $post = get_posts( [
+            'name'        => $name,
+            'post_type'   => 'page',
+            'post_status' => 'publish',
+            'numberposts' => 1
+          ] );
+          if ( $post ) {
+            $id   = $post[0]->ID;
+            $meta = [];
+            foreach ( $content['blocks'] as $block ) {
+              $data = [
+                'name'        => $block,
+                'post_type'   => 'content_block',
+                'post_status' => 'publish',
+                'numberposts' => 1
+              ];
+              $post = get_posts( $data );
+              if ( $post ) {
+                $meta[] = $post[0]->ID;
+              } else {
+                var_dump( 'BLOCK NOT FOUND:', $block );
+              }
+            }
+            if ( $meta ) {
+              update_post_meta( $id, 'assigned_blocks', $meta );
+              update_post_meta( $id, '_assigned_blocks', 'field_595e437018a98' );
+            }
+          }
+        }
+      }
+    }
 
-		return true;
-	}
+    return true;
+  }
 
-	/**
-	 * Create post block relations
-	 *
-	 * @return bool
-	 */
-	public static function create_blocks() {
+  /**
+   * Create post block relations
+   *
+   * @return bool
+   */
+  public static function create_blocks() {
 
-		// Create blocks
-		if ( count( self::$blocks ) ) {
-			foreach ( self::$blocks as $name => $data ) {
-				$content                   = [];
-				$content[ 'post_name' ]    = $name;
-				$content[ 'post_type' ]    = 'content_block';
-				$content[ 'post_title' ]   = $data[ 'post_title' ];
-				$content[ 'post_content' ] = $data[ 'post_content' ];
-				$content[ 'post_status' ]  = 'publish';
-				$id                        = wp_insert_post( $content );
-				if ( ! $id ) {
-					var_dump( 'BLOCK NOT CREATED', $data );
+    // Create blocks
+    if ( count( self::$blocks ) ) {
+      foreach ( self::$blocks as $name => $data ) {
+        $content                 = [];
+        $content['post_name']    = $name;
+        $content['post_type']    = 'content_block';
+        $content['post_title']   = $data['post_title'];
+        $content['post_content'] = $data['post_content'];
+        $content['post_status']  = 'publish';
+        $id                      = wp_insert_post( $content );
+        if ( ! $id ) {
+          var_dump( 'BLOCK NOT CREATED', $data );
 
-					return false;
-				}
+          return false;
+        }
 
-				foreach ( $data as $key => $val ) {
-					if ( array_key_exists( $key, self::$fields ) ) {
-						if ( $key == 'linked_page' ) {
-							$data = [
-								'name'        => $val,
-								'post_type'   => 'page',
-								'post_status' => 'publish',
-								'numberposts' => 1
-							];
-							$post = get_posts( $data );
-							if ( $post ) {
-								$val = array( $post[ 0 ]->ID );
-							} else {
-								// TODO: Tests failing only in test env??
-								//var_dump( 'PAGE LINK FAIL (block: ' . $name . '): ', $data );
-								return false;
-							}
-						} elseif ( $key == 'image' ) {
-							$data = [
-								'name'        => pathinfo( $val, PATHINFO_FILENAME ),
-								'post_type'   => 'attachment',
-								'post_status' => 'inherit',
-								'numberposts' => 1
-							];
-							$post = get_posts( $data );
-							if ( $post ) {
-								$val = (int) $post[ 0 ]->ID;
-							} else {
-								// TODO: Tests failing only in test env??
-								//var_dump( 'IMAGE LINK FAIL (block: ' . $name . '): ', $data );
-								return false;
-							}
-						}
+        foreach ( $data as $key => $val ) {
+          if ( array_key_exists( $key, self::$fields ) ) {
+            if ( $key == 'linked_page' ) {
+              $data = [
+                'name'        => $val,
+                'post_type'   => 'page',
+                'post_status' => 'publish',
+                'numberposts' => 1
+              ];
+              $post = get_posts( $data );
+              if ( $post ) {
+                $val = array( $post[0]->ID );
+              } else {
+                // TODO: Tests failing only in test env??
+                //var_dump( 'PAGE LINK FAIL (block: ' . $name . '): ', $data );
+                return false;
+              }
+            } elseif ( $key == 'image' ) {
+              $data = [
+                'name'        => pathinfo( $val, PATHINFO_FILENAME ),
+                'post_type'   => 'attachment',
+                'post_status' => 'inherit',
+                'numberposts' => 1
+              ];
+              $post = get_posts( $data );
+              if ( $post ) {
+                $val = (int) $post[0]->ID;
+              } else {
+                // TODO: Tests failing only in test env??
+                //var_dump( 'IMAGE LINK FAIL (block: ' . $name . '): ', $data );
+                return false;
+              }
+            }
 
-						update_post_meta( $id, $key, $val );
-						update_post_meta( $id, '_' . $key, 'field_' . self::$fields[ $key ] );
-					}
-				}
-			}
-		}
+            update_post_meta( $id, $key, $val );
+            update_post_meta( $id, '_' . $key, 'field_' . self::$fields[ $key ] );
+          }
+        }
+      }
+    }
 
-		return true;
-	}
+    return true;
+  }
 
-	public static function setup() {
+  public static function setup() {
 
-	  // Check for composer
-	  if( !is_dir( WEP_VENDOR ) ) {
+    // Check for composer
+    if ( ! is_dir( WEP_VENDOR ) ) {
       self::$message['error'][] = 'Composer has not been installed.';
+
       return false;
     }
 
-		// Plugins!
-		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-		activate_plugin( 'advanced-custom-fields/acf.php' );
-		activate_plugin( 'contact-form-7/wp-contact-form-7.php' );
-		activate_plugin( 'bootstrap-for-contact-form-7/bootstrap-for-contact-form-7.php' );
-		activate_plugin( 'wordpress-seo/wp-seo.php' );
-		activate_plugin( 'twitter/twitter.php' );
-		activate_plugin( 'wp-mail-smtp/wp_mail_smtp.php' );
+    // Plugins!
+    include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+    activate_plugin( 'advanced-custom-fields/acf.php' );
+    activate_plugin( 'contact-form-7/wp-contact-form-7.php' );
+    activate_plugin( 'bootstrap-for-contact-form-7/bootstrap-for-contact-form-7.php' );
+    activate_plugin( 'wordpress-seo/wp-seo.php' );
+    activate_plugin( 'twitter/twitter.php' );
+    activate_plugin( 'wp-mail-smtp/wp_mail_smtp.php' );
 
-		// Do we have default content? Install core data
-		$post = get_post( 1 );
-		if ( $post ) {
-			wp_delete_comment( 1 );
-			wp_delete_post( 1, true );
-			wp_delete_post( 2, true );
+    // Do we have default content? Install core data
+    $post = get_post( 1 );
+    if ( $post ) {
+      wp_delete_comment( 1 );
+      wp_delete_post( 1, true );
+      wp_delete_post( 2, true );
 
-			// Add core content
-			include_once( ABSPATH . 'wp-admin/includes/taxonomy.php' );
+      // Add core content
+      include_once( ABSPATH . 'wp-admin/includes/taxonomy.php' );
 
-			self::create_media();
-			self::create_categories();
-			self::create_members();
-			self::create_forms();
-			self::create_pages();
-			self::create_menus();
-			self::create_blocks();
-			self::create_page_block_relations();
+      self::create_media();
+      self::create_categories();
+      self::create_members();
+      self::create_forms();
+      self::create_pages();
+      self::create_menus();
+      self::create_blocks();
+      self::create_page_block_relations();
 
-			// Site labels
-			update_option( 'blogname', 'WePROTECT Global Alliance' );
-			update_option( 'blogdescription', '' );
+      // Site labels
+      update_option( 'blogname', 'WePROTECT Global Alliance' );
+      update_option( 'blogdescription', '' );
 
-			// Set homepage as index
-			$post = get_posts( [
-				'name'        => 'home',
-				'post_type'   => 'page',
-				'post_status' => 'publish',
-				'numberposts' => 1
-			] );
-			if ( $post ) {
-				update_option( 'page_on_front', $post[ 0 ]->ID );
-				update_option( 'show_on_front', 'page' );
-			}
+      // Set homepage as index
+      $post = get_posts( [
+        'name'        => 'home',
+        'post_type'   => 'page',
+        'post_status' => 'publish',
+        'numberposts' => 1
+      ] );
+      if ( $post ) {
+        update_option( 'page_on_front', $post[0]->ID );
+        update_option( 'show_on_front', 'page' );
+      }
 
-			// Social media links
-			update_option( 'weprotect_theme', [
-				'facebook' => 'http://facebook.com/',
-				'twitter'  => 'http://twitter.com/'
-			] );
+      // Social media links
+      update_option( 'weprotect_theme', [
+        'facebook' => 'http://facebook.com/',
+        'twitter'  => 'http://twitter.com/'
+      ] );
 
-			// Permalinks
-			update_option( 'permalink_structure', '/%category%/%postname%/' );
-		}
-	}
+      // Permalinks
+      update_option( 'permalink_structure', '/%category%/%postname%/' );
+    }
+  }
 }

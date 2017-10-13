@@ -67,29 +67,36 @@
 		<div class="primary">
 			<div class="container">
 				<div class="row align-items-center">
-					<div class="col-12 col-xl-3 pr-0 text-center">
+					<div class="logo col-12 col-xl-3 pr-0 pl-5 text-lg-center text-xl-left">
 						<a role="home" href="<?php echo esc_url( home_url( '/' ) ) ?>"><img
 									src="<?php echo get_template_directory_uri() ?>/images/logo.svg" height="60"
 									width="232" alt="WePROTECT Global Alliance"></a>
 					</div>
-					<div class="col-12 col-xl-9 pt-4 pt-xl-0 pl-0">
+					<div class="navigation col-12 col-xl-9 pt-lg-4 pt-xl-0 pl-lg-0 text-lg-left">
 						<?php if ( has_nav_menu( 'main' ) ) : ?>
-							<nav role="navigation" class="pr-xl-5"
+							<nav role="navigation"
 								 aria-label="<?php esc_attr_e( 'Main Menu', 'wep' ); ?>">
+                                <ul class="icons nav justify-content-end">
+                                    <li>
+                                        <a href="#" class="menu hidden-lg-up" title="<?php _e( 'Menu', 'wep' ) ?>"><i class="fa fa-bars"
+                                                                                                                      aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="?s" class="search" title="<?php _e( 'Search', 'wep' ) ?>"><i class="fa fa-search"
+                                                                                                              aria-hidden="true"></i></a>
+                                    </li>
+                                </ul>
 								<?php
 								wp_nav_menu( array(
 									'theme_location' => 'main',
 									'depth'          => 2,
 									'container'      => false,
-									'menu_class'     => 'nav nav-pills justify-content-center justify-content-xl-end',
-									// nav-fill
+									'menu_class'     => 'nav nav-pills justify-content-xl-end hidden-md-down',
 									'fallback_cb'    => '__return_false',
 									'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 									'walker'         => new Boostrap_Nav_Menu,
 								) );
 								?>
-								<a href="#" class="search" alt="<?php _e( 'Search', 'wep' ) ?>"><i class="fa fa-search"
-																								   aria-hidden="true"></i></a>
 							</nav>
 						<?php endif; ?>
 					</div>

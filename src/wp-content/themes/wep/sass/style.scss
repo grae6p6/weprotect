@@ -29,6 +29,7 @@ $primary-light-color: #8e699b;
   color: #aaa !important;
   text-decoration: none !important;
 }
+
 body {
   color: #333334;
   font-size: 14px;
@@ -131,11 +132,25 @@ p, ul {
   margin: 0 0 1.5em 0;
 }
 
-/*.excerpt {
-  font-size: 0.8em;
-}*/
+.screen-reader-text {
+  @extend .sr-only;
+}
 
-
+.pagination {
+  display: block;
+  text-align: center;
+  margin: 2em 0;
+  .nav-links {
+    > * {
+      display: inline-block;
+      margin: 0 .2em;
+      padding: .2em .5em;
+      background-color: $primary-light-color;
+      color: $white;
+      border-radius: .2em;
+    }
+  }
+}
 
 /* Structure - Headers */
 header.body {
@@ -150,18 +165,29 @@ header.body {
   }
   .primary {
     padding: 2.5em 0;
-    .custom-logo-link {
-      display: block;
-      padding-bottom: 0.5em;
+    .logo {
+      height: 60px;
+      position: relative;
+      a {
+        position: absolute;
+        display: block;
+        float: left;
+        z-index: 999;
+      }
     }
     nav {
       position: relative;
-      .search {
-        position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 1.5em;
+      .icons a {
+        display: inline-block;
+        font-size: 2.25em;
         color: $primary-color;
+        margin: 0 0 0 .5em;
+        padding: 0 .25em;
+        border-radius: .25em;
+        &:hover {
+          background-color: $primary-color;
+          color: $white;
+        }
       }
     }
     /*#menu-primary > li > a {
@@ -171,12 +197,74 @@ header.body {
       color: $white;
     }*/
   }
+  @include media-breakpoint-down(md) {
+    .primary {
+      .navigation {
+
+        .icons {
+          margin-top: -60px;
+          height: 60px;
+          padding-top: 6px;
+        }
+      }
+    }
+    #menu-main {
+      margin: 2em 0 1em;
+      display: block;
+      width: 100%;
+      background-color: $primary-color;
+      border-radius: .25em;
+      padding: 0 4px 4px;
+      &.showing {
+        display: block !important;
+      }
+      li {
+        display: block;
+        &.show {
+          .nav-link {
+            background-color: $primary-color;
+          }
+        }
+        .nav-link {
+          color: $white !important;
+        }
+        ul {
+          display: block;
+          position: relative;
+          float: none;
+          border: none;
+          margin: 0;
+          background-color: $primary-light-color;
+          &:hover {
+            background-color: $primary-light-color;
+          }
+        }
+      }
+    }
+  }
   @include media-breakpoint-up(lg) {
     .primary {
       padding: 2.5em 0;
       .custom-logo-link {
         padding-bottom: 0;
       }
+      #menu-main {
+        margin-top: -38px;
+      }
+      nav {
+        height: 32px;
+        .icons {
+          a {
+            font-size: 1.5em;
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+  @include media-breakpoint-only(xl) {
+    #menu-main {
+      padding-right: 2.5em;
     }
   }
 }

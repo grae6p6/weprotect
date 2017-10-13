@@ -5,11 +5,18 @@ require("bootstrap/dist/js/bootstrap.min");
 	$(document).ready(function () {
 
 		// Mobile devices can double tab top level items to visit page
-		$('#menu-main li:has(ul)').doubleTapToGo();
+		//$('#menu-main li:has(ul)').doubleTapToGo();
 
+		// Create hyperlinks with a data-url prop
 		$('[data-url]').on('click', function (e) {
 			e.preventDefault();
 			window.location = $(this).data('url');
+		});
+
+		// Toggle responsive menu via burger... bun.
+		$('header.body .menu').on('click',function () {
+			var menu = $('#menu-main');
+            menu.toggleClass('showing');
 		});
 
 		// Create listener for tallest sibling ".block" within ".has-blocks" parent

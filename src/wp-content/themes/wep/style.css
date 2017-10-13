@@ -2118,7 +2118,7 @@ tbody.collapse.show {
   color: #292b2c;
   text-align: left;
   list-style: none;
-  background-color: #2a0637;
+  background-color: #562a64;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25em; }
@@ -2147,7 +2147,7 @@ tbody.collapse.show {
   .dropdown-item.active, .dropdown-item:active {
     color: #fff;
     text-decoration: none;
-    background-color: #562a64; }
+    background-color: #8e699b; }
   .dropdown-item.disabled, .dropdown-item:disabled {
     color: #636c72;
     cursor: not-allowed;
@@ -2613,7 +2613,7 @@ tbody.collapse.show {
 .nav-pills .nav-item.show .nav-link {
   color: #fff;
   cursor: default;
-  background-color: #2a0637; }
+  background-color: #562a64; }
 
 .nav-fill .nav-item {
   flex: 1 1 auto;
@@ -3406,14 +3406,14 @@ a.badge:focus, a.badge:hover {
   .list-group-item.active {
     z-index: 2;
     color: #fff;
-    background-color: #2a0637;
-    border-color: #2a0637; }
+    background-color: #562a64;
+    border-color: #562a64; }
     .list-group-item.active .list-group-item-heading,
     .list-group-item.active .list-group-item-heading > small,
     .list-group-item.active .list-group-item-heading > .small {
       color: inherit; }
     .list-group-item.active .list-group-item-text {
-      color: #c350ec; }
+      color: #d2afde; }
 
 .list-group-flush .list-group-item {
   border-right: 0;
@@ -4625,7 +4625,7 @@ a.bg-inverse:focus, a.bg-inverse:hover {
   top: 0;
   z-index: 1030; }
 
-.sr-only {
+.sr-only, .screen-reader-text {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -6236,9 +6236,18 @@ h1, h2, h3, h3, h4, h5, h6 {
 p, ul {
   margin: 0 0 1.5em 0; }
 
-/*.excerpt {
-  font-size: 0.8em;
-}*/
+.pagination {
+  display: block;
+  text-align: center;
+  margin: 2em 0; }
+  .pagination .nav-links > * {
+    display: inline-block;
+    margin: 0 .2em;
+    padding: .2em .5em;
+    background-color: #8e699b;
+    color: #fff;
+    border-radius: .2em; }
+
 /* Structure - Headers */
 header.body {
   font-size: 0.8em; }
@@ -6254,22 +6263,70 @@ header.body {
     #menu-primary > li.show > a {
       color: $white;
     }*/ }
-    header.body .primary .custom-logo-link {
-      display: block;
-      padding-bottom: 0.5em; }
+    header.body .primary .logo {
+      height: 60px;
+      position: relative; }
+      header.body .primary .logo a {
+        position: absolute;
+        display: block;
+        float: left;
+        z-index: 999; }
     header.body .primary nav {
       position: relative; }
-      header.body .primary nav .search {
-        position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 1.5em;
-        color: #562a64; }
+      header.body .primary nav .icons a {
+        display: inline-block;
+        font-size: 2.25em;
+        color: #562a64;
+        margin: 0 0 0 .5em;
+        padding: 0 .25em;
+        border-radius: .25em; }
+        header.body .primary nav .icons a:hover {
+          background-color: #562a64;
+          color: #fff; }
+  @media (max-width: 991px) {
+    header.body .primary .navigation .icons {
+      margin-top: -60px;
+      height: 60px;
+      padding-top: 6px; }
+    header.body #menu-main {
+      margin: 2em 0 1em;
+      display: block;
+      width: 100%;
+      background-color: #562a64;
+      border-radius: .25em;
+      padding: 0 4px 4px; }
+      header.body #menu-main.showing {
+        display: block !important; }
+      header.body #menu-main li {
+        display: block; }
+        header.body #menu-main li.show .nav-link {
+          background-color: #562a64; }
+        header.body #menu-main li .nav-link {
+          color: #fff !important; }
+        header.body #menu-main li ul {
+          display: block;
+          position: relative;
+          float: none;
+          border: none;
+          margin: 0;
+          background-color: #8e699b; }
+          header.body #menu-main li ul:hover {
+            background-color: #8e699b; } }
   @media (min-width: 992px) {
     header.body .primary {
       padding: 2.5em 0; }
       header.body .primary .custom-logo-link {
-        padding-bottom: 0; } }
+        padding-bottom: 0; }
+      header.body .primary #menu-main {
+        margin-top: -38px; }
+      header.body .primary nav {
+        height: 32px; }
+        header.body .primary nav .icons a {
+          font-size: 1.5em;
+          margin: 0; } }
+  @media (min-width: 1200px) {
+    header.body #menu-main {
+      padding-right: 2.5em; } }
 
 header.body .top, footer.body .primary, header.article {
   background-color: #562a64;

@@ -327,7 +327,7 @@
       $border-radius-sm:       .2em !default;
       
       $component-active-color: $white !default;
-      $component-active-bg:    $primary-dark-color !default;
+      $component-active-bg:    $primary-color !default;
       
       $caret-width:            .3em !default;
       
@@ -567,7 +567,7 @@
       $dropdown-min-width:             10em !default;
       $dropdown-padding-y:             .5em !default;
       $dropdown-margin-top:            .125em !default;
-      $dropdown-bg:                    $primary-dark-color !default;
+      $dropdown-bg:                    $primary-color !default;
       $dropdown-border-color:          rgba($black,.15) !default;
       $dropdown-border-width:          $border-width !default;
       $dropdown-divider-bg:            $gray-lighter !default;
@@ -578,7 +578,7 @@
       $dropdown-link-hover-bg:         $primary-light-color !default;
       
       $dropdown-link-active-color:     $white !default;
-      $dropdown-link-active-bg:        $primary-color !default;
+      $dropdown-link-active-bg:        $primary-light-color !default;
       
       $dropdown-link-disabled-color:   $gray-light !default;
       
