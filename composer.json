@@ -1,7 +1,7 @@
 {
     "autoload": {
         "psr-4": {
-            "SeleniumTests\\": "selenium-tests/"
+            "SeleniumTests\\": "tests/selenium/"
         }
     },
     "require-dev": {
@@ -11,6 +11,7 @@
         "fzaninotto/faker": "^1.6"
     },
     "require": {
-        "phpoffice/phpexcel": "^1.8"
+        "phpoffice/phpexcel": "^1.8",
+        "umpirsky/country-list": "^2.0"
     }
 }
