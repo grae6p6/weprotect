@@ -40,9 +40,9 @@ define( 'DB_COLLATE', '' );
 
 $table_prefix  = 'wptests_';   // Only numbers, letters, and underscores please!
 
-define( 'WP_TESTS_DOMAIN', 'example.org' );
-define( 'WP_TESTS_EMAIL', 'admin@example.org' );
-define( 'WP_TESTS_TITLE', 'Test Blog' );
+define( 'WP_TESTS_DOMAIN', 'weprotect.dev' );
+define( 'WP_TESTS_EMAIL', 'alex.gailey-white@panlogic.co.uk' );
+define( 'WP_TESTS_TITLE', 'WePROTECT' );
 
 define( 'WP_PHP_BINARY', 'php' );
 
