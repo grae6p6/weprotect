@@ -306,27 +306,29 @@ class Wep_Theme {
    * Update classes for bootstrap CF7 plugin HTML output
    */
   function wpcf7_form_elements( $res ) {
-    return str_replace(
-      [
-        'has-error',
-        'wpcf7-not-valid form-control',
-        'alert alert-warning',
-        'class="wpcf7-response-output wpcf7-validation-errors alert alert-danger"',
-        'class="radio"'
+    $res = preg_replace( '/<label class="" for="([a-z0-9\-_]+)"/', '<label class="" for="$1" id="$1-label"', $res );
+    $res = preg_replace( '/id="([a-z0-9\-_]+)" name="([a-z0-9\-_]+)"/', 'id="$1" name="$1" aria-labelledby="$1-label"', $res );
 
-        //'wpcf7-validates-as-required form-control'
-      ],
-      [
-        'has-error has-danger',
-        'wpcf7-not-valid form-control form-control-danger',
-        'form-control-feedback',
-        'class="wpcf7-response-output wpcf7-validation-errors alert alert-danger" role="alert"',
-        'class="form-check form-check-inline"',
-
-        //'wpcf7-validates-as-required form-control form-control-success'
-      ],
-      $res
+    $res = str_replace(
+        [
+          'has-error',
+          'wpcf7-not-valid form-control',
+          'alert alert-warning',
+          'class="wpcf7-response-output wpcf7-validation-errors alert alert-danger"',
+          'class="radio"'
+          //'wpcf7-validates-as-required form-control'
+        ],
+        [
+          'has-error has-danger',
+          'wpcf7-not-valid form-control form-control-danger',
+          'form-control-feedback',
+          'class="wpcf7-response-output wpcf7-validation-errors alert alert-danger" role="alert"',
+          'class="form-check form-check-inline"',
+          //'wpcf7-validates-as-required form-control form-control-success'
+        ],
+        $res
     );
+    return $res;
   }
 }
 
