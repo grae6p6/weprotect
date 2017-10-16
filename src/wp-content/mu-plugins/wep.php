@@ -366,17 +366,17 @@ class Wep_Plugin {
     'membership-form-government'   => [
       'post_title'   => 'Membership form - Government',
       'title'        => 'Apply for membership as a government',
-      'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="179" title="Apply for membership"]</p>'
+      'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="0" title="Apply for membership - Government"]</p>'
     ],
     'membership-form-company'      => [
       'post_title'   => 'Membership form - Company',
       'title'        => 'Apply for membership as a company',
-      'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="4" title="Apply for membership"]</p>'
+      'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="0" title="Apply for membership - Company"]</p>'
     ],
     'membership-form-organisation' => [
       'post_title'   => 'Membership form - Organisation',
       'title'        => 'Apply for membership as an organisation',
-      'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="180" title="Apply for membership"]</p>'
+      'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="0" title="Apply for membership - Organisation"]</p>'
     ],
 
 
