@@ -52,8 +52,9 @@ class Wep_Widget_Latest extends WP_Widget {
 						<div class="col-12 col-md-<?php echo $col_md ?>">
 							<?php if ( has_post_thumbnail() ) : ?>
 								<div class="block light" id="block-wl-<?php echo $the_ID ?>-<?php echo $i ?>">
-									<div><img src="<?php echo get_the_post_thumbnail_url( null, 'large' ) ?>"
-											  alt="<?php the_title() ?>"></div>
+									<div><img src="<?php echo get_the_post_thumbnail_url( null, 'block-cta' ) ?>"
+											  alt="<?php the_title() ?>"
+                                              data-2x="<?php echo get_the_post_thumbnail_url( null, 'block-cta-2x' ) ?>"></div>
 									<a href="<?php the_permalink() ?>"><h5><?php the_title() ?></h5>
 									</a><?php the_excerpt() ?></div>
 							<?php else : ?>
@@ -227,8 +228,9 @@ class Wep_Widget_Members_List extends WP_Widget {
 							<a href="javascript:void(0)" data-toggle="modal" data-target="#memberModal">
 								<div>
 									<?php if ( has_post_thumbnail( $member->ID ) ) : ?>
-										<img src="<?php echo get_the_post_thumbnail_url( $member->ID ) ?>"
-											 alt="<?php echo get_the_title( $member->ID ) ?>">
+										<img src="<?php echo get_the_post_thumbnail_url( $member->ID, 'block-cta' ) ?>"
+											 alt="<?php echo get_the_title( $member->ID ) ?>"
+                                             data-2x="<?php echo get_the_post_thumbnail_url( $member->ID, 'block-cta-2x' ) ?>">
 									<?php elseif ( $country ) : ?>
 										<img src="<?php echo get_template_directory_uri() . '/flags/' . $country . '.svg' ?>"
 											 alt="<?php echo get_the_title( $member->ID ) ?>">
@@ -399,8 +401,9 @@ class Wep_Widget_Board_List extends WP_Widget {
 							<a href="javascript:void(0)" data-toggle="modal" data-target="#memberModal">
 								<div>
 									<?php if ( has_post_thumbnail( $member->ID ) ) : ?>
-										<img src="<?php echo get_the_post_thumbnail_url( $member->ID ) ?>"
-											 alt="<?php echo get_the_title( $member->ID ) ?>">
+										<img src="<?php echo get_the_post_thumbnail_url( $member->ID, 'block-cta' ) ?>"
+											 alt="<?php echo get_the_title( $member->ID ) ?>"
+                                             data-2x="<?php echo get_the_post_thumbnail_url( $member->ID, 'block-cta-2x' ) ?>">
 									<?php endif; ?>
 									<i class="fa fa-info-circle"></i>
 								</div>
@@ -593,8 +596,9 @@ class Wep_Widget_News_Links extends WP_Widget {
 							<?php else : /* Post */ ?>
 								<div class="col-4 col-md-3">
 									<?php if ( has_post_thumbnail( $link->ID ) ) : ?>
-										<img src="<?php echo get_the_post_thumbnail_url( $link->ID, 'large' ) ?>"
-											 alt="<?php echo get_the_title( $link->ID ) ?>">
+										<img src="<?php echo get_the_post_thumbnail_url( $link->ID, 'block-cta' ) ?>"
+											 alt="<?php echo get_the_title( $link->ID ) ?>"
+                                             data-2x="<?php echo get_the_post_thumbnail_url( $link->ID, 'block-cta-2x' ) ?>">
 									<?php else : ?>
 										<i class="fa fa-newspaper-o" aria-hidden="true"></i>
 									<?php endif; ?>

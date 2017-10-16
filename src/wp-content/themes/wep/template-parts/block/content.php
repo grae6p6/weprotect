@@ -4,10 +4,10 @@ global $heading, $button, $title, $shortcode;
 
 // Block image
 $css   = [];
-$style = null;
+$attributes = null;
 $image = get_field( 'image' );
 if ( $image ) {
-	$css[] = 'background-image:url(' . $image[ 'sizes' ][ 'large' ] . ')';
+	$css[] = 'background-image:url(' . $image[ 'sizes' ][ 'block-image' ] . ')';
 }
 
 // Block colours
@@ -22,11 +22,16 @@ if ( $colour ) {
 
 // Block style
 if ( count( $css ) ) {
-	$style = ' style="' . implode( ';', $css ) . '"';
+  $attributes = ' style="' . implode( ';', $css ) . '"';
+}
+
+// Add retina image src
+if( $image ) {
+    $attributes .= ' data-2x="' . $image[ 'sizes' ][ 'block-image-2x' ] . '"';
 }
 
 ?>
-<div class="block"<?php echo $style ?>>
+<div class="block"<?php echo $attributes ?>>
 	<?php wep_edit_link( get_the_ID() ); ?>
 	<?php if ( $title || $button || ( get_the_content() != '' ) ) : ?>
 		<div class="container px-5">

@@ -4,8 +4,21 @@ require("bootstrap/dist/js/bootstrap.min");
 (function ($) {
 	$(document).ready(function () {
 
-		// Mobile devices can double tab top level items to visit page
-		//$('#menu-main li:has(ul)').doubleTapToGo();
+		// Retina/high DPI device?
+        if (window.matchMedia("(-webkit-device-pixel-ratio: 2)").matches) {
+            var $images = $("img[data-2x]");
+            console.log($images);
+            $.each($images, function() {
+                var $this = $(this);
+                $this.attr('src', $this.data('2x'));
+            });
+
+            var $divs = $("div[data-2x]");
+            $.each($divs, function() {
+                var $this = $(this);
+				$this.css('background-image', 'url("' + $this.data('2x') + '")');
+            });
+        }
 
 		// Create hyperlinks with a data-url prop
 		$('[data-url]').on('click', function (e) {

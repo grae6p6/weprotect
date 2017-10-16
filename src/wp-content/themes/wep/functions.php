@@ -44,6 +44,12 @@ class Wep_Theme {
       'support' => __( 'Contact and Support', 'wep' ),
     ) );
 
+    add_image_size( 'block-image', '1400', '800', false );
+    add_image_size( 'block-image-2x', '2800', '1600', false );
+
+    add_image_size( 'block-cta', '300', '300', false );
+    add_image_size( 'block-cta-2x', '600', '600', false );
+
     self::$options = get_option( 'weprotect_theme' );
   }
 
@@ -59,14 +65,14 @@ class Wep_Theme {
     // Theme stylesheet.
     wp_enqueue_style( 'wep-style', get_stylesheet_uri() );
 
-    wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Lato:400,700,900|Open+Sans:400,600,700' );
+    wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Lato:400,700|Open+Sans:400,700' );
 
     // Load the html5 shiv.
     wp_enqueue_script( 'html5', get_theme_file_uri( '/js/html5.js' ), array(), '3.7.3' );
     wp_script_add_data( 'html5', 'conditional', 'lt IE 9' );
 
     // Double tab for mobile devices clicking top level menu item
-    wp_enqueue_script( 'doubletaptogo', get_theme_file_uri( '/js/doubleTapToGo.js' ), array(), '1.0' );
+    //wp_enqueue_script( 'doubletaptogo', get_theme_file_uri( '/js/doubleTapToGo.js' ), array(), '1.0' );
 
     // Theme script.
     wp_enqueue_script( 'wep-scripts', get_theme_file_uri( '/js/scripts.min.js' ), array(), '1.0' );
@@ -74,7 +80,7 @@ class Wep_Theme {
     // Resize sensor for auto-sizing "block" items based on computed content
     wp_enqueue_script( 'resize-sensor', get_theme_file_uri( '/js/resizeSensor.min.js' ), array(), '1.0' );
 
-    // Font awesome
+    // Font awesome icons
     wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' );
 
     // TODO: Target widget rather than page?

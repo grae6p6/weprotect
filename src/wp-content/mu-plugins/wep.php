@@ -2545,7 +2545,7 @@ Statutory protections are in place to allow industry to fully and effectively re
         }
 
         // Generate the metadata for the attachment, and update the database record.
-        $attach_data = wp_generate_attachment_metadata( $id, $wp_upload_dir['url'] . '/' . basename( $dest ) );
+        $attach_data = wp_generate_attachment_metadata( $id, $wp_upload_dir['path'] . '/' . basename( $dest ) );
         wp_update_attachment_metadata( $id, $attach_data );
       }
     }

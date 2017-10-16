@@ -8,7 +8,7 @@ global $heading, $button, $title, $shortcode;
 
 // Block image
 $css   = [];
-$style = null;
+$attributes = null;
 $image = get_field( 'image' );
 
 // Block colours
@@ -23,11 +23,11 @@ if ( $colour ) {
 
 // Block style
 if ( count( $css ) ) {
-	$style = ' style="' . implode( ';', $css ) . '"';
+  $attributes = ' style="' . implode( ';', $css ) . '"';
 }
 
 ?>
-<div class="block block-cta"<?php echo $style ?>>
+<div class="block block-cta"<?php echo $attributes ?>>
 	<?php wep_edit_link( get_the_ID() ); ?>
 	<?php if ( $title || $button || ( get_the_content() != '' ) ) : ?>
 		<div class="container px-5">
@@ -41,8 +41,8 @@ if ( count( $css ) ) {
 				</div>
 				<?php if ( $image ) : ?>
 					<div class="col-12 col-md-6 col-lg-4">
-						<img src="<?php echo $image[ 'sizes' ][ 'large' ] ?>" alt="<?php echo $image[ 'alt' ] ?>"
-							 title="<?php echo $image[ 'title' ] ?>">
+						<img src="<?php echo $image[ 'sizes' ][ 'block-cta' ] ?>" alt="<?php echo $image[ 'alt' ] ?>"
+							 title="<?php echo $image[ 'title' ] ?>" data-2x="<?php echo $image[ 'sizes' ][ 'block-cta-2x' ] ?>">
 					</div>
 				<?php endif; ?>
 			</div>
