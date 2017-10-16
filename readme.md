@@ -1,18 +1,34 @@
-**WePROTECT**
+#WePROTECT Global Alliance
 
-DOCUMENTATION TO BE UPDATED
+WordPress website
 
-Compile vendor JS, and transpile SCSS to theme CSS
+##Vendors
 
-"npm run [dev|watch]"
+1. Install Node.Js. In project root run `npm install`
+2. Install Composer. In project root run `composer install`
 
-ASSETS
+##Installation
 
-All image assets used on theme activation (not included) to be placed into "/data/ignore/images"
+1. Access the site to install WordPress
+2. Login to control panel. Go to: `Appearance` > `Activate "WePROTECT"`
 
-INSTALLATION
+#####NOTE
+If theme is activated on clean WordPress install, a default set of posts & pages will be added to the database. Associated media assets (not provided in this repository) will also be added if placed in `~/data/assets`
 
-1. Run WP setup
-2. Appearance > Activate "WePROTECT"
+No media assets will mean text-only posts & pages.
 
-If theme is activated on clean WP install, core data is added.
+##Development
+
+#####TDD
+Using PHPUnit with `npm run test`
+
+#####Selenium
+Using Selenium (requires Selenium Server installed in your environment) and the PHP-based Facebook WebDriver `npm run btest`
+
+#####SCSS
+Webpack is used to transpile the themes SCSS `~/src/themes/wep/sass/style.scss`, and combine 
+libraries to `~/src/themes/wep/style.css` using `npm run watch`
+
+#####JS
+Webpack is used to transpile the themes JS `~/src/themes/wep/js/theme.js`, and combine 
+libraries to `~/src/themes/wep/js/scripts.min.js` using `npm run watch`
