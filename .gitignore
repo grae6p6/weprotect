@@ -20,6 +20,7 @@ src/wp-content/blogs.dir/
 src/wp-content/cache/
 src/wp-content/upgrade/
 src/wp-content/uploads/
+src/wp-content/w3tc-config/
 src/wp-content/wp-cache-config.php
 src/wp-content/plugins/hello.php
 
