@@ -29,10 +29,10 @@ global $post;
 			?>
 			<div class="row">
 				<div class="col image">
-					<!--<div style="height:35vh;background-image:url(<?php echo get_the_post_thumbnail_url() ?>);background-size:cover;"></div>-->
-					<img src="<?php echo get_the_post_thumbnail_url() ?>"
+					<img src="<?php echo get_the_post_thumbnail_url( null, 'block-image ') ?>"
 						 alt="<?php echo $post_thumbnail_meta[ '_wp_attachment_image_alt' ][ 0 ] ?>"
-						 title="<?php echo $post_thumbnail->post_excerpt ?>">
+						 title="<?php echo $post_thumbnail->post_excerpt ?>"
+             data-2x="<?php echo get_the_post_thumbnail_url( null, 'block-image-2x ') ?>">
 				</div>
 			</div>
 		<?php endif; ?>
