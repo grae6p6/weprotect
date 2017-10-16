@@ -71,9 +71,6 @@ class Wep_Theme {
     wp_enqueue_script( 'html5', get_theme_file_uri( '/js/html5.js' ), array(), '3.7.3' );
     wp_script_add_data( 'html5', 'conditional', 'lt IE 9' );
 
-    // Double tab for mobile devices clicking top level menu item
-    //wp_enqueue_script( 'doubletaptogo', get_theme_file_uri( '/js/doubleTapToGo.js' ), array(), '1.0' );
-
     // Theme script.
     wp_enqueue_script( 'wep-scripts', get_theme_file_uri( '/js/scripts.min.js' ), array(), '1.0' );
 
@@ -157,38 +154,50 @@ class Wep_Theme {
     );
   }
 
-  /*public static function pre_get_posts( $query ) {
+  /**
+   * Catch search queries to run sub-queries on "content blocks" that match search phrase, resulting IDs are attached
+   * to the main query in the form of a meta search on "assigned blocks"
+   *
+   * @param $query
+   */
+  public static function pre_get_posts( $query ) {
     if ( ! is_admin() && $query->is_main_query() ) {
       if ( $query->is_search ) {
-        //remove_action( 'pre_get_posts', 'filter_search_results' );
-        $my_secondary_loop = new WP_Query( ... );
-        if ( $my_secondary_loop->have_posts() ):
-          while ( $my_secondary_loop->have_posts() ): $my_secondary_loop->the_post();
-            //The secondary loop
-          endwhile;
-        endif;
-        wp_reset_postdata();
+        remove_action( 'pre_get_posts', 'filter_search_results' );
+        $my_secondary_loop = new WP_Query([
+          'post_type' => 'content_block',
+          's' => wp_kses( $_GET['s'], [] ),
+        ]);
 
-        //var_dump($query);
-        //$query->set('post_type', 'post');
-        $meta_query = array( 'relation' => 'OR' );
-        array_push( $meta_query, array(
-          'key'     => 'assigned_blocks',
-          'value'   => ':267;',
-          'compare' => 'LIKE'
-        ) );
-        array_push( $meta_query, array(
-          'key'     => 'assigned_blocks',
-          'value'   => ':248;',
-          'compare' => 'LIKE'
-        ) );
-        //$query->set("meta_query", $meta_query);
-        //var_dump($query2);
-        //var_dump( $GLOBALS['wp_query'] );
+        // Add posts, pages with blocks that contain search phrase
+        if ( $my_secondary_loop->have_posts() ):
+          $meta_query = array( 'relation' => 'OR' );
+          foreach( $my_secondary_loop->posts as $result ) :
+            array_push( $meta_query, array(
+              'key'     => 'assigned_blocks',
+              'value'   => ':' . $result->ID . ';',
+              'compare' => 'LIKE'
+            ) );
+          endforeach;
+          $query->set( 'meta_query', $meta_query );
+        endif;
+
+        // Limit to posts and pges only
+        $query->set( 'post_type', ['post', 'page'] );
+
+        // Remove search phrase, or meta conditionals won't work
+        $query->set( 's', '' );
+
+        //add_action( 'pre_get_posts', 'filter_search_results' );
       }
     }
-  }*/
+  }
 
+  /**
+   * Setup all custom fields
+   *
+   * @return bool
+   */
   public static function register_field_groups() {
     $case_studies = get_term_by( 'name', 'Case studies', 'category' );
     $events       = get_term_by( 'name', 'Events', 'category' );
@@ -211,6 +220,13 @@ class Wep_Theme {
     register_widget( 'Wep_Widget_News_Links' );
   }
 
+  /**
+   * Widget - Display last N posts, with optional category filters
+   *
+   * @param $atts
+   *
+   * @return string
+   */
   public static function widget_latest( $atts ) {
     extract( shortcode_atts(
       array(
@@ -227,6 +243,13 @@ class Wep_Theme {
     return $output;
   }
 
+  /**
+   * Widget - Display all members by type
+   *
+   * @param $atts
+   *
+   * @return string
+   */
   public static function widget_members_list( $atts ) {
     extract( shortcode_atts(
       array(
@@ -242,6 +265,13 @@ class Wep_Theme {
     return $output;
   }
 
+  /**
+   * Widget - Display all board members
+   *
+   * @param $atts
+   *
+   * @return string
+   */
   public static function widget_board_list() {
     ob_start();
     the_widget( 'Wep_Widget_Board_List' );
@@ -250,6 +280,13 @@ class Wep_Theme {
     return $output;
   }
 
+  /**
+   * Widget - Display last N posts from the news category
+   *
+   * @param $atts
+   *
+   * @return string
+   */
   public static function widget_news_links( $atts ) {
     extract( shortcode_atts(
       array(
@@ -299,7 +336,7 @@ class Wep_Theme {
 
 // Enable links manager for news
 add_filter( 'pre_option_link_manager_enabled', '__return_true' );
-add_filter( 'wpcf7_form_elements', 'wpcf7_form_elements', 10, 2 );
+add_filter( 'wpcf7_form_elements', [ 'Wep_Theme', 'wpcf7_form_elements' ], 10, 2 );
 
 /**
  * Actions
@@ -310,7 +347,7 @@ add_action( 'after_switch_theme', [ 'Wep_Theme', 'after_switch_theme' ], 10, 2 )
 add_action( 'widgets_init', [ 'Wep_Theme', 'widgets_init' ] );
 add_action( 'init', [ 'Wep_Theme', 'create_post_type' ] );
 add_action( 'init', [ 'Wep_Theme', 'register_field_groups' ] );
-//add_action( 'pre_get_posts', [ 'Wep_Theme', 'pre_get_posts' ] );
+add_action( 'pre_get_posts', [ 'Wep_Theme', 'pre_get_posts' ] );
 add_action( 'wp_enqueue_scripts', [ 'Wep_Theme', 'enqueue_scripts' ] );
 add_action( 'after_setup_theme', [ 'Wep_Theme', 'after_theme_setup' ] );
 
