@@ -306,6 +306,8 @@ class Wep_Theme {
    * Update classes for bootstrap CF7 plugin HTML output
    */
   function wpcf7_form_elements( $res ) {
+
+    // Add ARIA labels
     $res = preg_replace( '/<label class="" for="([a-z0-9\-_]+)"/', '<label class="" for="$1" id="$1-label"', $res );
     $res = preg_replace( '/id="([a-z0-9\-_]+)" name="([a-z0-9\-_]+)"/', 'id="$1" name="$1" aria-labelledby="$1-label"', $res );
 
