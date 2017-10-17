@@ -842,3 +842,42 @@ article {
 .dropdown-toggle::after {
   display: none;
 }
+
+/* Mailpoet */
+.mailpoet_paragraph {
+  @extend .form-group;
+}
+
+.mailpoet_text,
+.mailpoet_textarea,
+.mailpoet_select,
+.mailpoet_date_month,
+.mailpoet_date_day,
+.mailpoet_date_year,
+.mailpoet_date {
+  @extend .form-control;
+  width: 100% !important;
+  &.parsley-error {
+    @extend .form-control-danger;
+  }
+}
+
+.mailpoet_submit {
+  @extend .btn;
+  @extend .btn-primary;
+}
+
+.mailpoet_message {
+  display: none;
+  @extend .alert;
+}
+
+.mailpoet_validate_success {
+  display: block;
+  color:#468847;
+}
+
+.mailpoet_validate_error {
+  display: block;
+  color:#B94A48;
+}

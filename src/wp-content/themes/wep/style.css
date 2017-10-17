@@ -1494,7 +1494,13 @@ pre {
   .table-responsive.table-bordered {
     border: 0; }
 
-.form-control {
+.form-control, .mailpoet_text,
+.mailpoet_textarea,
+.mailpoet_select,
+.mailpoet_date_month,
+.mailpoet_date_day,
+.mailpoet_date_year,
+.mailpoet_date {
   display: block;
   width: 100%;
   padding: 0.5em 0.75em;
@@ -1507,27 +1513,75 @@ pre {
   border: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: 0.25em;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; }
-  .form-control::-ms-expand {
+  .form-control::-ms-expand, .mailpoet_text::-ms-expand,
+  .mailpoet_textarea::-ms-expand,
+  .mailpoet_select::-ms-expand,
+  .mailpoet_date_month::-ms-expand,
+  .mailpoet_date_day::-ms-expand,
+  .mailpoet_date_year::-ms-expand,
+  .mailpoet_date::-ms-expand {
     background-color: transparent;
     border: 0; }
-  .form-control:focus {
+  .form-control:focus, .mailpoet_text:focus,
+  .mailpoet_textarea:focus,
+  .mailpoet_select:focus,
+  .mailpoet_date_month:focus,
+  .mailpoet_date_day:focus,
+  .mailpoet_date_year:focus,
+  .mailpoet_date:focus {
     color: #464a4c;
     background-color: rgba(255, 255, 255, 0.5);
     border-color: #727274;
     outline: none; }
-  .form-control::placeholder {
+  .form-control::placeholder, .mailpoet_text::placeholder,
+  .mailpoet_textarea::placeholder,
+  .mailpoet_select::placeholder,
+  .mailpoet_date_month::placeholder,
+  .mailpoet_date_day::placeholder,
+  .mailpoet_date_year::placeholder,
+  .mailpoet_date::placeholder {
     color: #636c72;
     opacity: 1; }
-  .form-control:disabled, .form-control[readonly] {
+  .form-control:disabled, .mailpoet_text:disabled,
+  .mailpoet_textarea:disabled,
+  .mailpoet_select:disabled,
+  .mailpoet_date_month:disabled,
+  .mailpoet_date_day:disabled,
+  .mailpoet_date_year:disabled,
+  .mailpoet_date:disabled, .form-control[readonly], [readonly].mailpoet_text,
+  [readonly].mailpoet_textarea,
+  [readonly].mailpoet_select,
+  [readonly].mailpoet_date_month,
+  [readonly].mailpoet_date_day,
+  [readonly].mailpoet_date_year,
+  [readonly].mailpoet_date {
     background-color: #eceeef;
     opacity: 1; }
-  .form-control:disabled {
+  .form-control:disabled, .mailpoet_text:disabled,
+  .mailpoet_textarea:disabled,
+  .mailpoet_select:disabled,
+  .mailpoet_date_month:disabled,
+  .mailpoet_date_day:disabled,
+  .mailpoet_date_year:disabled,
+  .mailpoet_date:disabled {
     cursor: not-allowed; }
 
-select.form-control:not([size]):not([multiple]) {
+select.form-control:not([size]):not([multiple]), select.mailpoet_text:not([size]):not([multiple]),
+select.mailpoet_textarea:not([size]):not([multiple]),
+select.mailpoet_select:not([size]):not([multiple]),
+select.mailpoet_date_month:not([size]):not([multiple]),
+select.mailpoet_date_day:not([size]):not([multiple]),
+select.mailpoet_date_year:not([size]):not([multiple]),
+select.mailpoet_date:not([size]):not([multiple]) {
   height: calc(2.25em + 2px); }
 
-select.form-control:focus::-ms-value {
+select.form-control:focus::-ms-value, select.mailpoet_text:focus::-ms-value,
+select.mailpoet_textarea:focus::-ms-value,
+select.mailpoet_select:focus::-ms-value,
+select.mailpoet_date_month:focus::-ms-value,
+select.mailpoet_date_day:focus::-ms-value,
+select.mailpoet_date_year:focus::-ms-value,
+select.mailpoet_date:focus::-ms-value {
   color: #464a4c;
   background-color: rgba(255, 255, 255, 0.5); }
 
@@ -1563,39 +1617,81 @@ select.form-control:focus::-ms-value {
   line-height: 1.25;
   border: solid transparent;
   border-width: 1px 0; }
-  .form-control-static.form-control-sm, .input-group-sm > .form-control-static.form-control,
+  .form-control-static.form-control-sm, .input-group-sm > .form-control-static.form-control, .input-group-sm > .form-control-static.mailpoet_text, .input-group-sm >
+  .form-control-static.mailpoet_textarea, .input-group-sm >
+  .form-control-static.mailpoet_select, .input-group-sm >
+  .form-control-static.mailpoet_date_month, .input-group-sm >
+  .form-control-static.mailpoet_date_day, .input-group-sm >
+  .form-control-static.mailpoet_date_year, .input-group-sm >
+  .form-control-static.mailpoet_date,
   .input-group-sm > .form-control-static.input-group-addon,
-  .input-group-sm > .input-group-btn > .form-control-static.btn, .form-control-static.form-control-lg, .input-group-lg > .form-control-static.form-control,
+  .input-group-sm > .input-group-btn > .form-control-static.btn,
+  .input-group-sm > .input-group-btn > .form-control-static.mailpoet_submit, .form-control-static.form-control-lg, .input-group-lg > .form-control-static.form-control, .input-group-lg > .form-control-static.mailpoet_text, .input-group-lg >
+  .form-control-static.mailpoet_textarea, .input-group-lg >
+  .form-control-static.mailpoet_select, .input-group-lg >
+  .form-control-static.mailpoet_date_month, .input-group-lg >
+  .form-control-static.mailpoet_date_day, .input-group-lg >
+  .form-control-static.mailpoet_date_year, .input-group-lg >
+  .form-control-static.mailpoet_date,
   .input-group-lg > .form-control-static.input-group-addon,
-  .input-group-lg > .input-group-btn > .form-control-static.btn {
+  .input-group-lg > .input-group-btn > .form-control-static.btn,
+  .input-group-lg > .input-group-btn > .form-control-static.mailpoet_submit {
     padding-right: 0;
     padding-left: 0; }
 
-.form-control-sm, .input-group-sm > .form-control,
+.form-control-sm, .input-group-sm > .form-control, .input-group-sm > .mailpoet_text, .input-group-sm >
+.mailpoet_textarea, .input-group-sm >
+.mailpoet_select, .input-group-sm >
+.mailpoet_date_month, .input-group-sm >
+.mailpoet_date_day, .input-group-sm >
+.mailpoet_date_year, .input-group-sm >
+.mailpoet_date,
 .input-group-sm > .input-group-addon,
-.input-group-sm > .input-group-btn > .btn {
+.input-group-sm > .input-group-btn > .btn,
+.input-group-sm > .input-group-btn > .mailpoet_submit {
   padding: 0.25em 0.5em;
   font-size: 0.875em;
   border-radius: 0.2em; }
 
-select.form-control-sm:not([size]):not([multiple]), .input-group-sm > select.form-control:not([size]):not([multiple]),
+select.form-control-sm:not([size]):not([multiple]), .input-group-sm > select.form-control:not([size]):not([multiple]), .input-group-sm > select.mailpoet_text:not([size]):not([multiple]), .input-group-sm >
+select.mailpoet_textarea:not([size]):not([multiple]), .input-group-sm >
+select.mailpoet_select:not([size]):not([multiple]), .input-group-sm >
+select.mailpoet_date_month:not([size]):not([multiple]), .input-group-sm >
+select.mailpoet_date_day:not([size]):not([multiple]), .input-group-sm >
+select.mailpoet_date_year:not([size]):not([multiple]), .input-group-sm >
+select.mailpoet_date:not([size]):not([multiple]),
 .input-group-sm > select.input-group-addon:not([size]):not([multiple]),
-.input-group-sm > .input-group-btn > select.btn:not([size]):not([multiple]) {
+.input-group-sm > .input-group-btn > select.btn:not([size]):not([multiple]),
+.input-group-sm > .input-group-btn > select.mailpoet_submit:not([size]):not([multiple]) {
   height: 1.8125em; }
 
-.form-control-lg, .input-group-lg > .form-control,
+.form-control-lg, .input-group-lg > .form-control, .input-group-lg > .mailpoet_text, .input-group-lg >
+.mailpoet_textarea, .input-group-lg >
+.mailpoet_select, .input-group-lg >
+.mailpoet_date_month, .input-group-lg >
+.mailpoet_date_day, .input-group-lg >
+.mailpoet_date_year, .input-group-lg >
+.mailpoet_date,
 .input-group-lg > .input-group-addon,
-.input-group-lg > .input-group-btn > .btn {
+.input-group-lg > .input-group-btn > .btn,
+.input-group-lg > .input-group-btn > .mailpoet_submit {
   padding: 0.75em 1.5em;
   font-size: 1.25em;
   border-radius: 0.3em; }
 
-select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.form-control:not([size]):not([multiple]),
+select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.form-control:not([size]):not([multiple]), .input-group-lg > select.mailpoet_text:not([size]):not([multiple]), .input-group-lg >
+select.mailpoet_textarea:not([size]):not([multiple]), .input-group-lg >
+select.mailpoet_select:not([size]):not([multiple]), .input-group-lg >
+select.mailpoet_date_month:not([size]):not([multiple]), .input-group-lg >
+select.mailpoet_date_day:not([size]):not([multiple]), .input-group-lg >
+select.mailpoet_date_year:not([size]):not([multiple]), .input-group-lg >
+select.mailpoet_date:not([size]):not([multiple]),
 .input-group-lg > select.input-group-addon:not([size]):not([multiple]),
-.input-group-lg > .input-group-btn > select.btn:not([size]):not([multiple]) {
+.input-group-lg > .input-group-btn > select.btn:not([size]):not([multiple]),
+.input-group-lg > .input-group-btn > select.mailpoet_submit:not([size]):not([multiple]) {
   height: 3.16667em; }
 
-.form-group {
+.form-group, .mailpoet_paragraph {
   margin-bottom: 1em; }
 
 .form-text {
@@ -1634,7 +1730,14 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 .form-control-success,
 .form-control-warning,
-.form-control-danger {
+.form-control-danger,
+.mailpoet_text.parsley-error,
+.mailpoet_textarea.parsley-error,
+.mailpoet_select.parsley-error,
+.mailpoet_date_month.parsley-error,
+.mailpoet_date_day.parsley-error,
+.mailpoet_date_year.parsley-error,
+.mailpoet_date.parsley-error {
   padding-right: 2.25em;
   background-repeat: no-repeat;
   background-position: center right 0.5625em;
@@ -1647,7 +1750,13 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .has-success .custom-control {
   color: #5cb85c; }
 
-.has-success .form-control {
+.has-success .form-control, .has-success .mailpoet_text, .has-success
+.mailpoet_textarea, .has-success
+.mailpoet_select, .has-success
+.mailpoet_date_month, .has-success
+.mailpoet_date_day, .has-success
+.mailpoet_date_year, .has-success
+.mailpoet_date {
   border-color: #5cb85c; }
 
 .has-success .input-group-addon {
@@ -1665,7 +1774,13 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .has-warning .custom-control {
   color: #f0ad4e; }
 
-.has-warning .form-control {
+.has-warning .form-control, .has-warning .mailpoet_text, .has-warning
+.mailpoet_textarea, .has-warning
+.mailpoet_select, .has-warning
+.mailpoet_date_month, .has-warning
+.mailpoet_date_day, .has-warning
+.mailpoet_date_year, .has-warning
+.mailpoet_date {
   border-color: #f0ad4e; }
 
 .has-warning .input-group-addon {
@@ -1683,7 +1798,13 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .has-danger .custom-control {
   color: #d9534f; }
 
-.has-danger .form-control {
+.has-danger .form-control, .has-danger .mailpoet_text, .has-danger
+.mailpoet_textarea, .has-danger
+.mailpoet_select, .has-danger
+.mailpoet_date_month, .has-danger
+.mailpoet_date_day, .has-danger
+.mailpoet_date_year, .has-danger
+.mailpoet_date {
   border-color: #d9534f; }
 
 .has-danger .input-group-addon {
@@ -1691,7 +1812,13 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   border-color: #d9534f;
   background-color: #fdf7f7; }
 
-.has-danger .form-control-danger {
+.has-danger .form-control-danger, .has-danger .mailpoet_text.parsley-error, .has-danger
+.mailpoet_textarea.parsley-error, .has-danger
+.mailpoet_select.parsley-error, .has-danger
+.mailpoet_date_month.parsley-error, .has-danger
+.mailpoet_date_day.parsley-error, .has-danger
+.mailpoet_date_year.parsley-error, .has-danger
+.mailpoet_date.parsley-error {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23d9534f' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E"); }
 
 .form-inline {
@@ -1706,13 +1833,19 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
       align-items: center;
       justify-content: center;
       margin-bottom: 0; }
-    .form-inline .form-group {
+    .form-inline .form-group, .form-inline .mailpoet_paragraph {
       display: flex;
       flex: 0 0 auto;
       flex-flow: row wrap;
       align-items: center;
       margin-bottom: 0; }
-    .form-inline .form-control {
+    .form-inline .form-control, .form-inline .mailpoet_text, .form-inline
+    .mailpoet_textarea, .form-inline
+    .mailpoet_select, .form-inline
+    .mailpoet_date_month, .form-inline
+    .mailpoet_date_day, .form-inline
+    .mailpoet_date_year, .form-inline
+    .mailpoet_date {
       display: inline-block;
       width: auto;
       vertical-align: middle; }
@@ -1750,7 +1883,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
     .form-inline .has-feedback .form-control-feedback {
       top: 0; } }
 
-.btn {
+.btn, .mailpoet_submit {
   display: inline-block;
   font-weight: normal;
   line-height: 1.25;
@@ -1763,36 +1896,38 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   font-size: 1em;
   border-radius: 0.25em;
   transition: all 0.2s ease-in-out; }
-  .btn:focus, .btn:hover {
+  .btn:focus, .mailpoet_submit:focus, .btn:hover, .mailpoet_submit:hover {
     text-decoration: none; }
-  .btn:focus, .btn.focus {
+  .btn:focus, .mailpoet_submit:focus, .btn.focus, .focus.mailpoet_submit {
     outline: 0;
     box-shadow: 0 0 0 2px rgba(51, 51, 52, 0.25); }
-  .btn.disabled, .btn:disabled {
+  .btn.disabled, .disabled.mailpoet_submit, .btn:disabled, .mailpoet_submit:disabled {
     cursor: not-allowed;
     opacity: .65; }
-  .btn:active, .btn.active {
+  .btn:active, .mailpoet_submit:active, .btn.active, .active.mailpoet_submit {
     background-image: none; }
 
-a.btn.disabled,
-fieldset[disabled] a.btn {
+a.btn.disabled, a.disabled.mailpoet_submit,
+fieldset[disabled] a.btn,
+fieldset[disabled] a.mailpoet_submit {
   pointer-events: none; }
 
-.btn-primary {
+.btn-primary, .mailpoet_submit {
   color: #fff;
   background-color: #1ba39c;
   border-color: #1ba39c; }
-  .btn-primary:hover {
+  .btn-primary:hover, .mailpoet_submit:hover {
     color: #fff;
     background-color: #147772;
     border-color: #126e6a; }
-  .btn-primary:focus, .btn-primary.focus {
+  .btn-primary:focus, .mailpoet_submit:focus, .btn-primary.focus, .focus.mailpoet_submit {
     box-shadow: 0 0 0 2px rgba(27, 163, 156, 0.5); }
-  .btn-primary.disabled, .btn-primary:disabled {
+  .btn-primary.disabled, .disabled.mailpoet_submit, .btn-primary:disabled, .mailpoet_submit:disabled {
     background-color: #1ba39c;
     border-color: #1ba39c; }
-  .btn-primary:active, .btn-primary.active,
-  .show > .btn-primary.dropdown-toggle {
+  .btn-primary:active, .mailpoet_submit:active, .btn-primary.active, .active.mailpoet_submit,
+  .show > .btn-primary.dropdown-toggle,
+  .show > .dropdown-toggle.mailpoet_submit {
     color: #fff;
     background-color: #147772;
     background-image: none;
@@ -2037,12 +2172,12 @@ fieldset[disabled] a.btn {
     .btn-link:disabled:focus, .btn-link:disabled:hover {
       text-decoration: none; }
 
-.btn-lg, .btn-group-lg > .btn {
+.btn-lg, .btn-group-lg > .btn, .btn-group-lg > .mailpoet_submit {
   padding: 0.75em 1.5em;
   font-size: 1.25em;
   border-radius: 0.3em; }
 
-.btn-sm, .btn-group-sm > .btn {
+.btn-sm, .btn-group-sm > .btn, .btn-group-sm > .mailpoet_submit {
   padding: 0.25em 0.5em;
   font-size: 0.875em;
   border-radius: 0.2em; }
@@ -2193,25 +2328,37 @@ tbody.collapse.show {
   position: relative;
   display: inline-flex;
   vertical-align: middle; }
-  .btn-group > .btn,
-  .btn-group-vertical > .btn {
+  .btn-group > .btn, .btn-group > .mailpoet_submit,
+  .btn-group-vertical > .btn,
+  .btn-group-vertical > .mailpoet_submit {
     position: relative;
     flex: 0 1 auto; }
-    .btn-group > .btn:hover,
-    .btn-group-vertical > .btn:hover {
+    .btn-group > .btn:hover, .btn-group > .mailpoet_submit:hover,
+    .btn-group-vertical > .btn:hover,
+    .btn-group-vertical > .mailpoet_submit:hover {
       z-index: 2; }
-    .btn-group > .btn:focus, .btn-group > .btn:active, .btn-group > .btn.active,
+    .btn-group > .btn:focus, .btn-group > .mailpoet_submit:focus, .btn-group > .btn:active, .btn-group > .mailpoet_submit:active, .btn-group > .btn.active, .btn-group > .active.mailpoet_submit,
     .btn-group-vertical > .btn:focus,
+    .btn-group-vertical > .mailpoet_submit:focus,
     .btn-group-vertical > .btn:active,
-    .btn-group-vertical > .btn.active {
+    .btn-group-vertical > .mailpoet_submit:active,
+    .btn-group-vertical > .btn.active,
+    .btn-group-vertical > .active.mailpoet_submit {
       z-index: 2; }
-  .btn-group .btn + .btn,
+  .btn-group .btn + .btn, .btn-group .mailpoet_submit + .btn, .btn-group .btn + .mailpoet_submit, .btn-group .mailpoet_submit + .mailpoet_submit,
   .btn-group .btn + .btn-group,
+  .btn-group .mailpoet_submit + .btn-group,
   .btn-group .btn-group + .btn,
+  .btn-group .btn-group + .mailpoet_submit,
   .btn-group .btn-group + .btn-group,
   .btn-group-vertical .btn + .btn,
+  .btn-group-vertical .mailpoet_submit + .btn,
+  .btn-group-vertical .btn + .mailpoet_submit,
+  .btn-group-vertical .mailpoet_submit + .mailpoet_submit,
   .btn-group-vertical .btn + .btn-group,
+  .btn-group-vertical .mailpoet_submit + .btn-group,
   .btn-group-vertical .btn-group + .btn,
+  .btn-group-vertical .btn-group + .mailpoet_submit,
   .btn-group-vertical .btn-group + .btn-group {
     margin-left: -1px; }
 
@@ -2221,16 +2368,16 @@ tbody.collapse.show {
   .btn-toolbar .input-group {
     width: auto; }
 
-.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle), .btn-group > .mailpoet_submit:not(:first-child):not(:last-child):not(.dropdown-toggle) {
   border-radius: 0; }
 
-.btn-group > .btn:first-child {
+.btn-group > .btn:first-child, .btn-group > .mailpoet_submit:first-child {
   margin-left: 0; }
-  .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+  .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle), .btn-group > .mailpoet_submit:first-child:not(:last-child):not(.dropdown-toggle) {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0; }
 
-.btn-group > .btn:last-child:not(:first-child),
+.btn-group > .btn:last-child:not(:first-child), .btn-group > .mailpoet_submit:last-child:not(:first-child),
 .btn-group > .dropdown-toggle:not(:first-child) {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0; }
@@ -2238,15 +2385,15 @@ tbody.collapse.show {
 .btn-group > .btn-group {
   float: left; }
 
-.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {
+.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn, .btn-group > .btn-group:not(:first-child):not(:last-child) > .mailpoet_submit {
   border-radius: 0; }
 
-.btn-group > .btn-group:first-child:not(:last-child) > .btn:last-child,
+.btn-group > .btn-group:first-child:not(:last-child) > .btn:last-child, .btn-group > .btn-group:first-child:not(:last-child) > .mailpoet_submit:last-child,
 .btn-group > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0; }
 
-.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
+.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child, .btn-group > .btn-group:last-child:not(:first-child) > .mailpoet_submit:first-child {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0; }
 
@@ -2254,17 +2401,17 @@ tbody.collapse.show {
 .btn-group.open .dropdown-toggle {
   outline: 0; }
 
-.btn + .dropdown-toggle-split {
+.btn + .dropdown-toggle-split, .mailpoet_submit + .dropdown-toggle-split {
   padding-right: 0.75em;
   padding-left: 0.75em; }
-  .btn + .dropdown-toggle-split::after {
+  .btn + .dropdown-toggle-split::after, .mailpoet_submit + .dropdown-toggle-split::after {
     margin-left: 0; }
 
-.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split {
+.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split, .btn-group-sm > .mailpoet_submit + .dropdown-toggle-split {
   padding-right: 0.375em;
   padding-left: 0.375em; }
 
-.btn-lg + .dropdown-toggle-split, .btn-group-lg > .btn + .dropdown-toggle-split {
+.btn-lg + .dropdown-toggle-split, .btn-group-lg > .btn + .dropdown-toggle-split, .btn-group-lg > .mailpoet_submit + .dropdown-toggle-split {
   padding-right: 1.125em;
   padding-left: 1.125em; }
 
@@ -2273,43 +2420,48 @@ tbody.collapse.show {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center; }
-  .btn-group-vertical .btn,
+  .btn-group-vertical .btn, .btn-group-vertical .mailpoet_submit,
   .btn-group-vertical .btn-group {
     width: 100%; }
-  .btn-group-vertical > .btn + .btn,
+  .btn-group-vertical > .btn + .btn, .btn-group-vertical > .mailpoet_submit + .btn, .btn-group-vertical > .btn + .mailpoet_submit, .btn-group-vertical > .mailpoet_submit + .mailpoet_submit,
   .btn-group-vertical > .btn + .btn-group,
+  .btn-group-vertical > .mailpoet_submit + .btn-group,
   .btn-group-vertical > .btn-group + .btn,
+  .btn-group-vertical > .btn-group + .mailpoet_submit,
   .btn-group-vertical > .btn-group + .btn-group {
     margin-top: -1px;
     margin-left: 0; }
 
-.btn-group-vertical > .btn:not(:first-child):not(:last-child) {
+.btn-group-vertical > .btn:not(:first-child):not(:last-child), .btn-group-vertical > .mailpoet_submit:not(:first-child):not(:last-child) {
   border-radius: 0; }
 
-.btn-group-vertical > .btn:first-child:not(:last-child) {
+.btn-group-vertical > .btn:first-child:not(:last-child), .btn-group-vertical > .mailpoet_submit:first-child:not(:last-child) {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0; }
 
-.btn-group-vertical > .btn:last-child:not(:first-child) {
+.btn-group-vertical > .btn:last-child:not(:first-child), .btn-group-vertical > .mailpoet_submit:last-child:not(:first-child) {
   border-top-right-radius: 0;
   border-top-left-radius: 0; }
 
-.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
+.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn, .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .mailpoet_submit {
   border-radius: 0; }
 
-.btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child,
+.btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child, .btn-group-vertical > .btn-group:first-child:not(:last-child) > .mailpoet_submit:last-child,
 .btn-group-vertical > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0; }
 
-.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {
+.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child, .btn-group-vertical > .btn-group:last-child:not(:first-child) > .mailpoet_submit:first-child {
   border-top-right-radius: 0;
   border-top-left-radius: 0; }
 
-[data-toggle="buttons"] > .btn input[type="radio"],
+[data-toggle="buttons"] > .btn input[type="radio"], [data-toggle="buttons"] > .mailpoet_submit input[type="radio"],
 [data-toggle="buttons"] > .btn input[type="checkbox"],
+[data-toggle="buttons"] > .mailpoet_submit input[type="checkbox"],
 [data-toggle="buttons"] > .btn-group > .btn input[type="radio"],
-[data-toggle="buttons"] > .btn-group > .btn input[type="checkbox"] {
+[data-toggle="buttons"] > .btn-group > .mailpoet_submit input[type="radio"],
+[data-toggle="buttons"] > .btn-group > .btn input[type="checkbox"],
+[data-toggle="buttons"] > .btn-group > .mailpoet_submit input[type="checkbox"] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none; }
@@ -2318,24 +2470,74 @@ tbody.collapse.show {
   position: relative;
   display: flex;
   width: 100%; }
-  .input-group .form-control {
+  .input-group .form-control, .input-group .mailpoet_text, .input-group
+  .mailpoet_textarea, .input-group
+  .mailpoet_select, .input-group
+  .mailpoet_date_month, .input-group
+  .mailpoet_date_day, .input-group
+  .mailpoet_date_year, .input-group
+  .mailpoet_date {
     position: relative;
     z-index: 2;
     flex: 1 1 auto;
     width: 1%;
     margin-bottom: 0; }
-    .input-group .form-control:focus, .input-group .form-control:active, .input-group .form-control:hover {
+    .input-group .form-control:focus, .input-group .mailpoet_text:focus, .input-group
+    .mailpoet_textarea:focus, .input-group
+    .mailpoet_select:focus, .input-group
+    .mailpoet_date_month:focus, .input-group
+    .mailpoet_date_day:focus, .input-group
+    .mailpoet_date_year:focus, .input-group
+    .mailpoet_date:focus, .input-group .form-control:active, .input-group .mailpoet_text:active, .input-group
+    .mailpoet_textarea:active, .input-group
+    .mailpoet_select:active, .input-group
+    .mailpoet_date_month:active, .input-group
+    .mailpoet_date_day:active, .input-group
+    .mailpoet_date_year:active, .input-group
+    .mailpoet_date:active, .input-group .form-control:hover, .input-group .mailpoet_text:hover, .input-group
+    .mailpoet_textarea:hover, .input-group
+    .mailpoet_select:hover, .input-group
+    .mailpoet_date_month:hover, .input-group
+    .mailpoet_date_day:hover, .input-group
+    .mailpoet_date_year:hover, .input-group
+    .mailpoet_date:hover {
       z-index: 3; }
 
 .input-group-addon,
 .input-group-btn,
-.input-group .form-control {
+.input-group .form-control,
+.input-group .mailpoet_text,
+.input-group
+.mailpoet_textarea,
+.input-group
+.mailpoet_select,
+.input-group
+.mailpoet_date_month,
+.input-group
+.mailpoet_date_day,
+.input-group
+.mailpoet_date_year,
+.input-group
+.mailpoet_date {
   display: flex;
   flex-direction: column;
   justify-content: center; }
   .input-group-addon:not(:first-child):not(:last-child),
   .input-group-btn:not(:first-child):not(:last-child),
-  .input-group .form-control:not(:first-child):not(:last-child) {
+  .input-group .form-control:not(:first-child):not(:last-child),
+  .input-group .mailpoet_text:not(:first-child):not(:last-child),
+  .input-group
+  .mailpoet_textarea:not(:first-child):not(:last-child),
+  .input-group
+  .mailpoet_select:not(:first-child):not(:last-child),
+  .input-group
+  .mailpoet_date_month:not(:first-child):not(:last-child),
+  .input-group
+  .mailpoet_date_day:not(:first-child):not(:last-child),
+  .input-group
+  .mailpoet_date_year:not(:first-child):not(:last-child),
+  .input-group
+  .mailpoet_date:not(:first-child):not(:last-child) {
     border-radius: 0; }
 
 .input-group-addon,
@@ -2356,13 +2558,15 @@ tbody.collapse.show {
   border-radius: 0.25em; }
   .input-group-addon.form-control-sm,
   .input-group-sm > .input-group-addon,
-  .input-group-sm > .input-group-btn > .input-group-addon.btn {
+  .input-group-sm > .input-group-btn > .input-group-addon.btn,
+  .input-group-sm > .input-group-btn > .input-group-addon.mailpoet_submit {
     padding: 0.25em 0.5em;
     font-size: 0.875em;
     border-radius: 0.2em; }
   .input-group-addon.form-control-lg,
   .input-group-lg > .input-group-addon,
-  .input-group-lg > .input-group-btn > .input-group-addon.btn {
+  .input-group-lg > .input-group-btn > .input-group-addon.btn,
+  .input-group-lg > .input-group-btn > .input-group-addon.mailpoet_submit {
     padding: 0.75em 1.5em;
     font-size: 1.25em;
     border-radius: 0.3em; }
@@ -2370,51 +2574,77 @@ tbody.collapse.show {
   .input-group-addon input[type="checkbox"] {
     margin-top: 0; }
 
-.input-group .form-control:not(:last-child),
+.input-group .form-control:not(:last-child), .input-group .mailpoet_text:not(:last-child), .input-group
+.mailpoet_textarea:not(:last-child), .input-group
+.mailpoet_select:not(:last-child), .input-group
+.mailpoet_date_month:not(:last-child), .input-group
+.mailpoet_date_day:not(:last-child), .input-group
+.mailpoet_date_year:not(:last-child), .input-group
+.mailpoet_date:not(:last-child),
 .input-group-addon:not(:last-child),
 .input-group-btn:not(:last-child) > .btn,
+.input-group-btn:not(:last-child) > .mailpoet_submit,
 .input-group-btn:not(:last-child) > .btn-group > .btn,
+.input-group-btn:not(:last-child) > .btn-group > .mailpoet_submit,
 .input-group-btn:not(:last-child) > .dropdown-toggle,
 .input-group-btn:not(:first-child) > .btn:not(:last-child):not(.dropdown-toggle),
-.input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn {
+.input-group-btn:not(:first-child) > .mailpoet_submit:not(:last-child):not(.dropdown-toggle),
+.input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn,
+.input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .mailpoet_submit {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0; }
 
 .input-group-addon:not(:last-child) {
   border-right: 0; }
 
-.input-group .form-control:not(:first-child),
+.input-group .form-control:not(:first-child), .input-group .mailpoet_text:not(:first-child), .input-group
+.mailpoet_textarea:not(:first-child), .input-group
+.mailpoet_select:not(:first-child), .input-group
+.mailpoet_date_month:not(:first-child), .input-group
+.mailpoet_date_day:not(:first-child), .input-group
+.mailpoet_date_year:not(:first-child), .input-group
+.mailpoet_date:not(:first-child),
 .input-group-addon:not(:first-child),
 .input-group-btn:not(:first-child) > .btn,
+.input-group-btn:not(:first-child) > .mailpoet_submit,
 .input-group-btn:not(:first-child) > .btn-group > .btn,
+.input-group-btn:not(:first-child) > .btn-group > .mailpoet_submit,
 .input-group-btn:not(:first-child) > .dropdown-toggle,
 .input-group-btn:not(:last-child) > .btn:not(:first-child),
-.input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .btn {
+.input-group-btn:not(:last-child) > .mailpoet_submit:not(:first-child),
+.input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .btn,
+.input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .mailpoet_submit {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0; }
 
-.form-control + .input-group-addon:not(:first-child) {
+.form-control + .input-group-addon:not(:first-child), .mailpoet_text + .input-group-addon:not(:first-child),
+.mailpoet_textarea + .input-group-addon:not(:first-child),
+.mailpoet_select + .input-group-addon:not(:first-child),
+.mailpoet_date_month + .input-group-addon:not(:first-child),
+.mailpoet_date_day + .input-group-addon:not(:first-child),
+.mailpoet_date_year + .input-group-addon:not(:first-child),
+.mailpoet_date + .input-group-addon:not(:first-child) {
   border-left: 0; }
 
 .input-group-btn {
   position: relative;
   font-size: 0;
   white-space: nowrap; }
-  .input-group-btn > .btn {
+  .input-group-btn > .btn, .input-group-btn > .mailpoet_submit {
     position: relative;
     flex: 1; }
-    .input-group-btn > .btn + .btn {
+    .input-group-btn > .btn + .btn, .input-group-btn > .mailpoet_submit + .btn, .input-group-btn > .btn + .mailpoet_submit, .input-group-btn > .mailpoet_submit + .mailpoet_submit {
       margin-left: -1px; }
-    .input-group-btn > .btn:focus, .input-group-btn > .btn:active, .input-group-btn > .btn:hover {
+    .input-group-btn > .btn:focus, .input-group-btn > .mailpoet_submit:focus, .input-group-btn > .btn:active, .input-group-btn > .mailpoet_submit:active, .input-group-btn > .btn:hover, .input-group-btn > .mailpoet_submit:hover {
       z-index: 3; }
-  .input-group-btn:not(:last-child) > .btn,
+  .input-group-btn:not(:last-child) > .btn, .input-group-btn:not(:last-child) > .mailpoet_submit,
   .input-group-btn:not(:last-child) > .btn-group {
     margin-right: -1px; }
-  .input-group-btn:not(:first-child) > .btn,
+  .input-group-btn:not(:first-child) > .btn, .input-group-btn:not(:first-child) > .mailpoet_submit,
   .input-group-btn:not(:first-child) > .btn-group {
     z-index: 2;
     margin-left: -1px; }
-    .input-group-btn:not(:first-child) > .btn:focus, .input-group-btn:not(:first-child) > .btn:active, .input-group-btn:not(:first-child) > .btn:hover,
+    .input-group-btn:not(:first-child) > .btn:focus, .input-group-btn:not(:first-child) > .mailpoet_submit:focus, .input-group-btn:not(:first-child) > .btn:active, .input-group-btn:not(:first-child) > .mailpoet_submit:active, .input-group-btn:not(:first-child) > .btn:hover, .input-group-btn:not(:first-child) > .mailpoet_submit:hover,
     .input-group-btn:not(:first-child) > .btn-group:focus,
     .input-group-btn:not(:first-child) > .btn-group:active,
     .input-group-btn:not(:first-child) > .btn-group:hover {
@@ -3207,7 +3437,7 @@ tbody.collapse.show {
   .badge:empty {
     display: none; }
 
-.btn .badge {
+.btn .badge, .mailpoet_submit .badge {
   position: relative;
   top: -1px; }
 
@@ -3268,7 +3498,7 @@ a.badge:focus, a.badge:hover {
   padding-left: 0;
   border-radius: 0; }
 
-.alert {
+.alert, .mailpoet_message {
   padding: 0.75em 1.25em;
   margin-bottom: 1em;
   border: 1px solid transparent;
@@ -6442,7 +6672,7 @@ main.body {
       font-size: 1.2em; }
     main.body .block.block-image header.article > * {
       margin: 0; }
-    main.body .block.block-image header.article * + .btn {
+    main.body .block.block-image header.article * + .btn, main.body .block.block-image header.article * + .mailpoet_submit {
       margin: 1em 0 0 0; }
   main.body .block.block-related .wp-post-image {
     margin: 0 0 1em 0;
@@ -6486,7 +6716,7 @@ footer.body .copyright {
 
 /* Form elements */
 /*button, */
-.btn, .post-edit-link {
+.btn, .mailpoet_submit, .post-edit-link {
   display: inline-block;
   background-color: #1ba39c;
   color: #fff !important;
@@ -6643,7 +6873,7 @@ article .mnr .content {
 .wpcf7 {
   margin-top: 2em; }
 
-.wpcf7-form.sent .form-group {
+.wpcf7-form.sent .form-group, .wpcf7-form.sent .mailpoet_paragraph {
   display: none; }
 
 .wpcf7-response-output {
@@ -6651,7 +6881,7 @@ article .mnr .content {
 
 /* Buttons */
 /*button:hover, */
-button.active, .btn.active, .btn:hover {
+button.active, .btn.active, .active.mailpoet_submit, .btn:hover, .mailpoet_submit:hover {
   background-color: #2278ad; }
 
 .post-edit-link {
@@ -6766,5 +6996,26 @@ button.active, .btn.active, .btn:hover {
 /* Hide caret */
 .dropdown-toggle::after {
   display: none; }
+
+/* Mailpoet */
+.mailpoet_text,
+.mailpoet_textarea,
+.mailpoet_select,
+.mailpoet_date_month,
+.mailpoet_date_day,
+.mailpoet_date_year,
+.mailpoet_date {
+  width: 100% !important; }
+
+.mailpoet_message {
+  display: none; }
+
+.mailpoet_validate_success {
+  display: block;
+  color: #468847; }
+
+.mailpoet_validate_error {
+  display: block;
+  color: #B94A48; }
 
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9zdHlsZS5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/
