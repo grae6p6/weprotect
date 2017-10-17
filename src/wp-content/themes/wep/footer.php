@@ -56,9 +56,9 @@ $locations = get_nav_menu_locations();
 					<h5><?php _e( 'Newsletter', 'wep' ) ?></h5>
 					<?php
 
-					if ( class_exists( 'WYSIJA_NL_Widget' ) ) {
-						$widgetNL = new WYSIJA_NL_Widget( true );
-						echo $widgetNL->widget( array( 'form' => 1, 'form_type' => 'php' ) );
+					if ( class_exists( '\MailPoet\Form\Widget' ) ) {
+                      $form_widget = new \MailPoet\Form\Widget();
+                      echo $form_widget->widget(array('form' => 1, 'form_type' => 'php'));
 					}
 
 					?>
