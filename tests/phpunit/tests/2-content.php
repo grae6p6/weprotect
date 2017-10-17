@@ -19,14 +19,12 @@ class Tests_Wep_Content extends WP_UnitTestCase {
 		$this->assertTrue(Wep_Plugin::create_members());
 	}
 
-	public function test_medias_created() {
+	/*public function test_medias_created() {
 		$this->assertTrue(Wep_Plugin::create_media());
-	}
+	}*/
 
 	public function test_pages_created() {
 		$this->assertTrue(Wep_Plugin::create_pages());
-		//$entry = array_slice( array_keys( Wep_Plugin::$posts ), -1, 1 );
-		//var_dump($entry);
 		$posts = get_posts([
 			'name'        => 'home',
 			'post_type'   => 'page',
@@ -37,12 +35,9 @@ class Tests_Wep_Content extends WP_UnitTestCase {
 
 	// TODO: This test always fails on automation?
 	public function test_blocks_created() {
-		$this->assertTrue(true);
+		//$this->assertTrue(true);
+    $this->assertTrue(Wep_Plugin::create_blocks());
 		/*$this->assertTrue(post_type_exists( 'content_block' ));
-		$this->assertTrue(Wep_Plugin::create_blocks());
-		//$entry = array_slice( array_keys( Wep_Plugin::$blocks ), -1, 1 );
-		//var_dump($entry);
-		
 		$posts = get_posts([
 			'name'        => 'model-national-response',
 			'post_type'   => 'content_block',

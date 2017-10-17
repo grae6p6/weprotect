@@ -30,14 +30,14 @@ class Tests_Wep_Plugin extends WP_UnitTestCase {
 		$this->assertTrue(is_plugin_active('wordpress-seo/wp-seo.php'));
 
 		// Newsletter
-		$this->assertNull(activate_plugin('wysija-newsletters/index.php'));
-		$this->assertTrue(is_plugin_active('wysija-newsletters/index.php'));
+		$this->assertNull(activate_plugin('mailpoet/mailpoet.php'));
+		$this->assertTrue(is_plugin_active('mailpoet/mailpoet.php'));
 
 		// Caching and CDN
 		$this->assertNull(activate_plugin('w3-total-cache/w3-total-cache.php'));
 		$this->assertTrue(is_plugin_active('w3-total-cache/w3-total-cache.php'));
 
-		// Twiiter
+		// Twitter
 		$this->assertNull(activate_plugin('twitter/twitter.php'));
 		$this->assertTrue(is_plugin_active('twitter/twitter.php'));
 
@@ -52,10 +52,6 @@ class Tests_Wep_Plugin extends WP_UnitTestCase {
 		// Form extension for Polylang
 		//$this->assertNull(activate_plugin('cf7-polylang/cf7-polylang.php'));
 		//$this->assertTrue(is_plugin_active('cf7-polylang/cf7-polylang.php'));
-
-		// Importer
-		//$this->assertNull(activate_plugin('wordpress-importer/wordpress-importer.php'));
-		//$this->assertTrue(is_plugin_active('wordpress-importer/wordpress-importer.php'));
 	}
 
 	/**

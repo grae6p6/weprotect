@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="19" assertions="39" failures="1" errors="1" time="6.172307">
+    <testsuite name="Tests_Wep_Theme" file="/var/www/weprotect.dev/tests/phpunit/tests/1-theme.php" tests="11" assertions="23" failures="0" errors="0" time="0.838555">
+      <testcase name="test_theme_exists" class="Tests_Wep_Theme" file="/var/www/weprotect.dev/tests/phpunit/tests/1-theme.php" line="28" assertions="3" time="0.447464"/>
+      <testcase name="test_theme_templates_exist" class="Tests_Wep_Theme" file="/var/www/weprotect.dev/tests/phpunit/tests/1-theme.php" line="34" assertions="5" time="0.040968"/>
+      <testcase name="test_theme_functions_and_menus" class="Tests_Wep_Theme" file="/var/www/weprotect.dev/tests/phpunit/tests/1-theme.php" line="50" assertions="1" time="0.035479"/>
+      <testcase name="test_navigation_menus_exist" class="Tests_Wep_Theme" file="/var/www/weprotect.dev/tests/phpunit/tests/1-theme.php" line="57" assertions="3" time="0.035012"/>
+      <testcase name="test_theme_css_is_newer_than_sass" class="Tests_Wep_Theme" file="/var/www/weprotect.dev/tests/phpunit/tests/1-theme.php" line="71" assertions="2" time="0.059674"/>
+      <testcase name="test_theme_has_core_functions" class="Tests_Wep_Theme" file="/var/www/weprotect.dev/tests/phpunit/tests/1-theme.php" line="75" assertions="1" time="0.035370"/>
+      <testcase name="test_theme_has_content_block_post_type" class="Tests_Wep_Theme" file="/var/www/weprotect.dev/tests/phpunit/tests/1-theme.php" line="79" assertions="1" time="0.037024"/>
+      <testcase name="test_theme_has_member_post_type" class="Tests_Wep_Theme" file="/var/www/weprotect.dev/tests/phpunit/tests/1-theme.php" line="84" assertions="1" time="0.036465"/>
+      <testcase name="test_theme_has_board_post_type" class="Tests_Wep_Theme" file="/var/www/weprotect.dev/tests/phpunit/tests/1-theme.php" line="89" assertions="1" time="0.036189"/>
+      <testcase name="test_theme_has_mnr_post_type" class="Tests_Wep_Theme" file="/var/www/weprotect.dev/tests/phpunit/tests/1-theme.php" line="94" assertions="1" time="0.036405"/>
+      <testcase name="test_theme_widgets_registered" class="Tests_Wep_Theme" file="/var/www/weprotect.dev/tests/phpunit/tests/1-theme.php" line="109" assertions="4" time="0.038505"/>
+    </testsuite>
+    <testsuite name="Tests_Wep_Content" file="/var/www/weprotect.dev/tests/phpunit/tests/2-content.php" tests="5" assertions="6" failures="1" errors="0" time="3.405285">
+      <testcase name="test_navigation_created" class="Tests_Wep_Content" file="/var/www/weprotect.dev/tests/phpunit/tests/2-content.php" line="14" assertions="1" time="0.061144"/>
+      <testcase name="test_members_created" class="Tests_Wep_Content" file="/var/www/weprotect.dev/tests/phpunit/tests/2-content.php" line="18" assertions="1" time="2.697537"/>
+      <testcase name="test_pages_created" class="Tests_Wep_Content" file="/var/www/weprotect.dev/tests/phpunit/tests/2-content.php" line="26" assertions="2" time="0.475218"/>
+      <testcase name="test_blocks_created" class="Tests_Wep_Content" file="/var/www/weprotect.dev/tests/phpunit/tests/2-content.php" line="37" assertions="1" time="0.123492">
+        <failure type="PHPUnit_Framework_ExpectationFailedException">Tests_Wep_Content::test_blocks_created
+Failed asserting that false is true.
+
+/var/www/weprotect.dev/tests/phpunit/tests/2-content.php:39
+</failure>
+        <system-out>string(40) "PAGE LINK FAIL (block: landing-banner): "
+array(4) {
+  ["name"]=&gt;
+  string(11) "our-mission"
+  ["post_type"]=&gt;
+  string(4) "page"
+  ["post_status"]=&gt;
+  string(7) "publish"
+  ["numberposts"]=&gt;
+  int(1)
+}
+</system-out>
+      </testcase>
+      <testcase name="test_post_categories_created" class="Tests_Wep_Content" file="/var/www/weprotect.dev/tests/phpunit/tests/2-content.php" line="50" assertions="1" time="0.047894"/>
+    </testsuite>
+    <testsuite name="Tests_Wep_Forms" file="/var/www/weprotect.dev/tests/phpunit/tests/3-forms.php" tests="1" assertions="1" failures="0" errors="0" time="0.597423">
+      <testcase name="test_apply_for_membership_form" class="Tests_Wep_Forms" file="/var/www/weprotect.dev/tests/phpunit/tests/3-forms.php" line="15" assertions="1" time="0.597423"/>
+    </testsuite>
+    <testsuite name="Tests_Wep_Plugin" file="/var/www/weprotect.dev/tests/phpunit/tests/4-plugins.php" tests="2" assertions="9" failures="0" errors="1" time="1.331044">
+      <testcase name="test_required_plugins_installed" class="Tests_Wep_Plugin" file="/var/www/weprotect.dev/tests/phpunit/tests/4-plugins.php" line="14" assertions="8" time="1.329102">
+        <error type="PDOException">Tests_Wep_Plugin::test_required_plugins_installed
+PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tests_weprotect.wptests_mailpoet_settings' doesn't exist
+
+/var/www/weprotect.dev/src/wp-content/plugins/mailpoet/vendor/j4mie/idiorm/idiorm.php:503
+/var/www/weprotect.dev/src/wp-content/plugins/mailpoet/vendor/j4mie/idiorm/idiorm.php:1906
+/var/www/weprotect.dev/src/wp-content/plugins/mailpoet/vendor/j4mie/idiorm/idiorm.php:685
+/var/www/weprotect.dev/src/wp-content/plugins/mailpoet/vendor/j4mie/paris/paris.php:135
+/var/www/weprotect.dev/src/wp-content/plugins/mailpoet/vendor/j4mie/idiorm/idiorm.php:2261
+/var/www/weprotect.dev/src/wp-content/plugins/mailpoet/lib/Models/Setting.php:65
+/var/www/weprotect.dev/src/wp-content/plugins/mailpoet/lib/Config/Populator.php:340
+/var/www/weprotect.dev/src/wp-content/plugins/mailpoet/lib/Config/Populator.php:60
+/var/www/weprotect.dev/src/wp-content/plugins/mailpoet/lib/Config/Activator.php:15
+/var/www/weprotect.dev/src/wp-content/plugins/mailpoet/lib/Config/Initializer.php:91
+/var/www/weprotect.dev/src/wp-includes/class-wp-hook.php:298
+/var/www/weprotect.dev/src/wp-includes/class-wp-hook.php:323
+/var/www/weprotect.dev/src/wp-includes/plugin.php:453
+/var/www/weprotect.dev/src/wp-admin/includes/plugin.php:591
+/var/www/weprotect.dev/tests/phpunit/tests/4-plugins.php:33
+</error>
+      </testcase>
+      <testcase name="test_wep_plugin_class_and_methods" class="Tests_Wep_Plugin" file="/var/www/weprotect.dev/tests/phpunit/tests/4-plugins.php" line="60" assertions="1" time="0.001942"/>
+    </testsuite>
+  </testsuite>
+</testsuites>
