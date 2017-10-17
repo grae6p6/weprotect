@@ -21,7 +21,7 @@ get_header(); ?>
 								<ul>
 									<?php
 
-									$page_introduction = get_page_by_path( 'the-model-national-response' );
+									$page_introduction = get_page_by_path( 'model-national-response' );
 
 									// Get MNR groups
 									$groups = get_posts( [

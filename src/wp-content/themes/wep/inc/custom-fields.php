@@ -17,9 +17,9 @@ if ( function_exists( "register_field_group" ) ) {
 				'post_type'       => array(
 					0 => 'page',
 				),
-				'taxonomy'        => array(
-					0 => 'category:' . $mnr->term_id,
-				),
+        'taxonomy' => array (
+          0 => 'all',
+        ),
 				'filters'         => array(
 					0 => 'search',
 				),

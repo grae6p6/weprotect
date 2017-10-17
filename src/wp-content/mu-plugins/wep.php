@@ -25,8 +25,7 @@ class Wep_Plugin {
   public static $categories = [
     'Case studies'            => 0,
     'Events'                  => 0,
-    'News'                    => 0,
-    'Model National Response' => 0
+    'News'                    => 0
   ];
   public static $forms = [
     'Apply for membership - Company'      => 'apply-for-membership-company',
@@ -131,8 +130,8 @@ class Wep_Plugin {
         'category_case-studies' => '',
         'how-to-report-cseo'    => ''
       ],
-      'the-model-national-response' => [
-        'the-model-national-response'
+      'model-national-response' => [
+        'model-national-response'
       ],
       'funding'                     => [
         'funding'               => '',
@@ -231,12 +230,12 @@ class Wep_Plugin {
       'linked_page'  => 'join-us',
       'type'         => '',
     ],
-    'model-national-response'               => [
+    'the-model-national-response'               => [
       'post_title'   => 'Model National Response',
       'post_content' => '<p>At the Abu-Dhabi Summit in 2015, governments and organisations agreed to establish and deliver, in their own countries, a coordinated national response to online child sexual exploitation, guided by the WePROTECT Global Alliance Model National response (MNR).</p>',
       'title'        => 'Model National Response',
       'type'         => 'cta',
-      'linked_page'  => 'the-model-national-response',
+      'linked_page'  => 'model-national-response',
       'button_label' => 'View full guidance',
       'image'        => 'GettyImages-537460890_super.jpg'
     ],
@@ -347,36 +346,36 @@ class Wep_Plugin {
       'button_label' => 'Why join WePROTECT?'
     ],
 
-    'membership'                   => [
+    'membership'              => [
       'post_title'   => 'Membership',
       'post_content' => '<p>The WePROTECT Global Alliance is a movement of unprecedented reach, with 70 countries already members of WePROTECT or the Global Alliance, along with major international organisations, 20 of the biggest names in the global technology industry, and 17 leading civil society organisations.</p>',
       'title'        => 'Membership',
       'image'        => 'GettyImages-730132775_super.jpg',
       'type'         => 'image'
     ],
-    'membership-type'              => [
+    'membership-type'         => [
       'post_title'   => 'Membership type',
       'post_content' => '',
       'title'        => '',
       'type'         => 'sections',
-      'section_1'    => '<h5 style="text-align: center;"><a href="/apply-for-membership/company-form/"><i class="fa fa-building fa-4x"></i><br> Companies</a></h5>',
-      'section_2'    => '<h5 style="text-align: center;"><a href="/apply-for-membership/government-form/"><i class="fa fa-globe fa-4x"></i><br> Governments</a></h5>',
-      'section_3'    => '<h5 style="text-align: center;"><a href="/apply-for-membership/organisation-form/"><i class="fa fa-users fa-4x"></i><br> Organisations</a></h5>'
+      'section_1'    => '<h5 style="text-align: center;"><a href="/apply-for-membership/ngo-form/"><i class="fa fa-users fa-4x"></i><br> NGO</a></h5>',
+      'section_2'    => '<h5 style="text-align: center;"><a href="/apply-for-membership/country-form/"><i class="fa fa-globe fa-4x"></i><br> Country</a></h5>',
+      'section_3'    => '<h5 style="text-align: center;"><a href="/apply-for-membership/company-form/"><i class="fa fa-building fa-4x"></i><br> Company</a></h5>'
     ],
-    'membership-form-government'   => [
-      'post_title'   => 'Membership form - Government',
-      'title'        => 'Apply for membership as a government',
+    'membership-form-country' => [
+      'post_title'   => 'Membership form - Country',
+      'title'        => 'Apply for membership as a country',
       'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="0" title="Apply for membership - Government"]</p>'
     ],
-    'membership-form-company'      => [
+    'membership-form-company' => [
       'post_title'   => 'Membership form - Company',
       'title'        => 'Apply for membership as a company',
-      'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="0" title="Apply for membership - Company"]</p>'
+      'post_content' => '<p>Can your company join them, by making a commitment to end the sexual exploitation of children online? If so, contact us using the form below and we will reply to you shortly.</p><p>[contact-form-7 id="0" title="Apply for membership - Company"]</p>'
     ],
-    'membership-form-organisation' => [
-      'post_title'   => 'Membership form - Organisation',
-      'title'        => 'Apply for membership as an organisation',
-      'post_content' => '<p>Can your government, company or organisation join them, by making a commitment to end the sexual exploitation of children online? Contact us  using the form below to learn more.</p><p>[contact-form-7 id="0" title="Apply for membership - Organisation"]</p>'
+    'membership-form-ngo'     => [
+      'post_title'   => 'Membership form - NGO',
+      'title'        => 'Apply for membership as an NGO or civil society organisation',
+      'post_content' => '<p>Are you an NGO or civil society organisation that can join them, by making a commitment to end the sexual exploitation of children online? If so, contact us using the form below and we will reply to you shortly.</p><p>[contact-form-7 id="0" title="Apply for membership - Organisation"]</p>'
     ],
 
 
@@ -476,7 +475,7 @@ class Wep_Plugin {
       'title'        => 'What is CSEO?',
       'type'         => 'cta',
       //'image'        => 'stock-3',
-      'linked_page'  => 'the-model-national-response',
+      'linked_page'  => 'model-national-response',
       'button_label' => 'Find out more about CSEO'
     ],
 
@@ -567,7 +566,7 @@ class Wep_Plugin {
       'blocks'       => [
         'landing-banner',
         'why-we-must-act',
-        'model-national-response',
+        'the-model-national-response',
         'fund-to-end-violence-against-children',
         'latest-news-and-events'
       ]
@@ -580,19 +579,19 @@ class Wep_Plugin {
         'membership-type',
       ]
     ),
-    'government-form'             => array(
+    'country-form'                => array(
       'post_type'    => 'page',
-      'post_title'   => 'Apply for membership - government',
+      'post_title'   => 'Apply for membership - Country',
       'post_content' => '',
       'post_parent'  => 'apply-for-membership',
       'blocks'       => [
         'membership',
-        'membership-form-government'
+        'membership-form-country'
       ]
     ),
     'company-form'                => array(
       'post_type'    => 'page',
-      'post_title'   => 'Apply for membership - company',
+      'post_title'   => 'Apply for membership - Company',
       'post_content' => '',
       'post_parent'  => 'apply-for-membership',
       'blocks'       => [
@@ -600,14 +599,14 @@ class Wep_Plugin {
         'membership-form-company'
       ]
     ),
-    'organisation-form'           => array(
+    'ngo-form'                    => array(
       'post_type'    => 'page',
-      'post_title'   => 'Apply for membership - organisation',
+      'post_title'   => 'Apply for membership - NGO',
       'post_content' => '',
       'post_parent'  => 'apply-for-membership',
       'blocks'       => [
         'membership',
-        'membership-form-organisation'
+        'membership-form-ngo'
       ]
     ),
     'useful-contacts'             => array(
@@ -902,7 +901,7 @@ secretariat, responsible to all those who have signed up to WePROTECT, and which
     /**
      * Resources
      */
-    'the-model-national-response' => array(
+    'model-national-response' => array(
       'post_type'     => 'page',
       'post_title'    => 'Model National Response',
       'post_content'  => '<h2>A Model National Response</h2>
@@ -1065,8 +1064,8 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
       'post_type'     => 'page',
       'post_title'    => 'Policy and Governance',
       'post_content'  => '<h4>Highest level national commitment to CSEA prevention and response</h4><p>Comprehensive understanding of CSEA within highest levels of government and law enforcement. WIllingness to work with, and co-ordinate to efforts of, multiple stakeholders to ensure the enhanced protection of victims and an enhanced response to CSEA offending.</p>',
-      'post_parent'   => 'the-model-national-response',
-      'post_category' => array( 'model-national-response' ),
+      'post_parent'   => 'model-national-response',
+      //'post_category' => array( 'model-national-response' ),
       'page_template' => 'mnr.php',
       'menu_order'    => 802,
       'blocks'        => [
@@ -1078,8 +1077,8 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
       'post_type'     => 'page',
       'post_title'    => 'Criminal Justice',
       'post_content'  => '<h4>Effective and successful CSEA investigations, convictions and offender management</h4><p>Law Enforcement and judiciary have the knowledge, skills, systems and tools required to enable them to perform victim-focused investigations and secure positive judicial outcomes. CSEA offenders are managed and reoffending prevented.</p>',
-      'post_parent'   => 'the-model-national-response',
-      'post_category' => array( 'model-national-response' ),
+      'post_parent'   => 'model-national-response',
+      //'post_category' => array( 'model-national-response' ),
       'page_template' => 'mnr.php',
       'menu_order'    => 803,
       'blocks'        => [
@@ -1091,8 +1090,8 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
       'post_type'     => 'page',
       'post_title'    => 'Victim',
       'post_content'  => '<h4>Appropriate suppor ervices for children and young people</h4><p>Children and yound people have access to services that support them thorugh the investigation and prosecution of crimes against them. They have access to shelter; specialised medical and psychological services; and rehabilitation, repatriation and resocialization services.</p>',
-      'post_parent'   => 'the-model-national-response',
-      'post_category' => array( 'model-national-response' ),
+      'post_parent'   => 'model-national-response',
+      //'post_category' => array( 'model-national-response' ),
       'page_template' => 'mnr.php',
       'menu_order'    => 804,
       'blocks'        => [
@@ -1104,8 +1103,8 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
       'post_type'     => 'page',
       'post_title'    => 'Societal',
       'post_content'  => '<h4>CSEA prevented</h4><p>Children and young people are informed and empwered to protect themselves from CSEA. Parents, carers, teachers, and childcare professionals are better prepared to keep children safe from CSEA, including addressing taboos surrounding sexual violence.</p>',
-      'post_parent'   => 'the-model-national-response',
-      'post_category' => array( 'model-national-response' ),
+      'post_parent'   => 'model-national-response',
+      //'post_category' => array( 'model-national-response' ),
       'page_template' => 'mnr.php',
       'menu_order'    => 805,
       'blocks'        => [
@@ -1117,8 +1116,8 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
       'post_type'     => 'page',
       'post_title'    => 'Industry',
       'post_content'  => '<h4>Industry engagement in developing solutions to prevent and tackle CSEA</h4><p>Industry has the power and willingness to block and remove online CSEA content and proactively adress local CSEA issues. Industry proactively reports online CSEA.</p>',
-      'post_parent'   => 'the-model-national-response',
-      'post_category' => array( 'model-national-response' ),
+      'post_parent'   => 'model-national-response',
+      //'post_category' => array( 'model-national-response' ),
       'page_template' => 'mnr.php',
       'menu_order'    => 806,
       'blocks'        => [
@@ -1130,8 +1129,8 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
       'post_type'     => 'page',
       'post_title'    => 'Media and Communications',
       'post_content'  => '<h4>Awareness raised among the public, professionals and policy makers</h4><p>Potential future offenders are deterred. CSEA offending and reoffending is reduced.</p>',
-      'post_parent'   => 'the-model-national-response',
-      'post_category' => array( 'model-national-response' ),
+      'post_parent'   => 'model-national-response',
+      //'post_category' => array( 'model-national-response' ),
       'page_template' => 'mnr.php',
       'menu_order'    => 807,
       'blocks'        => [
@@ -2313,6 +2312,7 @@ Statutory protections are in place to allow industry to fully and effectively re
       $id                      = wp_insert_post( $content );
       if ( ! $id ) {
         var_dump( $content );
+
         return false;
       } else {
         if ( empty( $row['Criticality'] ) ) {
@@ -2375,6 +2375,7 @@ Statutory protections are in place to allow industry to fully and effectively re
       $id = wp_insert_post( $content );
       if ( ! $id ) {
         var_dump( 'FAIL', $content );
+
         return false;
       } else {
         if ( empty( $row['Criticality'] ) ) {
@@ -2445,7 +2446,9 @@ Statutory protections are in place to allow industry to fully and effectively re
       $content['post_status']  = 'publish';
       $id                      = wp_insert_post( $content );
       if ( ! $id ) {
-        var_dump('FAIL', $content);exit;
+        var_dump( 'FAIL', $content );
+        exit;
+
         return false;
       } else {
         if ( empty( $row['Criticality'] ) ) {
@@ -2517,7 +2520,9 @@ Statutory protections are in place to allow industry to fully and effectively re
         $src  = $path_src . '/' . $filename;
         $dest = $path_dest . '/' . $filename;
         if ( file_exists( $src ) ) {
-          copy( $src, $dest );
+          if( !file_exists( $dest ) ) {
+            copy( $src, $dest );
+          }
         } else {
           self::$message['alert'][] = 'Missing asset not copied: ' . basename( $src );
         }
@@ -2708,6 +2713,7 @@ Statutory protections are in place to allow industry to fully and effectively re
               } else {
                 // TODO: Tests failing only in test env??
                 var_dump( 'PAGE LINK FAIL (block: ' . $name . '): ', $data );
+
                 return false;
               }
             } elseif ( $key == 'image' ) {
@@ -2723,6 +2729,7 @@ Statutory protections are in place to allow industry to fully and effectively re
               } else {
                 // TODO: Tests failing only in test env??
                 var_dump( 'IMAGE LINK FAIL (block: ' . $name . '): ', $data );
+
                 return false;
               }
             }
@@ -2756,8 +2763,11 @@ Statutory protections are in place to allow industry to fully and effectively re
     activate_plugin( 'wp-mail-smtp/wp_mail_smtp.php' );
 
     // Do we have default content? Install core data
-    $post = get_post( 1 );
-    if ( $post ) {
+    $posts = get_posts( [
+      'post_status' => 'publish',
+      'post_type'   => 'post'
+    ] );
+    if ( count( $posts ) === 1 ) {
       wp_delete_comment( 1 );
       wp_delete_post( 1, true );
       wp_delete_post( 2, true );

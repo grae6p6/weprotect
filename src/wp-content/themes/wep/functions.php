@@ -202,9 +202,8 @@ class Wep_Theme {
     $case_studies = get_term_by( 'name', 'Case studies', 'category' );
     $events       = get_term_by( 'name', 'Events', 'category' );
     $news         = get_term_by( 'name', 'News', 'category' );
-    $mnr          = get_term_by( 'name', 'Model National Response', 'category' );
 
-    if ( ! $case_studies || ! $events || ! $news || ! $mnr ) {
+    if ( ! $case_studies || ! $events || ! $news ) {
       return false;
     }
 
@@ -345,7 +344,7 @@ add_filter( 'wpcf7_form_elements', [ 'Wep_Theme', 'wpcf7_form_elements' ], 10, 2
 /**
  * Actions
  */
-add_action( 'init', [ 'Wep_Theme', 'add_taxonomies_to_pages' ] );
+//add_action( 'init', [ 'Wep_Theme', 'add_taxonomies_to_pages' ] );
 add_action( 'admin_notices', [ 'Wep_Theme', 'admin_notices' ] );
 add_action( 'after_switch_theme', [ 'Wep_Theme', 'after_switch_theme' ], 10, 2 );
 add_action( 'widgets_init', [ 'Wep_Theme', 'widgets_init' ] );
