@@ -79,7 +79,7 @@ $locations = get_nav_menu_locations();
 </div>
 <script><!--
 	document.body.className = document.body.className.replace('no-js', 'js');
-	//--></script>
+//--></script>
 <?php wp_footer(); ?>
 
 </body>
