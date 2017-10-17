@@ -1053,7 +1053,7 @@ We hope you find this Model a useful tool to aid capacity building in online CSE
 			The Board and the UK government are working with the Fund to seek further donors to support this critical work and identify interventions that can make a real difference to the lives of children worldwide.  For further information, and to find out how to make a bid to the Fund, visit <a href="http://www.end-violence.org/">www.end-violence.org</a>.
 			
 			To find out more about how the Fund to End Violence Against Children will work with WePROTECT Global Alliance, and the difference the UK and UNICEF have already made on this issue, see our strategy <a href="https://cj-lewis-nsh8.squarespace.com/s/WePROTECT-Global-Alliance-Strategy.pdf">here</a>.',
-      'thumbnail'     => 'stock-3.jpg',
+      'thumbnail'     => 'GettyImages-748490893_high.jpg',
       'menu_order'    => 0
     ),
 
@@ -2294,9 +2294,10 @@ Statutory protections are in place to allow industry to fully and effectively re
       ''                => 'ga',
       'Global Alliance' => 'ga',
       'WePROTECT'       => 'wp',
+      'WP'              => 'wp',
       'None'            => 'none',
       'WPGA'            => 'wpga',
-      'Confirmed'       => 'wpga' // TODO: Check what 'COnfirmed' should be classed as.
+      'Confirmed'       => 'wpga' // TODO: Check what 'Confirmed' should be classed as.
     ];
 
     foreach ( $results as $row ) {
@@ -2312,7 +2313,6 @@ Statutory protections are in place to allow industry to fully and effectively re
       $id                      = wp_insert_post( $content );
       if ( ! $id ) {
         var_dump( $content );
-
         return false;
       } else {
         if ( empty( $row['Criticality'] ) ) {
@@ -2375,8 +2375,6 @@ Statutory protections are in place to allow industry to fully and effectively re
       $id = wp_insert_post( $content );
       if ( ! $id ) {
         var_dump( 'FAIL', $content );
-        exit;
-
         return false;
       } else {
         if ( empty( $row['Criticality'] ) ) {
@@ -2447,7 +2445,7 @@ Statutory protections are in place to allow industry to fully and effectively re
       $content['post_status']  = 'publish';
       $id                      = wp_insert_post( $content );
       if ( ! $id ) {
-        //var_dump('FAIL', $content);exit;
+        var_dump('FAIL', $content);exit;
         return false;
       } else {
         if ( empty( $row['Criticality'] ) ) {
@@ -2709,7 +2707,7 @@ Statutory protections are in place to allow industry to fully and effectively re
                 $val = array( $post[0]->ID );
               } else {
                 // TODO: Tests failing only in test env??
-                //var_dump( 'PAGE LINK FAIL (block: ' . $name . '): ', $data );
+                var_dump( 'PAGE LINK FAIL (block: ' . $name . '): ', $data );
                 return false;
               }
             } elseif ( $key == 'image' ) {
@@ -2724,7 +2722,7 @@ Statutory protections are in place to allow industry to fully and effectively re
                 $val = (int) $post[0]->ID;
               } else {
                 // TODO: Tests failing only in test env??
-                //var_dump( 'IMAGE LINK FAIL (block: ' . $name . '): ', $data );
+                var_dump( 'IMAGE LINK FAIL (block: ' . $name . '): ', $data );
                 return false;
               }
             }
