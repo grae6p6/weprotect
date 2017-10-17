@@ -8,7 +8,7 @@
 class Tests_Wep_Content extends WP_UnitTestCase {
 	function setUp() {
 		parent::setUp();
-		activate_plugin('wep/wep.php');
+		//activate_plugin('wep/wep.php');
 	}
 
 	public function test_navigation_created() {

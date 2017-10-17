@@ -33,14 +33,11 @@ class Tests_Wep_Theme extends WP_UnitTestCase {
 
 	public function test_theme_templates_exist() {
 		$this->assertFileExists($this->path . '404.php');
-		//$this->assertFileExists(get_archive_template(), get_query_template('archive'));
-		//$this->assertTrue(get_author_template(), get_query_template('author'));
-		//$this->assertTrue(get_category_template(), get_query_template('category'));
-		//$this->assertTrue(get_date_template(), get_query_template('date'));
+    $this->assertFileExists($this->path . 'category.php');
 		$this->assertFileExists($this->path . 'index.php');
 		$this->assertFileExists($this->path . 'page.php');
 		$this->assertFileExists($this->path . 'search.php');
-		//$this->assertEquals(get_single_template(), get_query_template('single'));
+    $this->assertFileExists($this->path . 'single.php');
 		$this->assertFileExists($this->path . 'attachment.php');
 	}
 
@@ -58,15 +55,12 @@ class Tests_Wep_Theme extends WP_UnitTestCase {
 		$menus = get_registered_nav_menus();
 		$this->assertTrue(array_key_exists('top', $menus));
 		$this->assertTrue(array_key_exists('main', $menus));
-		//$this->assertTrue(array_key_exists('connect', $menus));
 		$this->assertTrue(array_key_exists('support', $menus));
 	}
 
 	/**
 	 * Check CSS & SCSS compile times are within 5 seconds
-	 * NOTE: Done this way to counter sequential syncing behaviour of RSYNC
-	 *
-	 * TODO: Can avoid this by moving style.scss to theme root?
+	 * NOTE: Done this way to counter sequential syncing behaviour of rsync env
 	 */
 	public function test_theme_css_is_newer_than_sass() {
 		$this->assertGreaterThanOrEqual((filemtime($this->path . 'style.css')-5), filemtime($this->path . 'sass' . DIRECTORY_SEPARATOR . 'style.scss'));
