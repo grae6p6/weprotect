@@ -6493,6 +6493,10 @@ header.body {
     #menu-primary > li.show > a {
       color: $white;
     }*/ }
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  header.body .primary {
+    padding: 2em 0 !important; } }
     header.body .primary .logo {
       height: 60px;
       position: relative; }
@@ -6565,7 +6569,9 @@ header.body {
         height: 32px; }
         header.body .primary nav .icons a {
           font-size: 1.5em;
-          margin: 0; } }
+          margin: 0; }
+        header.body .primary nav ul {
+          height: 38px; } }
   @media (min-width: 1200px) {
     header.body #menu-main {
       padding-right: 2.5em; } }

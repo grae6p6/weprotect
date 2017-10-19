@@ -165,6 +165,9 @@ header.body {
   }
   .primary {
     padding: 2.5em 0;
+    @include media-breakpoint-only(lg) {
+      padding: 2em 0 !important;
+    }
     .logo {
       height: 60px;
       position: relative;
@@ -277,6 +280,9 @@ header.body {
             font-size: 1.5em;
             margin: 0;
           }
+        }
+        ul {
+          height: 38px;
         }
       }
     }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Browser Automation tests
+ * Browser Automation tests for use-cases
  */
 
 namespace SeleniumTests;
@@ -25,10 +25,10 @@ class UserCaseTest extends AbstractTestCase {
      * Find other members
      */
     public function testGovernmentNonMemberFindCountriesInTheInitiative() {
-        
+
         // Load the URL (will wait until page is loaded)
         $this->wd->get( TEST_URL );
-        
+
         // Begin the joining process, go to view information about joining.
         $joinUsMenu = $this->wd->findElement( WebDriverBy::cssSelector( 'a[href*="/join-us/"]' ) );
         $this->assertContains( 'nav-link', $joinUsMenu->getAttribute('class') );
@@ -38,7 +38,7 @@ class UserCaseTest extends AbstractTestCase {
         $ourMembersLinkElement = WebDriverBy::cssSelector( 'a.dropdown-item[href*="/our-members/"]' );
         $ourMembersLink = $this->wd->findElement( $ourMembersLinkElement );
 
-        $action = new WebDriverActions( $this->wd ); 
+        $action = new WebDriverActions( $this->wd );
         $action->moveToElement( $ourMembersLink );
         $action->perform();
         $this->wd->wait()->until(
@@ -54,11 +54,11 @@ class UserCaseTest extends AbstractTestCase {
 
         // Select the US
         $usRegion = $this->wd->findElement( WebDriverBy::Id( 'jqvmap3_us' ) )->click();
-        
+
         $modalElement = WebDriverBy::cssSelector( '.modal-dialog' );
         $modal = $this->wd->findElement( $modalElement );
 
-        $action = new WebDriverActions( $this->wd ); 
+        $action = new WebDriverActions( $this->wd );
         $action->moveToElement( $modal );
         $action->perform();
         $this->wd->wait()->until(
