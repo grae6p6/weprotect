@@ -54,14 +54,6 @@ $locations = get_nav_menu_locations();
 				</div>
 				<div class="col-12 col-lg-4 text-center text-lg-left">
 					<h5><?php _e( 'Newsletter', 'wep' ) ?></h5>
-					<?php
-
-					if ( class_exists( '\MailPoet\Form\Widget' ) ) {
-                      $form_widget = new \MailPoet\Form\Widget();
-                      echo $form_widget->widget(array('form' => 1, 'form_type' => 'php'));
-					}
-
-					?>
 				</div>
 			</div>
 		</div>
