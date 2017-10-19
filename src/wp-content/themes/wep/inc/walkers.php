@@ -45,7 +45,7 @@ class Boostrap_Nav_Menu extends Walker_Nav_Menu {
 		$item_output = $args->before;
 		$item_output .= ( $depth > 0 ) ? '<a class="dropdown-item"' . $attributes . '>' : '<a' . $attributes . '>';
 		$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-		$item_output .= '</a>';
+		$item_output .= '</a>' . ( $args->walker->has_children ? '<a class="dropmenu-toggle" href="#"><i class="fa fa-plus-square" aria-hidden="true" title="' . __( 'Toggle the display of this sub-menu', 'wep' ) . '"></i><span class="sr-only">' . __( 'Toggle the display of this sub-menu', 'wep' ) . '</span></a>' : '' );
 		$item_output .= $args->after;
 
 		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );

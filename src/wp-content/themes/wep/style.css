@@ -6496,11 +6496,6 @@ header.body {
     header.body .primary .logo {
       height: 60px;
       position: relative; }
-      header.body .primary .logo a {
-        position: absolute;
-        display: block;
-        float: left;
-        z-index: 999; }
     header.body .primary nav {
       position: relative; }
       header.body .primary nav .icons a {
@@ -6518,30 +6513,45 @@ header.body {
       margin-top: -60px;
       height: 60px;
       padding-top: 6px; }
+    header.body .primary .logo a {
+      position: absolute;
+      display: block;
+      float: left;
+      z-index: 999; }
     header.body #menu-main {
       margin: 2em 0 1em;
-      display: block;
+      display: none;
       width: 100%;
       background-color: #562a64;
       border-radius: .25em;
       padding: 0 4px 4px; }
+      header.body #menu-main .dropmenu-toggle {
+        position: absolute;
+        display: block;
+        color: #fff;
+        top: .5em;
+        right: 1em; }
       header.body #menu-main.showing {
         display: block !important; }
       header.body #menu-main li {
         display: block; }
         header.body #menu-main li.show .nav-link {
           background-color: #562a64; }
+        header.body #menu-main li.show ul {
+          display: block; }
         header.body #menu-main li .nav-link {
           color: #fff !important; }
         header.body #menu-main li ul {
-          display: block;
+          display: none;
           position: relative;
           float: none;
           border: none;
           margin: 0;
           background-color: #8e699b; }
           header.body #menu-main li ul:hover {
-            background-color: #8e699b; } }
+            background-color: #8e699b; }
+    header.body .no-js .dropmenu-toggle {
+      display: none; } }
   @media (min-width: 992px) {
     header.body .primary {
       padding: 2.5em 0; }
@@ -6549,6 +6559,8 @@ header.body {
         padding-bottom: 0; }
       header.body .primary #menu-main {
         margin-top: -38px; }
+        header.body .primary #menu-main .dropmenu-toggle {
+          display: none; }
       header.body .primary nav {
         height: 32px; }
         header.body .primary nav .icons a {

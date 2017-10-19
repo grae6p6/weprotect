@@ -55,12 +55,8 @@ class Wep_Theme {
 
   // TODO: To be refactored
   public static function enqueue_scripts() {
-
-    // jQuery is vendor compiled using webpack
     wp_deregister_script( 'jquery' );
     //wp_deregister_script( 'jquery-migrate' );
-
-    wp_enqueue_script( 'jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js' );
 
     // Theme stylesheet.
     wp_enqueue_style( 'wep-style', get_stylesheet_uri() );
@@ -71,11 +67,14 @@ class Wep_Theme {
     wp_enqueue_script( 'html5', get_theme_file_uri( '/js/html5.js' ), array(), '3.7.3' );
     wp_script_add_data( 'html5', 'conditional', 'lt IE 9' );
 
+    // jQuery
+    wp_enqueue_script( 'jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js' );
+
     // Theme script.
     wp_enqueue_script( 'wep-scripts', get_theme_file_uri( '/js/scripts.min.js' ), array(), '1.0' );
 
     // Resize sensor for auto-sizing "block" items based on computed content
-    wp_enqueue_script( 'resize-sensor', get_theme_file_uri( '/js/resizeSensor.min.js' ), array(), '1.0' );
+    wp_enqueue_script( 'resize-sensor', get_theme_file_uri( '/js/resizeSensor.min.js' ), array( 'jquery' ), '1.0' );
 
     // Font awesome icons
     wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' );
@@ -84,9 +83,9 @@ class Wep_Theme {
     if ( is_page( 'our-board' ) or is_page( 'our-members' ) ) {//if ( is_active_widget( 'Wep_Widget_Members_List' ) ) {
       if ( is_page( 'our-members' ) ) {
         wp_enqueue_script( 'jqvmap', get_theme_file_uri( '/js/jquery.vmap.min.js' ), array( 'jquery' ), '1.5.1' );
-        wp_enqueue_script( 'jqvmap-world', get_theme_file_uri( '/js/maps/jquery.vmap.world.js' ), array() );
+        wp_enqueue_script( 'jqvmap-world', get_theme_file_uri( '/js/maps/jquery.vmap.world.js' ), array( 'jqvmap' ) );
       }
-      wp_enqueue_script( 'jqvmap-init', get_theme_file_uri( 'js/widget_wep_members.js' ) );
+      wp_enqueue_script( 'jqvmap-init', get_theme_file_uri( 'js/widget_wep_members.js' ), array( 'jqvmap-world' ) );
     }
   }
 

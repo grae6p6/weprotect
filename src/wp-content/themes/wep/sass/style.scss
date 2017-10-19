@@ -168,12 +168,6 @@ header.body {
     .logo {
       height: 60px;
       position: relative;
-      a {
-        position: absolute;
-        display: block;
-        float: left;
-        z-index: 999;
-      }
     }
     nav {
       position: relative;
@@ -200,21 +194,35 @@ header.body {
   @include media-breakpoint-down(md) {
     .primary {
       .navigation {
-
         .icons {
           margin-top: -60px;
           height: 60px;
           padding-top: 6px;
         }
       }
+      .logo {
+        a {
+          position: absolute;
+          display: block;
+          float: left;
+          z-index: 999;
+        }
+      }
     }
     #menu-main {
       margin: 2em 0 1em;
-      display: block;
+      display: none;
       width: 100%;
       background-color: $primary-color;
       border-radius: .25em;
       padding: 0 4px 4px;
+      .dropmenu-toggle {
+        position: absolute;
+        display: block;
+        color: $white;
+        top: .5em;
+        right: 1em;
+      }
       &.showing {
         display: block !important;
       }
@@ -224,12 +232,15 @@ header.body {
           .nav-link {
             background-color: $primary-color;
           }
+          ul {
+            display: block;
+          }
         }
         .nav-link {
           color: $white !important;
         }
         ul {
-          display: block;
+          display: none;
           position: relative;
           float: none;
           border: none;
@@ -241,6 +252,11 @@ header.body {
         }
       }
     }
+    .no-js {
+      .dropmenu-toggle {
+        display: none;
+      }
+    }
   }
   @include media-breakpoint-up(lg) {
     .primary {
@@ -250,6 +266,9 @@ header.body {
       }
       #menu-main {
         margin-top: -38px;
+        .dropmenu-toggle {
+          display: none;
+        }
       }
       nav {
         height: 32px;
