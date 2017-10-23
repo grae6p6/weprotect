@@ -44,8 +44,8 @@ class Wep_Theme {
       'support' => __( 'Contact and Support', 'wep' ),
     ) );
 
-    add_image_size( 'block-image', '1400', '800', false );
-    add_image_size( 'block-image-2x', '2800', '1600', false );
+    add_image_size( 'block-image', '1400', '1400', false );
+    add_image_size( 'block-image-2x', '2800', '2800', false );
 
     add_image_size( 'block-cta', '300', '300', false );
     add_image_size( 'block-cta-2x', '600', '600', false );
