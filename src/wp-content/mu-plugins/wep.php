@@ -8,12 +8,6 @@
  * Author: Alex Gailey-White @ Panlogic Ltd
  */
 
-/*$handle = opendir( realpath( '../../../data/assets' ) );
-while( ( $item = readdir( $handle ) ) !== false ) {
-  echo '"' . $item . '" => 0,' . "\n";
-}
-closedir( $handle );*/
-
 define( 'WEP_VENDOR', realpath( ABSPATH . '../vendor' ) );
 
 class Wep_Plugin {
@@ -32,79 +26,7 @@ class Wep_Plugin {
     'Apply for membership - Government'   => 'apply-for-membership-government',
     'Apply for membership - Organisation' => 'apply-for-membership-organisation'
   ];
-  public static $media = [
-    "adobe.jpg"                                                          => 0,
-    "antigone-davis.jpg"                                                 => 0,
-    "apple.jpg"                                                          => 0,
-    "askfm.jpg"                                                          => 0,
-    "bae-systems.jpg"                                                    => 0,
-    "baroness-joanna-shields.png"                                        => 0,
-    "cddw.jpg"                                                           => 0,
-    "child-helpline-international.jpg"                                   => 0,
-    "cornelius-williams.png"                                             => 0,
-    "cs-1.jpg"                                                           => 0,
-    "cs-2.jpg"                                                           => 0,
-    "cs-3.jpg"                                                           => 0,
-    "cs-4.jpg"                                                           => 0,
-    "cs-5.jpg"                                                           => 0,
-    "cs-6.jpg"                                                           => 0,
-    "dell.jpg"                                                           => 0,
-    "dorothy-rozga.jpg"                                                  => 0,
-    "ecpat.jpg"                                                          => 0,
-    "ernie-allen.png"                                                    => 0,
-    "europol.jpg"                                                        => 0,
-    "ey.jpg"                                                             => 0,
-    "facebook.jpg"                                                       => 0,
-    "family-online-safety-initiative.jpg"                                => 0,
-    "future-digital.jpg"                                                 => 0,
-    "getty-images.jpg"                                                   => 0,
-    "GettyImages-155298725_super.jpg"                                    => 0,
-    "GettyImages-537460890_super.jpg"                                    => 0,
-    "GettyImages-640610458_super.jpg"                                    => 0,
-    "GettyImages-730132775_super.jpg"                                    => 0,
-    "GettyImages-740526801_super.jpg"                                    => 0,
-    "GettyImages-748490893_high.jpg"                                     => 0,
-    "GettyImages-813540356_high.jpg"                                     => 0,
-    "GettyImages-827679250_super.jpg"                                    => 0,
-    "GettyImages-88583888_super.jpg"                                     => 0,
-    "google.jpg"                                                         => 0,
-    "inhope-the-association-of-internet-hotlines.jpg"                    => 0,
-    "international-centre-for-missing-and-exploited-children.jpg"        => 0,
-    "international-justice-mission.jpg"                                  => 0,
-    "internet-watch-foundation.jpg"                                      => 0,
-    "interpol.jpg"                                                       => 0,
-    "jacqueline-f-beauchere.jpg"                                         => 0,
-    "johnny-gwynne.jpg"                                                  => 0,
-    "maud-de-boer-buquicchio.jpg"                                        => 0,
-    "mick-moran.jpg"                                                     => 0,
-    "microsoft.jpg"                                                      => 0,
-    "multilingual-internet-group.jpg"                                    => 0,
-    "netclean-technologies.jpg"                                          => 0,
-    "pa-consulting.jpg"                                                  => 0,
-    "saievac.jpg"                                                        => 0,
-    "save-the-children.jpg"                                              => 0,
-    "steve-grocki.png"                                                   => 0,
-    "susan-molinari.jpg"                                                 => 0,
-    "susie-hargreaves.png"                                               => 0,
-    "the-lucy-faithfull-foundation.jpg"                                  => 0,
-    "the-marie-collins-foundation.jpg"                                   => 0,
-    "the-national-center-for-missing-and-exploited-children.jpg"         => 0,
-    "the-national-society-for-the-prevention-of-cruelty-to-children.jpg" => 0,
-    "thorn-digital-defenders-of-children.jpg"                            => 0,
-    "tulir-centre-for-prevention-and-healing-of-child-sexual-abuse.jpg"  => 0,
-    "twitter.jpg"                                                        => 0,
-    "unicef.jpg"                                                         => 0,
-    "veronica-donoso.png"                                                => 0,
-    "visa.jpg"                                                           => 0,
-    "vodafone.jpg"                                                       => 0,
-    "world-vision.jpg"                                                   => 0,
-    "yahoo.jpg"                                                          => 0,
-    "ziuz.jpg"                                                           => 0,
-
-    // PDF documents
-    "WePROTECT+Global+Alliance+Model+National+Response+Guidance.pdf"     => 0,
-    "WePROTECT+Global+Alliance+Strategy.pdf"                             => 0
-  ];
+  public static $media = [];
   public static $menus = [
 
     // Top menu
@@ -195,16 +117,26 @@ class Wep_Plugin {
       'bg_colour'    => '#eaeaea',
       'type'         => ''
     ],
+    'why-we-must-act'                       => [
+      'post_title'   => 'Why we must act',
+      'post_content' => '<p>The Internet is an extraordinary catalyst of innovation, education, and expanding global economic growth. Technology offers endless benefits and possibilities to our children that we never experienced as they have unlimited access to information with the ability to communicate and connect with people they have never met from all over the planet. But with this comes a range of ever more sophisticated threats.</p><p>Included in that range of threats is online child sexual exploitation — a heinous crime that, through the reach of the internet, has become a major international crime of our age. Never before has it been easier for perpetrators to make contact with children, share images of abuse and inspire each other to commit further crimes.</p><p>It is a huge problem, with children being exploited on an industrial scale:</p>',
+      'type'         => 'sections',
+      'linked_page'  => 'who-we-work-with',
+      'title'        => 'Why we must act',
+      'section_1'    => '<p>The National Centre for Missing and Exploited Children, which handles reports of child sexual exploitation from major tech companies in the US, has received more than 7.5 million reports since 1998.  4.4 million of these were received in 2015 alone.</p>',
+      'section_2'    => '<p>In 2014, INHOPE, the association of INTERNET hotlines, assessed 83,644 URLS as containing child sexual abuse material worldwide – a 64% increase from 2013.</p>',
+      'section_3'    => '<p>The exact extent of sexual exploitation on peer-to-peer networks, cloud services and the encrypted or dark web is less certain, but it is likely to be significant. For instance, the NGO Thorn assesses that some 30% of searches on the eDonkey P2P platform are for child sexual abuse material.</p>',
+      'section_4'    => '<p>A recent study concluded that only 2% of hidden web services on TOR host child abuse material, yet these sites accounted for 80% of traffic.</p>'
+    ],
     'why-we-must-act-header'                => [
       'post_title'   => 'Header - Why we must act',
-      'post_content' => '<p>It is an uncomfortable reality that while technology offers incredible possibilities to our societies, never before has it been easier for those who want to sexually exploit children to make contact with potential victims around the world, share images of their abuse and encourage each other to commit further crimes.</p>',
+      'post_content' => '<p>The Internet is an extraordinary catalyst of innovation, education, and expanding global economic growth. Technology offers endless benefits and possibilities to our children that we never experienced as they have unlimited access to information with the ability to communicate and connect with people they have never met from all over the planet. But with this comes a range of ever more sophisticated threats.</p>',
       'title'        => 'Why we must act',
       'type'         => 'cta'
     ],
-    'why-we-must-act'                       => [
-      'post_title'   => 'Why we must act',
-      'post_content' => '<p>The Internet is an extraordinary catalyst of innovation, education, and expanding global economic growth. Technology offers endless benefits and possibilities to our children that we never experienced as they have unlimited access to information with the ability to communicate and connect with people they have never met from all over the planet. But with this comes a range of ever more sophisticated threats.</p><p>Included in that range of threats is online child sexual exploitation—a heinous crime that, through the reach of the internet, has become a major international crime of our age. Never before has it been easier for perpetrators to make contact with children, share images of abuse and inspire each other to commit further crimes.</p><p>It is a huge problem, with children being exploited on an industrial scale:</p>',
-      'title'        => 'Why we must act',
+    'why-we-must-act-threats'                       => [
+      'post_title'   => 'Why we must act - threats',
+      'post_content' => '<p>Included in that range of threats is online child sexual exploitation — a heinous crime that, through the reach of the internet, has become a major international crime of our age. Never before has it been easier for perpetrators to make contact with children, share images of abuse and inspire each other to commit further crimes.</p><p>It is a huge problem, with children being exploited on an industrial scale:</p>',
       'type'         => 'sections',
       //'bg_colour' => '#eaeaea',
       'linked_page'  => 'who-we-work-with',
@@ -766,7 +698,8 @@ secretariat, responsible to all those who have signed up to WePROTECT, and which
       'post_content' => '',
       'menu_order'   => 301,
       'blocks'       => [
-        'why-we-must-act',
+        'why-we-must-act-header',
+        'why-we-must-act-threats',
         'why-we-must-act-statistics',
         'why-we-must-act-join-us'
       ]
@@ -2491,8 +2424,16 @@ Statutory protections are in place to allow industry to fully and effectively re
    * @return bool
    */
   public static function create_media() {
+    $path_src  = realpath( ABSPATH . '../data/assets' );
 
-    // Create pages
+    // Setup media assets
+    $handle = opendir( $path_src );
+    while( ( $item = readdir( $handle ) ) !== false ) {
+      self::$media[ $item ] = 0;
+    }
+    closedir( $handle );
+
+    // Process media
     if ( count( self::$media ) ) {
       $wp_upload_dir = wp_upload_dir();
 
@@ -2505,7 +2446,6 @@ Statutory protections are in place to allow industry to fully and effectively re
         date( 'm' )
       ];
 
-      $path_src  = realpath( ABSPATH . '../data/assets' );
       $path_dest = ABSPATH . 'wp-content';
       foreach ( $directories as $directory ) {
         if ( ! is_dir( $path_dest . '/' . $directory ) ) {
