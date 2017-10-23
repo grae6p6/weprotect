@@ -2426,12 +2426,14 @@ Statutory protections are in place to allow industry to fully and effectively re
   public static function create_media() {
     $path_src  = realpath( ABSPATH . '../data/assets' );
 
-    // Setup media assets
-    $handle = opendir( $path_src );
-    while( ( $item = readdir( $handle ) ) !== false ) {
-      self::$media[ $item ] = 0;
+    // List media assets
+    if( is_dir( $path_src ) ) {
+      $handle = opendir( $path_src );
+      while( ( $item = readdir( $handle ) ) !== false ) {
+        self::$media[ $item ] = 0;
+      }
+      closedir( $handle );
     }
-    closedir( $handle );
 
     // Process media
     if ( count( self::$media ) ) {
