@@ -2147,7 +2147,8 @@ Statutory protections are in place to allow industry to fully and effectively re
     if ( ! file_exists( $path ) ) {
       Wep_Plugin::$message['alert'][] = 'Missing asset: ' . basename( $path );
 
-      return false;
+      // Don't fail just because assets are missing
+      return true;
     }
 
     require WEP_VENDOR . '/phpoffice/phpexcel/Classes/PHPExcel.php';
