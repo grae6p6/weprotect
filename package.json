@@ -9,9 +9,9 @@
   "scripts": {
     "prod": "npm run production",
     "production": "./node_modules/.bin/webpack -p",
-    "test": "./vendor/bin/phpunit",
+    "test": "./vendor/bin/phpunit --configuration ./build/phpunit.xml",
     "btest": "./vendor/bin/steward run staging chrome --tests-dir ./tests/selenium -vvv",
-    "debug": "./vendor/bin/phpunit --debug",
+    "debug": "./vendor/bin/phpunit --debug --configuration ./build/phpunit.xml",
     "dev": "./node_modules/.bin/webpack",
     "watch": "./node_modules/.bin/webpack --watch"
   },

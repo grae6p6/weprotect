@@ -1,42 +1,44 @@
 <phpunit
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.3/phpunit.xsd"
-        backupGlobals="true"
-        backupStaticAttributes="false"
         bootstrap="../tests/phpunit/includes/bootstrap.php"
-        cacheTokens="false"
+        backupGlobals="false"
         colors="true"
-        convertErrorsToExceptions="true"
-        convertNoticesToExceptions="true"
-        convertWarningsToExceptions="true"
-        forceCoversAnnotation="false"
-        mapTestClassNameToCoveredClassName="false"
-        processIsolation="false"
-        stopOnError="false"
-        stopOnFailure="false"
-        stopOnIncomplete="false"
-        stopOnSkipped="false"
-        timeoutForSmallTests="1"
-        timeoutForMediumTests="10"
-        timeoutForLargeTests="60"
-        strict="false"
-        verbose="true">
-
+        beStrictAboutTestsThatDoNotTestAnything="true">
     <testsuites>
-        <testsuite name="PHP Test Suite">
-            <directory>../tests/phpunit/tests</directory>
+        <testsuite name="Theme and plugins">
+            <directory suffix=".php">../tests/phpunit/tests</directory>
         </testsuite>
-
         <!--<testsuite name="Selenium Test Suite">
             <directory>../tests/selenium</directory>
         </testsuite>-->
     </testsuites>
-
-
+    <groups>
+        <exclude>
+            <group>ajax</group>
+            <group>ms-files</group>
+            <group>ms-required</group>
+            <group>external-http</group>
+        </exclude>
+    </groups>
     <logging>
-        <log type="coverage-html" target="../build/coverage"/>
-        <log type="coverage-clover" target="../build/logs/clover.xml"/>
-        <!--<log type="coverage-crap4j" target="../build/logs/crap4j.xml"/>-->
-        <log type="junit" target="../build/logs/junit.xml" logIncompleteSkipped="false"/>
+        <log type="coverage-html" target="./coverage"/>
+        <log type="coverage-clover" target="./logs/clover.xml"/>
+        <log type="coverage-crap4j" target="./logs/crap4j.xml"/>
+        <log type="junit" target="./logs/junit.xml" logIncompleteSkipped="false"/>
     </logging>
+    <listeners>
+        <listener class="SpeedTrapListener" file="tests/phpunit/includes/speed-trap-listener.php">
+            <arguments>
+                <array>
+                    <element key="slowThreshold">
+                        <integer>150</integer>
+                    </element>
+                </array>
+            </arguments>
+        </listener>
+    </listeners>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src</directory>
+        </whitelist>
+    </filter>
 </phpunit>
