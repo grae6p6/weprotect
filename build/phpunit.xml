@@ -27,9 +27,9 @@
             <directory>../tests/phpunit/tests</directory>
         </testsuite>
 
-        <testsuite name="Selenium Test Suite">
+        <!--<testsuite name="Selenium Test Suite">
             <directory>../tests/selenium</directory>
-        </testsuite>
+        </testsuite>-->
     </testsuites>
 
 
