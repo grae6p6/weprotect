@@ -10,6 +10,9 @@ if ( class_exists( 'PHPUnit\Runner\Version' ) ) {
 	require_once dirname( __FILE__ ) . '/phpunit6-compat.php';
 }
 
+/* Path to the WordPress codebase you'd like to test. Add a forward slash in the end. */
+define( 'ABSPATH', __DIR__ . '/../../../src/' );
+
 $config_file_path = '/shared';//dirname( dirname( __FILE__ ) );
 if ( ! file_exists( $config_file_path . '/wp-tests-config.php' ) ) {
 	// Support the config file from the root of the develop repository.

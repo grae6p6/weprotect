@@ -4,6 +4,10 @@
  *
  * @todo Reuse the init/load code in init.php
  */
+
+/* Path to the WordPress codebase you'd like to test. Add a forward slash in the end. */
+define( 'ABSPATH', __DIR__ . '/../../../src/' );
+
 error_reporting( E_ALL & ~E_DEPRECATED & ~E_STRICT );
 
 $config_file_path = $argv[1];
