@@ -12,6 +12,7 @@ Vagrantfile
 # Created by .ignore support plugin (hsz.mobi)
 ### WordPress template
 *.log
+wp-tests-config.php
 src/wp-config.php
 src/wp-content/advanced-cache.php
 src/wp-content/backup-db/
