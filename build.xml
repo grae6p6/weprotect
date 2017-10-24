@@ -101,10 +101,10 @@
     <modified />
    </fileset>
 
-   <fileset dir="${basedir}/tests/selenium">
+   <!--<fileset dir="${basedir}/tests/selenium">
     <include name="**/*.php" />
     <modified />
-   </fileset>
+   </fileset>-->
   </apply>
 
   <property name="lint.done" value="true"/>
@@ -117,7 +117,7 @@
    <arg value="--count-tests" />
    <arg path="${basedir}/src/wp-content" />
       <arg path="${basedir}/tests/phpunit/tests" />
-      <arg path="${basedir}/tests/selenium" />
+      <!--<arg path="${basedir}/tests/selenium" />-->
   </exec>
 
   <property name="phploc.done" value="true"/>
@@ -135,7 +135,7 @@
    <arg path="${basedir}/build/logs/phploc.xml" />
    <arg path="${basedir}/src/wp-content" />
       <arg path="${basedir}/tests/phpunit/tests" />
-      <arg path="${basedir}/tests/selenium" />
+      <!--<arg path="${basedir}/tests/selenium" />-->
   </exec>
 
   <property name="phploc.done" value="true"/>
@@ -191,7 +191,7 @@
    <arg value="--ignore=autoload.php" />
    <arg path="${basedir}/src/wp-content" />
    <arg path="${basedir}/tests/phpunit/tests" />
-   <arg path="${basedir}/tests/selenium" />
+   <!--<arg path="${basedir}/tests/selenium" />-->
   </exec>
 
   <property name="phpcs.done" value="true"/>
@@ -209,7 +209,7 @@
    <arg value="--ignore=autoload.php" />
    <arg path="${basedir}/src/wp-content" />
       <arg path="${basedir}/tests/phpunit/tests" />
-      <arg path="${basedir}/tests/selenium" />
+      <!--<arg path="${basedir}/tests/selenium" />-->
   </exec>
 
   <property name="phpcs.done" value="true"/>
