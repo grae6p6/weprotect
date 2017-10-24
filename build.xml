@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="weprotect" default="full-build">
+<project name="weprotect" default="quick-build" basedir=".">
  <!-- By default, we assume all tools to be on the $PATH -->
  <property name="pdepend" value="pdepend"/>
  <property name="phpcpd"  value="phpcpd"/>
@@ -31,12 +31,8 @@
          depends="prepare,static-analysis,phpunit,phpdox,-check-failure"
          description="Performs static analysis, runs the tests, and generates project documentation"/>
 
-<!-- <target name="build-parallel"
-         depends="prepare,static-analysis-parallel,phpunit,phpdox,-check-failure"
-         description="Performs static analysis (executing the tools in parallel), runs the tests, and generates project documentation"/>
--->
  <target name="build-parallel"
-         depends="prepare,lint,phpunit-no-coverage"
+         depends="prepare,static-analysis-parallel,phpunit,phpdox,-check-failure"
          description="Performs static analysis (executing the tools in parallel), runs the tests, and generates project documentation"/>
 
  <target name="quick-build"
@@ -110,14 +106,15 @@
   <property name="lint.done" value="true"/>
  </target>
 
+ <!-- PHPLoc (Lines Of Code) report -->
  <target name="phploc"
          unless="phploc.done"
          description="Measure project size using PHPLOC and print human readable output. Intended for usage on the command line.">
   <exec executable="${phploc}" taskname="phploc">
    <arg value="--count-tests" />
    <arg path="${basedir}/src/wp-content" />
-      <arg path="${basedir}/tests/phpunit/tests" />
-      <!--<arg path="${basedir}/tests/selenium" />-->
+   <arg path="${basedir}/tests/phpunit/tests" />
+   <!--<arg path="${basedir}/tests/selenium" />-->
   </exec>
 
   <property name="phploc.done" value="true"/>
@@ -134,8 +131,8 @@
    <arg value="--log-xml" />
    <arg path="${basedir}/build/logs/phploc.xml" />
    <arg path="${basedir}/src/wp-content" />
-      <arg path="${basedir}/tests/phpunit/tests" />
-      <!--<arg path="${basedir}/tests/selenium" />-->
+   <arg path="${basedir}/tests/phpunit/tests" />
+   <!--<arg path="${basedir}/tests/selenium" />-->
   </exec>
 
   <property name="phploc.done" value="true"/>
@@ -155,6 +152,7 @@
   <property name="pdepend.done" value="true"/>
  </target>
 
+ <!-- PHP Mess Detector -->
  <target name="phpmd"
          unless="phpmd.done"
          description="Perform project mess detection using PHPMD and print human readable output. Intended for usage on the command line before committing.">
@@ -167,6 +165,7 @@
   <property name="phpmd.done" value="true"/>
  </target>
 
+ <!-- PHP Mess Detector -->
  <target name="phpmd-ci"
          unless="phpmd.done"
          depends="prepare"
@@ -182,6 +181,7 @@
   <property name="phpmd.done" value="true"/>
  </target>
 
+ <!-- PHP Code Sniffer - tokenises PHP, JS and CSS files and detects violations of defined coding standards -->
  <target name="phpcs"
          unless="phpcs.done"
          description="Find coding standard violations using PHP_CodeSniffer and print human readable output. Intended for usage on the command line before committing.">
@@ -197,6 +197,7 @@
   <property name="phpcs.done" value="true"/>
  </target>
 
+ <!-- PHP Code Sniffer - tokenises PHP, JS and CSS files and detects violations of defined coding standards -->
  <target name="phpcs-ci"
          unless="phpcs.done"
          depends="prepare"
@@ -208,13 +209,14 @@
    <arg value="--extensions=php" />
    <arg value="--ignore=autoload.php" />
    <arg path="${basedir}/src/wp-content" />
-      <arg path="${basedir}/tests/phpunit/tests" />
-      <!--<arg path="${basedir}/tests/selenium" />-->
+   <arg path="${basedir}/tests/phpunit/tests" />
+   <!--<arg path="${basedir}/tests/selenium" />-->
   </exec>
 
   <property name="phpcs.done" value="true"/>
  </target>
 
+ <!-- PHP Copy Paste Detector -->
  <target name="phpcpd"
          unless="phpcpd.done"
          description="Find duplicate code using PHPCPD and print human readable output. Intended for usage on the command line before committing.">
@@ -227,6 +229,7 @@
   <property name="phpcpd.done" value="true"/>
  </target>
 
+ <!-- PHP Copy Paste Detector -->
  <target name="phpcpd-ci"
          unless="phpcpd.done"
          depends="prepare"
@@ -242,6 +245,7 @@
   <property name="phpcpd.done" value="true"/>
  </target>
 
+ <!-- PHP unit tests -->
  <target name="phpunit"
          unless="phpunit.done"
          depends="prepare"
@@ -254,6 +258,7 @@
   <property name="phpunit.done" value="true"/>
  </target>
 
+ <!-- PHP unit tests -->
  <target name="phpunit-no-coverage"
          unless="phpunit.done"
          depends="prepare"
@@ -286,4 +291,3 @@
   </fail>
  </target>
 </project>
-
