@@ -92,7 +92,12 @@
     <modified />
    </fileset>
 
-   <fileset dir="${basedir}/tests">
+   <fileset dir="${basedir}/tests/phpunit/tests">
+    <include name="**/*.php" />
+    <modified />
+   </fileset>
+
+   <fileset dir="${basedir}/tests/selenium">
     <include name="**/*.php" />
     <modified />
    </fileset>
@@ -107,7 +112,8 @@
   <exec executable="${phploc}" taskname="phploc">
    <arg value="--count-tests" />
    <arg path="${basedir}/src" />
-   <arg path="${basedir}/tests" />
+      <arg path="${basedir}/tests/phpunit/tests" />
+      <arg path="${basedir}/tests/selenium" />
   </exec>
 
   <property name="phploc.done" value="true"/>
@@ -124,7 +130,8 @@
    <arg value="--log-xml" />
    <arg path="${basedir}/build/logs/phploc.xml" />
    <arg path="${basedir}/src" />
-   <arg path="${basedir}/tests" />
+      <arg path="${basedir}/tests/phpunit/tests" />
+      <arg path="${basedir}/tests/selenium" />
   </exec>
 
   <property name="phploc.done" value="true"/>
@@ -179,7 +186,8 @@
    <arg value="--extensions=php" />
    <arg value="--ignore=autoload.php" />
    <arg path="${basedir}/src" />
-   <arg path="${basedir}/tests" />
+   <arg path="${basedir}/tests/phpunit/tests" />
+   <arg path="${basedir}/tests/selenium" />
   </exec>
 
   <property name="phpcs.done" value="true"/>
@@ -196,7 +204,8 @@
    <arg value="--extensions=php" />
    <arg value="--ignore=autoload.php" />
    <arg path="${basedir}/src" />
-   <arg path="${basedir}/tests" />
+      <arg path="${basedir}/tests/phpunit/tests" />
+      <arg path="${basedir}/tests/selenium" />
   </exec>
 
   <property name="phpcs.done" value="true"/>
