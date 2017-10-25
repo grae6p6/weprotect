@@ -3,6 +3,12 @@
 <project name="weprotect" source="../src" workdir="${basedir}/build/api">
     <collector publiconly="false">
         <include mask="*.php" />
+        <exclude mask="**/*wp-admin*"/>
+        <exclude mask="**/*wp-includes*"/>
+        <exclude mask="**/*wp-*.php*"/>
+        <exclude mask="index.php"/>
+        <exclude mask="xmlrpc.php"/>
+        <exclude mask="**/*wp-content/plugins*"/>
     </collector>
 
     <generator output="${basedir}/build/api">
