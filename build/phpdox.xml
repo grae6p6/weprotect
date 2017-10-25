@@ -15,13 +15,13 @@
             <enrich base=".">
                 <source type="build" />
                 <source type="checkstyle">
-                    <file name="./logs/checkstyle.xml" />
+                    <file name="logs/checkstyle.xml" />
                 </source>
                 <source type="pmd">
-                    <file name="./logs/pmd.xml" />
+                    <file name="logs/pmd.xml" />
                 </source>
                 <source type="phploc">
-                    <file name="./logs/phploc.xml" />
+                    <file name="logs/phploc.xml" />
                 </source>
             </enrich>
             <build engine="html" enabled="true">
