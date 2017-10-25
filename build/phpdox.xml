@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <phpdox xmlns='http://xml.phpdox.net/config'>
-<project name="weprotect" source="../src" workdir="${basedir}/build/api">
+<project name="weprotect" source="../src" workdir="./api">
     <collector publiconly="false">
         <include mask="*.php" />
         <exclude mask="**/*wp-admin*"/>
@@ -11,8 +11,8 @@
         <exclude mask="**/*wp-content/plugins*"/>
     </collector>
 
-    <generator output="${basedir}/build/api">
-        <enrich base="${basedir}/build">
+    <generator output="./api">
+        <enrich base="./logs">
             <source type="build" />
             <source type="checkstyle" />
             <source type="pmd" />
