@@ -14,9 +14,15 @@
         <generator output="./api">
             <enrich base=".">
                 <source type="build" />
-                <source type="checkstyle" />
-                <source type="pmd" />
-                <source type="phploc" />
+                <source type="checkstyle">
+                    <file name="./logs/checkstyle.xml" />
+                </source>
+                <source type="pmd">
+                    <file name="./logs/pmd.xml" />
+                </source>
+                <source type="phploc">
+                    <file name="./logs/phploc.xml" />
+                </source>
             </enrich>
             <build engine="html" enabled="true">
                 <file extension="html" />
