@@ -26,7 +26,7 @@
         <log type="junit" target="./logs/junit.xml" logIncompleteSkipped="false"/>
     </logging>
     <listeners>
-        <listener class="SpeedTrapListener" file="tests/phpunit/includes/speed-trap-listener.php">
+        <listener class="SpeedTrapListener" file="../tests/phpunit/includes/speed-trap-listener.php">
             <arguments>
                 <array>
                     <element key="slowThreshold">
@@ -38,7 +38,7 @@
     </listeners>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">src</directory>
+            <directory suffix=".php">../src</directory>
         </whitelist>
     </filter>
 </phpunit>
