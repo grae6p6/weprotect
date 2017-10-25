@@ -20,13 +20,13 @@
         </exclude>
     </groups>
     <logging>
-        <log type="coverage-html" target="./coverage"/>
-        <log type="coverage-clover" target="./logs/clover.xml"/>
-        <log type="coverage-crap4j" target="./logs/crap4j.xml"/>
-        <log type="junit" target="./logs/junit.xml" logIncompleteSkipped="false"/>
+        <log type="coverage-html" target="coverage"/>
+        <log type="coverage-clover" target="logs/clover.xml"/>
+        <log type="coverage-crap4j" target="logs/crap4j.xml"/>
+        <log type="junit" target="logs/junit.xml" logIncompleteSkipped="false"/>
     </logging>
     <listeners>
-        <listener class="SpeedTrapListener" file="tests/phpunit/includes/speed-trap-listener.php">
+        <listener class="SpeedTrapListener" file="../tests/phpunit/includes/speed-trap-listener.php">
             <arguments>
                 <array>
                     <element key="slowThreshold">
@@ -38,7 +38,7 @@
     </listeners>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">src</directory>
+            <directory suffix=".php">../src</directory>
         </whitelist>
     </filter>
 </phpunit>
