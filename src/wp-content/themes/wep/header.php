@@ -12,7 +12,7 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<?php wp_head(); ?>
 </head>
-<body <?php body_class( 'debugd no-js' ); ?>>1111
+<body <?php body_class( 'debugd no-js' ); ?>>
 <div id="page">
 	<?php wep_edit_link( get_the_ID() ); ?>
 	<header class="body" role="banner">
