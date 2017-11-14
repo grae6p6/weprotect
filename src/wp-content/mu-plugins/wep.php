@@ -2666,6 +2666,9 @@ Statutory protections are in place to allow industry to fully and effectively re
                 'post_status' => 'inherit',
                 'numberposts' => 1
               ];
+              if ( !file_exists( $data['path'] ) ) {
+              	continue;
+              }
               $post = get_posts( $data );
               if ( $post ) {
                 $val = (int) $post[0]->ID;
