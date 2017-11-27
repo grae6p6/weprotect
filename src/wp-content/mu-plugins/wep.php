@@ -2282,9 +2282,6 @@ Statutory protections are in place to allow industry to fully and effectively re
     for ( $row = 1; $row <= $highestRow; ++ $row ) {
       for ( $col = 0; $col <= $highestColumnIndex; ++ $col ) {
         if ( $row == 1 ) {
-          continue;
-        }
-        if ( $row == 2 ) {
           $columns[ $col ] = trim( $objWorksheet->getCellByColumnAndRow( $col, $row )->getValue() );
         } else {
           $results[ $row ][ $columns[ $col ] ] = trim( $objWorksheet->getCellByColumnAndRow( $col, $row )->getValue() );
@@ -2355,9 +2352,6 @@ Statutory protections are in place to allow industry to fully and effectively re
     for ( $row = 1; $row <= $highestRow; ++ $row ) {
       for ( $col = 0; $col <= $highestColumnIndex; ++ $col ) {
         if ( $row == 1 ) {
-          continue;
-        }
-        if ( $row == 2 ) {
           $columns[ $col ] = trim( $objWorksheet->getCellByColumnAndRow( $col, $row )->getValue() );
         } else {
           $results[ $row ][ $columns[ $col ] ] = trim( $objWorksheet->getCellByColumnAndRow( $col, $row )->getValue() );
