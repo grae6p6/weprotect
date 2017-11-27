@@ -2,20 +2,26 @@
 
 WordPress website
 
-## Vendors
+## Required PHP extensions
 
-1. Install Node.Js. In project root run `npm install`
-2. Install Composer. In project root run `composer install`
+`mbstring`, `zip`
 
 ## Installation
 
-1. Access the site to install WordPress
-2. Login to control panel. Go to: `Appearance` > `Activate "WePROTECT"`
+1. Install Node.Js modules. In project root run `npm install`
+2. Install Composer packages. In project root run `composer install`
+3. Access the site to install WordPress
+4. Login to control panel. Go to: `Appearance` > `Activate "WePROTECT"`
 
 ##### NOTE
 If theme is activated on clean WordPress install, a default set of posts & pages will be added to the database. Associated media assets (not provided in this repository) will also be added if placed in `~/data/assets`
 
 No media assets will mean text-only posts & pages.
+
+## Environment
+
+##### Jenkins
+A `~/build.xml` Apache Ant script is available to configure Jenkins CI deployment environments. See `~/build` for individual build stage scripts.
 
 ## Development
 
