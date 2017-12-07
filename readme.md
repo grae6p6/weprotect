@@ -10,8 +10,8 @@ WordPress website
 
 1. Install Node.Js modules. In project root run `npm install`
 2. Install Composer packages. In project root run `composer install`
-3. Access the site to install WordPress
-4. Login to control panel. Go to: `Appearance` > `Activate "WePROTECT"`
+3. Clone this repository to your environment.
+4. Install WordPress, login to control panel. Go to: `Appearance` > `Activate "WePROTECT"`
 
 ##### NOTE
 If theme is activated on clean WordPress install, a default set of posts & pages will be added to the database. Associated media assets (not provided in this repository) will also be added if placed in `~/data/assets`
