@@ -75,7 +75,7 @@ class UserCaseTest extends AbstractTestCase {
      * User case - NGO Non-member
      * Become a member (as an industry)
      */
-    /*public function testNgoNonMemberBecomeAMemberAsAnIndustry() {
+    public function testNgoNonMemberBecomeAMemberAsAnIndustry() {
         
         // Load the URL (will wait until page is loaded)
         $this->wd->get( TEST_URL );
@@ -207,13 +207,13 @@ class UserCaseTest extends AbstractTestCase {
         $submitMessage = $this->wd->findElement( WebDriverBy::cssSelector( '.wpcf7-response-output' ) );
         $this->assertContains( 'alert-success', $submitMessage->getAttribute('class') );
         $this->wd->quit();
-    }*/
+    }
 
     /**
      * User case - NGO Non-member
      * Become a member (as an organisation)
      */
-    /*public function testNonMemberNgoBecomeAMemberAsAnOrganisation() {
+    public function testNonMemberNgoBecomeAMemberAsAnOrganisation() {
 
         // Load the URL (will wait until page is loaded)
         $this->wd->get( TEST_URL );
@@ -345,13 +345,13 @@ class UserCaseTest extends AbstractTestCase {
         $submitMessage = $this->wd->findElement( WebDriverBy::cssSelector( '.wpcf7-response-output' ) );
         $this->assertContains( 'alert-success', $submitMessage->getAttribute('class') );
         $this->wd->quit();
-    }*/
+    }
 
     /**
      * User case - Government Non-member
      * Become a member (as a government)
      */
-    /*public function testGovernmentNonMemberBecomeAMemberAsAGovernment() {
+    public function testGovernmentNonMemberBecomeAMemberAsAGovernment() {
 
         // Load the URL (will wait until page is loaded)
         $this->wd->get( TEST_URL );
@@ -483,13 +483,13 @@ class UserCaseTest extends AbstractTestCase {
         $submitMessage = $this->wd->findElement( WebDriverBy::cssSelector( '.wpcf7-response-output' ) );
         $this->assertContains( 'alert-success', $submitMessage->getAttribute('class') );
         $this->wd->quit();
-    }*/
+    }
 
     /**
      * User case - Member
      * Access the MNR
      */
-    /*public function testMemberCanAccessModelNationalResponse() {
+    public function testMemberCanAccessModelNationalResponse() {
         
         // Load the URL (will wait until page is loaded)
         $this->wd->get( TEST_URL );
@@ -507,5 +507,5 @@ class UserCaseTest extends AbstractTestCase {
         $h2Title = $this->wd->findElement( WebDriverBy::tagName( 'h2' ) );
         $this->assertContains( 'The Model National Response', $h2Title->getText() );
         $this->wd->quit();
-    }*/
+    }
 }
