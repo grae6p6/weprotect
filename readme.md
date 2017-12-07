@@ -20,6 +20,9 @@ No media assets will mean text-only posts & pages.
 
 ## Environment
 
+##### Vagrant
+Vagrant environment (CentOS 7, MySQL, PHP 7.1, Apache)- `~/puphpet/config.yaml` will need to be updated for your local environment paths.
+
 ##### Jenkins
 A `~/build.xml` Apache Ant script is available to configure Jenkins CI deployment environments. See `~/build` for individual build stage scripts.
 
